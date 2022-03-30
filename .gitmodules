@@ -1,3 +1,4 @@
 [submodule "jiff"]
 	path = jiff
-	url = https://github.com/multiparty/jiff.git
+	url = https://github.com/BU-Spark/jiff
+	branch = dev
