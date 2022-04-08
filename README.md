@@ -60,7 +60,7 @@ nvm install node
 https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 * Clone the WEB-MPC repository
 ```
-git clone https://github.com/multiparty/web-mpc.git
+git clone https://github.com/BU-Spark/web-mpc.git
 cd web-mpc/
 ```
 * Set up the JIFF submodule:
@@ -106,7 +106,7 @@ These instructions describe steps to deploy WEB-MPC on a local machine.
 * Install and start MongoDB
 * Clone WEB-MPC
 ```
-git clone https://github.com/multiparty/web-mpc.git
+git clone https://github.com/BU-Spark/web-mpc.git
 cd web-mpc/
 ```
 * Clone the JIFF submodule
@@ -218,4 +218,4 @@ npm run test -- --grep BWWC
 ```
 
 ## License
-WEB-MPC is freely distributable under the terms of the [MIT license](https://github.com/multiparty/web-mpc/blob/master/LICENSE). This release supports Handsontable's "[Nested headers](https://docs.handsontable.com/pro/1.17.0/demo-nested-headers.html)", a Pro feature. A [valid license](https://handsontable.com/pricing) must be obtained when using this feature.
+WEB-MPC is freely distributable under the terms of the [MIT license](https://github.com/BU-Spark/web-mpc/blob/master/LICENSE). This release supports Handsontable's "[Nested headers](https://docs.handsontable.com/pro/1.17.0/demo-nested-headers.html)", a Pro feature. A [valid license](https://handsontable.com/pricing) must be obtained when using this feature.
