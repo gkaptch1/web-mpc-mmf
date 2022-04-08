@@ -106,6 +106,13 @@ The application does not work over HTTP traffic. In order to enable HTTPS on GCP
 ```
 apt-get install nginx
 ```
+* Create an instance group on GCP including the Compute Engine resource
+# Set up a load balancer under port 80 and HTTP protocol
+- Backend configuration should specify HTTP protocol and port 80
+- Frontend configuration should specify HTTPS protocol and port 443
+- Frontend IP should be static
+- Create new Google-managed certificate with your domain name
+
 
 ## Local Machine Instructions
 These instructions describe steps to deploy WEB-MPC on a local machine.
