@@ -8,7 +8,7 @@ Implementation of a web-based data collection and aggregation infrastructure tha
 
 * Node.js
 * MongoDB
-* [JIFF](https://github.com/multiparty/jiff/) (Bundled as a Git submodule)
+* [JIFF](https://github.com/BU-Spark/jiff/) (Bundled as a Git submodule)
 
 ## Quick Start Instructions
 
@@ -17,7 +17,7 @@ These instructions are for demonstration and development purposes only. For a fu
 * Install and start MongoDB
 * Clone WEB-MPC
 ```
-git clone https://github.com/multiparty/web-mpc.git
+git clone https://github.com/BU-Spark/web-mpc.git
 cd web-mpc/
 ```
 * Clone the JIFF submodule
