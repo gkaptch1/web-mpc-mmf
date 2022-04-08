@@ -1,7 +1,5 @@
 # WEB-MPC
 
-[![DOI](https://zenodo.org/badge/84491506.svg)](https://zenodo.org/badge/latestdoi/84491506) [![CircleCI Build Status](https://circleci.com/gh/multiparty/web-mpc.svg?style=shield)](https://app.circleci.com/pipelines/github/multiparty/web-mpc)
-
 Implementation of a web-based data collection and aggregation infrastructure that utilizes secure multi-party computation techniques to allow individual contributors to submit their data without revealing it to the other participants.
 
 ## Requirements
@@ -99,6 +97,15 @@ cd server/
 authbind --deep forever -o log.txt -e error.txt index.js
 ```
 * Navigate to the domain or to the Compute Engine instance's public IP address to view the page
+
+## Enabling SSL
+The application does not work over HTTP traffic. In order to enable HTTPS on GCP, follow the following instructions
+
+* SSH into Compute Engine
+* Install Nginx
+```
+apt-get install nginx
+```
 
 ## Local Machine Instructions
 These instructions describe steps to deploy WEB-MPC on a local machine.
