@@ -60,7 +60,6 @@ nvm install node
 https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 * Clone the WEB-MPC repository
 ```
-sudo yum install git -y
 git clone https://github.com/multiparty/web-mpc.git
 cd web-mpc/
 ```
