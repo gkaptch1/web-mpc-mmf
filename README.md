@@ -43,12 +43,10 @@ npm start
 ```
 * Navigate to the website at `https://localhost:8080`
 
-## EC2 Instructions
-These instructions were written for an AWS EC2 instance running Amazon Linux. The instance's security group should allow SSH on port 22 and TCP on port 8080.
+## Deployment Instructions
+These instructions are written for an GCP Compute Engine instance running Ubuntu 18.04 LTS. It should also allow SSH on port 22 and TCP on port 8080.
 
-You will need to have a registered domain and will need to use Nginx with Let's Encrypt as a reverse proxy for port 8080.
-
-* SSH onto the EC2 instance
+* SSH onto the Compute Engine instance
 * First, install the Node.js version manager and activate it
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
@@ -59,18 +57,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 nvm install node
 ```
 * Install MongoDB:
-```
-echo "[mongodb-org-4.2]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/4.2/	x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc" | sudo tee /etc/yum.repos.d/mongodb.repo
-```
-```
-sudo yum -y update
-sudo yum install -y gcc-c++ mongodb-org-server mongodb-org-shell mongodb-org-tools
-```
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 * Clone the WEB-MPC repository
 ```
 sudo yum install git -y
@@ -99,7 +86,7 @@ npm install -g forever
 ```
 * Install authbind:
 ```
-sudo rpm -Uvh https://s3.amazonaws.com/aaronsilber/public/authbind-2.1.1-0.1.x86_64.rpm
+sudo apt-get install -y authbind
 ```
 * Next, set up the database file and start the MongoDB server:
 ```
@@ -110,9 +97,9 @@ sudo mongod &
 * Start the WEB-MPC server
 ```
 cd server/
-authbind --deep forever -o log.txt -e error.txt start index.js
+authbind --deep forever -o log.txt -e error.txt index.js
 ```
-* Navigate to the domain or to the EC2 instance's public IP address to view the page
+* Navigate to the domain or to the Compute Engine instance's public IP address to view the page
 
 ## Local Machine Instructions
 These instructions describe steps to deploy WEB-MPC on a local machine.
