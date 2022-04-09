@@ -98,7 +98,7 @@ authbind --deep forever -o log.txt -e error.txt index.js
 ```
 * Navigate to the domain or to the Compute Engine instance's public IP address to view the page
 
-# Enabling SSL
+## Enabling SSL
 The application does not work over HTTP traffic. In order to enable HTTPS on GCP, follow the following instructions
 
 * SSH into Compute Engine
@@ -107,11 +107,19 @@ The application does not work over HTTP traffic. In order to enable HTTPS on GCP
 apt-get install nginx
 ```
 * Create an instance group on GCP including the Compute Engine resource
-## Set Up Load Balancer
-- Backend configuration should specify HTTP protocol and port 80
-- Frontend configuration should specify HTTPS protocol and port 443
-- Frontend IP should be static
-- Create new Google-managed certificate with your domain name
+Create a load balancer
+* Backend configuration should specify HTTP protocol and port 80
+* Frontend configuration should specify HTTPS protocol and port 443
+* Frontend IP should be static
+* Create new Google-managed certificate with your domain name
+
+Create DNS zone
+* The DNS name should be your domain name
+* Add an A record referencing the IP address of the load balancer
+
+Updating Nameservers
+* Find the nameservers under the NS record type of your DNS zone
+* Replace your domain's nameserver with the provided nameservers
 
 
 ## Local Machine Instructions
