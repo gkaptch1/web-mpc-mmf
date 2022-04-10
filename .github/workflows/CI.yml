@@ -31,14 +31,9 @@ jobs:
       - run: sudo apt-get install xvfb
 #       - run: chrome --version
       - uses: actions/checkout@v3
-      #checkout web-mpc
-      - run: git submodule init 
-      - run: git submodule update
       #checkout jiff
       - run: git submodule init 
-        working-directory: web-mpc
       - run: git submodule update
-        working-directory: web-mpc
       #restore deps
       - name: Cache node modules
         uses: actions/cache@v2
@@ -48,14 +43,12 @@ jobs:
           restore-keys: v1-npm-de
       
       #install deps
-      - run: npm ci
-        working-directory: web-mpc
-      - run: npm ci
-        working-directory: web-mpc/jiff
+      - run: npm install
+      - run: npm install
+        working-directory: jiff
       #cache deps
       #not implemented
       
       #run tests
       - run: Xvfb :1 -screen 0 1024x768x24 & export DISPLAY=:1
       - run: npm run test
-        working-directory: web-mpc
