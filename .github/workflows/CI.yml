@@ -59,8 +59,3 @@ jobs:
       - run: Xvfb :1 -screen 0 1024x768x24 & export DISPLAY=:1
       - run: npm run test
         working-directory: web-mpc
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Statu
