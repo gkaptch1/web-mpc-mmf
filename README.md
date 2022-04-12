@@ -120,33 +120,40 @@ touch myserver.config
 sudo vim /etc/nginx/sites-available/myserver.config
 ```
 * Paste in the following configuration
-> #The Nginx server instance
-> server{
->     listen 80;
->     server_name wach.quest;
->     location / {
->         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
->         proxy_set_header Host $host;
->         proxy_pass http://127.0.0.1:8080;
->         proxy_http_version 1.1;
->         proxy_set_header Upgrade $http_upgrade;
->         proxy_set_header Connection "upgrade";
->     }
-> }
-
 ```
-apt-get update
-sudo apt-get install certbot
-apt-get install python3-certbot-nginx
+#The Nginx server instance
+server{
+    listen 80;
+    server_name wach.quest;
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
 ```
 * Enable the configuration file
 ```
 sudo ln -s /etc/nginx/sites-available/myserver.config /etc/nginx/sites-enabled/
 ```
+* Obtain the SSL/TLS certificate
+```
+apt-get update
+sudo apt-get install certbot
+apt-get install python3-certbot-nginx
+sudo certbot --nginx -d myserver.com -d
+```
 * Restart Nginx and allow access through firewall
 ```
 sudo systemctl restart nginx
 sudo ufw allow 'Nginx Full'
+```
+* Restart the app server
+```
+authbind --deep forever start -o log.txt -e error.txt index.js
 ```
 
 ## Local Machine Instructions
