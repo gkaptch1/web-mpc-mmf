@@ -94,7 +94,7 @@ sudo mongod &
 * Start the WEB-MPC server
 ```
 cd server/
-authbind --deep forever -o log.txt -e error.txt index.js
+authbind --deep forever start -o log.txt -e error.txt index.js
 ```
 * Navigate to the domain or to the Compute Engine instance's public IP address to view the page
 
