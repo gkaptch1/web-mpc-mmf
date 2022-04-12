@@ -99,28 +99,55 @@ authbind --deep forever -o log.txt -e error.txt index.js
 * Navigate to the domain or to the Compute Engine instance's public IP address to view the page
 
 ## Enabling SSL
-The application does not work over HTTP traffic. In order to enable HTTPS on GCP, follow the following instructions
+The application does not work over HTTP traffic. In order to enable HTTPS:
 
+* Add an DNS A record to the VM's external IP
 * SSH into Compute Engine
 * Install Nginx
 ```
-apt-get install nginx
+sudo apt update
+sudo apt install nginx
 ```
-* Create an instance group on GCP including the Compute Engine resource
-Create a load balancer
-* Backend configuration should specify HTTP protocol and port 80
-* Frontend configuration should specify HTTPS protocol and port 443
-* Frontend IP should be static
-* Create new Google-managed certificate with your domain name
+* Configure Nginx to serve node app
+```
+sudo su -
+cd ..
+cd /etc/nginx/sites-available
+touch myserver.config
+```
+* Open the configuration file
+```
+sudo vim /etc/nginx/sites-available/myserver.config
+```
+* Paste in the following configuration
+> #The Nginx server instance
+> server{
+>     listen 80;
+>     server_name wach.quest;
+>     location / {
+>         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+>         proxy_set_header Host $host;
+>         proxy_pass http://127.0.0.1:8080;
+>         proxy_http_version 1.1;
+>         proxy_set_header Upgrade $http_upgrade;
+>         proxy_set_header Connection "upgrade";
+>     }
+> }
 
-Create DNS zone
-* The DNS name should be your domain name
-* Add an A record referencing the IP address of the load balancer
-
-Updating Nameservers
-* Find the nameservers under the NS record type of your DNS zone
-* Replace your domain's nameserver with the provided nameservers
-
+```
+apt-get update
+sudo apt-get install certbot
+apt-get install python3-certbot-nginx
+```
+* Enable the configuration file
+```
+sudo ln -s /etc/nginx/sites-available/myserver.config /etc/nginx/sites-enabled/
+```
+* Restart Nginx and allow access through firewall
+```
+sudo systemctl restart nginx
+sudo ufw allow 'Nginx Full'
+```
 
 ## Local Machine Instructions
 These instructions describe steps to deploy WEB-MPC on a local machine.
