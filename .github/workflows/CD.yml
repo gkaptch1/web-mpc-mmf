@@ -62,11 +62,6 @@ jobs:
         echo Hello
         cd /home
         pwd
-        sudo apt update
-        sudo apt -y install nodejs npm
-        wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
-        sudo apt-get update
-        sudo apt-get install -y mongodb-org
         cd runner
         git clone https://github.com/BU-Spark/web-mpc
         cd web-mpc/
