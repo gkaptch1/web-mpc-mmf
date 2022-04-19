@@ -90,10 +90,6 @@ define([], function () {
                     {
                         "label": "Upper Management (e.g. COO, CEO, Executive Director)",
                         "value": "4"
-                    },
-                    {
-                        "label": "Human Resources (e.g. HR Manager, HRIS Manager, Compensation Manager, Talent &amp; Development)",
-                        "value": "5"
                     }
                     ]
                 }
