@@ -442,6 +442,7 @@ define(['constants'], function (constants) {
 
         // Format option count and sum it across cohorts
         var cohortOptionCount = result.questions[cohort][i];
+        console.log("mpc.js line 445" + typeof cohortOptionCount + ", " + cohortOptionCount);
         totalOptionCount = cohortOptionCount.add(totalOptionCount);
 
         setOrAssign(questions, [cohort, question, label], cohortOptionCount.toString());
