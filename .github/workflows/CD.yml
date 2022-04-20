@@ -15,7 +15,8 @@
 name: Build and Deploy to Google Compute Engine
 
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
     - 'dev'
 
