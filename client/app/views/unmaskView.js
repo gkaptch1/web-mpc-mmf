@@ -44,8 +44,16 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
             spinner.stop();
 
             // Only display averages in the table
+            console.log('This is where you display the data')
+            console.log(result)
             tableController.createTableElems(table_template.tables, '#tables-area');
-            tableController.displayReadTable(result['averages']['all']);
+            tableController.displayReadTable(result['averages']['all'], 'sum');
+
+            console.log("Right here");
+            console.log(table_template)
+
+            tableController.createTableElems(table_template.tables, '#tables-area-deviation');
+            tableController.displayReadTable(result['deviations']['all'], 'deviation')
           });
         });
       }

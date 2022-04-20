@@ -665,6 +665,8 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
         continue;
       }
       result.push({name: table_hot_obj._sail_meta.name, data: construct_data(table_hot_obj)});
+      console.log("we are here");
+      result.push({name: table_hot_obj._sail_meta.name + 'sqaured', data: construct_data_squared(table_hot_obj)});
     }
 
     return result;
@@ -704,6 +706,31 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
     return data;
   }
 
+  function construct_data_squared(table_hot_obj) {
+    var meta = table_hot_obj._sail_meta;
+
+    var data = {};
+    for (var r = 0; r < meta.rowsCount; r++) {
+      for (var c = 0; c < meta.colsCount; c++) {
+        var cell = meta.cells[r][c];
+        var cell_data = table_hot_obj.getDataAtCell(r, c);
+        if (!cell_data || cell_data.toString().trim() === '') {
+          if (cell.default) {
+            cell_data = cell.default;
+          }
+        }
+
+        var row_key = cell.row_key;
+        var col_key = cell.col_key;
+        if (data[row_key] === undefined) {
+          data[row_key] = {};
+        }
+        data[row_key][col_key] = cell_data * cell_data;
+      }
+    }
+    return data;
+  }
+
   function resetTableWidth() {
 
     var $instructions = $('#instructions');
@@ -724,7 +751,8 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
     return {};
   }
 
-  function displayReadTable(tables) {
+  function displayReadTable(tables, type) {
+    console.log("STarting with type " + type);
     var hotTables = [];
     for (var name in tables) {
       var template = getTemplate(name, 'name');
@@ -755,7 +783,18 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
         width: template.width
       };
 
-      var handsOn = new Handsontable(document.getElementById(template.element), settings);
+      console.log("HERE");
+      console.log("Creating table for " + template);
+      console.log(template);
+      console.log(settings);
+
+      if(type === 'deviation'){
+        console.log("In here");
+        var handsOn = new Handsontable(document.getElementById(template.element + 'dev'), settings);
+      }else{
+        var handsOn = new Handsontable(document.getElementById(template.element), settings);
+      }
+      
       handsOn.render();
       hotTables.push(handsOn);
     }
@@ -948,6 +987,8 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
 
   function createTableElems(tables, tablesDiv) {
 
+    console.log("creating table for " + tablesDiv)
+
     var tablesArea = $(tablesDiv);
 
     for (var i = 0; i < tables.length; i++) {
@@ -958,9 +999,16 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
         .appendTo(div);
 
       // Table Div
-      $('<div>').attr('class', 'table-section')
-        .attr('id', tables[i].element)
+      if(tablesDiv === '#tables-area-deviation'){
+        console.log("In here in createTableElems");
+        $('<div>').attr('class', 'table-section')
+        .attr('id', tables[i].element + 'dev')
         .appendTo(div);
+      }else{
+        $('<div>').attr('class', 'table-section')
+          .attr('id', tables[i].element)
+          .appendTo(div);
+      }
 
       $(div).appendTo(tablesArea);
     }

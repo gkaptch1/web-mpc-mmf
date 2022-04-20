@@ -3,11 +3,11 @@
     "MAX_SIZE": 10000,
   
     "webRootPath": "/tmp/acme-challenges",
-    "approveDomainsPattern": "^([A-Za-z0-9]+.)?100talent.org$",
+    "approveDomainsPattern": "^([A-Za-z0-9]+.)?34.135.53.102/",
     "approveDomainsOpts": {
       "domains": [
-        "www.100talent.org",
-        "100talent.org"
+        "34.135.53.102/",
+        "34.135.53.102/"
       ],
       "email": "test@bu.edu",
       "agreeTos": true

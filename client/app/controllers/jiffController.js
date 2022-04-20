@@ -181,6 +181,8 @@ define(['mpc', 'pki', 'BigNumber', 'jiff', 'jiff_bignumber', 'jiff_client_restfu
       var promise = mpc.compute(jiff, submitters, ordering, progressBar);
       promise.then(function (result) {
         jiff.disconnect(false, false);
+        console.log("This is the result");
+        console.log(result)
         callback(mpc.format(result, submitters, ordering));
       }).catch(function (err) {
         error(err.toString());
