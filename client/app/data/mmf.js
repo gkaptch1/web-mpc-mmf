@@ -114,12 +114,7 @@ define([], function () {
             ]
         }
         ],
-        'cohort_selection': true,
-        'cohorts': [
-            {name: 'Modern'},
-            {name: 'Classical'},
-        ],
-        'cohort_threshold': 0,
+        'cohort_selection': false,
         'send_submitter_ids': true
     };
 }); 
