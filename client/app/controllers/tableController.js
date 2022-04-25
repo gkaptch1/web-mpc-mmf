@@ -783,7 +783,6 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
         width: template.width
       };
 
-      console.log("HERE");
       console.log("Creating table for " + template);
       console.log(template);
       console.log(settings);
