@@ -144,6 +144,22 @@ define(['mpc', 'pki', 'BigNumber', 'jiff', 'jiff_bignumber', 'jiff_client_restfu
       for (i = 0; i < ordering.tables.length; i++) {
         jiff.share(new BigNumber(values[i]).pow(2), null, [1, 's1'], [jiff.id]);
       }
+      // then share the product of the independent and dependent variables for linear regression
+
+      console.log('values')
+      console.log(values)
+      console.log('ordering.tables')
+      console.log(ordering.tables)
+      console.log('dataSubmission')
+      console.log(dataSubmission)
+      for(i = 0; i < ordering.tables.length; i++){
+        var op = ordering.tables[i].op;
+        console.log('op[Lin]')
+        console.log(op['LIN'])
+        console.log('values[i]')
+        console.log(values[i])
+      }
+
       // then share the rest
       for (i = ordering.tables.length; i < values.length; i++) {
         jiff.share(values[i], null, [1, 's1'], [jiff.id]);

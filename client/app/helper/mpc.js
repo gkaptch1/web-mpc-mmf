@@ -6,7 +6,9 @@ define(['constants'], function (constants) {
 
   const AVG = constants.AVG;
   const STD = constants.STD;
+  const LIN = constants.LIN;
   const SELF = constants.SELF;
+
   const ALL = 'ALL';
 
   var setOrAssign = function (obj, keys, value) {
@@ -349,6 +351,7 @@ define(['constants'], function (constants) {
   var format = function (result, submitters, ordering) {
     var averages = {};
     var deviations = {};
+    var linear_regressions = {};
     var questions = {};
     var usability = {};
 
@@ -394,6 +397,7 @@ define(['constants'], function (constants) {
           setOrAssign(deviations, [cohort, table, row, col], totalDeviation.toFixed(2));
 
         }
+        
       }
     }
 
@@ -417,18 +421,86 @@ define(['constants'], function (constants) {
 
       setOrAssign(averages, ['all', table, row, col], totalMean.toFixed(2));
 
-      // Compute deviation for population of values presented by companies (not for individual employees)
-      // E[X^2]
-      avgOfSquares = result.squaresSums['all'][i];
-      avgOfSquares = avgOfSquares.div(submitters['all'].length);
-      // (E[X])^2
-      squareOfAvg = result.sums['all'][i].div(submitters['all'].length);
-      squareOfAvg = squareOfAvg.pow(2);
-      // deviation formula: E[X^2] - (E[X])^2
-      totalDeviation = avgOfSquares.minus(squareOfAvg);
-      totalDeviation = totalDeviation.sqrt(); //sqrt
+      if(op[STD] != null){
+        // Compute deviation for population of values presented by companies (not for individual employees)
+        // E[X^2]
+        avgOfSquares = result.squaresSums['all'][i];
+        avgOfSquares = avgOfSquares.div(submitters['all'].length);
+        // (E[X])^2
+        squareOfAvg = result.sums['all'][i].div(submitters['all'].length);
+        squareOfAvg = squareOfAvg.pow(2);
+        // deviation formula: E[X^2] - (E[X])^2
+        totalDeviation = avgOfSquares.minus(squareOfAvg);
+        totalDeviation = totalDeviation.sqrt(); //sqrt
 
-      setOrAssign(deviations, ['all', table, row, col], totalDeviation.toFixed(2));
+        setOrAssign(deviations, ['all', table, row, col], totalDeviation.toFixed(2));
+      }
+      
+      console.log("Outside if statement")
+      console.log(op)
+      console.log("Printing LIN")
+      console.log(op[LIN])
+      if(op[LIN] != null){
+        console.log("In if statement");
+        console.log(op[LIN])
+        //compute linear regression on all the pairs
+        pairs = op[LIN]
+
+        console.log('pairs')
+        console.log(pairs)
+
+        console.log('result')
+        console.log(result)
+        console.log('row')
+        console.log(row)
+        console.log('col')
+        console.log(col)
+
+        var sums = result.sums['all']
+        console.log('sums');
+        console.log(sums)
+
+
+        pairs.forEach( function(pair) {
+          console.log('looking at pair')
+          console.log(pair)
+  
+          //the row and col of the independent variable
+          var row_ind = pair[0][0];
+          var col_ind = pair[0][1];
+  
+          //the row and col of the dependent variable
+          var row_dep = pair[1][0];
+          var col_dep = pair[1][1]; 
+
+          console.log('row_ind')
+          console.log(row_ind)
+          console.log('col_ind')
+          console.log(col_ind)
+
+          console.log('row_dep')
+          console.log(row_dep)
+          console.log('col_dep')
+          console.log(col_dep)
+  
+          var ind_sum = sums[row_ind]['c'][col_ind]
+          console.log('ind_sum')
+          console.log(ind_sum)
+
+          console.log('sums[0]')
+          console.log(sums[0]['c'])
+
+          console.log('sums[1]')
+          console.log(sums[1]['c'])
+
+          var dep_sum = sums[row_dep]['c'][col_dep]
+          console.log('dep_sum')
+          console.log(dep_sum)
+         });
+
+    }
+
+    
     }
 
     // format questions as questions[<cohort>][<question>][<option>] = count of parties that choose this option
@@ -442,7 +514,6 @@ define(['constants'], function (constants) {
 
         // Format option count and sum it across cohorts
         var cohortOptionCount = result.questions[cohort][i];
-        console.log("mpc.js line 445" + typeof cohortOptionCount + ", " + cohortOptionCount);
         totalOptionCount = cohortOptionCount.add(totalOptionCount);
 
         setOrAssign(questions, [cohort, question, label], cohortOptionCount.toString());

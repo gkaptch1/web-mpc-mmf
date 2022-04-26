@@ -8,7 +8,7 @@ define([], function () {
         {
             "name": "Table 1",
             "element": "number-paintings", //TODO: what does this element do?
-            "operations": {SUM: true,},
+            "operations": {SUM: true, STD: true, LIN: [[[0,0],[1,0]]]},
             "cohortOperations": {SUM: true},
             "hot_parameters": {
             "rowHeaderWidth": 150,
@@ -18,15 +18,19 @@ define([], function () {
             },
             "rows": [
             {
-                "key": "local",
+                "key": "num_paintings",
                 "label": "Number of paintings"
             },
+            {
+                "key": "age",
+                "label": "Museum age"
+            }
             ],
             "cols": [
             [
                 {
                 "key": "value",
-                "label": "Test"
+                "label": "Value"
                 }
             ]
             ],
@@ -45,6 +49,67 @@ define([], function () {
             "excel": [
             {
                 "sheet": "Test",
+                "start": "B2",
+                "end": "B2",
+                "firstrow": "Test"
+            }
+            ],
+            "tooltips": [
+            {
+                "range": {
+                "row": "*",
+                "col": "*"
+
+                },
+                "tooltip": {
+                "errorTitle": "Invalid Data Entry",
+                "error": "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+                "warningTitle": "Warning: Data is too big",
+                "warning": "Are you sure this value is correct?"
+                }
+            }
+            ]
+        },
+        {
+            "name": "Table 2",
+            "element": "number-emps", //TODO: what does this element do?
+            "operations": {SUM: true, STD: true, LIN: null},
+            "cohortOperations": {SUM: true},
+            "hot_parameters": {
+            "rowHeaderWidth": 150,
+            "height": 230,
+            "colWidths": [150],
+            "stretchH": "none"
+            },
+            "rows": [
+            {
+                "key": "number_emp",
+                "label": "Number of employees"
+            },
+            ],
+            "cols": [
+            [
+                {
+                "key": "value",
+                "label": "Value"
+                }
+            ]
+            ],
+            "types": [
+            {
+                "range": {
+                "row": "*",
+                "col": "*"
+                },
+                "type": "int",
+                "min": 0,
+                "max_warning": 200,
+                "empty": false
+            }
+            ],
+            "excel": [
+            {
+                "sheet": "Test2",
                 "start": "B2",
                 "end": "B2",
                 "firstrow": "Test"
