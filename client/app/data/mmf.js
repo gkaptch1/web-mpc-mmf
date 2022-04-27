@@ -67,38 +67,68 @@ define([], function () {
             ]
         }
         ],
-        // 'survey': {
-        //     "header": "Answer Additional Questions",
-        //     "directions": "We have included these questions to get instant feedback as to how this process went in order to improve the process in future years. Please know that the answers to these questions will be anonymous, and they will be considered separately from the encrypted and aggregated data above.",
-        //     "questions": [
-        //         {
-        //             "question_text": "Which department are you in?",
-        //             "input_type": "radio",
-        //             "inputs": [
-        //             {
-        //                 "label": "Human Resources (e.g. HR Manager, HRIS Manager, Compensation Manager, Talent &amp; Development)",
-        //                 "value": "1"
-        //             },
-        //             {
-        //                 "label": "Operations (e.g. Director of Operations)",
-        //                 "value": "2"
-        //             },
-        //             {
-        //                 "label": "Diversity (e.g. Chief Diversity Officer)",
-        //                 "value": "3"
-        //             },
-        //             {
-        //                 "label": "Upper Management (e.g. COO, CEO, Executive Director)",
-        //                 "value": "4"
-        //             },
-        //             {
-        //                 "label": "Human Resources (e.g. HR Manager, HRIS Manager, Compensation Manager, Talent &amp; Development)",
-        //                 "value": "5"
-        //             }
-        //             ]
-        //         }
-        //     ]
-        // },
+        'survey': {
+            "header": "Answer Additional Questions",
+            "directions": "Please answer the following questions.",
+            "questions": [
+                {
+                    "question_text": "Which department are you in?",
+                    "input_type": "radio",
+                    "inputs": [
+                    {
+                        "label": "Human Resources (e.g. HR Manager, HRIS Manager, Compensation Manager, Talent &amp; Development)",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Operations (e.g. Director of Operations)",
+                        "value": "2"
+                    },
+                    {
+                        "label": "Diversity (e.g. Chief Diversity Officer)",
+                        "value": "3"
+                    },
+                    {
+                        "label": "Upper Management (e.g. COO, CEO, Executive Director)",
+                        "value": "4"
+                    },
+                    ]
+                },
+                {
+                    "question_text":"How easy was it to understand what data was required given the template and instructions?",
+                    "input_type":"radio",
+                    "inputs":[
+                      {
+                        "label":"Extremely easy",
+                        "value":"1"
+                      },
+                      {
+                        "label":"Moderately easy",
+                        "value":"2"
+                      },
+                      {
+                        "label":"Slightly easy",
+                        "value":"3"
+                      },
+                      {
+                        "label":"Neither easy nor difficult",
+                        "value":"4"
+                      },
+                      {
+                        "label":"Slightly difficult",
+                        "value":"5"
+                      },
+                      {
+                        "label":"Moderately difficult",
+                        "value":"6"
+                      },
+                      {
+                        "label":"Extremely difficult",
+                        "value":"7"
+                      }
+                    ]
+                  },
+            ]
+        },
         'usability': [
         'data_prefilled',
         {'time_spent': ['page', 'session-area', 'tables-area', 'amount-spent', 'number-MBEs', 'addressable-spend', 'review-and-submit']},
