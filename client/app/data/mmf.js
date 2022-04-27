@@ -8,7 +8,7 @@ define([], function () {
         {
             "name": "Table 1",
             "element": "number-paintings", //TODO: what does this element do?
-            "operations": {SUM: true, STD: true, LIN: [[[0,0],[1,0]]]},
+            "operations": {SUM: true, STD: true, LIN: [[["num_paintings","value"],["age","value"]]]},
             "cohortOperations": {SUM: true},
             "hot_parameters": {
             "rowHeaderWidth": 150,

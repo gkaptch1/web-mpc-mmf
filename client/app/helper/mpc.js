@@ -142,17 +142,31 @@ define(['constants'], function (constants) {
     var result = {
       shares: [],
       squares: [],
+      lin_reg_products: [],
       questions: [],
       usability: []
     };
 
-    for (var k = 0; k < 2 * ordering.tables.length + ordering.questions.length + ordering.usability.length; k++) {
+    console.log('Here is the ordering');
+    console.log(ordering)
+
+    //find number of lin_reg_product pairs
+    lin_reg_products_num = 1; //temp
+
+
+    for (var k = 0; k < 2 * ordering.tables.length + lin_reg_products_num + ordering.questions.length + ordering.usability.length; k++) {
       var share =  jiff_instance.share(null, null, [1, 's1'], [partyID])[partyID];
+      // console.log('share');
+      // console.log(share)
       if (k < ordering.tables.length) {
         result.shares.push(share);
       } else if (k < 2 * ordering.tables.length) {
         result.squares.push(share);
-      } else if (k < 2 * ordering.tables.length + ordering.questions.length) {
+      } else if (k < 2 * ordering.tables.length + lin_reg_products_num){
+        // console.log('adding ' + share + ' to lin_reg_products')
+        result.lin_reg_products.push(share);
+      } 
+      else if (k < 2 * ordering.tables.length + ordering.questions.length) {
         result.questions.push(share);
       } else {
         result.usability.push(share);
@@ -204,6 +218,7 @@ define(['constants'], function (constants) {
   // Exceptions is a sorted array of positions to ignore, these positions are not opened, and instead
   // a value of '-' is returned for them. Exceptions defaults to [] if not provided.
   var openValues = function (jiff_instance, results, parties, rangeStart, rangeEnd) {
+    console.log('Opening the values'); 
     if (rangeStart == null) {
       rangeStart = 0;
     }
@@ -214,9 +229,12 @@ define(['constants'], function (constants) {
     var promises = [];
     // var exceptionsIndex = 0; // keeps track of the next exception, fast way to check set membership since both set and values are sorted
     for (var i = rangeStart; i < rangeEnd; i++) {
+      console.log('a loop')
       var promise = jiff_instance.open(results[i], parties);
       promises.push(promise);
     }
+    
+    console.log('returning');
 
     return Promise.all(promises);
   };
@@ -236,24 +254,35 @@ define(['constants'], function (constants) {
   var compute = async function (jiff_instance, submitters, ordering, progressBar) {
     updateProgress(progressBar, 0);
 
+    console.log('Computing')
+
     // Compute these entities in order
-    var sums, squaresSums, questions = null, usability = null;
+    var sums, squaresSums, productSums, questions = null, usability = null;
 
     // Temporary variables
     var cohort, i, p, shares;
     var promises = [];
     sums = {all: null}; // sums['all'] is for everyone, sums[<cohort>] is for <cohort> only
     squaresSums = {all: null};
+    productSums = {all: null};
 
     // Process shares from parties that do not belong to any cohort (their cohort has too few elements)
     var counter = 0;
     for (i = 0; i < submitters['none'].length; i++) {
-      // Get all shares this party sent: values, squares of values, questions, and usability.
+      // Get all shares this party sent: values, squares of values, lin_reg products, questions, and usability.
       shares = getShares(jiff_instance, submitters['none'][i], ordering);
+
+
+      console.log('getting the shares')
+      // console.log('These are the shares');
+      // console.log(shares)
 
       // Sum all things
       sums['all'] = sumAndAccumulate(sums['all'], shares.shares);
       squaresSums['all'] = sumAndAccumulate(squaresSums['all'], shares.squares);
+      productSums['all'] = sumAndAccumulate(productSums['all'], shares.lin_reg_products);
+      console.log('productSums');
+      console.log(productSums);
       questions = sumAndAccumulate(questions, shares.questions);
       usability = sumAndAccumulate(usability, shares.usability);
 
@@ -286,6 +315,9 @@ define(['constants'], function (constants) {
         }
         sums['all'] = sumAndAccumulate(sums['all'], shares.shares);
         squaresSums['all'] = sumAndAccumulate(squaresSums['all'], shares.squares);
+        productSums['all'] = sumAndAccumulate(productSums['all'], shares.lin_reg_products);
+        console.log('productSums');
+        console.log(productSums);
         questions = sumAndAccumulate(questions, shares.questions);
         usability = sumAndAccumulate(usability, shares.usability);
 
@@ -304,8 +336,10 @@ define(['constants'], function (constants) {
       promises.push(...[avgPromise, squaresPromise]);
     }
 
+    console.log('starting the cohorts thing')
     // wait for cohort outputs
     var cohortOutputs = await Promise.all(promises);
+    console.log('done the cohert thing')
     updateProgress(progressBar, 0.96);
     for (i = 0; i < submitters['cohorts'].length*2; i++) {
       // every 2 outputs belongs to same cohort - evens are sums; odds are square sums
@@ -318,20 +352,33 @@ define(['constants'], function (constants) {
       }
     }
 
+    console.log('starting the opening')
     // Open all sums and sums of squares
     sums['all'] = await openValues(jiff_instance, sums['all'], [1]);
+    console.log('opened the sums')
     squaresSums['all'] = await openValues(jiff_instance, squaresSums['all'], [1]);
+    console.log('opened the squaresums ')
+    console.log(squaresSums)
+    productSums['all'] = await openValues(jiff_instance, productSums['all'], [1])
+    console.log('opened productSums')
+    console.log(productSums)
     updateProgress(progressBar, 0.98);
+
 
     // Open questions and usability
     questions = await openValues(jiff_instance, questions, [1]);
+    console.log('Done the questions')
+    // console.log('usability')
+    // console.log(usability)
     usability = await openValues(jiff_instance, usability, [1]);
+    console.log('Done the usability')
     updateProgress(progressBar, 1);
 
     // Put results in object
     return {
       sums: sums,
       squaresSums: squaresSums,
+      productSums: productSums,
       questions: questions,
       usability: usability
     };
@@ -436,34 +483,15 @@ define(['constants'], function (constants) {
         setOrAssign(deviations, ['all', table, row, col], totalDeviation.toFixed(2));
       }
       
-      console.log("Outside if statement")
-      console.log(op)
-      console.log("Printing LIN")
-      console.log(op[LIN])
       if(op[LIN] != null){
-        console.log("In if statement");
         console.log(op[LIN])
         //compute linear regression on all the pairs
         pairs = op[LIN]
 
-        console.log('pairs')
-        console.log(pairs)
-
-        console.log('result')
-        console.log(result)
-        console.log('row')
-        console.log(row)
-        console.log('col')
-        console.log(col)
-
         var sums = result.sums['all']
-        console.log('sums');
-        console.log(sums)
 
 
         pairs.forEach( function(pair) {
-          console.log('looking at pair')
-          console.log(pair)
   
           //the row and col of the independent variable
           var row_ind = pair[0][0];
@@ -473,29 +501,19 @@ define(['constants'], function (constants) {
           var row_dep = pair[1][0];
           var col_dep = pair[1][1]; 
 
-          console.log('row_ind')
-          console.log(row_ind)
-          console.log('col_ind')
-          console.log(col_ind)
-
-          console.log('row_dep')
-          console.log(row_dep)
-          console.log('col_dep')
-          console.log(col_dep)
+          console.log('sums')
+          console.log(sums)
   
-          var ind_sum = sums[row_ind]['c'][col_ind]
+          // var ind_sum = sums[row_ind]['c'][col_ind]
           console.log('ind_sum')
           console.log(ind_sum)
 
-          console.log('sums[0]')
-          console.log(sums[0]['c'])
-
-          console.log('sums[1]')
-          console.log(sums[1]['c'])
-
-          var dep_sum = sums[row_dep]['c'][col_dep]
+          // var dep_sum = sums[row_dep]['c'][col_dep]
           console.log('dep_sum')
           console.log(dep_sum)
+
+
+
          });
 
     }
