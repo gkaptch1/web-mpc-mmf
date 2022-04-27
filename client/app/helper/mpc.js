@@ -147,11 +147,28 @@ define(['constants'], function (constants) {
       usability: []
     };
 
-    console.log('Here is the ordering');
-    console.log(ordering)
+    // console.log('Here is the ordering');
+    // console.log(ordering)
 
     //find number of lin_reg_product pairs
-    lin_reg_products_num = 1; //temp
+
+    //loop through all the tables and count the number of lin_reg pairs
+    visited = {};
+    lin_reg_products_num = 0; 
+
+    for(var i = 0; i < ordering.tables.length; i++){
+      var table = ordering.tables[i].table;
+      if (visited[table] == null){
+        visited[table] == true
+        var op = ordering.tables[i].op;
+        if(op['LIN'] != null){
+          lin_reg_products_num += op['LIN'].length;
+        }
+      }
+    }
+
+
+    
 
 
     for (var k = 0; k < 2 * ordering.tables.length + lin_reg_products_num + ordering.questions.length + ordering.usability.length; k++) {
@@ -218,7 +235,6 @@ define(['constants'], function (constants) {
   // Exceptions is a sorted array of positions to ignore, these positions are not opened, and instead
   // a value of '-' is returned for them. Exceptions defaults to [] if not provided.
   var openValues = function (jiff_instance, results, parties, rangeStart, rangeEnd) {
-    console.log('Opening the values'); 
     if (rangeStart == null) {
       rangeStart = 0;
     }
@@ -229,12 +245,10 @@ define(['constants'], function (constants) {
     var promises = [];
     // var exceptionsIndex = 0; // keeps track of the next exception, fast way to check set membership since both set and values are sorted
     for (var i = rangeStart; i < rangeEnd; i++) {
-      console.log('a loop')
       var promise = jiff_instance.open(results[i], parties);
       promises.push(promise);
     }
     
-    console.log('returning');
 
     return Promise.all(promises);
   };
@@ -254,7 +268,6 @@ define(['constants'], function (constants) {
   var compute = async function (jiff_instance, submitters, ordering, progressBar) {
     updateProgress(progressBar, 0);
 
-    console.log('Computing')
 
     // Compute these entities in order
     var sums, squaresSums, productSums, questions = null, usability = null;
@@ -273,16 +286,11 @@ define(['constants'], function (constants) {
       shares = getShares(jiff_instance, submitters['none'][i], ordering);
 
 
-      console.log('getting the shares')
-      // console.log('These are the shares');
-      // console.log(shares)
 
       // Sum all things
       sums['all'] = sumAndAccumulate(sums['all'], shares.shares);
       squaresSums['all'] = sumAndAccumulate(squaresSums['all'], shares.squares);
       productSums['all'] = sumAndAccumulate(productSums['all'], shares.lin_reg_products);
-      console.log('productSums');
-      console.log(productSums);
       questions = sumAndAccumulate(questions, shares.questions);
       usability = sumAndAccumulate(usability, shares.usability);
 
@@ -316,8 +324,6 @@ define(['constants'], function (constants) {
         sums['all'] = sumAndAccumulate(sums['all'], shares.shares);
         squaresSums['all'] = sumAndAccumulate(squaresSums['all'], shares.squares);
         productSums['all'] = sumAndAccumulate(productSums['all'], shares.lin_reg_products);
-        console.log('productSums');
-        console.log(productSums);
         questions = sumAndAccumulate(questions, shares.questions);
         usability = sumAndAccumulate(usability, shares.usability);
 
@@ -336,10 +342,8 @@ define(['constants'], function (constants) {
       promises.push(...[avgPromise, squaresPromise]);
     }
 
-    console.log('starting the cohorts thing')
     // wait for cohort outputs
     var cohortOutputs = await Promise.all(promises);
-    console.log('done the cohert thing')
     updateProgress(progressBar, 0.96);
     for (i = 0; i < submitters['cohorts'].length*2; i++) {
       // every 2 outputs belongs to same cohort - evens are sums; odds are square sums
@@ -352,26 +356,18 @@ define(['constants'], function (constants) {
       }
     }
 
-    console.log('starting the opening')
     // Open all sums and sums of squares
     sums['all'] = await openValues(jiff_instance, sums['all'], [1]);
-    console.log('opened the sums')
     squaresSums['all'] = await openValues(jiff_instance, squaresSums['all'], [1]);
-    console.log('opened the squaresums ')
-    console.log(squaresSums)
     productSums['all'] = await openValues(jiff_instance, productSums['all'], [1])
-    console.log('opened productSums')
-    console.log(productSums)
     updateProgress(progressBar, 0.98);
 
 
     // Open questions and usability
     questions = await openValues(jiff_instance, questions, [1]);
-    console.log('Done the questions')
-    // console.log('usability')
-    // console.log(usability)
+    console.log('waiting for usability')
     usability = await openValues(jiff_instance, usability, [1]);
-    console.log('Done the usability')
+    console.log('done usability');
     updateProgress(progressBar, 1);
 
     // Put results in object
@@ -448,12 +444,44 @@ define(['constants'], function (constants) {
       }
     }
 
+    //store the position of the variables for lin_reg 
+
+    positions = {};
+
     // Compute averages and deviations for all parties
     for (i = 0; i < ordering.tables.length; i++) {
       table = ordering.tables[i].table;
       row = ordering.tables[i].row;
       col = ordering.tables[i].col;
       var op = ordering.tables[i].op;
+
+      if (op['LIN'] != null){
+        pairs = op['LIN']
+
+        pairs.forEach( function(pair) {
+          // console.log('looking at pair')
+          // console.log(pair)
+          row_looking_ind = pair[0][0];
+          col_looking_ind = pair[0][1];
+          row_looking_dep = pair[1][0];
+          col_looking_dep = pair[1][1];
+          // console.log('col_looking_dep')
+          // console.log(col_looking_dep)
+          if((row_looking_ind == row && col_looking_ind == col) || (row_looking_dep == row && col_looking_dep == col)){
+            // console.log('here')
+            // console.log()
+            if(positions[table] == null){
+              positions[table] = {}
+            }
+            temp_pair = pair[1];
+            if(row_looking_ind == row){
+              temp_pair = pair[0];
+            }
+            positions[table][temp_pair.toString()] = i;
+            console.log(positions)
+          }
+        })
+      }
 
       // Compute average
       var totalMean = result.sums['all'][i]; // mean for cell for ALL cohorts
@@ -482,44 +510,72 @@ define(['constants'], function (constants) {
 
         setOrAssign(deviations, ['all', table, row, col], totalDeviation.toFixed(2));
       }
-      
-      if(op[LIN] != null){
-        console.log(op[LIN])
-        //compute linear regression on all the pairs
-        pairs = op[LIN]
-
-        var sums = result.sums['all']
-
-
-        pairs.forEach( function(pair) {
-  
-          //the row and col of the independent variable
-          var row_ind = pair[0][0];
-          var col_ind = pair[0][1];
-  
-          //the row and col of the dependent variable
-          var row_dep = pair[1][0];
-          var col_dep = pair[1][1]; 
-
-          console.log('sums')
-          console.log(sums)
-  
-          // var ind_sum = sums[row_ind]['c'][col_ind]
-          console.log('ind_sum')
-          console.log(ind_sum)
-
-          // var dep_sum = sums[row_dep]['c'][col_dep]
-          console.log('dep_sum')
-          console.log(dep_sum)
-
-
-
-         });
-
-    }
-
     
     }
+
+    //go table by table and do the linear regression for every table
+    visited = {}
+    for(i = 0; i < ordering.tables.length; i++){
+      var table = ordering.tables[i].table;
+      var op = ordering.tables[i].op;
+      if (visited[table] == null && op['LIN'] != null){
+        visited[table] = true;
+        var sums = result.sums['all']
+        var squaresSums = result.squaresSums['all']
+        opPairs = op[LIN]
+
+        var cnt = 0;
+
+        opPairs.forEach( function(pair) {
+  
+          //the row and col of the independent variable
+
+          // console.log('pair')
+          // console.log(pair)
+
+          ind_pair = pair[0];
+          dep_pair = pair[1];
+
+          var ind_position = positions[table][ind_pair.toString()]
+          var dep_position = positions[table][dep_pair.toString()]
+
+          var ind_sum = sums[ind_position]['c'];
+          var dep_sum = sums[dep_position]['c'];
+
+          var ind_sum_squared = squaresSums[ind_position]['c']
+          var dep_sum_squared = squaresSums[dep_position]['c'];
+
+          var product_sum = result.productSums['all'][cnt]['c']
+
+          var num = submitters['all'].length;
+
+          // console.log('num')
+          // console.log(num);
+
+          // console.log('ind and dep sum')
+          // console.log(ind_sum)
+          // console.log(dep_sum);
+
+          // console.log('ind and dep sumsqaured')
+          // console.log(ind_sum_squared)
+          // console.log(dep_sum_squared);
+
+          // console.log('product_sum')
+          // console.log(product_sum)
+
+          slope = (num * product_sum - ind_sum * dep_sum)/(num * ind_sum_squared - (ind_sum * ind_sum))
+          // console.log('slope')
+          // console.log(slope)
+
+          y_intercept = (dep_sum - slope * ind_sum)/num
+
+          // console.log('y_intercept')
+          // console.log(y_intercept)
+
+          cnt += 1;
+      });
+    }
+  }
 
     // format questions as questions[<cohort>][<question>][<option>] = count of parties that choose this option
     for (i = 0; i < ordering.questions.length; i++) {
