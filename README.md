@@ -124,7 +124,7 @@ sudo vim /etc/nginx/sites-available/myserver.config
 #The Nginx server instance
 server{
     listen 80;
-    server_name wach.quest;
+    server_name your.domain;
     location / {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Host $host;
