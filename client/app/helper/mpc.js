@@ -6,7 +6,9 @@ define(['constants'], function (constants) {
 
   const AVG = constants.AVG;
   const STD = constants.STD;
+  const LIN = constants.LIN;
   const SELF = constants.SELF;
+
   const ALL = 'ALL';
 
   var setOrAssign = function (obj, keys, value) {
@@ -140,17 +142,39 @@ define(['constants'], function (constants) {
     var result = {
       shares: [],
       squares: [],
+      lin_reg_products: [],
       questions: [],
       usability: []
     };
 
-    for (var k = 0; k < 2 * ordering.tables.length + ordering.questions.length + ordering.usability.length; k++) {
+    //find number of lin_reg_product pairs
+
+    //loop through all the tables and count the number of lin_reg pairs
+    visited = {};
+    lin_reg_products_num = 0; 
+
+    for(var i = 0; i < ordering.tables.length; i++){
+      var table = ordering.tables[i].table;
+      if (visited[table] == null){
+        visited[table] == true
+        var op = ordering.tables[i].op;
+        if(op['LIN'] != null){
+          lin_reg_products_num += op['LIN'].length/2;
+        }
+      }
+    }
+
+    for (var k = 0; k < 2 * ordering.tables.length + lin_reg_products_num + ordering.questions.length + ordering.usability.length; k++) {
       var share =  jiff_instance.share(null, null, [1, 's1'], [partyID])[partyID];
+
       if (k < ordering.tables.length) {
         result.shares.push(share);
       } else if (k < 2 * ordering.tables.length) {
         result.squares.push(share);
-      } else if (k < 2 * ordering.tables.length + ordering.questions.length) {
+      } else if (k < 2 * ordering.tables.length + lin_reg_products_num){
+        result.lin_reg_products.push(share);
+      } 
+      else if (k < 2 * ordering.tables.length + ordering.questions.length) {
         result.questions.push(share);
       } else {
         result.usability.push(share);
@@ -215,7 +239,7 @@ define(['constants'], function (constants) {
       var promise = jiff_instance.open(results[i], parties);
       promises.push(promise);
     }
-
+    
     return Promise.all(promises);
   };
 
@@ -234,24 +258,29 @@ define(['constants'], function (constants) {
   var compute = async function (jiff_instance, submitters, ordering, progressBar) {
     updateProgress(progressBar, 0);
 
+
     // Compute these entities in order
-    var sums, squaresSums, questions = null, usability = null;
+    var sums, squaresSums, productSums, questions = null, usability = null;
 
     // Temporary variables
     var cohort, i, p, shares;
     var promises = [];
     sums = {all: null}; // sums['all'] is for everyone, sums[<cohort>] is for <cohort> only
     squaresSums = {all: null};
+    productSums = {all: null};
 
     // Process shares from parties that do not belong to any cohort (their cohort has too few elements)
     var counter = 0;
     for (i = 0; i < submitters['none'].length; i++) {
-      // Get all shares this party sent: values, squares of values, questions, and usability.
+      // Get all shares this party sent: values, squares of values, lin_reg products, questions, and usability.
       shares = getShares(jiff_instance, submitters['none'][i], ordering);
+
+
 
       // Sum all things
       sums['all'] = sumAndAccumulate(sums['all'], shares.shares);
       squaresSums['all'] = sumAndAccumulate(squaresSums['all'], shares.squares);
+      productSums['all'] = sumAndAccumulate(productSums['all'], shares.lin_reg_products);
       questions = sumAndAccumulate(questions, shares.questions);
       usability = sumAndAccumulate(usability, shares.usability);
 
@@ -284,6 +313,7 @@ define(['constants'], function (constants) {
         }
         sums['all'] = sumAndAccumulate(sums['all'], shares.shares);
         squaresSums['all'] = sumAndAccumulate(squaresSums['all'], shares.squares);
+        productSums['all'] = sumAndAccumulate(productSums['all'], shares.lin_reg_products);
         questions = sumAndAccumulate(questions, shares.questions);
         usability = sumAndAccumulate(usability, shares.usability);
 
@@ -319,7 +349,9 @@ define(['constants'], function (constants) {
     // Open all sums and sums of squares
     sums['all'] = await openValues(jiff_instance, sums['all'], [1]);
     squaresSums['all'] = await openValues(jiff_instance, squaresSums['all'], [1]);
+    productSums['all'] = await openValues(jiff_instance, productSums['all'], [1])
     updateProgress(progressBar, 0.98);
+
 
     // Open questions and usability
     questions = await openValues(jiff_instance, questions, [1]);
@@ -330,6 +362,7 @@ define(['constants'], function (constants) {
     return {
       sums: sums,
       squaresSums: squaresSums,
+      productSums: productSums,
       questions: questions,
       usability: usability
     };
@@ -349,6 +382,7 @@ define(['constants'], function (constants) {
   var format = function (result, submitters, ordering) {
     var averages = {};
     var deviations = {};
+    var linear_regressions = {};
     var questions = {};
     var usability = {};
 
@@ -394,8 +428,13 @@ define(['constants'], function (constants) {
           setOrAssign(deviations, [cohort, table, row, col], totalDeviation.toFixed(2));
 
         }
+        
       }
     }
+
+    //store the position of the variables for lin_reg 
+
+    positions = {};
 
     // Compute averages and deviations for all parties
     for (i = 0; i < ordering.tables.length; i++) {
@@ -403,6 +442,27 @@ define(['constants'], function (constants) {
       row = ordering.tables[i].row;
       col = ordering.tables[i].col;
       var op = ordering.tables[i].op;
+
+      if (op['LIN'] != null){
+        pairs = op['LIN']
+
+        pairs.forEach( function(pair) {
+          row_looking_ind = pair[0][0];
+          col_looking_ind = pair[0][1];
+          row_looking_dep = pair[1][0];
+          col_looking_dep = pair[1][1];
+          if((row_looking_ind == row && col_looking_ind == col) || (row_looking_dep == row && col_looking_dep == col)){
+            if(positions[table] == null){
+              positions[table] = {}
+            }
+            temp_pair = pair[1];
+            if(row_looking_ind == row){
+              temp_pair = pair[0];
+            }
+            positions[table][temp_pair.toString()] = i;
+          }
+        })
+      }
 
       // Compute average
       var totalMean = result.sums['all'][i]; // mean for cell for ALL cohorts
@@ -417,24 +477,76 @@ define(['constants'], function (constants) {
 
       setOrAssign(averages, ['all', table, row, col], totalMean.toFixed(2));
 
-      // Compute deviation for population of values presented by companies (not for individual employees)
-      // E[X^2]
-      avgOfSquares = result.squaresSums['all'][i];
-      avgOfSquares = avgOfSquares.div(submitters['all'].length);
-      // (E[X])^2
-      squareOfAvg = result.sums['all'][i].div(submitters['all'].length);
-      squareOfAvg = squareOfAvg.pow(2);
-      // deviation formula: E[X^2] - (E[X])^2
-      totalDeviation = avgOfSquares.minus(squareOfAvg);
-      totalDeviation = totalDeviation.sqrt(); //sqrt
+      if(op[STD] != null){
+        // Compute deviation for population of values presented by companies (not for individual employees)
+        // E[X^2]
+        avgOfSquares = result.squaresSums['all'][i];
+        avgOfSquares = avgOfSquares.div(submitters['all'].length);
+        // (E[X])^2
+        squareOfAvg = result.sums['all'][i].div(submitters['all'].length);
+        squareOfAvg = squareOfAvg.pow(2);
+        // deviation formula: E[X^2] - (E[X])^2
+        totalDeviation = avgOfSquares.minus(squareOfAvg);
+        totalDeviation = totalDeviation.sqrt(); //sqrt
 
-      setOrAssign(deviations, ['all', table, row, col], totalDeviation.toFixed(2));
+        setOrAssign(deviations, ['all', table, row, col], totalDeviation.toFixed(2));
+      }
+    
     }
+
+    //go table by table and do the linear regression for every table
+    visited = {}
+    for(i = 0; i < ordering.tables.length; i++){
+      var table = ordering.tables[i].table;
+      var op = ordering.tables[i].op;
+      if (visited[table] == null && op['LIN'] != null){
+        visited[table] = true;
+        var sums = result.sums['all']
+        var squaresSums = result.squaresSums['all']
+        opPairs = op[LIN]
+
+        var cnt = 0;
+
+        opPairs.forEach( function(pair) {
+  
+          //the row and col of the independent variable
+
+
+          ind_pair = pair[0];
+          dep_pair = pair[1];
+
+          var ind_position = positions[table][ind_pair.toString()]
+          var dep_position = positions[table][dep_pair.toString()]
+
+          var ind_sum = sums[ind_position]['c'];
+          var dep_sum = sums[dep_position]['c'];
+
+          var ind_sum_squared = squaresSums[ind_position]['c']
+          var dep_sum_squared = squaresSums[dep_position]['c'];
+
+          var product_sum = result.productSums['all'][cnt]['c']
+
+          var num = submitters['all'].length;
+
+          slope = (num * product_sum - ind_sum * dep_sum)/(num * ind_sum_squared - (ind_sum * ind_sum))
+          console.log('slope')
+          console.log(slope)
+
+          y_intercept = (dep_sum - slope * ind_sum)/num
+
+          console.log('y_intercept')
+          console.log(y_intercept)
+
+          cnt += 1;
+      });
+    }
+  }
 
     // format questions as questions[<cohort>][<question>][<option>] = count of parties that choose this option
     for (i = 0; i < ordering.questions.length; i++) {
       var question = ordering.questions[i].question; // question title
       var label = ordering.questions[i].label; // option label/title
+
       setOrAssign(questions, ['all', question, label], result.questions[i]);
     }
 

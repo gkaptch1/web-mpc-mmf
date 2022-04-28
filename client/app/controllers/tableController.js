@@ -665,7 +665,6 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
         continue;
       }
       result.push({name: table_hot_obj._sail_meta.name, data: construct_data(table_hot_obj)});
-      console.log("we are here");
       result.push({name: table_hot_obj._sail_meta.name + 'sqaured', data: construct_data_squared(table_hot_obj)});
     }
 
@@ -752,7 +751,6 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
   }
 
   function displayReadTable(tables, type) {
-    console.log("STarting with type " + type);
     var hotTables = [];
     for (var name in tables) {
       var template = getTemplate(name, 'name');
@@ -783,12 +781,8 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
         width: template.width
       };
 
-      console.log("Creating table for " + template);
-      console.log(template);
-      console.log(settings);
 
       if(type === 'deviation'){
-        console.log("In here");
         var handsOn = new Handsontable(document.getElementById(template.element + 'dev'), settings);
       }else{
         var handsOn = new Handsontable(document.getElementById(template.element), settings);
@@ -986,8 +980,6 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
 
   function createTableElems(tables, tablesDiv) {
 
-    console.log("creating table for " + tablesDiv)
-
     var tablesArea = $(tablesDiv);
 
     for (var i = 0; i < tables.length; i++) {
@@ -999,7 +991,6 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
 
       // Table Div
       if(tablesDiv === '#tables-area-deviation'){
-        console.log("In here in createTableElems");
         $('<div>').attr('class', 'table-section')
         .attr('id', tables[i].element + 'dev')
         .appendTo(div);
