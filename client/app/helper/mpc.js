@@ -147,9 +147,6 @@ define(['constants'], function (constants) {
       usability: []
     };
 
-    // console.log('Here is the ordering');
-    // console.log(ordering)
-
     //find number of lin_reg_product pairs
 
     //loop through all the tables and count the number of lin_reg pairs
@@ -162,25 +159,19 @@ define(['constants'], function (constants) {
         visited[table] == true
         var op = ordering.tables[i].op;
         if(op['LIN'] != null){
-          lin_reg_products_num += op['LIN'].length;
+          lin_reg_products_num += op['LIN'].length/2;
         }
       }
     }
 
-
-    
-
-
     for (var k = 0; k < 2 * ordering.tables.length + lin_reg_products_num + ordering.questions.length + ordering.usability.length; k++) {
       var share =  jiff_instance.share(null, null, [1, 's1'], [partyID])[partyID];
-      // console.log('share');
-      // console.log(share)
+
       if (k < ordering.tables.length) {
         result.shares.push(share);
       } else if (k < 2 * ordering.tables.length) {
         result.squares.push(share);
       } else if (k < 2 * ordering.tables.length + lin_reg_products_num){
-        // console.log('adding ' + share + ' to lin_reg_products')
         result.lin_reg_products.push(share);
       } 
       else if (k < 2 * ordering.tables.length + ordering.questions.length) {
@@ -249,7 +240,6 @@ define(['constants'], function (constants) {
       promises.push(promise);
     }
     
-
     return Promise.all(promises);
   };
 
@@ -365,9 +355,7 @@ define(['constants'], function (constants) {
 
     // Open questions and usability
     questions = await openValues(jiff_instance, questions, [1]);
-    console.log('waiting for usability')
     usability = await openValues(jiff_instance, usability, [1]);
-    console.log('done usability');
     updateProgress(progressBar, 1);
 
     // Put results in object
@@ -459,17 +447,11 @@ define(['constants'], function (constants) {
         pairs = op['LIN']
 
         pairs.forEach( function(pair) {
-          // console.log('looking at pair')
-          // console.log(pair)
           row_looking_ind = pair[0][0];
           col_looking_ind = pair[0][1];
           row_looking_dep = pair[1][0];
           col_looking_dep = pair[1][1];
-          // console.log('col_looking_dep')
-          // console.log(col_looking_dep)
           if((row_looking_ind == row && col_looking_ind == col) || (row_looking_dep == row && col_looking_dep == col)){
-            // console.log('here')
-            // console.log()
             if(positions[table] == null){
               positions[table] = {}
             }
@@ -478,7 +460,6 @@ define(['constants'], function (constants) {
               temp_pair = pair[0];
             }
             positions[table][temp_pair.toString()] = i;
-            console.log(positions)
           }
         })
       }
@@ -530,8 +511,6 @@ define(['constants'], function (constants) {
   
           //the row and col of the independent variable
 
-          // console.log('pair')
-          // console.log(pair)
 
           ind_pair = pair[0];
           dep_pair = pair[1];
@@ -549,28 +528,14 @@ define(['constants'], function (constants) {
 
           var num = submitters['all'].length;
 
-          // console.log('num')
-          // console.log(num);
-
-          // console.log('ind and dep sum')
-          // console.log(ind_sum)
-          // console.log(dep_sum);
-
-          // console.log('ind and dep sumsqaured')
-          // console.log(ind_sum_squared)
-          // console.log(dep_sum_squared);
-
-          // console.log('product_sum')
-          // console.log(product_sum)
-
           slope = (num * product_sum - ind_sum * dep_sum)/(num * ind_sum_squared - (ind_sum * ind_sum))
-          // console.log('slope')
-          // console.log(slope)
+          console.log('slope')
+          console.log(slope)
 
           y_intercept = (dep_sum - slope * ind_sum)/num
 
-          // console.log('y_intercept')
-          // console.log(y_intercept)
+          console.log('y_intercept')
+          console.log(y_intercept)
 
           cnt += 1;
       });

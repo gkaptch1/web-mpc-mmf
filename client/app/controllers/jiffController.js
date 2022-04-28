@@ -146,12 +146,6 @@ define(['mpc', 'pki', 'BigNumber', 'jiff', 'jiff_bignumber', 'jiff_client_restfu
       }
       // then share the product of the independent and dependent variables for linear regression
 
-      // console.log('values')
-      // console.log(values)
-      // console.log('ordering.tables')
-      // console.log(ordering.tables)
-      // console.log('dataSubmission')
-      // console.log(dataSubmission)
 
       //have a data structure that stores the product of all the pairs for all the tables
       //each table has a hashtable where the key is the row, col pair as a string and the value is the product
@@ -163,7 +157,6 @@ define(['mpc', 'pki', 'BigNumber', 'jiff', 'jiff_bignumber', 'jiff_client_restfu
           op['LIN'].forEach(function(pair) {
             if ((ordering.tables[i].row == pair[0][0] && ordering.tables[i].col == pair[0][1]) ||
                 (ordering.tables[i].row == pair[1][0] && ordering.tables[i].col == pair[1][1])){
-                  // console.log('found a ordering value');
                   if (products[ordering.tables[i].table] == null){
                     products[ordering.tables[i].table] = {};
                   }
@@ -172,23 +165,15 @@ define(['mpc', 'pki', 'BigNumber', 'jiff', 'jiff_bignumber', 'jiff_client_restfu
                     } else{
                       products[ordering.tables[i].table][pair.toString()] *= values[i];
                     }
-                  
-                  // console.log(products)
                 }
           })
         }
-        // console.log('op[Lin]')
-        // console.log(op['LIN'])
-        // console.log('values[i]')
-        // console.log(values[i])
+        
       }
 
       //loop through the products as share them
       for (var table in products){
         for(var pair in products[table]){
-          // console.log('Sharing this value');
-          // console.log(products[table][pair]);
-          //might want to change to a BigNumber
           jiff.share(products[table][pair], null, [1, 's1'], [jiff.id]);
         }
       }
@@ -230,8 +215,6 @@ define(['mpc', 'pki', 'BigNumber', 'jiff', 'jiff_bignumber', 'jiff_client_restfu
       var promise = mpc.compute(jiff, submitters, ordering, progressBar);
       promise.then(function (result) {
         jiff.disconnect(false, false);
-        // console.log("This is the result");
-        // console.log(result)
         callback(mpc.format(result, submitters, ordering));
       }).catch(function (err) {
         error(err.toString());
