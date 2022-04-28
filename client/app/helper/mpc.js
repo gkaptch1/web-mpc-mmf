@@ -547,18 +547,7 @@ define(['constants'], function (constants) {
       var question = ordering.questions[i].question; // question title
       var label = ordering.questions[i].label; // option label/title
 
-      var totalOptionCount = 0;
-      for (var j = 0; j < submitters['cohorts'].length; j++) {
-        cohort = submitters['cohorts'][j];
-
-        // Format option count and sum it across cohorts
-        var cohortOptionCount = result.questions[cohort][i];
-        totalOptionCount = cohortOptionCount.add(totalOptionCount);
-
-        setOrAssign(questions, [cohort, question, label], cohortOptionCount.toString());
-      }
-
-      setOrAssign(questions, ['all', question, label], totalOptionCount.toString());
+      setOrAssign(questions, ['all', question, label], result.questions[i]);
     }
 
     // format usability as usability[<metric>][<field>] = value
