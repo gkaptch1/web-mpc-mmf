@@ -1080,6 +1080,23 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
     filesaver.saveAs(new Blob([JSON.stringify(usability)], {type: 'application/json'}), 'Usability_' + session + '.json');
   }
 
+  function saveLinearRegressions(linearRegressions, session, counts){
+    var csv = [];
+
+    
+    
+    csv.push('Independent Variable Row, Independent Variable Column, Dependent Variable Row, Dependent Variable Column, Slope, Y-Intercept\n');
+
+    var rows = linearRegressions['all'];
+    rows.forEach(function(row){
+      csv.push(row['independent'].toString() + ', ' + row['dependent'].toString() + ', ' +  row['slope'] + ', ' + row['y-intercept'] + '\n');
+    })
+
+    var full = csv.join('');
+
+    filesaver.saveAs(new Blob([full], {type: 'text/csv;charset=utf-8'}), 'LinearRegressions_' + session + '.csv');
+  }
+
   function saveQuestions(cohorts, session, counts) {
     if (cohorts == null) {
       return;
@@ -1137,6 +1154,7 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
     saveTables: saveTables,
     saveQuestions: saveQuestions,
     saveUsability: saveUsability,
+    saveLinearRegressions: saveLinearRegressions,
     displayReadTable: displayReadTable,
     resetTableWidth: resetTableWidth,
     getWidth: getWidth,

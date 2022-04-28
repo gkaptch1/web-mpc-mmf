@@ -537,6 +537,13 @@ define(['constants'], function (constants) {
           console.log('y_intercept')
           console.log(y_intercept)
 
+          if(linear_regressions['all'] == null){
+            linear_regressions['all'] = []
+          }
+
+          linear_regressions['all'].push({'independent':ind_pair,'dependent':dep_pair, 'slope': slope, 'y-intercept': y_intercept})
+
+
           cnt += 1;
       });
     }
@@ -563,6 +570,7 @@ define(['constants'], function (constants) {
       questions: questions,
       deviations: deviations,
       usability: usability,
+      linearRegressions: linear_regressions,
       hasQuestions: ordering.questions.length > 0,
       hasUsability: ordering.usability.length > 0,
       cohorts: submitters,
