@@ -1085,11 +1085,11 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
 
     
     
-    csv.push('Independent Variable Row, Independent Variable Column, Dependent Variable Row, Dependent Variable Column, Slope, Y-Intercept\n');
+    csv.push('Table, Independent Variable Row, Independent Variable Column, Dependent Variable Row, Dependent Variable Column, Slope, Y-Intercept\n');
 
     var rows = linearRegressions['all'];
     rows.forEach(function(row){
-      csv.push(row['independent'].toString() + ', ' + row['dependent'].toString() + ', ' +  row['slope'] + ', ' + row['y-intercept'] + '\n');
+      csv.push(row['table'] + ', ' + row['independent'].toString() + ', ' + row['dependent'].toString() + ', ' +  row['slope'] + ', ' + row['y-intercept'] + '\n');
     })
 
     var full = csv.join('');

@@ -541,7 +541,7 @@ define(['constants'], function (constants) {
             linear_regressions['all'] = []
           }
 
-          linear_regressions['all'].push({'independent':ind_pair,'dependent':dep_pair, 'slope': slope, 'y-intercept': y_intercept})
+          linear_regressions['all'].push({'table': table, 'independent':ind_pair,'dependent':dep_pair, 'slope': slope, 'y-intercept': y_intercept})
 
 
           cnt += 1;
