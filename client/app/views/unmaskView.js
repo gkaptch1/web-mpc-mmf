@@ -41,7 +41,7 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
             if (result['hasUsability'] === true) {
               tableController.saveUsability(result['usability'], sessionKey, result['cohorts']);
             }
-            if(result['linearRegressions'] != null){
+            if(result['linearRegressions'] != null && !(Object.keys(result['linearRegressions']).length === 0)){
               tableController.saveLinearRegressions(result['linearRegressions'], sessionKey, result['cohorts'])
             }
             $('#tables-area').show();
