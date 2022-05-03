@@ -150,35 +150,39 @@ define(['constants'], function (constants) {
     //find number of lin_reg_product pairs
 
     //loop through all the tables and count the number of lin_reg pairs
-    visited = {};
+    var visited = {};
     lin_reg_products_num = 0; 
 
     for(var i = 0; i < ordering.tables.length; i++){
       var table = ordering.tables[i].table;
-      if (visited[table] == null){
-        visited[table] == true
+      if (visited[table.toString()] == null){
+        visited[table.toString()] = true
         var op = ordering.tables[i].op;
         if(op['LIN'] != null){
-          lin_reg_products_num += op['LIN'].length/2;
+          lin_reg_products_num += op['LIN'].length;
         }
       }
     }
+    
+    var cnt = 0;
+    var cnt_total = 0;
 
     for (var k = 0; k < 2 * ordering.tables.length + lin_reg_products_num + ordering.questions.length + ordering.usability.length; k++) {
       var share =  jiff_instance.share(null, null, [1, 's1'], [partyID])[partyID];
-
+      cnt += 1;
       if (k < ordering.tables.length) {
         result.shares.push(share);
       } else if (k < 2 * ordering.tables.length) {
         result.squares.push(share);
       } else if (k < 2 * ordering.tables.length + lin_reg_products_num){
         result.lin_reg_products.push(share);
-      } 
-      else if (k < 2 * ordering.tables.length + ordering.questions.length) {
+      }else if (k < 2 * ordering.tables.length + ordering.questions.length) {
         result.questions.push(share);
-      } else {
+      }else {
+        cnt += 1;
         result.usability.push(share);
       }
+      cnt_total += 1;
     }
     return result;
   };
@@ -232,7 +236,6 @@ define(['constants'], function (constants) {
     if (rangeEnd == null) {
       rangeEnd = results.length;
     }
-
     var promises = [];
     // var exceptionsIndex = 0; // keeps track of the next exception, fast way to check set membership since both set and values are sorted
     for (var i = rangeStart; i < rangeEnd; i++) {
@@ -274,7 +277,6 @@ define(['constants'], function (constants) {
     for (i = 0; i < submitters['none'].length; i++) {
       // Get all shares this party sent: values, squares of values, lin_reg products, questions, and usability.
       shares = getShares(jiff_instance, submitters['none'][i], ordering);
-
 
 
       // Sum all things
@@ -346,7 +348,7 @@ define(['constants'], function (constants) {
       }
     }
 
-    // Open all sums and sums of squares
+    // Open all sumsm sums of squares and productSums
     sums['all'] = await openValues(jiff_instance, sums['all'], [1]);
     squaresSums['all'] = await openValues(jiff_instance, squaresSums['all'], [1]);
     productSums['all'] = await openValues(jiff_instance, productSums['all'], [1])
@@ -452,11 +454,12 @@ define(['constants'], function (constants) {
           row_looking_dep = pair[1][0];
           col_looking_dep = pair[1][1];
           if((row_looking_ind == row && col_looking_ind == col) || (row_looking_dep == row && col_looking_dep == col)){
+
             if(positions[table] == null){
               positions[table] = {}
             }
             temp_pair = pair[1];
-            if(row_looking_ind == row){
+            if(row_looking_ind == row && col_looking_ind == col){
               temp_pair = pair[0];
             }
             positions[table][temp_pair.toString()] = i;
@@ -503,7 +506,7 @@ define(['constants'], function (constants) {
         visited[table] = true;
         var sums = result.sums['all']
         var squaresSums = result.squaresSums['all']
-        opPairs = op[LIN]
+        opPairs = op[LIN] 
 
         var cnt = 0;
 
@@ -522,20 +525,16 @@ define(['constants'], function (constants) {
           var dep_sum = sums[dep_position]['c'];
 
           var ind_sum_squared = squaresSums[ind_position]['c']
-          var dep_sum_squared = squaresSums[dep_position]['c'];
+          var dep_sum_squared = squaresSums[dep_position]['c']; //not used 
+
 
           var product_sum = result.productSums['all'][cnt]['c']
 
           var num = submitters['all'].length;
 
           slope = (num * product_sum - ind_sum * dep_sum)/(num * ind_sum_squared - (ind_sum * ind_sum))
-          console.log('slope')
-          console.log(slope)
 
           y_intercept = (dep_sum - slope * ind_sum)/num
-
-          console.log('y_intercept')
-          console.log(y_intercept)
 
           if(linear_regressions['all'] == null){
             linear_regressions['all'] = []

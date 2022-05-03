@@ -12,7 +12,7 @@ define([], function () {
             "cohortOperations": {SUM: true},
             "hot_parameters": {
             "rowHeaderWidth": 150,
-            "height": 230,
+            "height": 330,
             "colWidths": [150],
             "stretchH": "none"
             },
@@ -24,6 +24,14 @@ define([], function () {
             {
                 "key": "age",
                 "label": "Museum age"
+            },
+            {
+                "key": "num_statues",
+                "label": "Number of statues"
+            }, 
+            {
+                "key" : "num_photos",
+                "label": "Number of photos"
             }
             ],
             "cols": [

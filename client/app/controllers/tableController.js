@@ -1083,8 +1083,6 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
   function saveLinearRegressions(linearRegressions, session, counts){
     var csv = [];
 
-    
-    
     csv.push('Table, Independent Variable Row, Independent Variable Column, Dependent Variable Row, Dependent Variable Column, Slope, Y-Intercept\n');
 
     var rows = linearRegressions['all'];
