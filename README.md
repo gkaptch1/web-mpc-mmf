@@ -2,7 +2,7 @@
 
 Implementation of a web-based data collection and aggregation infrastructure that utilizes secure multi-party computation techniques to allow individual contributors to submit their data without revealing it to the other participants.
 
-![Technical Architecture](https://imgur.com/AEkpa1g)
+![Technical Architecture](https://i.imgur.com/AEkpa1g.png)
 
 ## Requirements
 
