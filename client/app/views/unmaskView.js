@@ -47,10 +47,11 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
             $('#tables-area').show();
             spinner.stop();
 
-            // Only display averages in the table
+            //  display sums in the table
             tableController.createTableElems(table_template.tables, '#tables-area');
             tableController.displayReadTable(result['averages']['all'], 'sum');
 
+            // display standard deviations in the table
             tableController.createTableElems(table_template.tables, '#tables-area-deviation');
             tableController.displayReadTable(result['deviations']['all'], 'deviation')
           });

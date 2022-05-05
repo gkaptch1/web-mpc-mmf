@@ -7,8 +7,11 @@ define([], function () {
         "tables": [
         {
             "name": "Table 1",
-            "element": "number-paintings", //TODO: what does this element do?
-            "operations": {SUM: true, STD: true, LIN: [[["num_paintings","value"],["age","value"]]]},
+            "element": "number-paintings", 
+            //The format for linear regression is an array of pairs where each pair is an array of the independent variable 
+            //followed by the dependent variable. The independent variable and dependent variable are both arrays of two elements,
+            //the first is the name of the row, the second is the name of the column 
+            "operations": {SUM: true, STD: true, LIN: [[["num_paintings","value"],["age","value"]]]}, 
             "cohortOperations": {SUM: true},
             "hot_parameters": {
             "rowHeaderWidth": 150,
@@ -80,7 +83,7 @@ define([], function () {
         },
         {
             "name": "Table 2",
-            "element": "number-emps", //TODO: what does this element do?
+            "element": "number-emps",
             "operations": {SUM: true, STD: true, LIN: null},
             "cohortOperations": {SUM: true},
             "hot_parameters": {

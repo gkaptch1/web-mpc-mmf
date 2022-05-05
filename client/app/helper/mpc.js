@@ -150,7 +150,7 @@ define(['constants'], function (constants) {
     //find number of lin_reg_product pairs
 
     //loop through all the tables and count the number of lin_reg pairs
-    var visited = {};
+    var visited = {}; //keep track of which tables have already been counted
     lin_reg_products_num = 0; 
 
     for(var i = 0; i < ordering.tables.length; i++){
@@ -163,13 +163,9 @@ define(['constants'], function (constants) {
         }
       }
     }
-    
-    var cnt = 0;
-    var cnt_total = 0;
 
     for (var k = 0; k < 2 * ordering.tables.length + lin_reg_products_num + ordering.questions.length + ordering.usability.length; k++) {
       var share =  jiff_instance.share(null, null, [1, 's1'], [partyID])[partyID];
-      cnt += 1;
       if (k < ordering.tables.length) {
         result.shares.push(share);
       } else if (k < 2 * ordering.tables.length) {
@@ -179,10 +175,8 @@ define(['constants'], function (constants) {
       }else if (k < 2 * ordering.tables.length + ordering.questions.length) {
         result.questions.push(share);
       }else {
-        cnt += 1;
         result.usability.push(share);
       }
-      cnt_total += 1;
     }
     return result;
   };
@@ -435,7 +429,6 @@ define(['constants'], function (constants) {
     }
 
     //store the position of the variables for lin_reg 
-
     positions = {};
 
     // Compute averages and deviations for all parties
@@ -448,13 +441,13 @@ define(['constants'], function (constants) {
       if (op['LIN'] != null){
         pairs = op['LIN']
 
+        //keep track of the positions of all the independent and dependent variables in the consistent ordering
         pairs.forEach( function(pair) {
           row_looking_ind = pair[0][0];
           col_looking_ind = pair[0][1];
           row_looking_dep = pair[1][0];
           col_looking_dep = pair[1][1];
           if((row_looking_ind == row && col_looking_ind == col) || (row_looking_dep == row && col_looking_dep == col)){
-
             if(positions[table] == null){
               positions[table] = {}
             }
@@ -513,8 +506,6 @@ define(['constants'], function (constants) {
         opPairs.forEach( function(pair) {
   
           //the row and col of the independent variable
-
-
           ind_pair = pair[0];
           dep_pair = pair[1];
 
@@ -532,8 +523,10 @@ define(['constants'], function (constants) {
 
           var num = submitters['all'].length;
 
+          //slope formula (n * (∑xy) - (∑x)(∑y))/(n * (∑(x^2)) - (∑x)^2)
           slope = (num * product_sum - ind_sum * dep_sum)/(num * ind_sum_squared - (ind_sum * ind_sum))
 
+          //y-intercept formula ((∑y)-slope * (∑x))/n
           y_intercept = (dep_sum - slope * ind_sum)/num
 
           if(linear_regressions['all'] == null){

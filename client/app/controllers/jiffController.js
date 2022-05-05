@@ -151,12 +151,17 @@ define(['mpc', 'pki', 'BigNumber', 'jiff', 'jiff_bignumber', 'jiff_client_restfu
       //each table has a hashtable where the key is the row, col pair as a string and the value is the product
       products = {};
 
+      //loop through all the pairs for linear regression, every time you find half of the pair, check to see
+      //if you already found the other half of the pair, if so multiply the first value by the second value, 
+      //otherwise create the key value pair, the key being the pair and the value being the the value of 
+      // half of the pair
       for(i = 0; i < ordering.tables.length; i++){
         var op = ordering.tables[i].op;
         if(op['LIN'] != null){
           op['LIN'].forEach(function(pair) {
             if ((ordering.tables[i].row == pair[0][0] && ordering.tables[i].col == pair[0][1]) ||
                 (ordering.tables[i].row == pair[1][0] && ordering.tables[i].col == pair[1][1])){
+                  
                   if (products[ordering.tables[i].table] == null){
                     products[ordering.tables[i].table] = {};
                   }
