@@ -1,14 +1,14 @@
 # WEB-MPC
 
-[![DOI](https://zenodo.org/badge/84491506.svg)](https://zenodo.org/badge/latestdoi/84491506) [![CircleCI Build Status](https://circleci.com/gh/multiparty/web-mpc.svg?style=shield)](https://app.circleci.com/pipelines/github/multiparty/web-mpc)
-
 Implementation of a web-based data collection and aggregation infrastructure that utilizes secure multi-party computation techniques to allow individual contributors to submit their data without revealing it to the other participants.
+
+![Technical Architecture](https://i.imgur.com/AEkpa1g.png)
 
 ## Requirements
 
 * Node.js
 * MongoDB
-* [JIFF](https://github.com/multiparty/jiff/) (Bundled as a Git submodule)
+* [JIFF](https://github.com/BU-Spark/jiff/) (Bundled as a Git submodule)
 
 ## Quick Start Instructions
 
@@ -17,7 +17,7 @@ These instructions are for demonstration and development purposes only. For a fu
 * Install and start MongoDB
 * Clone WEB-MPC
 ```
-git clone https://github.com/multiparty/web-mpc.git
+git clone https://github.com/BU-Spark/web-mpc.git
 cd web-mpc/
 ```
 * Clone the JIFF submodule
@@ -43,12 +43,10 @@ npm start
 ```
 * Navigate to the website at `https://localhost:8080`
 
-## EC2 Instructions
-These instructions were written for an AWS EC2 instance running Amazon Linux. The instance's security group should allow SSH on port 22 and TCP on port 8080.
+## Deployment Instructions
+These instructions are written for an GCP Compute Engine instance running Ubuntu 18.04 LTS. It should also allow SSH on port 22 and TCP on port 8080.
 
-You will need to have a registered domain and will need to use Nginx with Let's Encrypt as a reverse proxy for port 8080.
-
-* SSH onto the EC2 instance
+* SSH onto the Compute Engine instance
 * First, install the Node.js version manager and activate it
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
@@ -59,22 +57,10 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 nvm install node
 ```
 * Install MongoDB:
-```
-echo "[mongodb-org-4.2]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/4.2/	x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc" | sudo tee /etc/yum.repos.d/mongodb.repo
-```
-```
-sudo yum -y update
-sudo yum install -y gcc-c++ mongodb-org-server mongodb-org-shell mongodb-org-tools
-```
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 * Clone the WEB-MPC repository
 ```
-sudo yum install git -y
-git clone https://github.com/multiparty/web-mpc.git
+git clone https://github.com/BU-Spark/web-mpc.git
 cd web-mpc/
 ```
 * Set up the JIFF submodule:
@@ -99,7 +85,7 @@ npm install -g forever
 ```
 * Install authbind:
 ```
-sudo rpm -Uvh https://s3.amazonaws.com/aaronsilber/public/authbind-2.1.1-0.1.x86_64.rpm
+sudo apt-get install -y authbind
 ```
 * Next, set up the database file and start the MongoDB server:
 ```
@@ -110,9 +96,67 @@ sudo mongod &
 * Start the WEB-MPC server
 ```
 cd server/
-authbind --deep forever -o log.txt -e error.txt start index.js
+authbind --deep forever start -o log.txt -e error.txt index.js
 ```
-* Navigate to the domain or to the EC2 instance's public IP address to view the page
+* Navigate to the domain or to the Compute Engine instance's public IP address to view the page
+
+## Enabling SSL
+The application does not work over HTTP traffic. In order to enable HTTPS:
+
+* Add an DNS A record to the VM's external IP
+* SSH into Compute Engine
+* Install Nginx
+```
+sudo apt update
+sudo apt install nginx
+```
+* Configure Nginx to serve node app
+```
+sudo su -
+cd ..
+cd /etc/nginx/sites-available
+touch myserver.config
+```
+* Open the configuration file
+```
+sudo vim /etc/nginx/sites-available/myserver.config
+```
+* Paste in the following configuration
+```
+#The Nginx server instance
+server{
+    listen 80;
+    server_name your.domain;
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+```
+* Enable the configuration file
+```
+sudo ln -s /etc/nginx/sites-available/myserver.config /etc/nginx/sites-enabled/
+```
+* Obtain the SSL/TLS certificate
+```
+apt-get update
+sudo apt-get install certbot
+apt-get install python3-certbot-nginx
+sudo certbot --nginx -d myserver.com -d
+```
+* Restart Nginx and allow access through firewall
+```
+sudo systemctl restart nginx
+sudo ufw allow 'Nginx Full'
+```
+* Restart the app server
+```
+authbind --deep forever start -o log.txt -e error.txt index.js
+```
 
 ## Local Machine Instructions
 These instructions describe steps to deploy WEB-MPC on a local machine.
@@ -120,7 +164,7 @@ These instructions describe steps to deploy WEB-MPC on a local machine.
 * Install and start MongoDB
 * Clone WEB-MPC
 ```
-git clone https://github.com/multiparty/web-mpc.git
+git clone https://github.com/BU-Spark/web-mpc.git
 cd web-mpc/
 ```
 * Clone the JIFF submodule
@@ -232,4 +276,4 @@ npm run test -- --grep BWWC
 ```
 
 ## License
-WEB-MPC is freely distributable under the terms of the [MIT license](https://github.com/multiparty/web-mpc/blob/master/LICENSE). This release supports Handsontable's "[Nested headers](https://docs.handsontable.com/pro/1.17.0/demo-nested-headers.html)", a Pro feature. A [valid license](https://handsontable.com/pricing) must be obtained when using this feature.
+WEB-MPC is freely distributable under the terms of the [MIT license](https://github.com/BU-Spark/web-mpc/blob/master/LICENSE). This release supports Handsontable's "[Nested headers](https://docs.handsontable.com/pro/1.17.0/demo-nested-headers.html)", a Pro feature. A [valid license](https://handsontable.com/pricing) must be obtained when using this feature.

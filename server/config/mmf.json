@@ -1,0 +1,25 @@
+{
+    "template": "../client/app/data/mmf",
+    "MAX_SIZE": 10000,
+  
+    "webRootPath": "/tmp/acme-challenges",
+    "approveDomainsPattern": "^([A-Za-z0-9]+.)?mmf.buspark.io$",
+    "approveDomainsOpts": {
+      "domains": [
+        "mmf.buspark.io"
+      ],
+      "email": "test@bu.edu",
+      "agreeTos": true
+    }, 
+  
+    "client": {
+      "table_template": "data/mmf",
+      "organization": "MMF",
+      "subtitle": "Gathering Data for Museums",
+      "logo": "",
+      "cohort": "Cohort",
+      "session_key": "MMF 2022 Submission ID",
+      "email": "test@bu.edu"
+    }
+  }
+  
