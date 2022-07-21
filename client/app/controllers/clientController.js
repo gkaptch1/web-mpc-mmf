@@ -197,25 +197,11 @@ define(['jquery', 'controllers/tableController', 'controllers/jiffController', '
 
           // Verify additional questions
           if (table_template.survey !== null) {
-            var questionsValid = true;
-            var questions = $('#questions form');
-            for (var q = 0; q < questions.length; q++) {
-              var thisQuestionIsValid = false;
-              var radios = $(questions[q]).find('input[type=radio]');
-              for (var r = 0; r < radios.length; r++) {
-                if (radios[r].checked) {
-                  thisQuestionIsValid = true;
-                  break;
-                }
-              }
-
-              if (!thisQuestionIsValid) {
-                questionsValid = false;
-                $(questions[q]).addClass('has-error');
-              } else {
-                $(questions[q]).removeClass('has-error');
-              }
+            var questionsValid = false;
+            if (window && window.survey && window.survey.isCompleted && window.surveyData) {
+              questionsValid = true;
             }
+            
             if (!questionsValid) {
               errors.push(ADD_QUESTIONS_ERR);
             }
@@ -287,33 +273,26 @@ define(['jquery', 'controllers/tableController', 'controllers/jiffController', '
        */
       function constructAndSend(tables, cohort, la) {
         // Begin constructing the data
-        var questions = $('#questions form');
         var data_submission = questions.length ? {questions: {}} : {};
-        var questions_public = {};
 
         var session = $('#session').val().trim().toLowerCase();
         var participationCode = $('#participation-code').val().trim().toLowerCase();
 
         // Add questions data, each question has three parts:
         //  'YES', 'NO', and 'NA' and each one has value 0 or 1
-        var questions_text = questions.find('.question-text');
-        var questions_values = [];
-        for (var q = 0; q < questions.length; q++) {
-          var question_data = {};
-          var radios = $(questions[q]).find('input[type=radio]');
-          for (var r = 0; r < radios.length; r++) {
-            var value = radios[r].value;
-            value = value.replace(/\s+/g, ' ');
-            question_data[value] = (radios[r].checked ? 1 : 0);
-            if (radios[r].checked) {
-              questions_values.push(value);
+        const questionNames = window.survey.questionHashes.names;
+        const data = window.survey.data;
+        const keys = questionNames.keys();
+        for (let key of keys) {
+          if (key in data) {
+            if (data[key] === 'other') {
+              data_submission['questions'][key] = data[key+'-Comment'];
+            } else {
+              data_submission['questions'][key] = data[key];
             }
+          } else {
+            data_submission['questions'][key] = null;
           }
-
-          var text = $(questions_text[q]).text();
-          text = text.replace(/\s+/g, ' '); // Replace many white spaces with just one space.
-          data_submission['questions'][text] = question_data;
-          questions_public[text] = Object.assign({}, question_data);
         }
 
         // Handle table data, tables are represented as 2D associative arrays
