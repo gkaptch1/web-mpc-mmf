@@ -28,7 +28,10 @@ define([
 
   // Creates survey
   function displaySurveyQuestions() {
-    new surveyView();
+    // surveyjs
+    // const survey_id = "surveyjs-1";
+    const survey_id = "surveyjs-2";
+    new surveyView(survey_id);
   }
 
   function addResizeSensors(tables) {

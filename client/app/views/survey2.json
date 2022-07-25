@@ -1,0 +1,1018 @@
+{
+    "logoPosition": "right",
+    "completedHtml": "<h3>Thank you for your feedback.</h3>",
+    "completedHtmlOnCondition": [
+     {
+      "html": "<h3>Thank you for your feedback.</h3><h5>We glad that you love our product. Your ideas and suggestions will help us to make our product even better!</h5>"
+     },
+     {
+      "html": "<h3>Thank you for your feedback.</h3><h5> We are glad that you share with us your ideas.We highly value all suggestions from our customers. We do our best to improve the product and reach your expectation.</h5><br />"
+     }
+    ],
+    "pages": [
+     {
+      "name": "page1",
+      "elements": [
+       {
+        "type": "multipletext",
+        "name": "question1",
+        "title": "How many people are currently employed by your organization in each of the following categories? ",
+        "defaultValue": {
+         "1": 0,
+         "2": 0,
+         "3": 0,
+         "4": 0,
+         "5": 0
+        },
+        "items": [
+         {
+          "name": "1",
+          "inputType": "number",
+          "title": "Full-Time employee:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "2",
+          "inputType": "number",
+          "title": "Part-time/Temporary/Seasonal employee:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "3",
+          "inputType": "number",
+          "title": "Paid intern:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "4",
+          "inputType": "number",
+          "title": "Unpaid intern:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "5",
+          "inputType": "number",
+          "title": "Apprentice / Fellow:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name": "page2",
+      "elements": [
+       {
+        "type": "multipletext",
+        "name": "question2",
+        "title": "In the past calendar year, how many part-time staff, temporary staff, and paid interns in your organization received an annual salary or total annual pay of…",
+        "defaultValue": {
+         "1": 0,
+         "2": 0,
+         "3": 0,
+         "4": 0,
+         "5": 0,
+         "6": 0,
+         "7": 0,
+         "8": 0
+        },
+        "items": [
+         {
+          "name": "1",
+          "inputType": "number",
+          "title": "Less than $25,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "2",
+          "inputType": "number",
+          "title": "$25,000 – 49,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "3",
+          "inputType": "number",
+          "title": "$50,000 – 74,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "4",
+          "inputType": "number",
+          "title": "$75,000 – 99,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "5",
+          "inputType": "number",
+          "title": "$100,000 – 149,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "6",
+          "inputType": "number",
+          "title": "$150,000 – 199,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "7",
+          "inputType": "number",
+          "title": "$200,000 – 299,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "8",
+          "inputType": "number",
+          "title": "More than $300,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "type": "multipletext",
+        "name": "question3",
+        "title": "In the past calendar year, how many full-time staff in your organization received an annual salary of…",
+        "defaultValue": {
+         "1": 0,
+         "2": 0,
+         "3": 0,
+         "4": 0,
+         "5": 0,
+         "6": 0,
+         "7": 0,
+         "8": 0
+        },
+        "items": [
+         {
+          "name": "1",
+          "inputType": "number",
+          "title": "Less than $25,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "2",
+          "inputType": "number",
+          "title": "$25,000 – 49,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "3",
+          "inputType": "number",
+          "title": "$50,000 – 74,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "4",
+          "inputType": "number",
+          "title": "$75,000 – 99,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "5",
+          "inputType": "number",
+          "title": "$100,000 – 149,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "6",
+          "inputType": "number",
+          "title": "$150,000 – 199,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "7",
+          "inputType": "number",
+          "title": "$200,000 – 299,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "8",
+          "inputType": "number",
+          "title": "More than $300,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "type": "multipletext",
+        "name": "question4",
+        "title": "In the past calendar year, how many staff received a promotion (with title change and pay increase beyond cost of living) starting at salary band…",
+        "defaultValue": {
+         "1": 0,
+         "2": 0,
+         "3": 0,
+         "4": 0,
+         "5": 0,
+         "6": 0,
+         "7": 0,
+         "8": 0,
+         "9": 0,
+         "10": 0
+        },
+        "items": [
+         {
+          "name": "1",
+          "inputType": "number",
+          "title": "Less than $25,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "2",
+          "inputType": "number",
+          "title": "$25,000 – 49,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "3",
+          "inputType": "number",
+          "title": "$50,000 – 74,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "4",
+          "inputType": "number",
+          "title": "$75,000 – 99,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "5",
+          "inputType": "number",
+          "title": "$100,000 – 149,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "6",
+          "inputType": "number",
+          "title": "$150,000 – 199,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "7",
+          "inputType": "number",
+          "title": "$200,000 – 299,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "8",
+          "inputType": "number",
+          "title": "$300,000 – 399,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "9",
+          "inputType": "number",
+          "title": "More than $400,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "10",
+          "inputType": "number",
+          "title": "If you don’t have this information by salary, please indicate how many staff in total received a promotion (with title change and pay increase beyond cost of living over the past calendar year:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "description": "In the next few questions, we will ask you to fill-in information about the past calendar year. Please consider the “past calendar year” to be the recently completed calendar year (2021)."
+     },
+     {
+      "name": "page3",
+      "elements": [
+       {
+        "type": "multipletext",
+        "name": "question5",
+        "title": "In the past calendar year, how many staff received a promotion (with title change and pay increase beyond cost of living) starting at salary band…",
+        "defaultValue": {
+         "1": 0,
+         "2": 0,
+         "3": 0,
+         "4": 0,
+         "5": 0,
+         "6": 0,
+         "7": 0,
+         "8": 0,
+         "9": 0,
+         "10": 0
+        },
+        "items": [
+         {
+          "name": "1",
+          "inputType": "number",
+          "title": "Less than $25,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "2",
+          "inputType": "number",
+          "title": "$25,000 – 49,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "3",
+          "inputType": "number",
+          "title": "$50,000 – 74,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "4",
+          "inputType": "number",
+          "title": "$75,000 – 99,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "5",
+          "inputType": "number",
+          "title": "$100,000 – 149,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "6",
+          "inputType": "number",
+          "title": "$150,000 – 199,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "7",
+          "inputType": "number",
+          "title": "$200,000 – 299,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "8",
+          "inputType": "number",
+          "title": "More than $300,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "9",
+          "inputType": "number",
+          "title": "If you don’t have this information by salary, please indicate how many staff in total were hired by the organization over the past calendar year:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "type": "text",
+        "name": "question6",
+        "title": "Thinking now about the past TWO calendar years (2020 and 2021), how many full-time employees have been hired by your organization?",
+        "defaultValue": 0,
+        "validators": [
+         {
+          "type": "numeric",
+          "minValue": 0,
+          "maxValue": 10000
+         }
+        ],
+        "inputType": "number",
+        "min": 0
+       },
+       {
+        "type": "text",
+        "name": "question8",
+        "visibleIf": "{question6} > 0",
+        "title": "You hired (fill in response from q6) employees over the past two years; how many of those full-time regular employees still work for your organization?",
+        "defaultValue": 0,
+        "validators": [
+         {
+          "type": "numeric",
+          "minValue": 0,
+          "maxValue": 10000
+         }
+        ],
+        "inputType": "number",
+        "min": 0
+       }
+      ]
+     },
+     {
+      "name": "page4",
+      "elements": [
+       {
+        "type": "multipletext",
+        "name": "question7",
+        "title": "Over the past calendar year, how many staff members departed your organization (voluntary or involuntary) at salary band:",
+        "defaultValue": {
+         "1": 0,
+         "2": 0,
+         "3": 0,
+         "4": 0,
+         "5": 0,
+         "6": 0,
+         "7": 0,
+         "8": 0,
+         "9": 0,
+         "10": 0
+        },
+        "items": [
+         {
+          "name": "1",
+          "inputType": "number",
+          "title": "Less than $25,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "2",
+          "inputType": "number",
+          "title": "$25,000 – 49,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "3",
+          "inputType": "number",
+          "title": "$50,000 – 74,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "4",
+          "inputType": "number",
+          "title": "$75,000 – 99,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "5",
+          "inputType": "number",
+          "title": "$100,000 – 149,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "6",
+          "inputType": "number",
+          "title": "$150,000 – 199,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "7",
+          "inputType": "number",
+          "title": "$200,000 – 299,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "8",
+          "inputType": "number",
+          "title": "$300,000 – 399,999:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "9",
+          "inputType": "number",
+          "title": "More than $400,000:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         },
+         {
+          "name": "10",
+          "inputType": "number",
+          "title": "If you don’t have this information by salary, please indicate how many staff in total departed the organization over the past calendar year:",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "type": "text",
+        "name": "question9",
+        "title": "How many of those who departed your organization (voluntary or involuntary) over the past calendar year signed NDAs (Non-disclosure Agreements)?",
+        "defaultValue": 0,
+        "validators": [
+         {
+          "type": "numeric",
+          "minValue": 0,
+          "maxValue": 10000
+         }
+        ],
+        "inputType": "number",
+        "min": 0
+       }
+      ]
+     },
+     {
+      "name": "page5",
+      "elements": [
+       {
+        "type": "radiogroup",
+        "name": "question10",
+        "title": "Is any portion of your employee workforce unionized?",
+        "choices": [
+         {
+          "value": "1",
+          "text": "Yes"
+         },
+         {
+          "value": "2",
+          "text": "No"
+         },
+         {
+          "value": "3",
+          "text": "We are currently negotiating our first union contract"
+         }
+        ]
+       },
+       {
+        "type": "text",
+        "name": "question11",
+        "visibleIf": "{question10} = 1",
+        "title": "In what year was your workforce unionized?",
+        "inputType": "number",
+        "min": 1900,
+        "max": 2023
+       }
+      ]
+     },
+     {
+      "name": "page6",
+      "elements": [
+       {
+        "type": "matrixdropdown",
+        "name": "question12",
+        "title": "Which of the following does your organization currently provide for the following types of employees? Please select all that apply.",
+        "columns": [
+         {
+          "name": "full-time",
+          "title": "Full-time",
+          "cellType": "checkbox",
+          "defaultValue": [
+           "indeterminate"
+          ],
+          "choices": [
+           {
+            "value": "1",
+            "text": "Provided"
+           }
+          ]
+         },
+         {
+          "name": "part-time",
+          "title": "Part-time",
+          "cellType": "checkbox",
+          "choices": [
+           {
+            "value": "1",
+            "text": "Provided"
+           }
+          ]
+         },
+         {
+          "name": "temporary",
+          "title": "Temporary/Seasonal",
+          "cellType": "checkbox",
+          "choices": [
+           {
+            "value": "1",
+            "text": "Provided"
+           }
+          ]
+         }
+        ],
+        "choices": [
+         1,
+         2,
+         3,
+         4,
+         5
+        ],
+        "rows": [
+         {
+          "value": "1",
+          "text": "Health insurance (covered 100% by the employer)"
+         },
+         {
+          "value": "2",
+          "text": "Health insurance (covered partially by the employer)"
+         },
+         {
+          "value": "3",
+          "text": "Disability insurance (long and short-term)"
+         },
+         {
+          "value": "4",
+          "text": "Life insurance"
+         },
+         {
+          "value": "5",
+          "text": "Paid time-off"
+         },
+         {
+          "value": "6",
+          "text": "Paid sick leave"
+         },
+         {
+          "value": "7",
+          "text": "Paid family leave (equal to the city/state requirement)"
+         },
+         {
+          "value": "8",
+          "text": "Paid family leave (beyond to the city/state requirement)"
+         },
+         {
+          "value": "9",
+          "text": "Workplace safety protections"
+         },
+         {
+          "value": "10",
+          "text": "401k/ 403b/ other retirement funds (with employer contribution)"
+         },
+         {
+          "value": "11",
+          "text": "401k/ 403b/ other retirement funds (without employer contribution)"
+         },
+         {
+          "value": "12",
+          "text": "Mental health coverage "
+         },
+         {
+          "value": "13",
+          "text": "Dental insurance"
+         },
+         {
+          "value": "14",
+          "text": "Vision insurance"
+         },
+         {
+          "value": "15",
+          "text": "Bereavement leave"
+         },
+         {
+          "value": "16",
+          "text": "Funding for professional development "
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name": "page7",
+      "elements": [
+       {
+        "type": "checkbox",
+        "name": "question13",
+        "title": "What kind of reporting mechanisms for workplace disputes, harassment, or discrimination are currently in place at your organization? Select all that apply.",
+        "choices": [
+         {
+          "value": "1",
+          "text": "An HR grievance form"
+         },
+         {
+          "value": "2",
+          "text": "An HR staff member who is available to employees"
+         },
+         {
+          "value": "3",
+          "text": "A union-provided process for reporting"
+         },
+         {
+          "value": "4",
+          "text": "An anonymous reporting mechanism"
+         },
+         {
+          "value": "5",
+          "text": "A third-party reporting process (e.g., use of an ombudsman)"
+         },
+         {
+          "value": "6",
+          "text": "My organization doesn’t have any reporting mechanisms"
+         }
+        ],
+        "hasOther": true,
+        "noneText": "None",
+        "otherText": "Other (please specify): "
+       }
+      ]
+     },
+     {
+      "name": "page8",
+      "elements": [
+       {
+        "type": "multipletext",
+        "name": "question14",
+        "title": "In the past calendar year, how many staff (please consider ALL staff members, including Full-Time and Part-Time) have formally and/or informally expressed concern or dissatisfaction related to the following topics:",
+        "description": "If you don’t track informal complaints, please leave that section blank or make your best estimate.",
+        "defaultValue": {
+         "1": 0,
+         "2": 0,
+         "3": 0,
+         "4": 0,
+         "5": 0,
+         "6": 0,
+         "7": 0,
+         "8": 0,
+         "9": 0,
+         "10": 0
+        },
+        "items": [
+         {
+          "name": "10",
+          "inputType": "number",
+          "title": "Some topic of dissatisfaction",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "type": "multipletext",
+        "name": "question15",
+        "title": "In the previous question, you reported how many staff members made formal and/or informal complaints about various workplace issues in the past calendar year. How many of these complaints resulted in the following outcomes?",
+        "defaultValue": {
+         "1": 0,
+         "2": 0,
+         "3": 0,
+         "4": 0,
+         "5": 0,
+         "6": 0,
+         "7": 0,
+         "8": 0,
+         "9": 0,
+         "10": 0
+        },
+        "items": [
+         {
+          "name": "10",
+          "inputType": "number",
+          "title": "outcomes",
+          "validators": [
+           {
+            "type": "numeric",
+            "minValue": 0
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name": "page9",
+      "elements": [
+       {
+        "type": "text",
+        "name": "question16",
+        "title": "How many claims were filed with EEOC (Equal Employment Opportunity Commission) last calendar year?",
+        "defaultValue": 0,
+        "validators": [
+         {
+          "type": "numeric",
+          "minValue": 0,
+          "maxValue": 10000
+         }
+        ],
+        "inputType": "number",
+        "min": 0
+       }
+      ]
+     }
+    ],
+    "showQuestionNumbers": "off",
+    "clearInvisibleValues": "none",
+    "widthMode": "responsive"
+   }
