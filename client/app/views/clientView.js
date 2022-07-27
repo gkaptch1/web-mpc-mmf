@@ -29,8 +29,8 @@ define([
   // Creates survey
   function displaySurveyQuestions() {
     // surveyjs
-    // const survey_id = "surveyjs-1";
-    const survey_id = "surveyjs-2";
+    const survey_id = "surveyjs-1";
+    // const survey_id = "surveyjs-2";
     new surveyView(survey_id);
   }
 

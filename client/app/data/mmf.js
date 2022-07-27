@@ -610,7 +610,21 @@ define([], function () {
                       title:
                         "How many times have you received a promotion (with title change and payincrease beyond cost of living) during your tenure in your current museum?",
                       isRequired: true,
-                      choices: ["1", "2", "3"],
+                      choices: [
+                        {
+                          value: "1",
+                          text: "1",
+                        },
+                        {
+                          value: "2",
+                          text: "2",
+                        },
+                        {
+                          value: "3",
+                          text: "3",
+                        },
+                      ],
+                      //   choices: ["1", "2", "3"],
                       hasOther: true,
                       otherText: "More than 3 times (Please specify): ",
                     },
@@ -695,51 +709,82 @@ define([], function () {
                 {
                   name: "rate",
                   title: "Rate",
-                },
-              ],
-              choices: [
-                {
-                  value: "1",
-                  text: "Strongly Disagree",
-                },
-                {
-                  value: "2",
-                  text: "Disagree",
-                },
-                {
-                  value: "3",
-                  text: "Somewhat Disagree",
-                },
-                {
-                  value: "4",
-                  text: "Neutral",
-                },
-                {
-                  value: "5",
-                  text: "Somewhat Agree",
-                },
-                {
-                  value: "6",
-                  text: "Agree",
-                },
-                {
-                  value: "7",
-                  text: "Strongly Agree",
+                  cellType: "radiogroup",
+                  choices: [
+                    {
+                      value: "1",
+                      text: "Strongly Disagree",
+                    },
+                    {
+                      value: "2",
+                      text: "Disagree",
+                    },
+                    {
+                      value: "3",
+                      text: "Somewhat Disagree",
+                    },
+                    {
+                      value: "4",
+                      text: "Neutral",
+                    },
+                    {
+                      value: "5",
+                      text: "Somewhat Agree",
+                    },
+                    {
+                      value: "6",
+                      text: "Agree",
+                    },
+                    {
+                      value: "7",
+                      text: "Strongly Agree",
+                    },
+                  ],
                 },
               ],
               cellType: "radiogroup",
               rows: [
-                "I believe that I can learn and grow in this organization",
-                "I feel burned out in this organization",
-                "My manager is there for me and supports me",
-                "Diversity and difference are not celebrated in this organization",
-                "I believe that what I do here is meaningful",
-                "The culture of my workplace negatively affects my mental and/or physical health",
-                "Mistakes are held against you in this organization",
-                "I would recommend this workplace to friends and family",
-                "I don’t feel that I have a voice in decision making in this organization",
-                "I feel comfortable speaking up about unfairness, discrimination, and harassment without fear of retaliation in this organization",
-                "I feel like I have to hide some of who I am working in this organization",
+                {
+                  value: "1",
+                  text: "I believe that I can learn and grow in this organization",
+                },
+                { value: "2", text: "I feel burned out in this organization" },
+                {
+                  value: "3",
+                  text: "My manager is there for me and supports me",
+                },
+                {
+                  value: "4",
+                  text: "Diversity and difference are not celebrated in this organization",
+                },
+                {
+                  value: "5",
+                  text: "I believe that what I do here is meaningful",
+                },
+                {
+                  value: "6",
+                  text: "The culture of my workplace negatively affects my mental and/or physical health",
+                },
+                {
+                  value: "7",
+                  text: "Mistakes are held against you in this organization",
+                },
+                {
+                  value: "8",
+                  text: "I would recommend this workplace to friends and family",
+                },
+                {
+                  value: "9",
+                  text: "I don’t feel that I have a voice in decision making in this organization",
+                },
+                {
+                  value: "10",
+                  text: "I feel comfortable speaking up about unfairness, discrimination, and harassment without fear of retaliation in this organization",
+                },
+                {
+                  value: "11",
+                  text: "I feel like I have to hide some of who I am working in this organization",
+                },
               ],
             },
           ],
@@ -823,9 +868,11 @@ define([], function () {
                   value: "8",
                   text: "Another employee yelled, raised their voice, or spoke to me in an unprofessional or disrespectful manner",
                 },
+                {
+                  value: "9",
+                  text: "None of these",
+                },
               ],
-              hasNone: true,
-              noneText: "None of these",
             },
           ],
         },
@@ -1431,6 +1478,7 @@ define([], function () {
       widthMode: "responsive",
     },
     "surveyjs-2": {
+      title: "Additional questions",
       logoPosition: "right",
       completedHtml: "<h3>Thank you for your feedback.</h3>",
       completedHtmlOnCondition: [
@@ -2223,7 +2271,6 @@ define([], function () {
                   name: "full-time",
                   title: "Full-time",
                   cellType: "checkbox",
-                  defaultValue: ["indeterminate"],
                   choices: [
                     {
                       value: "1",
@@ -2254,7 +2301,6 @@ define([], function () {
                   ],
                 },
               ],
-              choices: [1, 2, 3, 4, 5],
               rows: [
                 {
                   value: "1",
@@ -2457,6 +2503,7 @@ define([], function () {
       ],
       showQuestionNumbers: "off",
       clearInvisibleValues: "none",
+      showPreviewBeforeComplete: "showAnsweredQuestions",
       widthMode: "responsive",
     },
     usability: [
