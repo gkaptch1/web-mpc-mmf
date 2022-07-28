@@ -189,7 +189,6 @@ define(["constants"], function (constants) {
                   isNumber: item.inputType === "number",
                 });
               }
-              console.log({element, items});
 
               const question = {
                 question: question_text,
@@ -253,16 +252,6 @@ define(["constants"], function (constants) {
         getQuestions(page);
       }
     }
-    // if (table_template.survey != null) {
-    //   for (let q = 0; q < table_template.survey.questions.length; q++) {
-    //     let question = table_template.survey.questions[q];
-    //     for (let o = 0; o < question.inputs.length; o++) {
-    //       let option = question.inputs[o].value;
-    //       let label = question.inputs[o].label;
-    //       questions.push({ question: question.question_text, option: option, label: label });
-    //     }
-    //   }
-    // }
 
     // order usability metrics
     if (table_template.usability != null) {
