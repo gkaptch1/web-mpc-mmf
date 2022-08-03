@@ -127,8 +127,10 @@ define(["constants"], function (constants) {
     }
 
     // order questions
-    if (table_template["surveyjs-1"] != null) {
-      const pages = table_template["surveyjs-1"].pages;
+    const survey_id = window.survey_id;
+
+    if (table_template[survey_id] != null) {
+      const pages = table_template[survey_id].pages;
       const getQuestions = (element) => {
         const elements = element.elements;
 
