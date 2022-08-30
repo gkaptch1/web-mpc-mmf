@@ -8,9 +8,10 @@ Implementation of a web-based data collection and aggregation infrastructure tha
 
 * Node.js
 * MongoDB
-* [JIFF](https://github.com/BU-Spark/jiff/) (Bundled as a Git submodule)
+* Docker
+* [JIFF](https://github.com/multiparty/jiff/) (Bundled as a Git submodule)
 
-## Quick Start Instructions
+## Local Machine Instructions
 
 These instructions are for demonstration and development purposes only. For a full, secure deployment, follow one of the two full instructions below.
 
@@ -20,28 +21,11 @@ These instructions are for demonstration and development purposes only. For a fu
 git clone https://github.com/BU-Spark/web-mpc.git
 cd web-mpc/
 ```
-* Clone the JIFF submodule
+* Build Docker Image and Compose Container
 ```
-git submodule init
-git submodule update
+docker-compose up -d --build #build and compose
 ```
-* Install WEB-MPC dependencies
-```
-npm install
-```
-* Install JIFF dependencies
-```
-cd jiff/
-npm install
-cd ../
-```
-Note that installing WEB-MPC dependencies will break JIFF's dependencies. Hence, JIFF dependencies **must** be installed at least once after each install of WEB-MPC dependencies.
-* Select the WEB-MPC deployment. See the [Deployments](#Deployments) section
-* Start the WEB-MPC server
-```
-npm start
-```
-* Navigate to the website at `https://localhost:8080`
+* Navigate to the website at `https://localhost:3000`
 
 ## Deployment Instructions
 These instructions are written for an GCP Compute Engine instance running Ubuntu 18.04 LTS. It should also allow SSH on port 22 and TCP on port 8080.
@@ -228,12 +212,12 @@ The instructions below demonstrate how to operate the WEB-MPC application. All s
 
 ### Generate session key
 
-* Navigate to `localhost:8080/create`
+* Navigate to `localhost:3000/create`
 * Click on **Generate Session** and save the two given files, one contains the session key and password which are needed for managing the session. The other contains a secret key needed to unmask the results.
 
 ### Manage session
 
-* Navigate to `localhost:8080/manage`
+* Navigate to `localhost:3000/manage`
 * Input your session key and password
 * Generate participation links
 * Start the session
@@ -244,7 +228,7 @@ The instructions below demonstrate how to operate the WEB-MPC application. All s
 
 ### Retrieve the result
 
-* Stop the session in `localhost:8080/manage`
+* Stop the session in `localhost:3000/manage`
 * Click the **unmask** link
 * Paste the session key and password in its designated fields
 * Click **Browse** and upload the private key file that was downloaded when generating the session key
@@ -276,4 +260,5 @@ npm run test -- --grep BWWC
 ```
 
 ## License
-WEB-MPC is freely distributable under the terms of the [MIT license](https://github.com/BU-Spark/web-mpc/blob/master/LICENSE). This release supports Handsontable's "[Nested headers](https://docs.handsontable.com/pro/1.17.0/demo-nested-headers.html)", a Pro feature. A [valid license](https://handsontable.com/pricing) must be obtained when using this feature.
+when using this feature.
+WEB-MPC is freely distributable under the terms of the [MIT license](https://github.com/multiparty/web-mpc/blob/master/LICENSE). This release supports Handsontable's "[Nested headers](https://docs.handsontable.com/pro/1.17.0/demo-nested-headers.html)", a Pro feature. A [valid license](https://handsontable.com/pricing) must be obtained when using this feature.
