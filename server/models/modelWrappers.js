@@ -140,7 +140,7 @@ var queryUserKey = function (session_key) {
       if (err) {
         reject(err);
       } else {
-        resolve(data);
+        resolve(data); //TODO make sure we dont share the mapping between keys and user_keys with the anylst
       }
     });
   });
@@ -159,6 +159,18 @@ var insertManyUserKey = function (array) {
         reject(err);
       } else {
         resolve();
+      }
+    });
+  });
+};
+
+var registerKeyToUser = function (session_key, user_key, public_key) {
+  return new Promise(function (resolve, reject) { // TODO protect against updates to the analyst key
+    models.UserKey.findOneAndUpdate({_id: session_key + user_key}, { pub_key : public_key}, {upsert: false}, function(err, data) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
       }
     });
   });
@@ -217,6 +229,53 @@ var queryMailbox = function (session_key, to_jiff_party_id, skip, limit, filter)
   });
 };
 
+/*
+* Result Message Model
+*/
+
+var analystMessageUpdate = function(session_key,pseduonymn,analystMessage) {
+  return new Promise(function (resolve, reject) { // TODO protect against updates to the analyst key
+    models.ResultMessage.findOneAndUpdate({session: session_key, pseudonymn:pseduonymn}, {analystmessages:analystMessage}, {upsert: true}, function(err, data) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
+
+// insert 
+var insertManyResultMessage = function (array) {
+  array = array.map(function (obj) {
+    obj['_id'] = obj.session + obj.userkey;
+    return new models.ResultMessage(obj);
+  });
+
+  return new Promise(function (resolve, reject) {
+    models.ResultMessage.insertMany(array, function (err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+};
+
+
+var serverMessageUpdate = function(session_key,pseduonymn,serverMessage) {
+  return new Promise(function (resolve, reject) { // TODO protect against updates to the analyst key
+    models.ResultMessage.findOneAndUpdate({session: session_key, pseudonymn:pseduonymn}, {servermessages:serverMessage}, {upsert: true}, function(err, data) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
+
 /**
  * CONVENTION:
  * 1. query yields a list (potentially empty).
@@ -238,10 +297,20 @@ module.exports = {
   UserKey: {
     get: getUserKey,
     query: queryUserKey,
-    insertMany: insertManyUserKey
+    insertMany: insertManyUserKey,
+    registerKeyToUser : registerKeyToUser
   },
   Mailbox: {
     upsert: upsertMailbox,
     query: queryMailbox
+  },
+  ResultMessage: {
+    analyst: {
+      update: analystMessageUpdate,
+    },
+    server: {
+      insertMany: insertManyResultMessage,
+      update: serverMessageUpdate
+    }
   }
 };

@@ -6,11 +6,9 @@
 
 const mongoose = require('mongoose');
 
-const mongohost = process.env.MONGOHOST|| 'mongodb://localhost:27017';
 (async function () {
   try {
-    await mongoose.connect(mongohost+'/aggregate', { useMongoClient: true });
-    console.log('You are connected to ',mongohost);
+    await mongoose.connect('mongodb://localhost/aggregate', { useMongoClient: true });
   } catch (err) {
     console.log('Could not connect to MongoDB server', err);
   }
@@ -18,7 +16,8 @@ const mongohost = process.env.MONGOHOST|| 'mongodb://localhost:27017';
 
 const cohortMappingSchema = new mongoose.Schema({
   name: String,
-  id: Number
+  id: Number,
+  tags: [String]
 });
 
 // Mongoose Model definitions
@@ -30,7 +29,6 @@ const HistoryModel = mongoose.model('History', new mongoose.Schema({
   date: Number,
   success: Boolean
 }));
-
 const MailboxModel = mongoose.model('Mailbox', new mongoose.Schema({
   // Store messages/shares
   _id: String, // "session:from_id:to_id:op_id"
@@ -41,7 +39,6 @@ const MailboxModel = mongoose.model('Mailbox', new mongoose.Schema({
   label: String,
   message: String
 }));
-
 const SessionInfoModel = mongoose.model('SessionInfo', new mongoose.Schema({
   _id: String,
   session: String,
@@ -56,14 +53,27 @@ const SessionInfoModel = mongoose.model('SessionInfo', new mongoose.Schema({
   {
     usePushEach: true
   }));
-  
 const UserKeyModel = mongoose.model('UserKey', new mongoose.Schema({
   _id: String, // concat of session + userkey.
   session: String,
   userkey: String,
+  pseudonymn: String,
   jiff_party_id: Number,
   cohort: Number,
+  pub_key: String,
+  subscriber: {
+    type: Boolean,
+    default: false
+  }
 }));
+const ResultMessageModel = mongoose.model('ResultMessage', new mongoose.Schema({
+  _id: String, // concat of session + userkey.
+  session: String,
+  userkey: String,
+  analystmessages: String,
+  servermessages: String,
+  pseudonymn: String
+}))
 
 // Export models
 module.exports = {
