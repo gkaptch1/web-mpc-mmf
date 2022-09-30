@@ -110,7 +110,11 @@ module.exports.getClientUrls = function (context, body, res) {
     for (var d of data) {
       var cohort = table_template.cohort_selection === true ? 0 : d.cohort;
       var arr = urls[cohort] == null ? [] : urls[cohort];
-      arr.push('?session=' + body.session + '&participationCode=' + d.userkey);
+      if (d.subscriber) {
+        arr.push('subscribe?session=' + body.session + '&participationCode=' + d.userkey);
+      } else {
+        arr.push('?session=' + body.session + '&participationCode=' + d.userkey);
+      }
       urls[cohort] = arr;
     }
 
@@ -147,6 +151,7 @@ module.exports.createClientUrls = function (context, body, response, sessionInfo
 
     for (var i = 0; i < Math.min(body.count, MAX_SIZE - count);) {
       var userkey = helpers.generateRandomBase32();
+      var pseudonymn = helpers.generateRandomBase32();
 
       var jiff_party_id = context.jiff.serverInstance.helpers.random(MAX_SIZE - 1);
       jiff_party_id = parseInt(jiff_party_id.toString(), 10) + 2;  // in case of BigNumber objects
@@ -168,7 +173,9 @@ module.exports.createClientUrls = function (context, body, response, sessionInfo
         session: body.session,
         userkey: userkey,
         jiff_party_id: jiff_party_id,
-        cohort: cohortId
+        cohort: cohortId,
+        pseudonymn:pseudonymn,
+        subscriber: body.subscriber
       });
     }
 
@@ -184,5 +191,54 @@ module.exports.createClientUrls = function (context, body, response, sessionInfo
   }).catch(function (err) {
     console.log('Error getting client urls in createClientUrls', err);
     response.status(500).send('Error getting participation codes.');
+  });
+};
+
+module.exports.registerKeyToUser = function (context, body, response) {
+  var promise = modelWrappers.UserKey.registerKeyToUser(body.session, body.userkey, body.key);
+
+  promise.then(function (data) {
+    response.json({session: data.session, userkey: data.userkey, key: body.key});
+
+  }).catch(function (err) {
+    console.log('Error getting user', err);
+    response.status(500).send('Error getting user or operation forbidden.');
+  });
+};
+
+
+// endpoint for returning previously created client urls
+module.exports.getClientKeys = function (context, body, res) {
+  // Password verified already by authentication!
+  var promise = modelWrappers.UserKey.query(body.session);
+
+  promise.then(function (data) {
+    var pseudonymnsAndKeys = {};
+    for (var d of data) {
+      // pseudonymnsAndKeys[d.cohort].push({pseudonymn: d.pseudonymn, key:d.pub_key});
+      // var cohort = table_template.cohort_selection === true ? 0 : d.cohort;
+      var arr = pseudonymnsAndKeys[d.cohort] == null ? [] : pseudonymnsAndKeys[d.cohort];
+      arr.push({pseudonymn: d.pseudonymn, key:d.pub_key});
+      pseudonymnsAndKeys[d.cohort] = arr;
+    }
+    console.log('client keys fetched:', body.session);
+    res.json({ result: pseudonymnsAndKeys });
+  }).catch(function (err) {
+    console.log('Error in getting client keys', err);
+    res.status(500).send('Error getting client keys.')
+  });
+};
+
+module.exports.analystBulkUpdateResultMessages = function (context, body, res) {
+  updates = []
+  for (var d of body.data) {
+    updates.push(modelWrappers.UserKey.analystMessageUpdate(body.session,d.pseduonymn,d.analystMessage));
+  }
+  Promise.all(updates).then(function(values) {
+    console.log('client keys fetched:', body.session);
+    res.json({num_updates:values.length});
+  }).catch(function(err) {
+    console.log('Error in analyst update of results messages', err);
+    res.status(500).send('Error in analyst update of results messages');
   });
 };

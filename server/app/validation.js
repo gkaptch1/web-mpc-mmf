@@ -16,6 +16,11 @@ schemaTemplates.keyPasswordTemplate = {
   password: schemaTemplates.passwordSchema
 };
 
+const analystServerUpdateTemplate = {
+  pseduonymn: joi.string().alphanum().required(),
+  analystMessage: joi.string().required()
+};
+
 // Concrete Request schemas!
 module.exports = {
   getStatus: {
@@ -53,7 +58,8 @@ module.exports = {
 
   createClientUrls: Object.assign({
     count: joi.number().integer().min(0).max(10000).required(),
-    cohort: joi.string().required()
+    cohort: joi.string().required(), 
+    subscriber: joi.boolean().required()
   }, schemaTemplates.keyPasswordTemplate),
 
   getSubmissionHistory: Object.assign({
@@ -62,8 +68,20 @@ module.exports = {
 
   setStatus: Object.assign({
     status: joi.only('START', 'STOP', 'PAUSE').required()
+  }, schemaTemplates.keyPasswordTemplate),
+
+  registerKeyToUser: {
+      session: schemaTemplates.sessionKeySchema,
+      userkey: schemaTemplates.userKeySchema,
+      key: joi.string().required() // Maybe base64
+  },
+
+  analystBulkUpdateResultMessages : Object.assign({
+      data: [analystServerUpdateTemplate],
   }, schemaTemplates.keyPasswordTemplate)
 };
+
+
 
 // Export JOI schemas
 for (var name in module.exports) {

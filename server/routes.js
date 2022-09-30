@@ -42,5 +42,10 @@ module.exports = [
   { url: '/add_cohort', route: clientURLsRoutes.createNewCohort, validation: validation.createNewCohort, authentication: auth.password },
   { url: '/get_cohorts_manage', route: clientURLsRoutes.getCohorts, validation: validation.getCohortsManage, authentication: auth.password},
   { url: '/generate_client_urls', route: clientURLsRoutes.createClientUrls, validation: validation.createClientUrls, authentication: auth.password },
-  { url: '/get_client_urls', route: clientURLsRoutes.getClientUrls, validation: validation.getClientUrls, authentication: auth.password }
+  { url: '/get_client_urls', route: clientURLsRoutes.getClientUrls, validation: validation.getClientUrls, authentication: auth.password },
+
+  // Adding a key for subscribers
+  { url: '/subscribe_with_key', route: clientURLsRoutes.registerKeyToUser, validation: validation.registerKeyToUser, authentication: auth.userKey },
+
+  { url: '/bulk_update_result_messages', route: clientURLsRoutes.analystBulkUpdateResultMessages, validation: validation.analystBulkUpdateResultMessages, authentication: auth.password },
 ];

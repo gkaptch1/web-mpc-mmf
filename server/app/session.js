@@ -46,7 +46,7 @@ module.exports.getSessionInfo = function (context, body, response) {
 
   promise.then(function (data) {
     if (data) {
-      response.send({ title: data.title, description: data.description });
+      response.send({ title: data.title, description: data.description, publickey: data.pub_key });
     } else {
       response.status(500).send('Invalid session key.');
     }

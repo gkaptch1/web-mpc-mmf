@@ -19,7 +19,7 @@ module.exports.password = function (body, callback) {
 };
 
 // Session Key + User Key Authentication
-module.exports.userKey = function (body, callback) {
+module.exports.userKey = function (body, callback) { //TODO split this up into one mode that checks for subscriber and one that doesn't
   var user_key = body.userkey ? body.userkey : body.user;
   var promise = modelWrappers.UserKey.get(body.session, user_key);
   promise.then(function (data) {
