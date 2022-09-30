@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>{{ organization }}</title>
+  <link rel="icon" type="image" href="{{ logo }}" alt="{{ organization }} logo">
+
+  <script type="text/javascript">
+    var require = {
+      paths: {
+        table_template: '{{ table_template }}'
+      }
+    }
+  </script>
+
+  <script type="text/javascript" src="app/helper/object.assign-polyfill.js"></script>
+  <script type="text/javascript" src="app/config/common.js"></script>
+  <script type="text/javascript" src="app/config/jiff.js"></script>
+
+  <script data-main="app/subscribe" src="app/vendor/require.js"></script>
+  <script type="text/javascript" src="app/helper/array.reduce-polyfill.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css"
+        integrity="sha256-JvdVmxv7Q0LsN1EJo2zc1rACwzatOzkyx11YI4aP9PY=" crossorigin="anonymous"/>
+  <link rel="stylesheet" type="text/css" href="styles/handsontable.full.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.10.0/css/alertify.min.css"
+        integrity="sha256-bNEFYRlNlnu0CH4DIKCXv0F6JVl/DdA2M9XVZn317q0=" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.10.0/css/themes/bootstrap.min.css"
+        integrity="sha256-vt37wNLVK8ICNWGrl+1MLb+pjq33sn6v37Q/7OPgkSU=" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.0/ladda-themeless.min.css"
+        integrity="sha256-d7VZTlP9P3ZTCZ3Bkl8aGZ/+Vs4i+bpcOGNfibU7+LU=" crossorigin="anonymous"/>
+
+  <link rel="stylesheet" href="styles/style.css">
+
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>{{ organization }}<br/>
+      <small> {{ subtitle }}</small>
+    </h1>
+    <div id="logos">
+      <img src="{{ logo }}" alt="{{ organization }} Logo"/>
+      <img src="images/bu.gif" alt="BU Logo"/>
+    </div>
+  </div>
+</header>
+
+<div id="shadow" class="ss-style-multitriangles"></div>
+
+<main id="content" class="container">
+
+  <div class="row">
+    <section id="session-area" class="card col-md-10 col-md-offset-1">
+      <h2 class="text-center">Subscribing to Survey Outputs</h2>
+      <p class="text-center">Please make sure your {{ session_key }} and participation code match the ones provided in the
+        email
+        sent to you by the {{ organization }}. Drag and drop your completed template file to encrypt and include your submission in
+        the
+        aggregate data.</p>
+      <hr/>
+      <div class="row">
+        <div class="col-md-6">
+          <form>
+            <div class="form-group">
+              <label class="control-label" for="session">{{ session_key }}</label>
+              <input type="text" id="session" class="form-control" placeholder="{{ session_key }}" pattern="^[a-zA-Z0-9]{26}$"
+                     autocomplete="off" required/>
+              <span id="session-success" class="success-icon glyphicon glyphicon-ok form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="session-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="session-fail-help"
+                    class="fail-help help-block hidden">Please input the 26-character {{ session_key }}.</span>
+              <span id="session-fail-custom-help"
+                    class="fail-custom help-block hidden"></span>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="participation-code">Participation code</label>
+              <input type="text" id="participation-code" class="form-control" placeholder="Participation code"
+                     pattern="^[a-zA-Z0-9]{26}$"
+                     autocomplete="off" required>
+              <span id="participation-code-success"
+                    class="success-icon glyphicon glyphicon-ok form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="participation-code-fail"
+                    class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="participation-code-fail-help"
+                    class="fail-help help-block hidden">Please input the 26-character participation code.</span>
+              <span id="participation-code-fail-custom-help"
+                    class="fail-custom help-block hidden"></span>
+            </div>
+          </form>
+          {% if cohorts %}
+          <div id="cohort-self-selection" class="form-group">
+            <div id="cohort-name">{{cohort}}</div>
+            <label id="cohort-drop-label" for="cohortDrop">{{ cohort }} selection</label>
+            <select class="form-control" id="cohortDrop">
+              <option value="-">-- Select option --</option>
+              {% for cohort in cohorts %}
+                <option value="{{ cohort.id }}">{{ cohort.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          {% endif %}
+        </div>
+        <div class="col-md-6">
+          <form>
+            <div class="form-group">
+              <label class="control-label" for="public-key-password">Password</label>
+              <input type="text" id="public-key-password" class="form-control" pattern="^[a-zA-Z0-9]{26}$" autocomplete="off" required/>
+              <span id="public-key-password-success" class="success-icon glyphicon glyphicon-ok form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="public-key-password-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="public-key-password-fail-help"
+                    class="fail-help help-block hidden">Please input a password.  We have pre-populated a strong password here, but you may change the password if necessary.</span>
+              <span id="public-key-password-fail-custom-help"
+                    class="fail-custom help-block hidden"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section id="review-and-submit" class="card col-md-10 col-md-offset-1">
+      <h2 class="text-center">Resigster your password with the system</h2>
+      <p class="text-center">
+        Submitting may take a few seconds.  Do not close the window until you received a notification of success.
+      </p>
+      <p class="text-center">
+        Please make sure to keep your password somewhere safe.  If you lose your password, you will not be able to see results.
+      </p>
+      <hr/>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" id="submit" class="btn btn-primary ladda-button btn-lg btn-block">Submit
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <br/>
+</main>
+
+{% if phone or email %}
+<footer id="footer" class="shadow-top">
+  <div class="container">
+      <div class="row text-xs-center text-sm-left text-md-left">
+        <div class="col-xs-12 col-sm-5 col-md-5">
+          <p class="text-muted footer-text">Need Help?</p>
+          <ul class="list-unstyled text-muted footer-text">
+            {% if phone %}
+            <li><span class="glyphicon glyphicon-earphone"></span> {{ phone }}</li>
+            {% endif %}
+            {% if email %}
+            <li> <span class="glyphicon glyphicon-envelope"></span> {{ email }}</li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+  </div>
+</footer>
+{% endif %}
+
+</body>
+</html>

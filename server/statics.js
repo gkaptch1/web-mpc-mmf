@@ -34,6 +34,11 @@ module.exports = function (app) {
     res.render('unmask.html', config.client);
   });
 
+  app.get('/subscribe', function (req, res) {
+    // /client/cohortresults.html
+    res.render('subscribe.html', config.client);
+  });
+
   app.use(express.static(__dirname + '/../client'));
   app.use('/jiff', express.static(__dirname + '/../jiff/dist'));
   app.use('/jiff/ext', express.static(__dirname + '/../jiff/lib/ext'));

@@ -189,8 +189,12 @@ define(['jquery', 'controllers/analystController', 'table_template', 'Ladda', 'f
         }
 
         urls = existingParticipants[cohortId];
+        participantUrls = [];
+        subscriberUrls = [];
         $existingParticipants = $('#participants-existing-' + cohortId);
-        $existingParticipants.html(urls.join('\n'));
+        $existingParticipants.html(urls.filter(item => !item.includes("subscribe")).join('\n'));
+        $existingParticipants = $('#subscriber-existing-' + cohortId);
+        $existingParticipants.html(urls.filter(item => item.includes("subscribe")).join('\n'));
       }
     }
 
@@ -278,7 +282,7 @@ define(['jquery', 'controllers/analystController', 'table_template', 'Ladda', 'f
 
         var count = $('#participants-count-' + cohortId).val();
 
-        analystController.generateNewParticipationCodes(session, password, count, cohortId.toString())
+        analystController.generateNewParticipationCodes(session, password, count, cohortId.toString(), false)
           .then(function (res) {
 
             var $newParticipants = $('#participants-new-' + cohortId);
@@ -287,6 +291,28 @@ define(['jquery', 'controllers/analystController', 'table_template', 'Ladda', 'f
             }
 
             $newParticipants.append(res[cohortId].join('\n')).removeClass('hidden');
+            $('#participants-new-hr-' + cohortId).removeClass('hidden');
+            $('#participants-new-h2-' + cohortId).show();
+            la.stop();
+          });
+      });
+      $('#subscriber-submit-' + cohortId).on('click', function (e) {
+        e.preventDefault();
+
+        var la = Ladda.create(document.getElementById('subscriber-submit-' + cohortId));
+        la.start();
+
+        var count = $('#subscriber-count-' + cohortId).val();
+
+        analystController.generateNewParticipationCodes(session, password, count, cohortId.toString(), true)
+          .then(function (res) {
+
+            var $newParticipants = $('#participants-new-' + cohortId);
+            if ($newParticipants.html() !== '') {
+              $newParticipants.append('\n');
+            }
+
+            $newParticipants.append(res[cohortId].join('\n').replace(/\?/g,"subscribe?")).removeClass('hidden');
             $('#participants-new-hr-' + cohortId).removeClass('hidden');
             $('#participants-new-h2-' + cohortId).show();
             la.stop();
@@ -365,6 +391,23 @@ define(['jquery', 'controllers/analystController', 'table_template', 'Ladda', 'f
       $form.append($participants);
       $form.append($submitBtn);
 
+
+      // var $form = $('<form>');
+      var subscribers = $('<div>', {class: 'form-group'})
+        .append('<label class="control-label" for="subscriber-count">New Subscribers</label>')
+        .append('<input type="number" id="subscriber-count-' + cohortId + '" class="form-control" placeholder="0" pattern="^[1-9]\d*{1,5}$" autocomplete="off" required/>')
+        .append('<span id="new-subscriber-success" class="success-icon glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>')
+        .append('<span id="new-subscriber-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden" aria-hidden="true"></span>')
+        .append('<span id="new-subscriber-fail-help" class="fail-help help-block hidden">Please input a digit smaller than 100.000</span>')
+        .append('<span id="new-subscriber-fail-custom-help" class="fail-custom help-block hidden"></span>');
+
+      var $submitBtnSubscribers = $('<div>', {class: 'form-group'})
+        .append('<button type="submit" id="subscriber-submit-' + cohortId + '"  class="btn btn-primary ladda-button btn-block">Submit</button>');
+
+      $form.append(subscribers);
+      $form.append($submitBtnSubscribers);
+
+
       var $cohortSection = $('<section>', {id: 'cohort-' + cohortId, class: 'col-md-4'})
         .append('<h2 class="text-center">Add Participants</h2>')
         .append('<p class="text-center">Generate more URLs for new participants.</p>')
@@ -375,7 +418,10 @@ define(['jquery', 'controllers/analystController', 'table_template', 'Ladda', 'f
         .append('<hr/>')
         .append('<h2 class="text-center">Existing participants</h2>')
         .append('<p class-"text-center">View the list of existing participation URLS.</p>')
-        .append('<pre id="participants-existing-' + cohortId + '">No existing participants found</pre>');
+        .append('<pre id="participants-existing-' + cohortId + '">No existing participants found</pre>')
+        .append('<h2 class="text-center">Existing Subscriber</h2>')
+        .append('<p class-"text-center">View the list of existing subscriber URLS.</p>')
+        .append('<pre id="subscriber-existing-' + cohortId + '">No existing subscribers found</pre>');
 
       return $cohortSection;
     }
