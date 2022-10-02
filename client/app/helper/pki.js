@@ -110,11 +110,25 @@ define(['forge'], function (forge) {
     return promise;
   };
 
+  var generateKeyFromPassword = function (salt, password) {
+    var derivedKey = forge.util.createBuffer(forge.pkcs5.pbkdf2(password, salt, 100000, 16));
+    return derivedKey;
+  };
+
+  function generateRandomBase32(length) {
+    if (length == null) {
+      length = 16;
+    }
+    return forge.util.bytesToHex(forge.random.getBytesSync(length));
+  }
+
   return {
     parsePublicKey: parsePublicKey,
     parsePrivateKey: parsePrivateKey,
     encrypt: encrypt,
     decrypt: decrypt,
-    generateKeyPair: generateKeyPair
+    generateKeyPair: generateKeyPair,
+    generateRandomBase32: generateRandomBase32,
+    generateKeyFromPassword: generateKeyFromPassword
   };
 });
