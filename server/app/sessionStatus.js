@@ -58,12 +58,16 @@ module.exports.getSubmissionHistory = function (context, body, res) {
   Promise.all([promise1, promise2]).then(function (data) {
     var cohortMap = {};
     var userKeyMap = {};
+    var subscriberMap = {};
+    var psueodnymnMap = {};
     for (var k of data[1]) {
       cohortMap[k.jiff_party_id] = k.cohort;
       userKeyMap[k.jiff_party_id] = k.userkey;
+      subscriberMap[k.jiff_party_id] = k.subscriber;
+      psueodnymnMap[k.jiff_party_id] = k.pseudonymn;
     }
     var history = data[0];
-
+    
     // only send the most recent submission per id
     var id_last_index = {};
     var to_send = {}; // maps cohort number to submissions
@@ -76,7 +80,12 @@ module.exports.getSubmissionHistory = function (context, body, res) {
           arr = [];
         }
 
-        arr.push([d.date, userKeyMap[d.jiff_party_id]]);
+        if (table_template.send_submitter_ids) {
+          arr.push([d.date, userKeyMap[d.jiff_party_id], subscriberMap[d.jiff_party_id]]);
+        } else {
+          arr.push([d.date, psueodnymnMap[d.jiff_party_id], subscriberMap[d.jiff_party_id]]);
+        }
+
         if (id_last_index[d.jiff_party_id] != null) {
           arr[id_last_index[d.jiff_party_id]] = null;
         }
@@ -106,7 +115,7 @@ module.exports.getSubmissionHistory = function (context, body, res) {
       if (table_template.send_submitter_ids) {
         to_send[cohort] = {history: arrNoNulls.slice(0, arrNoNulls.length - shift), count: count, data_1: data[1], data_0:data[0] };
       } else {
-        to_send[cohort] = {history: arrNoNulls.slice(0, arrNoNulls.length - shift), count: count, data_0:data[0] };
+        to_send[cohort] = {history: arrNoNulls.slice(0, arrNoNulls.length - shift), count: count};
       }
     }
 

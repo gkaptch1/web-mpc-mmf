@@ -260,13 +260,20 @@ define(['jquery', 'controllers/analystController', 'table_template', 'Ladda', 'f
       var count = $('#table-' + cohort + ' tbody tr').length;
       for (var i = 0; i < data.length; i++) {
         count++;
-
-        $('#table-' + cohort + ' tbody').append(
-          $('<tr>')
-            .append('<td>' + count + '</td>')
-            .append('<td>' + data[i][1] + '</td>')
-            .append('<td>' + new Date(data[i][0]).toLocaleString() + '</td>')
-        );
+        if(data[i][2]) { // If this is a subscriber
+          $('#subscribertable-' + cohort + ' tbody').append(
+              $('<tr>')
+                .append('<td>' + count + '</td>')
+                .append('<td>' + data[i][1] + '</td>')
+                .append('<td>' + new Date(data[i][0]).toLocaleString() + '</td>')
+            );
+        } else {
+          $('#table-' + cohort + ' tbody').append(
+            $('<tr>')
+              .append('<td>' + count + '</td>')
+              .append('<td>' + data[i][1] + '</td>')
+              .append('<td>' + new Date(data[i][0]).toLocaleString() + '</td>')
+          );        }
       }
 
       var counter = $('#table-' + cohort + ' thead i');
@@ -365,12 +372,63 @@ define(['jquery', 'controllers/analystController', 'table_template', 'Ladda', 'f
       $tr.appendChild($timeCell);
       $thead.appendChild($tr);
 
+      var $historySubscriberTable = document.createElement('table');
+      $historySubscriberTable.setAttribute('id', 'subscribertable-' + cohortId);
+      $historySubscriberTable.setAttribute('class', 'table table-striped');
+
+
+      var $subscriberhistoryNum = document.createElement('h4');
+      var $subscriberthead = document.createElement('thead');
+      var $subscribertbody = document.createElement('tbody');
+      var $subscribertr = document.createElement('tr');
+      var $subscriberidCell = document.createElement('th');
+      var $subscriberparticipantIdCell = document.createElement('th');
+      var $subscribertimeCell = document.createElement('th');
+      var $subscriberheader = document.createElement('div');
+      var $subscribertitle = document.createElement('h3');
+
+      $subscriberheader.setAttribute('class', 'text-center');
+
+      if (SELF_SELECT) {
+        $historySubscriberTable.style.marginBottom = '75px';
+        $subscribertitle.setAttribute('class', 'historySubTitle');
+        $subscribertitle.innerText = cohortName;
+        $subscriberheader.appendChild($title);
+      } else {
+        $subscribertitle.innerText = 'Subscriber History';
+        $subscriberheader.appendChild($title);
+        $historySection.setAttribute('class', 'col-md-7 col-md-offset-1');
+      }
+
+      // Attach elements
+      $historySection.appendChild($subscriberheader);
+
+      $historySection.appendChild($historySubscriberTable);
+      $historySection.appendChild($subscriberhistoryNum);
+
+      $historySubscriberTable.appendChild($subscriberthead);
+      $historySubscriberTable.appendChild($subscribertbody);
+
+
+      $subscribertr.appendChild($subscriberidCell);
+      $subscribertr.appendChild($subscriberparticipantIdCell);
+      $subscribertr.appendChild($subscribertimeCell);
+      $subscriberthead.appendChild($subscribertr);
+
       // Content
       // TODO: do we need this if the id already shows how many?
       // $historyNum.innerHTML = 'Total number of submissions: <i>0</i>';
       $idCell.innerText = 'Submission #';
       $timeCell.innerText = 'Timestamp';
-      $participantIdCell.innerText = 'Participant ID';
+      $subscriberidCell.innerText = 'Submission #';
+      $subscribertimeCell.innerText = 'Timestamp';
+      if (tableTemplate.send_submitter_ids) {
+        $participantIdCell.innerText = 'Participant ID';
+        $subscriberparticipantIdCell.innerText = 'Participant ID';
+      } else {
+        $participantIdCell.innerText = 'Pseudonym ID';
+        $subscriberparticipantIdCell.innerText = 'Pseudonym ID';
+      }
 
       return $historySection
     }

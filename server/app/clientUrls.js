@@ -197,12 +197,17 @@ module.exports.createClientUrls = function (context, body, response, sessionInfo
 module.exports.registerKeyToUser = function (context, body, response) {
   var promise = modelWrappers.UserKey.registerKeyToUser(body.session, body.userkey, body.key);
 
-  promise.then(function (data) {
-    response.json({session: data.session, userkey: data.userkey, key: body.key});
-
+  promise.then(function (registerdata) {
+    promisetwo = modelWrappers.History.insert(body.session, registerdata.jiff_party_id, true, body.userkey);
+    promisetwo.then( function(insertdata) {
+      response.json({session: registerdata.session, userkey: registerdata.userkey, key: body.key});
+    }).catch(function (err) {
+      console.log('Error getting user', err);
+      response.status(500).send('Error getting user or operation forbidden.');
+    });
   }).catch(function (err) {
-    console.log('Error getting user', err);
-    response.status(500).send('Error getting user or operation forbidden.');
+    console.log('Error inserting event into history', err);
+    response.status(500).send('Error inserting event into history.');
   });
 };
 
@@ -212,7 +217,7 @@ module.exports.getClientKeys = function (context, body, res) {
   // Password verified already by authentication!
   var promise = modelWrappers.UserKey.query(body.session);
 
-  promise.then(function (data) {
+  promise.then(function (registerdata) {
     var pseudonymnsAndKeys = {};
     for (var d of data) {
       // pseudonymnsAndKeys[d.cohort].push({pseudonymn: d.pseudonymn, key:d.pub_key});
