@@ -1,5 +1,5 @@
-define(['jquery', 'controllers/subscribeController', 'pki', 'Ladda', 'alertHandler', 'bootstrap'],
-  function ($, subscribeController, pki, Ladda, alertHandler) {
+define(['jquery', 'controllers/keyGenController', 'pki', 'Ladda', 'alertHandler', 'bootstrap'],
+  function ($, keyGenController, pki, Ladda, alertHandler) {
 
     function subscribeView() {
       $(document).ready(function () {
@@ -41,7 +41,7 @@ define(['jquery', 'controllers/subscribeController', 'pki', 'Ladda', 'alertHandl
                 var sessionID = $('#session').val();
                 var participantID = $('#participation-code').val();
                 var password = $('#public-key-password').val();
-                var result = subscribeController.keyGenAndUpdate(sessionID, participantID, password);
+                var result = keyGenController.keyGenAndUpdate(sessionID, participantID, password);
 
                 if (result == null) {
                   la.stop();
@@ -70,7 +70,7 @@ define(['jquery', 'controllers/subscribeController', 'pki', 'Ladda', 'alertHandl
 
 
         // $('#submit').on('click', function (e) {
-        //   subscribeController.keyGenAndUpdate(password);
+        //   keyGenController.keyGenAndUpdate(password);
         // });
       });
     }

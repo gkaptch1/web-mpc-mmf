@@ -3,6 +3,7 @@ define([
   "controllers/clientController",
   "controllers/tableController",
   "controllers/usabilityController",
+  'controllers/keyGenController',
   "pki",
   "helper/drop_sheet",
   "spin",
@@ -17,6 +18,7 @@ define([
   clientController,
   tableController,
   usabilityController,
+  keyGenController,
   pki,
   DropSheet,
   Spinner,
@@ -287,21 +289,43 @@ define([
       });
 
       $("#submit").click(function () {
+
         usabilityController.stopAllTimers();
         var la = Ladda.create(document.getElementById("submit"));
         la.start();
 
         clientController.validate(tables, function (result, msg) {
+
+
+
           $("#validation-errors").empty();
           if (!result) {
             la.stop();
             addValidationErrors(msg);
           } else {
-            var cohort = clientController.getUserCohort();
-            if (table_template["cohort_selection"] === true) {
-              cohort = $("#cohortDrop").val();
+
+            var sessionID = $('#session').val();
+            var participantID = $('#participation-code').val();
+            var password = $('#public-key-password').val();
+            var result = keyGenController.keyGenAndUpdate(sessionID, participantID, password);
+
+
+            if (result == null) {
+              la.stop(); // GABE TODO BIG TIME CRASH!
+            } else {
+              result.then(function (res) {
+                try { // GABE TODO DOWNLOAD FILES
+                  var cohort = clientController.getUserCohort();
+                  if (table_template["cohort_selection"] === true) {
+                    cohort = $("#cohortDrop").val();
+                  }
+                  clientController.constructAndSend(tables, cohort, la);
+                 } catch (e) {
+                  la.stop();
+                  alertHandler.error('Error Submitting data. Please refresh the page and try again.');
+                }
+              });
             }
-            clientController.constructAndSend(tables, cohort, la);
           }
         });
       });
