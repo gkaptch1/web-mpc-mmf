@@ -3,6 +3,7 @@ define([
   "controllers/clientController",
   "controllers/tableController",
   "controllers/usabilityController",
+  "pki",
   "helper/drop_sheet",
   "spin",
   "Ladda",
@@ -16,6 +17,7 @@ define([
   clientController,
   tableController,
   usabilityController,
+  pki,
   DropSheet,
   Spinner,
   Ladda,
@@ -28,33 +30,7 @@ define([
 
   // Creates survey
   function displaySurveyQuestions() {
-    let survey_id = 'regular';
-    const query = window.location.search;
-    if (query && query.length > 0) {
-      const surveyStart = query.indexOf('survey');
-      if (surveyStart > 0) {
-        const surveyEnd = query.indexOf('&', surveyStart + 1);
-        let surveyidstr = null;
-        if (surveyEnd < 0) {
-          surveyidstr = query.slice( surveyStart).split('=');
-        } else {
-          surveyidstr = query.slice( surveyStart, surveyEnd).split('=');
-        }
-
-        if (surveyidstr && surveyidstr.length === 2) {
-          if (surveyidstr[1] === '1') {
-            survey_id = 'regular'
-          } else if (surveyidstr[1] === '2') {
-            survey_id = 'hr-only'
-          }
-        }
-      }
-    }
-
-    window.survey_id = survey_id;
-    // surveyjs
-    // const survey_id = "surveyjs-2";
-    new surveyView(survey_id);
+    new surveyView();
   }
 
   function addResizeSensors(tables) {
@@ -82,6 +58,13 @@ define([
   function clientControllerView() {
     $(document).ready(function () {
       // Hide by default
+
+      // Check to see if we should have a password field.  If not, autopopulate
+      if (password in table_template || table_template.password != true) {
+        $('#public-key-password').attr('value', pki.generateRandomBase32(16));
+      } else {
+        // Remove the table
+      }
 
       tableController.createTableElems(table_template.tables, "#tables-area");
 

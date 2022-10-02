@@ -3,16 +3,10 @@ define(["survey-jquery", "jquery", "table_template"], function (
     $,
     table_template
   ) {
-    return function (survey_id) {
+    return function () {
       $("#additional-questions").hide();
-      if (
-        !(survey_id in table_template) ||
-        Object.keys(table_template[survey_id]).length === 0
-      ) {
-        return;
-      }
 
-      const json = table_template[survey_id];
+      const json = table_template.survey;
   
       Survey.StylesManager.applyTheme("winter");
       

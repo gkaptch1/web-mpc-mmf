@@ -1,5 +1,5 @@
 {
-  "template": "../client/app/data/mmf",
+  "template": "../client/app/data/mmf-hr",
   "MAX_SIZE": 10000,
 
   "webRootPath": "/tmp/acme-challenges",
@@ -14,7 +14,7 @@
   },
 
   "client": {
-    "table_template": "data/mmf",
+    "table_template": "data/mmf-hr",
     "organization": "Museums Moving Forward",
     "subtitle": "100% Talent Data Submission",
     "logo": "images/mmf.png",

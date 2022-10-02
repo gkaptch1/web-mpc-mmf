@@ -167,6 +167,31 @@
 
 
   <div class="row">
+    <section id="password" class="card col-md-10 col-md-offset-1">
+      <div class="form-group">
+        <h2 class="text-center">Create a Password</h2>
+        <p class="text-center">
+        Please create a password that you can use to view your museum's results later.  Keep this password in a safe place - if you misplace it you will not be able to access your museum's results!
+        </p>
+        <p class="text-center">
+        We have autopopulated the field with a strong password, but you may change it.
+        </p>
+        <label class="control-label" for="public-key-password">Password</label>
+        <input type="text" id="public-key-password" class="form-control" pattern="^[a-zA-Z0-9]{26}$" autocomplete="off" required/>
+        <span id="public-key-password-success" class="success-icon glyphicon glyphicon-ok form-control-feedback hidden"
+              aria-hidden="true"></span>
+        <span id="public-key-password-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+              aria-hidden="true"></span>
+        <span id="public-key-password-fail-help"
+              class="fail-help help-block hidden">Please input a password.  We have pre-populated a strong password here, but you may change the password if necessary.</span>
+        <span id="public-key-password-fail-custom-help"
+              class="fail-custom help-block hidden"></span>
+      </div>
+    </section>
+  </div>
+
+
+  <div class="row">
     <section id="review-and-submit" class="card col-md-10 col-md-offset-1">
       <h2 class="text-center">Verify and submit your data</h2>
       <p class="text-center">
