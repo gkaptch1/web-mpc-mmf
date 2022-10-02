@@ -20,7 +20,7 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
       return res;
     }).catch(function (err) {
       if (err && err.hasOwnProperty('responseText') && err.responseText !== undefined) {
-        alertHandler.error(err.responseText + ". Please pause the session then try again!");
+        alertHandler.error(err.responseText);
       }
     });
   }
@@ -84,12 +84,12 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
    * @param {*} count number of total links that should be generated
    * @param {*} cohort
    */
-  function generateNewParticipationCodes(session, password, count, cohort) {
+  function generateNewParticipationCodes(session, password, count, cohort, subscriber) {
     return $.ajax({
       type: 'POST',
       url: '/generate_client_urls',
       contentType: 'application/json',
-      data: JSON.stringify({cohort: cohort, count: count, session: session, password: password})
+      data: JSON.stringify({cohort: cohort, count: count, subscriber: subscriber, session: session, password: password})
     })
       .then(function (res) {
         const urls = {};
