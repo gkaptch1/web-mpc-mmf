@@ -7,6 +7,29 @@ define(['jquery', 'controllers/subscribeController', 'pki', 'Ladda', 'alertHandl
         // Autopopulate with a good password
         $('#public-key-password').attr('value', pki.generateRandomBase32(16));
 
+        //Copied from trusted/session_data
+        var getParameterByName = function (name) {
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+          return results === null
+            ? ""
+            : decodeURIComponent(results[1].replace(/\+/g, " "));
+        };
+
+
+        var $session = $("#session");
+        var $participationCode = $("#participation-code");
+
+        $participationCode.val(getParameterByName("participationCode"));
+        $session.val(getParameterByName("session"));
+        if (String($session.val()).trim() !== "") {
+          $session.blur();
+        }
+        if (String($participationCode.val()).trim() !== "") {
+          $participationCode.blur();
+        }
+
 
 
         $('#submit').on('click', function (e) {
