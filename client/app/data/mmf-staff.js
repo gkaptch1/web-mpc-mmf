@@ -168,7 +168,7 @@ define([], function () {
               type: "checkbox",
               name: "question5",
               title:
-                "Which of the following categories does your current museum position fall into? Pleaseselect ALL that apply.",
+                "Which of the following categories does your current museum position fall into? Please select ALL that apply.",
               isRequired: true,
               choices: [
                 {
@@ -331,7 +331,7 @@ define([], function () {
                   type: "text",
                   name: "question8",
                   title:
-                    "What is your approximate gross annual income (before taxes and deductions) from your current position in the museum? (If this changes from month to month, please provide an average). Report only your income from your museum job.",
+                    "What is your approximate gross annual income (before taxes and deductions) from your current position in the museum? (If this changes from month to month, please provide an average). Report only your income from your museum job and round to the nearest multiple of 1,000.",
                   isRequired: true,
                   inputType: "number",
                   min: 0,
@@ -511,59 +511,51 @@ define([], function () {
           name: "page4",
           elements: [
             {
-              type: "matrixdropdown",
+              type: "matrix",
               name: "question15",
-              minWidth: "400px",
               title:
                 "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace.",
-              isRequired: true,
-              showHeader: false,
-              verticalAlign: "top",
-              alternateRows: true,
+              "alternateRows": true,
+              "isAllRowRequired": true,
               columns: [
                 {
-                  name: "rate",
-                  title: "Rate",
-                  cellType: "radiogroup",
-                  choices: [
-                    {
-                      value: "1",
-                      text: "Strongly Disagree",
-                    },
-                    {
-                      value: "2",
-                      text: "Disagree",
-                    },
-                    {
-                      value: "3",
-                      text: "Somewhat Disagree",
-                    },
-                    {
-                      value: "4",
-                      text: "Neutral",
-                    },
-                    {
-                      value: "5",
-                      text: "Somewhat Agree",
-                    },
-                    {
-                      value: "6",
-                      text: "Agree",
-                    },
-                    {
-                      value: "7",
-                      text: "Strongly Agree",
-                    },
-                  ],
+                  value: "1",
+                  text: "Strongly Disagree",
+                },
+                {
+                  value: "2",
+                  text: "Disagree",
+                },
+                {
+                  value: "3",
+                  text: "Somewhat Disagree",
+                },
+                {
+                  value: "4",
+                  text: "Neutral",
+                },
+                {
+                  value: "5",
+                  text: "Somewhat Agree",
+                },
+                {
+                  value: "6",
+                  text: "Agree",
+                },
+                {
+                  value: "7",
+                  text: "Strongly Agree",
                 },
               ],
-              cellType: "radiogroup",
               rows: [
                 {
                   value: "1",
                   text: "I believe that I can learn and grow in this organization",
                 },
-                { value: "2", text: "I feel burned out in this organization" },
+                { 
+                  value: "2",
+                  text: "I feel burned out in this organization"
+                },
                 {
                   value: "3",
                   text: "My manager is there for me and supports me",
