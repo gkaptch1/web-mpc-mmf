@@ -17,6 +17,7 @@
     "table_template": "data/mmf-hr",
     "organization": "Museums Moving Forward",
     "subtitle": "100% Talent Data Submission",
+    "dragAndDropInput" : true,
     "logo": "images/mmf.png",
     "cohort": "Museum",
     "session_key": "MMF Staff Survey Submission ID",

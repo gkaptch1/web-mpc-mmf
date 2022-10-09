@@ -17,6 +17,7 @@
     "table_template": "data/mmf-director",
     "organization": "Museums Moving Forward",
     "subtitle": "100% Talent Data Submission",
+    "dragAndDropInput" : false,
     "logo": "images/mmf.png",
     "cohort": "Museum",
     "session_key": "MMF Staff Survey Submission ID",

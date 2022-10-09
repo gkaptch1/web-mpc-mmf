@@ -1,5 +1,5 @@
 {
-  "template": "../client/app/data/mmf-staff",
+  "template": "../client/app/data/mmf-test",
   "MAX_SIZE": 10000,
 
   "webRootPath": "/tmp/acme-challenges",
@@ -14,13 +14,13 @@
   },
 
   "client": {
-    "table_template": "data/mmf-staff",
+    "table_template": "data/mmf-test",
     "organization": "Museums Moving Forward",
     "subtitle": "100% Talent Data Submission",
     "dragAndDropInput" : false,
     "logo": "images/mmf.png",
     "cohort": "Museum",
-    "session_key": "MMF Staff Survey Submission ID",
+    "session_key": "MMF Test Survey Submission ID",
     "email": "mia.locks@gmail.com"
   }
 }

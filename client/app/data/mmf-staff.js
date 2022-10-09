@@ -5,155 +5,9 @@ if (typeof define !== "function") {
 define([], function () {
   return {
     tables: [
-      {
-        name: "Table 1",
-        element: "number-paintings",
-        //The format for linear regression is an array of pairs where each pair is an array of the independent variable
-        //followed by the dependent variable. The independent variable and dependent variable are both arrays of two elements,
-        //the first is the name of the row, the second is the name of the column
-        operations: {
-          SUM: true,
-          STD: true,
-          LIN: [
-            [
-              ["num_paintings", "value"],
-              ["age", "value"],
-            ],
-          ],
-        },
-        cohortOperations: { SUM: true },
-        hot_parameters: {
-          rowHeaderWidth: 150,
-          height: 330,
-          colWidths: [150],
-          stretchH: "none",
-        },
-        rows: [
-          {
-            key: "num_paintings",
-            label: "Number of paintings",
-          },
-          {
-            key: "age",
-            label: "Museum age",
-          },
-          {
-            key: "num_statues",
-            label: "Number of statues",
-          },
-          {
-            key: "num_photos",
-            label: "Number of photos",
-          },
-        ],
-        cols: [
-          [
-            {
-              key: "value",
-              label: "Value",
-            },
-          ],
-        ],
-        types: [
-          {
-            range: {
-              row: "*",
-              col: "*",
-            },
-            type: "int",
-            min: 0,
-            max_warning: 200,
-            empty: false,
-          },
-        ],
-        excel: [
-          {
-            sheet: "Test",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
-          },
-        ],
-        tooltips: [
-          {
-            range: {
-              row: "*",
-              col: "*",
-            },
-            tooltip: {
-              errorTitle: "Invalid Data Entry",
-              error:
-                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
-              warningTitle: "Warning: Data is too big",
-              warning: "Are you sure this value is correct?",
-            },
-          },
-        ],
-      },
-      {
-        name: "Table 2",
-        element: "number-emps",
-        operations: { SUM: true, STD: true, LIN: null },
-        cohortOperations: { SUM: true },
-        hot_parameters: {
-          rowHeaderWidth: 150,
-          height: 230,
-          colWidths: [150],
-          stretchH: "none",
-        },
-        rows: [
-          {
-            key: "number_emp",
-            label: "Number of employees",
-          },
-        ],
-        cols: [
-          [
-            {
-              key: "value",
-              label: "Value",
-            },
-          ],
-        ],
-        types: [
-          {
-            range: {
-              row: "*",
-              col: "*",
-            },
-            type: "int",
-            min: 0,
-            max_warning: 200,
-            empty: false,
-          },
-        ],
-        excel: [
-          {
-            sheet: "Test2",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
-          },
-        ],
-        tooltips: [
-          {
-            range: {
-              row: "*",
-              col: "*",
-            },
-            tooltip: {
-              errorTitle: "Invalid Data Entry",
-              error:
-                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
-              warningTitle: "Warning: Data is too big",
-              warning: "Are you sure this value is correct?",
-            },
-          },
-        ],
-      },
     ],
     "survey": {
-      title: "Additional questions",
+      title: "2022 MMF Data Study",
       logoPosition: "right",
       pages: [
         {
@@ -161,43 +15,9 @@ define([], function () {
           elements: [
             {
               type: "multipletext",
-              name: "question0",
-              title:
-                "Approximately how long have you been working in the art museum field?",
-              defaultValue: {
-                months: 0,
-                years: 0,
-              },
-              isRequired: true,
-              items: [
-                {
-                  name: "years",
-                  isRequired: true,
-                  inputType: "number",
-                  title: "Years",
-                },
-                {
-                  name: "months",
-                  inputType: "number",
-                  title: "Months",
-                  validators: [
-                    {
-                      type: "expression",
-                      text: "Months must be between 0 and 11",
-                      expression:
-                        "{question0.months} <= 11 and {question0.months} >= 0",
-                    },
-                  ],
-                },
-              ],
-              itemSize: 0,
-              colCount: 2,
-            },
-            {
-              type: "multipletext",
               name: "question1",
               title:
-                "And how long have you been working at your current museum (this could be the same as the previous question)?",
+                "Approximately how long have you been working in the art museum field?",
               defaultValue: {
                 months: 0,
                 years: 0,
@@ -228,8 +48,42 @@ define([], function () {
               colCount: 2,
             },
             {
-              type: "radiogroup",
+              type: "multipletext",
               name: "question2",
+              title:
+                "And how long have you been working at your current museum (this could be the same as the previous question)?",
+              defaultValue: {
+                months: 0,
+                years: 0,
+              },
+              isRequired: true,
+              items: [
+                {
+                  name: "years",
+                  isRequired: true,
+                  inputType: "number",
+                  title: "Years",
+                },
+                {
+                  name: "months",
+                  inputType: "number",
+                  title: "Months",
+                  validators: [
+                    {
+                      type: "expression",
+                      text: "Months must be between 0 and 11",
+                      expression:
+                        "{question2.months} <= 11 and {question2.months} >= 0",
+                    },
+                  ],
+                },
+              ],
+              itemSize: 0,
+              colCount: 2,
+            },
+            {
+              type: "radiogroup",
+              name: "question3",
               title:
                 "Which of the following best describes your current position level in the museum?",
               isRequired: true,
@@ -272,7 +126,7 @@ define([], function () {
           elements: [
             {
               type: "radiogroup",
-              name: "question3",
+              name: "question4",
               title: "What type of position do you have at the museum?",
               isRequired: true,
               choices: [
@@ -312,7 +166,7 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question4",
+              name: "question5",
               title:
                 "Which of the following categories does your current museum position fall into? Pleaseselect ALL that apply.",
               isRequired: true,
@@ -427,7 +281,27 @@ define([], function () {
           elements: [
             {
               type: "radiogroup",
-              name: "question5",
+              name: "question6",
+              title: "Are you a member, or do you have the option of being a member, of a union as part of your museum job?",
+              isRequired: true,
+              choices: [
+                {
+                  value: "1",
+                  text: "Yes, I am a union member for my museum job"
+                },
+                {
+                  value: "2",
+                  text: "No, I have the option to be a union member for my museum job but have not chosen to join"
+                },
+                {
+                  value: "3",
+                  text: "No, a union is not available for my museum job"
+                },
+              ],
+            },
+            {
+              type: "radiogroup",
+              name: "question7",
               title: "How are you compensated in this position?",
               isRequired: true,
               choices: [
@@ -455,13 +329,14 @@ define([], function () {
               elements: [
                 {
                   type: "text",
-                  name: "question6",
+                  name: "question8",
                   title:
                     "What is your approximate gross annual income (before taxes and deductions) from your current position in the museum? (If this changes from month to month, please provide an average). Report only your income from your museum job.",
                   isRequired: true,
                   inputType: "number",
                   min: 0,
                   step: 1000,
+                  max: 600000,
                 },
                 {
                   type: "panel",
@@ -469,9 +344,9 @@ define([], function () {
                   elements: [
                     {
                       type: "radiogroup",
-                      name: "question7",
+                      name: "question9",
                       title:
-                        "Compared to people at similar position levels (e.g., entry level, associate, manager,executive) in my institution, I think my salary is:",
+                        "Compared to people at similar position levels (e.g., entry level, associate, manager, executive) in my institution, I think my salary is:",
                       isRequired: true,
                       choices: [
                         {
@@ -494,9 +369,9 @@ define([], function () {
                     },
                     {
                       type: "radiogroup",
-                      name: "question8",
+                      name: "question10",
                       title:
-                        "Compared to people at similar institutions with comparable position levels, I think mysalary is:",
+                        "Compared to people at other art museums with comparable position levels (e.g., entry level, associate, manager, director, executive), I think my salary is:",
                       isRequired: true,
                       choices: [
                         {
@@ -523,10 +398,10 @@ define([], function () {
                   elements: [
                     {
                       type: "radiogroup",
-                      name: "question9",
-                      visibleIf: "{question3} <> 5 and {question5} <> 4",
+                      name: "question11",
+                      visibleIf: "{question4} <> 5 and {question6} <> 4",
                       title:
-                        "Have you ever received a promotion (with title change and pay increase beyond cost of living) during your tenure in your current museum?",
+                        "Have you ever received a promotion (with title change and pay increase beyond cost of living) while at your current museum?",
                       isRequired: true,
                       choices: [
                         {
@@ -541,10 +416,10 @@ define([], function () {
                     },
                     {
                       type: "radiogroup",
-                      name: "question10",
-                      visibleIf: "{question9} = 1",
+                      name: "question12",
+                      visibleIf: "{question11} = 1",
                       title:
-                        "How many times have you received a promotion (with title change and payincrease beyond cost of living) during your tenure in your current museum?",
+                        "How many times have you received a promotion (with title change and pay increase beyond cost of living) while at your current museum?",
                       isRequired: true,
                       choices: [
                         {
@@ -566,7 +441,7 @@ define([], function () {
                     },
                     {
                       type: "radiogroup",
-                      name: "question11",
+                      name: "question13",
                       title:
                         "How well does your current compensation from the museum cover your living expenses(e.g., rent, utilities, food, childcare)? My salary is …",
                       isRequired: true,
@@ -591,29 +466,33 @@ define([], function () {
                     },
                     {
                       type: "checkbox",
-                      name: "question12",
+                      name: "question14",
                       title:
-                        "Which of the following statements best reflect what work will look like for you based onthe museum’s post-Covid return-to-work plans? Please select ALL that apply.",
+                        "Which of the following statements best represent your museum’s post-COVID return-to-work policy, as it applies to you? Select all that apply.",
                       isRequired: true,
                       choices: [
                         {
                           value: "1",
-                          text: "I will be working in-person only",
+                          text: "I am/will be working in-person only",
                         },
                         {
                           value: "2",
-                          text: "I will be working in a hybrid setup where the museum chooses which days to work from home and which days to work from the museum",
+                          text: "I am/will be working in a hybrid setup where the museum chooses how many and which days to work from home and which days to work from the museum",
                         },
                         {
                           value: "3",
-                          text: "I will be working in a hybrid setup where I get to choose which days to work from home and which days to work in the museum",
+                          text: "I am/will be working in a hybrid setup where I get to choose how many and which days to work from home and which days to work in the museum",
                         },
                         {
                           value: "4",
-                          text: "I will be working from home only",
+                          text: "I am/will be working in a hybrid setup where the museum chooses how many days to work from home and how many days to work from the museum and I get to choose which days",
                         },
                         {
                           value: "5",
+                          text: "I am/will be working from home only",
+                        },
+                        {
+                          value: "6",
                           text: "I don’t know much about the museum’s return-to-work plans",
                         },
                       ],
@@ -623,8 +502,8 @@ define([], function () {
                     "We have just a few more questions about salary and promotions at your institution.",
                 },
               ],
-              visibleIf: "{question5} < 4",
-              requiredIf: "{question5} < 4",
+              visibleIf: "{question7} < 4",
+              requiredIf: "{question7} < 4",
             },
           ],
         },
@@ -633,7 +512,7 @@ define([], function () {
           elements: [
             {
               type: "matrixdropdown",
-              name: "question13",
+              name: "question15",
               minWidth: "400px",
               title:
                 "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace.",
@@ -733,33 +612,37 @@ define([], function () {
           elements: [
             {
               type: "checkbox",
-              name: "question14",
+              name: "question16",
               title:
                 "Which of the following statements best reflect the salary sharing practices of your museum workplace? Select all that apply.",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "My workplace shares the salaries of all employees publicly",
+                  text: "My workplace shares the specific salaries of all employees publicly",
                 },
                 {
                   value: "2",
-                  text: "My workplace shares salary ranges for all positions or levels with employees",
+                  text: "My union handbook lists salary levels for each job",
                 },
                 {
                   value: "3",
-                  text: "My workplace posts salary ranges for each open position ",
+                  text: "My workplace shares salary ranges for all positions or levels with employees",
                 },
                 {
                   value: "4",
-                  text: "My workplace actively discourages employees from discussing their salaries",
+                  text: "My workplace posts salary ranges for each open position",
                 },
                 {
                   value: "5",
-                  text: "None of the above ",
+                  text: "My workplace actively discourages employees from discussing their salaries"
                 },
                 {
                   value: "6",
+                  text: "None of the above ",
+                },
+                {
+                  value: "7",
                   text: "I don’t know",
                 },
               ],
@@ -767,45 +650,49 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question15",
+              name: "question17",
               title:
-                "In the past 12 months, have you experienced any of the following in your museum workplace? Please select all that apply.",
+                "In the past 12 months, have you experienced any of the following in your museum workplace? Select all that apply.",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "I wasn’t given appropriate resources, materials, or time to execute a job task or responsibility",
-                },
-                {
-                  value: "2",
                   text: "My major accomplishments have been acknowledged or recognized ",
                 },
                 {
+                  value: "2",
+                  text: "I wasn’t given appropriate resources, materials, or time to execute a job task or responsibility",
+                },
+                {
                   value: "3",
-                  text: "Someone took credit for my accomplishment ",
+                  text: "I was given opportunities to do work that will likely help me advance",
                 },
                 {
                   value: "4",
-                  text: "I developed positive relationships with my coworkers",
+                  text: "Someone took credit for my accomplishment",
                 },
                 {
                   value: "5",
-                  text: "Someone I work with was unfairly blamed or criticized for something ",
+                  text: "I developed positive relationships with my coworkers",
                 },
                 {
                   value: "6",
-                  text: "I was unfairly blamed or criticized for something ",
+                  text: "Someone I work with was unfairly blamed or criticized for something",
                 },
                 {
                   value: "7",
-                  text: "I received a positive performance review ",
+                  text: "I was unfairly blamed or criticized for something",
                 },
                 {
                   value: "8",
-                  text: "Another employee yelled, raised their voice, or spoke to me in an unprofessional or disrespectful manner",
+                  text: "I received a performance review",
                 },
                 {
                   value: "9",
+                  text: "Another employee yelled, raised their voice, or spoke to me in an unprofessional manner",
+                },
+                {
+                  value: "10",
                   text: "None of these",
                 },
               ],
@@ -817,9 +704,9 @@ define([], function () {
           elements: [
             {
               type: "radiogroup",
-              name: "question16",
+              name: "question18",
               title:
-                "Have you ever considered leaving your current museum workplace?",
+                "Have you ever considered leaving your current museum workplace for another art museum?",
               isRequired: true,
               choices: [
                 {
@@ -830,35 +717,31 @@ define([], function () {
                   value: "2",
                   text: "No",
                 },
-                {
-                  value: "3",
-                  text: "Prefer not to answer",
-                },
               ],
             },
             {
               type: "checkbox",
-              name: "question17",
-              visibleIf: "{question16} = 1",
+              name: "question19",
+              visibleIf: "{question18} = 1",
               title:
-                "Which of the following reasons made you consider leaving your current museum workplace? Please select ALL that apply.",
+                "Which of the following reasons made you consider leaving your current museum workplace for another art museum? Select all that apply.",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "Current pay is too low to cover my living expenses",
+                  text: "Pay is too low",
                 },
                 {
                   value: "2",
-                  text: "Pay is better in other institutions for similar types of work ",
+                  text: "Other institutions have more flexible work hours",
                 },
                 {
                   value: "3",
-                  text: "No full-time work is available in this institution ",
+                  text: "No full-time work is available in this institution",
                 },
                 {
                   value: "4",
-                  text: "Experiences of discrimination or harassment ",
+                  text: "Experiences of discrimination or harassment",
                 },
                 {
                   value: "5",
@@ -874,15 +757,23 @@ define([], function () {
                 },
                 {
                   value: "8",
-                  text: "Toxic work environment",
+                  text: "Interpersonal issues with other staff members",
                 },
                 {
                   value: "9",
-                  text: "No longer interested in art / art museums ",
+                  text: "Poor management",
                 },
                 {
                   value: "10",
                   text: "I don’t believe my institution can change for the better",
+                },
+                {
+                  value: "11",
+                  text: "Personal reasons unrelated to my current museum workplace",
+                },
+                {
+                  value: "12",
+                  text: "None of the above",
                 },
               ],
               hasOther: true,
@@ -895,7 +786,7 @@ define([], function () {
           elements: [
             {
               type: "radiogroup",
-              name: "question18",
+              name: "question20",
               title: "Have you ever considered leaving the art museum field?",
               isRequired: true,
               choices: [
@@ -907,59 +798,67 @@ define([], function () {
                   value: "2",
                   text: "No",
                 },
-                {
-                  value: "3",
-                  text: "Prefer not to answer",
-                },
               ],
             },
             {
               type: "checkbox",
-              name: "question19",
-              visibleIf: "{question18} = 1",
+              name: "question21",
+              visibleIf: "{question20} = 1",
               title:
-                "Which of the following reasons made you consider leaving the art museum field? Please select ALL that apply.",
+                "Which of the following reasons made you consider leaving the art museum field? Select all that apply.",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "Current pay is too low to cover my living expenses",
+                  text: "Pay is too low in art museums",
                 },
                 {
                   value: "2",
-                  text: "Pay is better in other fields for similar types of work ",
+                  text: "Other fields have more flexible work hours",
                 },
                 {
                   value: "3",
-                  text: "No full-time work is available",
+                  text: "Full-time work is unavailable to me in most art museums",
                 },
                 {
                   value: "4",
-                  text: "Experiences of discrimination or harassment ",
+                  text: "Experiences of discrimination or harassment in art museums",
                 },
                 {
                   value: "5",
-                  text: "Lack of opportunities for growth",
+                  text: "Lack of opportunities for growth in art museums",
                 },
                 {
                   value: "6",
-                  text: "Unsafe working conditions",
+                  text: "Unsafe working conditions in art museums",
                 },
                 {
                   value: "7",
-                  text: "Burnout",
+                  text: "Burnout in the art museum field",
                 },
                 {
                   value: "8",
-                  text: "Toxic work environment",
+                  text: "Interpersonal issues with other staff members are common in art museums",
                 },
                 {
                   value: "9",
-                  text: "No longer interested in art / art museums ",
+                  text: "Poor management in art museums",
                 },
                 {
                   value: "10",
+                  text: "Less interested in art or art museums",
+                },
+                {
+                  value: "11",
                   text: "I don’t believe art museums can change for the better",
+                },
+                {
+                  value: "12",
+                  text: "Personal reasons unrelated to art and/or museums",
+                },
+                {
+                  value: "13",
+                  text: "None of the above",
                 },
               ],
               hasOther: true,
@@ -972,9 +871,9 @@ define([], function () {
           elements: [
             {
               type: "radiogroup",
-              name: "question20",
+              name: "question22",
               title:
-                "Have you felt discriminated against or harassed (e.g., due to your gender, sexual orientation, racial or ethnic background, social or economic status, age, disability…) while working in your current museum workplace?",
+                "Have you felt discriminated against or harassed on the basis of a protected characteristic (e.g., gender, sexual orientation, racial or ethnic background, social or economic status, age, disability...) while working in your current museum workplace?",
               isRequired: true,
               choices: [
                 {
@@ -993,19 +892,19 @@ define([], function () {
             },
             {
               type: "radiogroup",
-              name: "question21",
-              visibleIf: "{question20} = 1",
+              name: "question23",
+              visibleIf: "{question22} = 1",
               title:
                 "How often have you felt discriminated against and/or harassed while working in your current museum workplace?",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "Always (e.g., daily or almost daily)",
+                  text: "Very frequently (e.g., daily or almost daily)",
                 },
                 {
                   value: "2",
-                  text: "Usually (e.g., a few times a month)",
+                  text: "Often (e.g., a few times a month)",
                 },
                 {
                   value: "3",
@@ -1019,15 +918,15 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question22",
-              visibleIf: "{question20} = 1",
+              name: "question24",
+              visibleIf: "{question22} = 1",
               title:
                 "Which of the following forms of discrimination and/or harassment, have you experienced in your current museum workplace? Please select ALL that apply.",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "Discrimination and/or harassment based on gender",
+                  text: "Discrimination and/or harassment based on gender (including pregnancy, gender expression, gender identity, etc.)",
                 },
                 {
                   value: "2",
@@ -1039,7 +938,7 @@ define([], function () {
                 },
                 {
                   value: "4",
-                  text: "Discrimination and/or harassment based on social or economic status ",
+                  text: "Discrimination and/or harassment based on social or economic status",
                 },
                 {
                   value: "5",
@@ -1061,61 +960,110 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question23",
-              visibleIf: "{question20} = 1",
+              name: "question25",
+              visibleIf: "{question22} = 1",
               title:
                 "Have you taken any of the following actions in response to discrimination and/or harassment in your current museum workplace? Please select ALL that apply.",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "I filed an official complaint with the HR",
+                  text: "I filed an HR complaint form (i.e., in-person or online)",
                 },
                 {
                   value: "2",
-                  text: "I filed a grievance with my union",
+                  text: "I talked to an HR staff member who is available to employees",
                 },
                 {
                   value: "3",
-                  text: "I talked to n HR staff member",
+                  text: "I followed a union-provided grievance process for reporting",
                 },
                 {
                   value: "4",
-                  text: "I talked to a non-HR staff member who was in a position to address the situation",
+                  text: "I used an anonymous reporting mechanism",
                 },
                 {
                   value: "5",
-                  text: "I did something else",
+                  text: "I used an employee complaint hotline",
                 },
                 {
                   value: "6",
+                  text: "I talked to a neutral employee or manager who can communicate the issues to HR",
+                },
+                {
+                  value: "7",
+                  text: "I used a third-party reporting process (e.g., use of an ombudsman)",
+                },
+                {
+                  value: "8",
+                  text: "I used another reporting mechanism",
+                },
+                {
+                  value: "9",
+                  text: "I did something else",
+                },
+                {
+                  value: "10",
                   text: "I haven’t done anything in response",
                 },
               ],
             },
             {
-              type: "checkbox",
-              name: "question24",
-              visibleIf: "{question23} = [5]",
+              type: "radiogroup",
+              name: "question26",
+              visibleIf: "{question25} < 10",
               title:
-                "What was your reason for not taking any action in response to the discrimination and harassment you experienced? Please select ALL that apply.",
+                "How satisfied are you with how HR and /or the museum resolved your complaint(s) overall?",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "I worried about retaliation",
+                  text: "Not at all satisfied",
                 },
                 {
                   value: "2",
-                  text: "I didn’t think anything would be done about it",
+                  text: "Somewhat satisfied",
                 },
                 {
                   value: "3",
-                  text: "I didn’t know about what actions I could take",
+                  text: "Very satisfied",
+                },
+              ],
+            },
+            {
+              type: "checkbox",
+              name: "question27",
+              title:
+                "If you have experienced any discrimination or harassment and decided NOT to take action in response, what were your reasons? Select all that apply.",
+              isRequired: true,
+              choices: [
+                {
+                  value: "1",
+                  text: "I worried about retaliation from people in leadership at the institution",
+                },
+                {
+                  value: "2",
+                  text: "I worried about retaliation from the person who discriminated against/harassed me",
+                },
+                {
+                  value: "3",
+                  text: "I didn’t think anything would be done about it",
                 },
                 {
                   value: "4",
-                  text: "My workplace doesn’t provide any mechanisms to report discrimination and/or harassment ",
+                  text: "I didn’t think anything could be done about it because the person who discriminated against/harassed me is not an employee of the museum (e.g., visitor, board member, artist...)",
+                },
+                {
+                  value: "5",
+                  text: "I didn’t know about what actions I could take",
+                },
+                {
+                  value: "6",
+                  text: "My workplace doesn’t provide any mechanisms to report discrimination and/or harassment",
+                },
+                {
+                  value: "7",
+                  text: "I always reported my experiences of discrimination and harassment",
                 },
               ],
             },
@@ -1126,9 +1074,10 @@ define([], function () {
           elements: [
             {
               type: "radiogroup",
-              name: "question25",
+              name: "question28",
               title:
-                "Think about your past 12 months in your workplace (or the timeframe you have worked in your workplace if less than 12 months). Which of the following emotions best describe how you feel about working in your place, overall? Please select the emotion you most associate with working in your workplace.",
+                "Thinking about the past 12 months in your workplace (or your total tenure if less than 12 months), which of the following 3 emotions do you most associate with working at your museum? Select up to THREE.",
+              maxSelectedChoices: 3,
               isRequired: true,
               choices: [
                 {
@@ -1137,27 +1086,27 @@ define([], function () {
                 },
                 {
                   value: "2",
-                  text: "Excited",
+                  text: "Worried",
                 },
                 {
                   value: "3",
-                  text: "Worried or afraid",
+                  text: "Excited",
                 },
                 {
                   value: "4",
-                  text: "Sad or depressed",
+                  text: "Sad",
                 },
                 {
                   value: "5",
-                  text: "Bored",
+                  text: "Connected to others",
                 },
                 {
                   value: "6",
-                  text: "Angry",
+                  text: "Bored",
                 },
                 {
                   value: "7",
-                  text: "Connected to others",
+                  text: "Angry",
                 },
                 {
                   value: "8",
@@ -1165,23 +1114,23 @@ define([], function () {
                 },
                 {
                   value: "9",
-                  text: "Happy or joyful",
+                  text: "Disappointed",
                 },
                 {
                   value: "10",
-                  text: "Creative and inspired",
+                  text: "Inspired",
                 },
                 {
                   value: "11",
-                  text: "Ambivalent/Unsure",
+                  text: "None of the above",
                 },
               ],
             },
             {
               type: "checkbox",
-              name: "question26",
+              name: "question29",
               title:
-                "What kind of role, if any, do you have in your museum’s diversity, equity, and inclusion efforts? Please select ALL that apply.",
+                "What kind of role, if any, do you have in your museum’s diversity, equity, and inclusion efforts? Select all that apply.",
               isRequired: true,
               choices: [
                 {
@@ -1202,14 +1151,81 @@ define([], function () {
                 },
                 {
                   value: "5",
-                  text: "None of the above, I am not involved in my museum’s diversity, equity, and inclusion efforts",
+                  text: "None of the above – I am not involved in my museum’s diversity, equity, and inclusion efforts",
                 },
                 {
                   value: "6",
-                  text: "Not applicable, my museum does not have any efforts towards diversity, equity, and inclusion ",
+                  text: "None of the above – I am not clear about how to get involved in my museum’s diversity, equity, and inclusion efforts",
+                },
+                {
+                  value: "7",
+                  text: "Not applicable – my museum does not have any efforts towards diversity, equity, and inclusion",
+                },                
+              ],
+            },
+            {
+              type: "checkbox",
+              name: "question30",
+              title:
+                "To your knowledge, has your museum measured the composition of any of the following groups with respect to gender, race, and ethnicity within the last 3 years? Select ALL that apply.",
+              isRequired: true,
+              choices: [
+                {
+                  value: "1",
+                  text: "Artists in the collection",
+                },
+                {
+                  value: "2",
+                  text: "Board and/or trustee members",
+                },
+                {
+                  value: "3",
+                  text: "Staff members",
+                },
+                {
+                  value: "4",
+                  text: "None of the above",
+                },
+                {
+                  value: "5",
+                  text: "I don’t know",
                 },
               ],
             },
+            {
+              type: "checkbox",
+              name: "question31",
+              title:
+                "What/Who do you believe has a large impact on your museum leadership’s decisions? Please select all that apply.",
+              isRequired: true,
+              choices: [
+                {
+                  value: "1",
+                  text: "The museum’s mission, vision, and/or values",
+                },
+                {
+                  value: "2",
+                  text: "The museum board’s priorities",
+                },
+                {
+                  value: "3",
+                  text: "Input from museum staff members",
+                },
+                {
+                  value: "4",
+                  text: "The interests of current museum visitors",
+                },
+                {
+                  value: "5",
+                  text: "The interests of the communities around the museum",
+                },
+                {
+                  value: "6",
+                  text: "None of the above",
+                },
+              ],
+            },            
+
           ],
         },
         {
@@ -1217,7 +1233,7 @@ define([], function () {
           elements: [
             {
               type: "text",
-              name: "question27",
+              name: "question32",
               title: "In what year were you born?",
               isRequired: true,
               inputType: "number",
@@ -1228,7 +1244,7 @@ define([], function () {
             },
             {
               type: "radiogroup",
-              name: "question28",
+              name: "question33",
               title: "What is your gender? Please select all that apply.",
               isRequired: true,
               choices: [
@@ -1246,21 +1262,23 @@ define([], function () {
                 },
                 {
                   value: "4",
+                  text: "Another gender",
+                },                
+                {
+                  value: "5",
                   text: "Prefer not to answer",
                 },
               ],
-              hasOther: true,
-              otherText: "Prefer to self-identify:",
             },
             {
               type: "radiogroup",
-              name: "question29",
+              name: "question34",
               title: "How would you define your sexual orientation?",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "Heterosexual  ",
+                  text: "Heterosexual ",
                 },
                 {
                   value: "2",
@@ -1288,46 +1306,48 @@ define([], function () {
                 },
                 {
                   value: "8",
+                  text: "Another sexual orientation",
+                },
+                {
+                  value: "9",
                   text: "Prefer not to answer",
                 },
               ],
-              hasOther: true,
-              otherText: "Prefer to self-identify:",
             },
           ],
           title: "Section 3: DEMOGRAPHICS",
           description:
-            "In this section, we will ask you some personal questions about who you are. We are asking these questions to make sure a diverse group of people participate in this survey. As a reminder, your responses to this survey, including personal information, will be kept anonymous. ",
+            "In this section, we will ask you some personal questions about who you are. We are asking these questions to make sure a diverse group of people participate in this survey. As a reminder, your responses to this survey, including all personal information, will be kept anonymous.",
         },
         {
           name: "page11",
           elements: [
             {
               type: "checkbox",
-              name: "question30",
+              name: "question35",
               title:
                 "With which of the following racial and ethnic groups do you identify as? Please select all that apply.",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "Asian or Asian American",
-                },
-                {
-                  value: "2",
                   text: "Black or African American",
                 },
                 {
+                  value: "2",
+                  text: "East Asian (including Chinese, Japanese, Korean, Mongolian, Tibetan, and Taiwanese)",
+                },
+                {
                   value: "3",
-                  text: "Latina, Latino, or Latinx ",
+                  text: "Hispanic, Latina, Latino, or Latinx",
                 },
                 {
                   value: "4",
-                  text: "Indigenous or Native Peoples",
+                  text: "Middle Eastern or North African",
                 },
                 {
                   value: "5",
-                  text: "Middle Eastern or North African",
+                  text: "Native American/Alaska Native/First Nations",
                 },
                 {
                   value: "6",
@@ -1335,34 +1355,40 @@ define([], function () {
                 },
                 {
                   value: "7",
-                  text: "Native American or Alaska Native",
+                  text: "South Asian (including Bangladeshi, Bhutanese, Indian, Nepali, Pakistani, and Sri Lankan)",
                 },
                 {
                   value: "8",
-                  text: "White ",
+                  text: "Southeast Asian (including Burmese, Cambodian, Filipino, Hmong, Indonesian, Laotian, Malaysian, Mien, Singaporean, Thai, and Vietnamese)",
                 },
                 {
                   value: "9",
+                  text: "White",
+                },
+                {
+                  value: "10",
+                  text: "Another race of ethnicity",
+                },
+                {
+                  value: "11",
                   text: "Prefer not to answer",
                 },
               ],
-              hasOther: true,
-              otherText: "Prefer to self-identify:",
             },
             {
               type: "radiogroup",
-              name: "question31",
+              name: "question36",
               title:
                 "What is the highest level of education that you’ve completed?",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "Some high school ",
+                  text: "Some high school",
                 },
                 {
                   value: "2",
-                  text: "High school graduate (high school diploma or the equivalent GED) ",
+                  text: "High school graduate (high school diploma or the equivalent GED)",
                 },
                 {
                   value: "3",
@@ -1370,25 +1396,27 @@ define([], function () {
                 },
                 {
                   value: "4",
-                  text: "Bachelor’s degree ",
+                  text: "Bachelor’s degree",
                 },
                 {
                   value: "5",
-                  text: "Master’s degree ",
+                  text: "Master’s degree",
                 },
                 {
                   value: "6",
-                  text: "Professional or doctorate degree ",
+                  text: "Professional or doctorate degree",
                 },
+                {
+                  value: "7",
+                  text: "Prefer not to answer",
+                },                
               ],
-              hasOther: true,
-              otherText: "Prefer to self-identify:",
             },
             {
               type: "radiogroup",
-              name: "question32",
+              name: "question37",
               title:
-                "Do you have a long-lasting condition or identify as a person with a disability and/or as neuroatypical/neurodivergent?",
+                "Do you identify as a person with a disability and/or as neuroatypical/neurodivergent?",
               isRequired: true,
               choices: [
                 {
