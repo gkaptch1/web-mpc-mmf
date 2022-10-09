@@ -68,38 +68,46 @@ define([
         // Remove the table
       }
 
-      tableController.createTableElems(table_template.tables, "#tables-area");
+      if ('dragAndDropInput' in table_template && table_template.dragAndDropInput) {
+        tableController.createTableElems(table_template.tables, "#tables-area");
+      }
 
       displaySurveyQuestions();
       // Create the tables
-      var tables = tableController.makeTables(table_template.tables);
+      if ('dragAndDropInput' in table_template && table_template.dragAndDropInput) {
+        var tables = tableController.makeTables(table_template.tables);
+      }
 
       usabilityController.initialize();
       usabilityController.saveBrowser();
 
-      var totals_table = null;
-      if (table_template.totals) {
-        tableController.createTableElems(
-          [table_template.totals],
-          "#totals-table"
-        );
-        totals_table = tableController.makeTables([table_template.totals])[0];
+      if ('dragAndDropInput' in table_template && table_template.dragAndDropInput) {
+        var totals_table = null;
+        if (table_template.totals) {
+          tableController.createTableElems(
+            [table_template.totals],
+            "#totals-table"
+          );
+          totals_table = tableController.makeTables([table_template.totals])[0];
+        }
       }
 
       var $verify = $("#verify");
       var $session = $("#session");
       var $participationCode = $("#participation-code");
 
-      $("#choose-file").on("change", function (e) {
-        var fileName = null;
-        if (e.type === "drop") {
-          fileName = e.dataTransfer.files[0].name;
-        } else if (e.type === "change") {
-          fileName = e.target.files[0].name;
-        }
+      if ('dragAndDropInput' in table_template && table_template.dragAndDropInput) {
+        $("#choose-file").on("change", function (e) {
+          var fileName = null;
+          if (e.type === "drop") {
+            fileName = e.dataTransfer.files[0].name;
+          } else if (e.type === "change") {
+            fileName = e.target.files[0].name;
+          }
 
-        $("#file-name").text(fileName);
-      });
+          $("#file-name").text(fileName);
+        });
+      }
 
       $("#session, #participation-code").on("blur", function (e) {
         e.target.dataset["did_blur"] = true;
@@ -167,17 +175,19 @@ define([
       addDefinitionLink();
 
       // Table accordion.
-      $("#tables-area").hide();
-      $("#expand-table-button").click(function (e) {
-        $("#tables-area").slideToggle(function () {
-          if (!$("#tables-area").is(":hidden")) {
-            tableController.updateWidth(tables);
-          } else {
-            tableController.resetTableWidth();
-          }
+      if ('dragAndDropInput' in table_template && table_template.dragAndDropInput) {
+        $("#tables-area").hide();
+        $("#expand-table-button").click(function (e) {
+          $("#tables-area").slideToggle(function () {
+            if (!$("#tables-area").is(":hidden")) {
+              tableController.updateWidth(tables);
+            } else {
+              tableController.resetTableWidth();
+            }
+          });
+          $(e.target).toggleClass("flip");
         });
-        $(e.target).toggleClass("flip");
-      });
+      }
 
       var _target = document.getElementById("drop-area");
       var _choose = document.getElementById("choose-file-button");
@@ -185,11 +195,14 @@ define([
       var _workstart = function () {
         spinner = new Spinner().spin(_target);
       };
-      var _workend = function (status) {
-        $("#tables-area").show();
-        tableController.updateWidth(tables);
-        spinner.stop();
-      };
+
+      if ('dragAndDropInput' in table_template && table_template.dragAndDropInput) {
+        var _workend = function (status) {
+          $("#tables-area").show();
+          tableController.updateWidth(tables);
+          spinner.stop();
+        };
+      }
 
       var _badfile = function () {
         alertHandler.error(
@@ -235,19 +248,21 @@ define([
         );
       };
 
-      DropSheet({
-        drop: _target,
-        choose: _choose,
-        tables: tables,
-        tables_def: table_template,
-        on: { workstart: _workstart, workend: _workend, sheet: _onsheet },
-        errors: {
-          badfile: _badfile,
-          pending: _pending,
-          failed: _failed,
-          large: _large,
-        },
-      });
+      if ('dragAndDropInput' in table_template && table_template.dragAndDropInput) {
+        DropSheet({
+          drop: _target,
+          choose: _choose,
+          tables: tables,
+          tables_def: table_template,
+          on: { workstart: _workstart, workend: _workend, sheet: _onsheet },
+          errors: {
+            badfile: _badfile,
+            pending: _pending,
+            failed: _failed,
+            large: _large,
+          },
+        });
+      }
 
       function addValidationErrors(msg) {
         $verify.prop("checked", false);
@@ -262,13 +277,15 @@ define([
       }
 
       // Register when ready
-      tables[0].addHook("afterChange", afterChange);
-      for (var i = 0; i < tables.length; i++) {
-        tables[i].addHook("afterChange", function (changes, sources) {
-          if (changes !== null) {
-            $verify.prop("checked", false);
-          }
-        });
+      if ('dragAndDropInput' in table_template && table_template.dragAndDropInput) {
+        tables[0].addHook("afterChange", afterChange);
+        for (var i = 0; i < tables.length; i++) {
+          tables[i].addHook("afterChange", function (changes, sources) {
+            if (changes !== null) {
+              $verify.prop("checked", false);
+            }
+          });
+        }
       }
 
       // Button clicks handlers
@@ -276,7 +293,7 @@ define([
         var la = Ladda.create(document.getElementById("verify"));
         la.start();
 
-        clientController.validate(tables, function (result, msg) {
+        clientController.validate(tables, window.surveyData, function (result, msg) {
           $("#validation-errors").empty();
           la.stop();
           if (result) {
@@ -294,9 +311,7 @@ define([
         var la = Ladda.create(document.getElementById("submit"));
         la.start();
 
-        clientController.validate(tables, function (result, msg) {
-
-
+          clientController.validate(tables, window.surveyData, function (result, msg) {
 
           $("#validation-errors").empty();
           if (!result) {
@@ -311,19 +326,23 @@ define([
 
 
             if (result == null) {
-              la.stop(); // GABE TODO BIG TIME CRASH!
+              la.stop(); // GABE TODO BIG TIME CRASH! AND CLEAN UP THE DISPLAY CHANGES
             } else {
               result.then(function (res) {
-                try { // GABE TODO DOWNLOAD FILES
-                  var cohort = clientController.getUserCohort();
-                  if (table_template["cohort_selection"] === true) {
-                    cohort = $("#cohortDrop").val();
-                  }
-                  clientController.constructAndSend(tables, cohort, la);
-                 } catch (e) {
+                clientController.getUserCohort().then(function(cohort) {
+                  try {
+                      if (table_template["cohort_selection"] === true) {
+                        cohort = $("#cohortDrop").val();
+                      }
+                      clientController.constructAndSend(tables, survey, cohort, la);
+                  } catch (e) {
+                      la.stop();
+                      alertHandler.error('Error Submitting data. Please refresh the page and try again.');
+                    }
+                }).catch( function(response) {
                   la.stop();
                   alertHandler.error('Error Submitting data. Please refresh the page and try again.');
-                }
+                });
               });
             }
           }

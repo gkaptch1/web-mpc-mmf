@@ -124,7 +124,8 @@ define([], function () {
       ],
       showPageTitles: false,
       clearInvisibleValues: "none",
-      showPreviewBeforeComplete: "showAnsweredQuestions",
+      completedHtml: "<p><h4>Almost there!  Please make a password and hit Submit below!</h4></p>",
+      completeText: "Proceed to Data Submission Step",
       widthMode: "responsive",
     },
     usability: [

@@ -84,59 +84,6 @@ define([
       },
       public_keys: {
         s1: "s1",
-        // s1: `
-        // -----BEGIN PGP PUBLIC KEY BLOCK-----
-
-        // xsFNBF/+aAABEADKwKd7U+jk8Knoh7CtWU9pf36v/ldFbzCpT7FKr59nqfwXizae
-        // YE5rOidoE25GsbHy6f86YPVWYZtbfoFYmrezgiQVhIsNI6wyAFdawTyJBSMkH/t2
-        // wES+vRhj5heWYjOk52Zwiyd0L2w798axjOKXBWP+6hGjYHU/3DM6LlWavpjdLETj
-        // 1zP0Nhld99+fDzoH4Q3BIRwEbrGSxSd2yC2ToNLleQI+dk2fMhi9p5SRGeRUtL9g
-        // Auw8/xlNQFjP3JpehrEQgWa1aeqgqzficyZKB9E5BjhlLx3XTMHDGo5thN8n7XEr
-        // YmB4uvtC86WKnXa4xyC4vl7VwpeMLZ0z5BJH6T1pKVMWBJ+fsjsA5cYZ0MORvCvI
-        // /UQSvnbzVL4eJL5FNKsjHUG5M3CsXWypkck8Pp8QKxbTbSx+Ilxx/bDh+TtmnSQR
-        // v/b4+dVcJ0J3VcYtYbLfScLT5/jVS+XSFdZ2NPzt7j3KLm9FfGanicA5YI5oUYne
-        // VoZXVMlbQEIPVo38wKDiC39AM0MCaIwa9HKIT3i88jAlEe6a6o1ERyQMivzn8YLJ
-        // /Hk1wx8NcnK/eJA3R5BK98EiAvXynqKFqOM1AlqNU8RAkkurLKWmewyNstfQxYfW
-        // 7MFBeDz+7Ai0WjUi/9e+91CFK38P1tKoArNz8oqonygsHkfCf5TMIHvQyQARAQAB
-        // zSJHYWJyaWVsIEthcHRjaHVrIDxrYXB0Y2h1a0BidS5lZHU+wsGPBBMBCAA5FiEE
-        // whRkClge7LPEBw9v+LtEbjTNWRAFAl/+aAIFCQWjmoACGwMFCwkIBwIGFQgJCgsC
-        // BRYCAwEAAAoJEPi7RG40zVkQLWEQAL80Ulwu9F+DkjHOArdCD33TbDvidpqjbMho
-        // gc9l7+Azl7iH6R1Z8eWLEzjCe6KR9L/21AREYscc0svPaEZ5qyQm23tcUnMt3G3u
-        // yaxLqfoLnv8v66bo5ssf6Gfiep6PI1cmbc2xt41DQF+D6UstpM5f5tRuONiiTIZp
-        // xdN1fpp1Z4U5BCRTnLxWyiGMjwkpUAyhvOaucjU8kTV4P2Xrt8sX6equW+tF8QhV
-        // n1hRVtfMKk6cePrz8DGZhI5dTrkYr7MvzOinK70WboC4H7gU61nmdb9zsUFIWiAe
-        // kh+OA6STm9KLZcZu/vJoUSayIRm+v4glxyTqLu5n8DPgToxbLuu7IZKhxVQ03frn
-        // uLvs2zXjWg5Px1691XcdhQHoAlAboAIfrXnnM1gmOepA/ba9MeG1b91n7EPk9OFt
-        // qG59WiSUzy0KUSQ57j96S5eIX6rOwgjVozxqLzv0NSieOzq4t5iv+c/+jCxiFDn+
-        // hZ/vZVHy9xiuYSfQio9wjTbkvB2z9VSE93bA8nXn8RldY3PGk2w3WQHr2TslGXGz
-        // t3j78ZHW37vjSqEM7Gaz+/+TJTBtc11XQk0lIH4pnYwuifg/zREeeV23oiu1AweB
-        // zZtz1QPaDKcyvvTXybOKg4nSRwhVuTD/qfvirVJciHYgctdLZghFn7et53ldXjd8
-        // J7yocaBizsFNBF/+aAIBEADXFX5e2WHVuP/D96EsRLEvk4ZYXjKjLdXFiLz15Hpb
-        // hKrMVmfAJMcjLSV5JtdVCLW8gYaU64ZgRyCDeBiECDlhSEe6ss7/7guh1Q4GAac5
-        // 8kz01WhTJJ9qRMFFypZ2yBHzpgvq4fe3u3p71mr90agv+6DubBgBL3mB9jpQ3VBk
-        // fx3pSWtz7LSuI2OO6gn2ostvUwklXuNaxK3+RJrGGOTiSDCHrJ3zDhTayd9Jl/VH
-        // I1zvz+5WOU0EiBoT5GLVis82FUgc0xZe5j3OzPv79vnxlzh+SKiqQrLOPq0iFI+7
-        // wbAAj7jyq/Mha/rnG7Bj1XeORgWZAqNHdt32JWBv/fy5MkuKVoBIgmZj/UWTHiZN
-        // +d9CnAtusrB2/FTWkkc74gKkk74SYqr0wrJVy/nwMsgJGId7bThWSi5ah+srKiob
-        // WOYUWx7waeLX3J1XbKmBgfTgA+ZG+zD2P8ohXagR5UJblKm1URXBrve+qHGwgS7X
-        // Ol2plBNA5DLs1uiFt1Kc/4eJrwqdyBATTEk59c7NsRerh/h32AZIkYaIMTi44423
-        // B3ApVeTgN42VHG4EBhrGKHgPK5deUy6OvsSoJwB/0QUOYYBSMdO9IF+RYNSS88lN
-        // Fi6WDI1tvkWcEOAnbh6Ri1D5I9WWeCAqI9D4jKSszI2kzUtrUNHe3xxcE2faVSIh
-        // lwARAQABwsF8BBgBCAAmFiEEwhRkClge7LPEBw9v+LtEbjTNWRAFAl/+aAMFCQWj
-        // moACGwwACgkQ+LtEbjTNWRAZJw/9HyTKQGR8ZECdJI1ZqaDG5A7LxjO6r6miZ+Zw
-        // mU2QTmAH9RxBwc9i89VTotdQjoUD+V5f/1U+9hwLTEhE7BUcv1Lm1K+/+ALbtLW1
-        // QtMVIywf1EGcbapCPHCVzjp6D4aIEn3292wV2kWBwCaNn1sa9cQOd/0Ifo3/JYct
-        // bEFdNMmjFTVDCbUG9i/JUr0Zb8ZLcQt7xCzZVTW1k2ARZEHi0Rld/5/nt53Lh7D5
-        // KhVVSs2oALJv1cuA/h6pE9rGZ5JVHhCNYT0IlQJkdQe9pjz4w2lQ6vQ/XVVKjtmj
-        // rBW6dHSJPhfFIpI0jaTXVaHd2vGmOLej+9efHETzgagmVOyljuibDA3HlaSptcd/
-        // wjb+pVz6Tc+u7OKlL3RkL/a2qKriSYU78I9vw9Tel14Wq+d/zUj+RrswMVJnnNZ9
-        // znfp0O7rlLvvWabpq7eWiK+Xvv+TRpvSnge+nP2HgUNFgLu+WU0Os1d5T9cRBwTT
-        // kjnjJf5sH83MbdSanhCh2x/0eEVztO9jjBgNbc/SpvN4i2l0nhg9XGL8GIcVJOMK
-        // +S+RtUJB0DAbCc1q2qtZa7Gx77XdocNwsqfWx+5xzesaDDorZ1iO8m9jKsm+yUJV
-        // QnXJbA9Cf2mdS+rmCDzoT+c6ZeulIVQglJEK+SrjiW4Jk+QRiTWG69cHUQVn+X28
-        // 0R+O33I=
-        // =kOyg
-        // -----END PGP PUBLIC KEY BLOCK-----`,
       },
     };
     baseOptions = Object.assign(baseOptions, options);
@@ -184,19 +131,9 @@ define([
       values.push(Math.round(dataSubmission[t.table][t.row][t.col]));
     }
 
-    // Map
-    // key - question id
-    // value - Map of choice answers to the question
-    const answersToQuestions = dataSubmission["questions"];
-    if (answersToQuestions) {
-      console.log(answersToQuestions);
-      ordering.questions.forEach((question, id) => {
-        if (answersToQuestions.has(id)) {
-          answersToQuestions.get(id).forEach((answer) => {
-            values.push(answer);
-          });
-        }
-      });
+    for (var j = 0; j < ordering.questions.length; j++) {
+      var q = ordering.questions[j];
+      values = values.concat(dataSubmission['questions'][q.id]);
     }
 
     for (var k = 0; k < ordering.usability.length; k++) {
@@ -244,6 +181,8 @@ define([
         jiff.share(values[i], null, [1, "s1"], [jiff.id]);
       }
       jiff.restFlush();
+    }, true).catch( function(e) {
+      console.log(e);
     });
   };
 

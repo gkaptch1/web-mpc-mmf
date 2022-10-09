@@ -46,8 +46,8 @@ define(["constants"], function (constants) {
   // }
   var consistentOrdering = function (table_template) {
     var tables = [];
-    const questions = new Map();
-    // var questions = [];
+    // const questions = new Map();
+    var questions = [];
     var usability = [];
     var table_meta = {};
 
@@ -126,11 +126,9 @@ define(["constants"], function (constants) {
       }
     }
 
-    // order questions
-    const survey_id = window.survey_id;
-
-    if (table_template[survey_id] != null) {
-      const pages = table_template[survey_id].pages;
+    // order survey.js results
+    if (table_template['survey'] != null) {
+      const pages = table_template['survey'].pages;
       const getQuestions = (element) => {
         const elements = element.elements;
 
@@ -165,7 +163,7 @@ define(["constants"], function (constants) {
                 hasOther: hasOther,
                 items: options,
               };
-              questions.set(question_id, question);
+              questions.push(question);
 
               break;
             }
@@ -179,7 +177,7 @@ define(["constants"], function (constants) {
                 type: element.type,
                 items: [{ label: question_text }],
               };
-              questions.set(question_id, question);
+              questions.push(question);
               break;
             }
             case "multipletext": {
@@ -198,7 +196,7 @@ define(["constants"], function (constants) {
                 type: element.type,
                 items: items,
               };
-              questions.set(question_id, question);
+              questions.push(question);
               break;
             }
             case "matrixdropdown": {
@@ -241,7 +239,7 @@ define(["constants"], function (constants) {
                 type: element.type,
                 items: subquestions,
               };
-              questions.set(question_id, question);
+              questions.push(question);
               break;
             }
             default:

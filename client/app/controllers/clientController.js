@@ -135,15 +135,15 @@ define([
         return;
       }
 
-      $.ajax({
+      return $.ajax({
         type: "POST",
-        url: "/sessioninfo",
+        url: "/get_user",
         contentType: "application/json",
         data: JSON.stringify({ session: session, userkey: participationCode }),
         dataType: "text",
       })
         .then(function (response) {
-          return response.cohort;
+          return JSON.parse(response).cohort;
         })
         .catch(function (err) {
           if (
@@ -213,7 +213,7 @@ define([
     /**
      * Called when the submit button is pressed.
      */
-    function validate(tables, callback) {
+    function validate(tables, survey, callback) {
       var errors = [];
       // Verify session key
       var $session = $("#session");
@@ -246,10 +246,10 @@ define([
         }
 
         // Verify cohort was specified if there are cohorts
-        var cohort = getUserCohort(); // means no self assigned cohort
+        // var cohort = getUserCohort(); // means no self assigned cohort
         // var cohort = '0'; // means no self assigned cohort
         if (SELF_SELECT) {
-          cohort = $("#cohortDrop").val();
+          var cohort = $("#cohortDrop").val();
           if (cohort === "-") {
             errors.push(COHORT_ERR);
             usabilityController.addValidationError("COHORT_ERR");
@@ -310,6 +310,13 @@ define([
 
         // Validate tables (callback chaining)
         (function validate_callback(i) {
+          if(typeof variable == 'undefined') {
+            if (errors.length === 0) {
+              return callback(true, "");
+            } else {
+              return callback(false, errors);
+            }
+          }
           if (i >= tables.length) {
             // Remove the semantic discrepancies validator.
             tableController.removeValidator("discrepancies");
@@ -347,7 +354,7 @@ define([
     /**
      * All inputs are valid. Construct JSON objects and send them to the server.
      */
-    function constructAndSend(tables, cohort, la) {
+    function constructAndSend(tables, survey, cohort, la) {
       if (!Object.entries) {
         Object.entries = function (obj) {
           var ownProps = Object.keys(obj),
@@ -378,67 +385,47 @@ define([
       //  'YES', 'NO', and 'NA' and each one has value 0 or 1
 
       const data = window.survey.data;
-      var data_submission = data ? { questions: new Map() } : {};
+      var data_submission = data ? { questions: {} } : {};
 
-      let answers = data;
-      questions.forEach((question, id) => {
-        const hasAnswer = id in data;
-        const hasOther = id + "-Comment" in data;
-        const values = new Map();
+      questions.forEach((question) => {
+        const hasAnswer = question.id in data;
+        const values = [];
         switch (question.type) {
           case "radiogroup":
           case "checkbox": {
-            let otherText = data[id + "-Comment"];
-            otherText = otherText && otherText.length > 0 ? otherText : "";
-
             // checkbox is in shape of array, where radiogroup is single item;
             let answerArray = [];
             if (hasAnswer) {
-              answerArray = Array.isArray(answers[id])
-                ? answers[id]
-                : [answers[id]];
+              answerArray = Array.isArray(data[question.id])
+                ? data[question.id]
+                : [data[question.id]];
             }
 
             // set all options to checked if answerArray has the option in it
             for (let i = 0; i < question.items.length; i++) {
-              values.set(
-                question.items[i].value,
+              values.push(
                 answerArray.includes(question.items[i].value) ? 1 : 0
               );
-            }
-            // if question had "other" option, always add other text
-            // to ensure values are the same length every time.
-            if (question.hasOther) {
-              if (hasOther) {
-                values.set(String(question.items.length), 1);
-              }
-              values.set(question.items.length + "-other", otherText);
             }
             break;
           }
           case "text": {
-            values.set("1", 0);
-            values.set("1-other", "");
             if (hasAnswer) {
-              values.set("1", 1);
-              values.set("1-other", answers[id]);
+              // set all subquestion answers to empty value
+              values.push(item.isNumber ? Number(data[question.id][item.name] ) : "");
+            } else {
+              values.push(item.isNumber ? 0 : "");
             }
             break;
           }
           case "multipletext": {
             for (let i = 0; i < question.items.length; i++) {
               const item = question.items[i];
-
-              // set all subquestion answers to empty value
-              values.set(item.name, item.isNumber ? 0 : "");
-            }
-            if (hasAnswer) {
-              const answersKeyVals = Object.entries(answers[id]);
-              // set all existing answers
-              for (let answersKeyVal of answersKeyVals) {
-                if (values.has(String(answersKeyVal[0]))) {
-                  values.set(String(answersKeyVal[0]), answersKeyVal[1]);
-                }
+              if (hasAnswer) {
+                // set all subquestion answers to empty value
+                values.push(item.isNumber ? Number(data[question.id][item.name] ) : "");
+              } else {
+                values.push(item.isNumber ? 0 : "");
               }
             }
             break;
@@ -502,38 +489,40 @@ define([
             break;
         }
 
-        data_submission["questions"].set(id, values);
+        data_submission["questions"][question.id] =  values;
       });
 
       // Handle table data, tables are represented as 2D associative arrays
       // with the first index being the row key, and the second being the column key
-      var tables_data = tableController.constructDataTables(tables);
-      for (var i = 0; i < tables_data.length; i++) {
-        data_submission[tables_data[i].name] = tables_data[i].data;
-      }
+      if(table_template.tables.length > 0 ) {
+        var tables_data = tableController.constructDataTables(tables);
+        for (var i = 0; i < tables_data.length; i++) {
+          data_submission[tables_data[i].name] = tables_data[i].data;
+        }
 
-      // handle ratios
-      if (table_template.ratios != null) {
-        for (let ratio of table_template.ratios) {
-          var ratio_name =
-            tables_data[ratio[0]].name + " : " + tables_data[ratio[1]].name;
-          data_submission[ratio_name] = {};
-          for (let row of Object.keys(tables_data[ratio[0]].data)) {
-            data_submission[ratio_name][row] = {};
-            var ratioFrac = 0;
-            var denominator = tables_data[ratio[1]].data[row].value;
-            if (denominator !== 0) {
-              ratioFrac = tables_data[ratio[0]].data[row].value / denominator;
-              ratioFrac = ratioFrac * 1000;
-              ratioFrac = Math.trunc(ratioFrac);
+        // handle ratios
+        if (table_template.ratios != null) {
+          for (let ratio of table_template.ratios) {
+            var ratio_name =
+              tables_data[ratio[0]].name + " : " + tables_data[ratio[1]].name;
+            data_submission[ratio_name] = {};
+            for (let row of Object.keys(tables_data[ratio[0]].data)) {
+              data_submission[ratio_name][row] = {};
+              var ratioFrac = 0;
+              var denominator = tables_data[ratio[1]].data[row].value;
+              if (denominator !== 0) {
+                ratioFrac = tables_data[ratio[0]].data[row].value / denominator;
+                ratioFrac = ratioFrac * 1000;
+                ratioFrac = Math.trunc(ratioFrac);
+              }
+              data_submission[ratio_name][row]["value"] = ratioFrac;
             }
-            data_submission[ratio_name][row]["value"] = ratioFrac;
           }
         }
-      }
 
-      if (document.getElementById("choose-file").files.length > 0) {
-        usabilityController.dataPrefilled();
+        if (document.getElementById("choose-file").files.length > 0) {
+          usabilityController.dataPrefilled();
+        }
       }
 
       data_submission["usability"] = usabilityController.analytics;
