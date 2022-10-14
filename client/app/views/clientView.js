@@ -62,7 +62,7 @@ define([
       // Hide by default
 
       // Check to see if we should have a password field.  If not, autopopulate
-      if (password in table_template || table_template.password != true) {
+      if ('password' in table_template || table_template.password != true) {
         $('#public-key-password').attr('value', pki.generateRandomBase32(16));
       } else {
         // Remove the table
@@ -72,7 +72,9 @@ define([
         tableController.createTableElems(table_template.tables, "#tables-area");
       }
 
-      displaySurveyQuestions();
+      if('contains_survey' in table_template && table_template.contains_survey) {
+        displaySurveyQuestions();
+      }
       // Create the tables
       if ('dragAndDropInput' in table_template && table_template.dragAndDropInput) {
         var tables = tableController.makeTables(table_template.tables);
@@ -305,40 +307,43 @@ define([
         });
       });
 
-      $("#submit").click(function () {
-
+      var submitFunctionWithButton = function() {
         usabilityController.stopAllTimers();
         var la = Ladda.create(document.getElementById("submit"));
         la.start();
 
-          clientController.validate(tables, window.surveyData, function (result, msg) {
+        clientController.validate(tables, window.surveyData, function (result, msg) {
 
-          $("#validation-errors").empty();
-          if (!result) {
-            la.stop();
-            addValidationErrors(msg);
+        $("#validation-errors").empty();
+        if (!result) {
+          la.stop();
+          addValidationErrors(msg);
+        } else {
+
+          var sessionID = $('#session').val();
+          var participantID = $('#participation-code').val();
+          var password = $('#public-key-password').val();
+          var result = keyGenController.keyGenAndUpdate(sessionID, participantID, password);
+
+
+          if (result == null) {
+            la.stop(); // GABE TODO BIG TIME CRASH! AND CLEAN UP THE DISPLAY CHANGES
           } else {
-
-            var sessionID = $('#session').val();
-            var participantID = $('#participation-code').val();
-            var password = $('#public-key-password').val();
-            var result = keyGenController.keyGenAndUpdate(sessionID, participantID, password);
-
-
-            if (result == null) {
-              la.stop(); // GABE TODO BIG TIME CRASH! AND CLEAN UP THE DISPLAY CHANGES
-            } else {
-              result.then(function (res) {
-                clientController.getUserCohort().then(function(cohort) {
-                  try {
-                      if (table_template["cohort_selection"] === true) {
-                        cohort = $("#cohortDrop").val();
-                      }
-                      clientController.constructAndSend(tables, survey, cohort, la);
-                  } catch (e) {
-                      la.stop();
-                      alertHandler.error('Error Submitting data. Please refresh the page and try again.');
+            result.then(function (res) {
+              clientController.getUserCohort().then(function(cohort) {
+                try {
+                    if (table_template["cohort_selection"] === true) {
+                      cohort = $("#cohortDrop").val();
                     }
+
+                    var survey = window.survey.data;
+                    delete survey.password;
+
+                    clientController.constructAndSend(tables, survey, cohort, la);
+                  } catch (e) {
+                    la.stop();
+                    alertHandler.error('Error Submitting data. Please refresh the page and try again.');
+                  }
                 }).catch( function(response) {
                   la.stop();
                   alertHandler.error('Error Submitting data. Please refresh the page and try again.');
@@ -347,7 +352,43 @@ define([
             }
           }
         });
-      });
+      };
+
+      var submitFunctionWithoutButton = function() {
+        usabilityController.stopAllTimers();
+
+        var sessionID = $('#session').val();
+        var participantID = $('#participation-code').val();
+        var password = window.survey.data.password;
+        var result = keyGenController.keyGenAndUpdate(sessionID, participantID, password);
+
+        if (result == null) {
+          alertHandler.error('Error Submitting data. Please refresh the page and try again.');
+        } else {
+          result.then(function (res) {
+            clientController.getUserCohort().then(function(cohort) {
+              try {
+                if (table_template["cohort_selection"] === true) {
+                  cohort = $("#cohortDrop").val();
+                }
+                var survey = window.survey.data;
+                delete survey.password;                
+                clientController.constructAndSend(tables, survey, cohort, null);
+                } catch (e) {
+                  alertHandler.error('Error Submitting data. Please refresh the page and try again.');
+                }
+              }).catch( function(response) {
+                alertHandler.error('Error Submitting data. Please refresh the page and try again.');
+              });
+            });
+          }
+        }
+
+      if (table_template.contains_survey) {
+        window.survey.onComplete.add(submitFunctionWithoutButton);
+      } else {
+        $("#submit").click(submitFunctionWithButton);
+      }
     });
 
     /* global $buoop */

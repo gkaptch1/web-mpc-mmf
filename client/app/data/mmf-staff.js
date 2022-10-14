@@ -524,26 +524,18 @@ define([], function () {
                 },
                 {
                   value: "2",
-                  text: "Disagree",
-                },
-                {
-                  value: "3",
                   text: "Somewhat Disagree",
                 },
                 {
-                  value: "4",
+                  value: "3",
                   text: "Neutral",
                 },
                 {
-                  value: "5",
+                  value: "4",
                   text: "Somewhat Agree",
                 },
                 {
-                  value: "6",
-                  text: "Agree",
-                },
-                {
-                  value: "7",
+                  value: "5",
                   text: "Strongly Agree",
                 },
               ],
@@ -1065,7 +1057,7 @@ define([], function () {
           name: "page9",
           elements: [
             {
-              type: "radiogroup",
+              type: "checkbox",
               name: "question28",
               title:
                 "Thinking about the past 12 months in your workplace (or your total tenure if less than 12 months), which of the following 3 emotions do you most associate with working at your museum? Select up to THREE.",
@@ -1427,10 +1419,22 @@ define([], function () {
             },
           ],
         },
+        {
+          name: "page12",
+          elements: [
+            {
+              type: "text",
+              name: "password",
+              title: "Create a password to access survey results later.  Please be sure not to lose your password, as there is no recovery mechanism!",
+              placeHolder: "Password",
+              isRequired: true,
+            },
+          ],
+          title: "Page 12"
+        }
       ],
       showPageTitles: false,
       clearInvisibleValues: "none",
-      showPreviewBeforeComplete: "showAnsweredQuestions",
       widthMode: "responsive",
     },
     usability: [
@@ -1517,5 +1521,8 @@ define([], function () {
     ],
     'cohort_threshold': 8,    
     "send_submitter_ids": false,
+    "dragAndDropInput" : false,
+    contains_tables: false,
+    contains_survey: true
   };
 });

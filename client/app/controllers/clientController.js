@@ -384,15 +384,21 @@ define([
       // Add questions data, each question has three parts:
       //  'YES', 'NO', and 'NA' and each one has value 0 or 1
 
-      const data = window.survey.data;
+      const data = survey;
       var data_submission = data ? { questions: {} } : {};
 
       questions.forEach((question) => {
         const hasAnswer = question.id in data;
-        const values = [];
+        values = [];
         switch (question.type) {
           case "radiogroup":
           case "checkbox": {
+            if(hasAnswer) {
+              values.push(1); // Indicate that the question was answered
+            } else {
+              values.push(0); // Indicate that the question wasn't answered
+            }
+
             // checkbox is in shape of array, where radiogroup is single item;
             let answerArray = [];
             if (hasAnswer) {
@@ -411,10 +417,13 @@ define([
           }
           case "text": {
             if (hasAnswer) {
+              values.push(1);  // Indicate that the question was answered
+              const item = question.items[0];
               // set all subquestion answers to empty value
-              values.push(item.isNumber ? Number(data[question.id][item.name] ) : "");
+              values.push(question.isNumber ? Number(data[question.id]) : "");
             } else {
-              values.push(item.isNumber ? 0 : "");
+              values.push(0); // Indicate that the question wasn't answered
+              values.push(question.isNumber ? 0 : "");
             }
             break;
           }
@@ -423,8 +432,10 @@ define([
               const item = question.items[i];
               if (hasAnswer) {
                 // set all subquestion answers to empty value
+                values.push(1);  // Indicate that the question was answered
                 values.push(item.isNumber ? Number(data[question.id][item.name] ) : "");
               } else {
+                values.push(0); // Indicate that the question wasn't answered
                 values.push(item.isNumber ? 0 : "");
               }
             }
@@ -481,6 +492,28 @@ define([
                   }
                 }
               }
+            }
+            break;
+          }
+          case "matrix": {
+
+            for (let i = 0; i < question.items.length; i++) {
+              const subquestion = question.items[i];
+              let answerArray = [];
+
+              if (hasAnswer) {
+                answerArray.push(1);
+                for (let j = 0; j < question.items[i].items.length ; j++) {
+                  answerArray.push(subquestion.items[j].value === data[question.id][i+1] ? 1 : 0);
+                }
+              } else {
+                answerArray.push(0);
+                for (let j = 0; j < question.items[i].items.length ; j++) {
+                  answerArray.push(0);
+                }
+              }
+
+              values = values.concat(answerArray);
             }
             break;
           }

@@ -21,8 +21,10 @@
   <script data-main="app/index" src="app/vendor/require.js"></script>
   <script type="text/javascript" src="app/helper/array.reduce-polyfill.min.js"></script>
 
+  {% if client.surveyjs %}
   <link href="https://unpkg.com/survey-jquery/modern.min.css" type="text/css" rel="stylesheet">
   <link href="https://unpkg.com/survey-jquery@1.9.40/survey.css" type="text/css" rel="stylesheet"/>
+  {% endif %}
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -59,6 +61,23 @@
 
 <main id="content" class="container">
 
+
+  {% if client.introblock %}
+  <div class="row">
+    <section id="password" class="card col-md-10 col-md-offset-1">
+      <div class="form-group">
+        <h2 class="text-center">Welcome!</h2>
+        <p class="text-center">
+        {{ client.introtext }}
+        </p>
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+
+
+  {% if client.show_ids %}
   <div class="row">
     <section id="session-area" class="card col-md-10 col-md-offset-1">
       <h2 class="text-center">Input your data</h2>
@@ -133,6 +152,10 @@
       </div>
     </section>
   </div>
+  {% else %}
+   <p id="session" hidden></p>
+   <p id="participation-code" hidden></p>
+  {% endif %}
 
   {% if client.dragAndDropInput %}
   <div class="row">
@@ -155,6 +178,7 @@
   </div>
   {% endif %}
 
+  {% if client.surveyjs %}
   <div class="row">
     <section id="additional-questions" class="card col-md-10 col-md-offset-1">
       <h2 class="text-center">Answer additional questions</h2>
@@ -172,8 +196,9 @@
 
     </section>
   </div>
+  {% endif %}
 
-
+  {% if client.tables %}
   <div class="row">
     <section id="password" class="card col-md-10 col-md-offset-1">
       <div class="form-group">
@@ -197,8 +222,9 @@
       </div>
     </section>
   </div>
+  {% endif %}
 
-
+  {% if client.tables %}
   <div class="row">
     <section id="review-and-submit" class="card col-md-10 col-md-offset-1">
       <h2 class="text-center">Verify and submit your data</h2>
@@ -238,6 +264,8 @@
       </div>
     </section>
   </div>
+  {% endif %}
+
   <br/>
 </main>
 

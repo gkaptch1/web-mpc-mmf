@@ -121,10 +121,23 @@ define([], function () {
           ],
           title: "Page 1",
         },
+        {
+          name: "page2",
+          elements: [
+            {
+              type: "text",
+              name: "password",
+              title: "Create a password to access survey results later.  Please be sure not to lose your password, as there is no recovery mechanism!",
+              placeHolder: "Password",
+              isRequired: true,
+            },
+          ],
+          title: "Page 2"
+        },
       ],
       showPageTitles: false,
       clearInvisibleValues: "none",
-      completedHtml: "<p><h4>Almost there!  Please make a password and hit Submit below!</h4></p>",
+      completedHtml: "<p><h4>Your answers are being submitted.  Please don't close the page until you see a popup confirming your submission.</h4></p>",
       completeText: "Proceed to Data Submission Step",
       widthMode: "responsive",
     },
@@ -212,5 +225,8 @@ define([], function () {
     ],
     'cohort_threshold': 8,    
     "send_submitter_ids": false,
+    "dragAndDropInput" : false,
+    "contains_tables": false,
+    "contains_survey": true,
   };
 });

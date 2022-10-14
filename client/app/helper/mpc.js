@@ -177,7 +177,9 @@ define(["constants"], function (constants) {
                 type: element.type,
                 items: [{ label: question_text }],
               };
-              questions.push(question);
+              if (question.id != 'password') {
+                questions.push(question);
+              }
               break;
             }
             case "multipletext": {
@@ -242,6 +244,35 @@ define(["constants"], function (constants) {
               questions.push(question);
               break;
             }
+            case "matrix": {
+              const options = [];
+              for (let col of element.columns) {
+                options.push({ value: col.value, label: col.text });
+              }
+
+              const subquestions = [];
+              const rows = element.rows;
+              for (let i = 0; i < rows.length; i++) {
+                const question_text = rows[i].text;
+                const id = rows[i].value;
+                const subquestion = {
+                  question: question_text,
+                  id: id,
+                  items: options,
+                };
+                subquestions.push(subquestion);
+              }
+
+              const question = {
+                question: question_text,
+                id: question_id,
+                type: element.type,
+                items: subquestions,
+              };
+              questions.push(question);
+              break;
+            }
+
             default:
               console.error("Unknown question type: ", element);
               break;

@@ -1016,5 +1016,7 @@ define([], function () {
     ],    
     send_submitter_ids: true,
     "dragAndDropInput" : true,
+    contains_tables: true,
+    contains_survey: false
   };
 });

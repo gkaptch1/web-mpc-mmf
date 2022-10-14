@@ -342,7 +342,11 @@ define([], function () {
       {"name": 'The Contemporary Austin', "tags":["EastCoast", "Large", "Archival"]},
       {"name": 'Toledo Museum of Art', "tags":["EastCoast", "Large", "Archival"]},
       {"name": 'University of Michigan Museum of Art', "tags":["EastCoast", "Large", "Archival"]}
-    ],    
+    ],
+    'cohort_threshold': 8,    
     send_submitter_ids: true,
-  };
+    "dragAndDropInput" : true,
+    contains_tables: false,
+    contains_survey: true
+    };
 });
