@@ -24,11 +24,11 @@ define(['jquery','pki', 'alertHandler'], function ($, pki, alertHandler) {
       }
 
 	function keyGenAndUpdate(sessionID, participantID, password) {
-		var symmetricKey = pki.generateKeyFromPassword("sessionID:" + sessionID + "participantID:" +  participantID, "password:" + password);
+		var symmetricKey = pki.generateKeyFromPassword("sessionID:" + sessionID + "participantID:" +  participantID, "password:" + password.trim());
 
 		 return getSessionPublicKey().then(function(result) {
 			pk = pki.parsePublicKey(result.publickey);
-			encapsulatedKey = pki.encrypt(symmetricKey.data,pk);
+			encapsulatedKey = btoa(pki.encrypt(symmetricKey.data,pk));
 
 			return $.ajax({
 		      type: 'POST',

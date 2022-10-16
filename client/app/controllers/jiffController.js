@@ -159,6 +159,9 @@ define([
       party_id: null,
     };
 
+    // console.log(dataSubmission);
+    // console.log(values);
+
     // Initialize and submit
     var jiff = initialize(sessionkey, "client", options);
     jiff.wait_for([1, "s1"], function () {
@@ -178,12 +181,11 @@ define([
       // then share the rest
       for (i = ordering.tables.length; i < values.length; i++) {
         if (typeof values[i] === "string") continue;
+        // console.log(values[i]);
         jiff.share(values[i], null, [1, "s1"], [jiff.id]);
       }
       jiff.restFlush();
-    }, true).catch( function(e) {
-      console.log(e);
-    });
+    }, true);
   };
 
   // Analyst side stuff

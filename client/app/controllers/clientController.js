@@ -583,8 +583,9 @@ define([
             error(GENERIC_SUBMISSION_ERR);
             usabilityController.addValidationError("GENERIC_SUBMISSION_ERR");
           }
-
-          la.stop();
+          if (!('contains_survey' in table_template && table_template.contains_survey)) {
+            la.stop();
+          }
         },
         cohort
       );

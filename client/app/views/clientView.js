@@ -374,15 +374,17 @@ define([
                 var survey = window.survey.data;
                 delete survey.password;                
                 clientController.constructAndSend(tables, survey, cohort, null);
-                } catch (e) {
-                  alertHandler.error('Error Submitting data. Please refresh the page and try again.');
-                }
-              }).catch( function(response) {
+              } catch (e) {
+                console.log(e);
                 alertHandler.error('Error Submitting data. Please refresh the page and try again.');
-              });
+              }
+            }).catch( function(response) {
+              console.log(e);
+              alertHandler.error('Error Submitting data. Please refresh the page and try again.');
             });
-          }
+          });
         }
+      }
 
       if (table_template.contains_survey) {
         window.survey.onComplete.add(submitFunctionWithoutButton);

@@ -111,7 +111,7 @@ define(['forge'], function (forge) {
   };
 
   var generateKeyFromPassword = function (salt, password) {
-    var derivedKey = forge.util.createBuffer(forge.pkcs5.pbkdf2(password, salt, 100000, 16));
+    var derivedKey = forge.util.createBuffer(forge.pkcs5.pbkdf2(password, salt, 25000, 16));
     return derivedKey;
   };
 
