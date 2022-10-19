@@ -319,7 +319,7 @@ define(['jquery', 'controllers/analystController', 'table_template', 'Ladda', 'f
               $newParticipants.append('\n');
             }
 
-            $newParticipants.append(res[cohortId].join('\n').replace(/\?/g,"subscribe?")).removeClass('hidden');
+            $newParticipants.append(res[cohortId].join('\n').replace(/\?/g,"/subscribe?")).removeClass('hidden');
             $('#participants-new-hr-' + cohortId).removeClass('hidden');
             $('#participants-new-h2-' + cohortId).show();
             la.stop();

@@ -7,8 +7,6 @@ define([], function () {
     tables: [
     ],
     "survey": {
-      title: "2022 MMF Data Study",
-      logoPosition: "right",
       pages: [
         {
           name: "page1",
