@@ -254,6 +254,19 @@ define([], function () {
             },
           ]
         },
+        {
+          name: "page4",
+          elements: [
+            {
+              type: "text",
+              name: "password",
+              title: "Final step: You must create a password to log back in to view results. DO NOT LOSE YOUR PASSWORD as there is no recovery mechanism! This is critical for the preservation of privacy.",
+              placeHolder: "Password",
+              isRequired: true,
+            },
+          ],
+          title: "Page 4"
+        },
       ],
       showPageTitles: false,
       clearInvisibleValues: "none",

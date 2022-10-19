@@ -3,11 +3,10 @@
   "MAX_SIZE": 10000,
 
   "webRootPath": "/tmp/acme-challenges",
-  "approveDomainsPattern": "^([A-Za-z0-9]+.)?100talent.org$",
+  "approveDomainsPattern": "^([A-Za-z0-9]+.)?director-survey.museumsmovingforward.com/$",
   "approveDomainsOpts": {
     "domains": [
-      "www.100talent.org",
-      "100talent.org"
+      "https://director-survey.museumsmovingforward.com/",
     ],
     "email": "kaptchuk@bu.edu",
     "agreeTos": true
@@ -26,6 +25,6 @@
     "logo": "images/mmf.png",
     "cohort": "Museum",
     "session_key": "MMF Staff Survey Submission ID",
-    "email": "mia.locks@gmail.com"
+    "email": "help@museumsmovingforward.com"
   }
 }

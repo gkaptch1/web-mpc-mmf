@@ -3,11 +3,10 @@
   "MAX_SIZE": 10000,
 
   "webRootPath": "/tmp/acme-challenges",
-  "approveDomainsPattern": "^([A-Za-z0-9]+.)?100talent.org$",
+  "approveDomainsPattern": "^([A-Za-z0-9]+.)?staff-survey.museumsmovingforward.com/$",
   "approveDomainsOpts": {
     "domains": [
-      "www.100talent.org",
-      "100talent.org"
+      "https://staff-survey.museumsmovingforward.com/",
     ],
     "email": "kaptchuk@bu.edu",
     "agreeTos": true
@@ -15,8 +14,8 @@
 
   "client": {
     "table_template": "data/mmf-staff",
-    "organization": "Museums Moving Forward",
-    "subtitle": "100% Talent Data Submission",
+    "organization": "MUSEUMS MOVING FORWARD",
+    "subtitle": "2022 Data Study - Test Survey",
     "dragAndDropInput" : false,
     "tables" : false,
     "surveyjs" : true,
@@ -26,6 +25,6 @@
     "logo": "images/mmf.png",
     "cohort": "Museum",
     "session_key": "MMF Staff Survey Submission ID",
-    "email": "mia.locks@gmail.com"
+    "email": "help@museumsmovingforward.com"
   }
 }

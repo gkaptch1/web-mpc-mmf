@@ -7,8 +7,6 @@ define([], function () {
     tables: [
     ],
     "survey": {
-      title: "2022 MMF Data Study",
-      logoPosition: "right",
       pages: [
         {
           name: "page1",
@@ -127,7 +125,7 @@ define([], function () {
             {
               type: "text",
               name: "password",
-              title: "Create a password to access survey results later.  Please be sure not to lose your password, as there is no recovery mechanism!",
+              title: "Final step: You must create a password to log back in to view results. DO NOT LOSE YOUR PASSWORD as there is no recovery mechanism! This is critical for the preservation of privacy.",
               placeHolder: "Password",
               isRequired: true,
             },

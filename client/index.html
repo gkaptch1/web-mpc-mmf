@@ -48,26 +48,25 @@
 <header>
   <div class="container">
     <h1>{{ client.organization }}<br/>
-      <small> {{ client.subtitle }}</small>
+      <subtitle> {{ client.subtitle }}</subtitle>
     </h1>
-    <div id="logos">
+<!--     <div id="logos">
       <img src="{{ client.logo }}" alt="{{ client.organization }} Logo"/>
       <img src="images/bu.gif" alt="BU Logo"/>
-    </div>
+    </div> -->
   </div>
 </header>
 
-<div id="shadow" class="ss-style-multitriangles"></div>
 
 <main id="content" class="container">
 
 
   {% if client.introblock %}
   <div class="row">
-    <section id="password" class="card col-md-10 col-md-offset-1">
+    <section id="introblock" class="card col-md-10 col-md-offset-1">
       <div class="form-group">
         <h2 class="text-center">Welcome!</h2>
-        <p class="text-center">
+        <p class="text-justify">
         {{ client.introtext }}
         </p>
       </div>
@@ -274,7 +273,6 @@
   <div class="container">
       <div class="row text-xs-center text-sm-left text-md-left">
         <div class="col-xs-12 col-sm-5 col-md-5">
-          <p class="text-muted footer-text">Need Help?</p>
           <ul class="list-unstyled text-muted footer-text">
             {% if client.phone %}
             <li><span class="glyphicon glyphicon-earphone"></span> {{ client.phone }}</li>
@@ -283,6 +281,7 @@
             <li> <span class="glyphicon glyphicon-envelope"></span> {{ client.email }}</li>
             {% endif %}
           </ul>
+          <p class="text-muted footer-text"><a href=https://museumsmovingforward.com>museumsmovingforward.com</a></p>
         </div>
       </div>
   </div>
