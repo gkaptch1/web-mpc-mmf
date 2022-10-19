@@ -14,8 +14,8 @@
 
   "client": {
     "table_template": "data/mmf-hr",
-    "organization": "Museums Moving Forward",
-    "subtitle": "100% Talent Data Submission",
+    "organization": "MUSEUMS MOVING FORWARD",
+    "subtitle": "2022 Data Study - HR Survey",
     "dragAndDropInput" : true,
     "tables" : true,
     "surveyjs" : false,
