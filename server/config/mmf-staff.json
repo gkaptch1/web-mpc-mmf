@@ -6,12 +6,11 @@
   "approveDomainsPattern": "^([A-Za-z0-9]+.)?staff-survey.museumsmovingforward.com/$",
   "approveDomainsOpts": {
     "domains": [
-      "https://staff-survey.museumsmovingforward.com/",
+      "https://staff-survey.museumsmovingforward.com/"
     ],
     "email": "kaptchuk@bu.edu",
     "agreeTos": true
   },
-
   "client": {
     "table_template": "data/mmf-staff",
     "organization": "MUSEUMS MOVING FORWARD",

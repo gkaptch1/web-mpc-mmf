@@ -6,7 +6,7 @@
   "approveDomainsPattern": "^([A-Za-z0-9]+.)?director-survey.museumsmovingforward.com/$",
   "approveDomainsOpts": {
     "domains": [
-      "https://director-survey.museumsmovingforward.com/",
+      "https://director-survey.museumsmovingforward.com/"
     ],
     "email": "kaptchuk@bu.edu",
     "agreeTos": true
