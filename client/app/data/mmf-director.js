@@ -14,7 +14,7 @@ define([], function () {
             {
               type: "radiogroup",
               name: "question1",
-              title: "Through what group or fund is your salary as a museum director predominantly (or wholly) paid??",
+              title: "Through what group or fund is your salary as a museum director predominantly (or wholly) paid?",
               isRequired: true,
               choices: [
                 {
@@ -139,7 +139,7 @@ define([], function () {
                   name: "queergender",
                   isRequired: true,
                   inputType: "number",
-                  title: "Queergender",
+                  title: "Non-binary/genderqueer/third gender",
                   validators: [
                       {
                         type: "numeric",
