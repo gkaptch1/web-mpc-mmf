@@ -379,8 +379,8 @@ define([], function () {
                   validators: [
                     {
                       type: "regex",
-                      regex: "^([1-9]+)000?$",
-                      text: "Please enter a valid number. The response cannot include commas or currency symbols (e.g. 50000)",
+                      regex: "^[0-9]+$",
+                      text: "Please enter a valid number. The response cannot include commas, currency symbols, or spaces (e.g. 50000)",
                     },
                   ],
                 },
@@ -1518,6 +1518,8 @@ define([], function () {
       ],
       showPageTitles: false,
       clearInvisibleValues: "none",
+      completedHtml: "<p><h4>Thank you for completing the survey! We are grateful for your time and for your contribution to this fieldwide initiative.</h4></p><p><h4>Your answers are being submitted.  Please don't close the page until you see a popup confirming your submission.</h4></p>",
+      completeText: "Submit Answers",
       widthMode: "responsive",
     },
     usability: [
