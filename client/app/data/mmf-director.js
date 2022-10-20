@@ -112,24 +112,56 @@ define([], function () {
                   isRequired: true,
                   inputType: "number",
                   title: "Woman",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
                 {
                   name: "man",
                   isRequired: true,
                   inputType: "number",
                   title: "Man",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
                 {
                   name: "queergender",
                   isRequired: true,
                   inputType: "number",
                   title: "Queergender",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
                 {
                   name: "another",
                   isRequired: true,
                   inputType: "number",
                   title: "Another Gender",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
               ],
             },
@@ -144,72 +176,133 @@ define([], function () {
                 {
                   name: "black",
                   isRequired: true,
-                  inputType: "number",
                   title: "African American or Black",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],    
                 },
                 {
                   name: "eastasian",
                   isRequired: true,
-                  inputType: "number",
                   title: "East Asian (including Chinese, Japanese, Korean, Mongolian, Tibetan, and Taiwanese)",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],    
                 },
                 {
                   name: "hispanic",
                   isRequired: true,
-                  inputType: "number",
                   title: "Hispanic, Latina, Latino, or Latinx",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
                 {
                   name: "middleeastern",
                   isRequired: true,
-                  inputType: "number",
                   title: "Middle Eastern or North African",
-                },
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],                },
                 {
                   name: "nativeamerican",
                   isRequired: true,
-                  inputType: "number",
                   title: "Native American/Alaska Native/First Nations",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
                 {
                   name: "nativehawaiian",
                   isRequired: true,
-                  inputType: "number",
                   title: "Native Hawaiian or other Pacific Islander",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
                 {
                   name: "southasian",
                   isRequired: true,
-                  inputType: "number",
                   title: "South Asian (including Bangladeshi, Bhutanese, Indian, Nepali, Pakistani, and Sri Lankan)",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
                 {
                   name: "southeastasian",
                   isRequired: true,
-                  inputType: "number",
                   title: "Southeast Asian (including Burmese, Cambodian, Filipino, Hmong, Indonesian, Laotian, Malaysian, Mien, Singaporean, Thai, and Vietnamese)",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
                 {
                   name: "white",
                   isRequired: true,
-                  inputType: "number",
                   title: "White",
+                  validators: [
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
                 {
                   name: "another",
                   isRequired: true,
-                  inputType: "number",
                   title: "Another race or ethnicity",
                   validators: [
-                    {
-                      type: "expression",
-                      text: "Values must be between 0 and 100",
-                      expression:
-                        "question5.black <= 100 and question5.eastasian <= 100 and question5.hispanic <= 100 and question5.middleeastern <= 100 and question5.nativeamerican <= 100 and question5.nativehawaiian <= 100 and question5.southasian <= 100 and question5.southeastasian <= 100 and question5.white <= 100 and question5.another <= 100",
-                    },
-                  ],
+                      {
+                        type: "numeric",
+                        minValue: 0,
+                        maxValue: 100,
+                        text: "Please enter a number between 0 and 100",
+                      },
+                    ],
                 },
-              ],
+              ],          
               colCount: 1,
             },
           ],
@@ -268,8 +361,8 @@ define([], function () {
       ],
       showPageTitles: false,
       clearInvisibleValues: "none",
-      completedHtml: "<p><h4>Almost there!  Please make a password and hit Submit below!</h4></p>",
-      completeText: "Proceed to Data Submission Step",
+      completedHtml: "<p><h4>Thank you for completing the survey! We are grateful for your time and for your contribution to this fieldwide initiative.</h4></p><p><h4>Your answers are being submitted.  Please don't close the page until you see a popup confirming your submission.</h4></p>",
+      completeText: "Submit Answers",
       widthMode: "responsive",
     },
     usability: [
