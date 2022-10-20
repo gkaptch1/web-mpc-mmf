@@ -379,8 +379,8 @@ define([], function () {
                   validators: [
                     {
                       type: "regex",
-                      regex: "^([1-9]+)000?$",
-                      text: "Please enter a valid number. The response cannot include commas or currency symbols (e.g. 50000)",
+                      regex: "^[0-9]+$",
+                      text: "Please enter a valid number. The response cannot include commas, currency symbols, or spaces (e.g. 50000)",
                     },
                   ],
                 },
