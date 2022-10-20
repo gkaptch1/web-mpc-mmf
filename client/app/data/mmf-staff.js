@@ -16,7 +16,7 @@ define([], function () {
               name: "question1",
               title:
                 "Approximately how long have you been working in the art museum field?",
-              defaultValue: {
+              placeHolder: {
                 months: 0,
                 years: 0,
               },
@@ -49,8 +49,8 @@ define([], function () {
               type: "multipletext",
               name: "question2",
               title:
-                "And how long have you been working at your current museum (this could be the same as the previous question)?",
-              defaultValue: {
+                "And how long have you been working at your current museum (this could be the same as the previous question)?",
+              placeHolder: {
                 months: 0,
                 years: 0,
               },
@@ -280,6 +280,48 @@ define([], function () {
             {
               type: "radiogroup",
               name: "question6",
+              title: "Are you employed directly by your museum?",
+              isRequired: true,
+              choices: [
+                {
+                  value: "1",
+                  text: "Yes"
+                },
+                {
+                  value: "2",
+                  text: "No, I’m employed by a government agency (e.g., city, county, state, etc.)"
+                },
+                {
+                  value: "3",
+                  text: "No, I’m employed by a university or college"
+                },
+              ],
+            },
+
+            {           
+              type: "radiogroup",
+              name: "question7",
+              title: "Is your position endowed?",
+              isRequired: true,
+              choices: [
+                {
+                  value: "1",
+                  text: "Yes"
+                },
+                {
+                  value: "2",
+                  text: "No"
+                },
+                {
+                  value: "3",
+                  text: "I don't know"
+                },
+              ],
+            },
+
+            {
+              type: "radiogroup",
+              name: "question8",
               title: "Are you a member, or do you have the option of being a member, of a union as part of your museum job?",
               isRequired: true,
               choices: [
@@ -299,7 +341,7 @@ define([], function () {
             },
             {
               type: "radiogroup",
-              name: "question7",
+              name: "question9",
               title: "How are you compensated in this position?",
               isRequired: true,
               choices: [
@@ -327,14 +369,20 @@ define([], function () {
               elements: [
                 {
                   type: "text",
-                  name: "question8",
+                  name: "question10",
                   title:
-                    "What is your approximate gross annual income (before taxes and deductions) from your current position in the museum? (If this changes from month to month, please provide an average). Report only your income from your museum job and round to the nearest multiple of 1,000.",
+                    "What is your approximate gross annual income (before taxes and deductions) from your current position in the museum? (If this changes from month to month, please provide an average). Report only your income from your museum job and round to the nearest multiple of 1000.",
                   isRequired: true,
-                  inputType: "number",
                   min: 0,
                   step: 1000,
                   max: 600000,
+                  validators: [
+                    {
+                      type: "regex",
+                      regex: "^([1-9]+)000?$",
+                      text: "Please enter a valid number. The response cannot include commas or currency symbols (e.g. 50000)",
+                    },
+                  ],
                 },
                 {
                   type: "panel",
@@ -342,7 +390,7 @@ define([], function () {
                   elements: [
                     {
                       type: "radiogroup",
-                      name: "question9",
+                      name: "question11",
                       title:
                         "Compared to people at similar position levels (e.g., entry level, associate, manager, executive) in my institution, I think my salary is:",
                       isRequired: true,
@@ -367,7 +415,7 @@ define([], function () {
                     },
                     {
                       type: "radiogroup",
-                      name: "question10",
+                      name: "question12",
                       title:
                         "Compared to people at other art museums with comparable position levels (e.g., entry level, associate, manager, director, executive), I think my salary is:",
                       isRequired: true,
@@ -395,53 +443,90 @@ define([], function () {
                   name: "panel3",
                   elements: [
                     {
-                      type: "radiogroup",
-                      name: "question11",
-                      visibleIf: "{question4} <> 5 and {question6} <> 4",
+                      type: "checkbox",
+                      name: "question13",
+                      visibleIf: "{question4} < 5 or {question4} > 5 and {question9} < 4",
                       title:
-                        "Have you ever received a promotion (with title change and pay increase beyond cost of living) while at your current museum?",
+                        "Have you ever received any of the following combinations of promotions and pay increases while at your current museum? Select all that apply. (Please consider ONLY pay increases beyond cost of living or inflation adjustment - typically 2-3% per year).",
                       isRequired: true,
                       choices: [
                         {
                           value: "1",
-                          text: "Yes",
+                          text: "A simultaneous promotion with title change and a pay increase beyond cost of living",
                         },
                         {
                           value: "2",
-                          text: "No",
+                          text: "A promotion with title change but no accompanying pay increase beyond cost of living",
+                        },
+                        {
+                          value: "3",
+                          text: "A pay increase beyond cost of living without a change in title",
+                        },
+                        {
+                          value: "4",
+                          text: "None of the above",
+                        },
+                      ],
+                    },
+                    {
+                      type: "text",
+                      name: "question14",
+                      visibleIf: "{question13} = 1",
+                      title:
+                        "How many times have you received a promotion (with title change and pay increase beyond cost of living) while at your current museum?",
+                      isRequired: true,
+                      inputType: "number",
+                      min: 0,
+                      step: 1,
+                      max: 25,
+                      validators: [
+                        {
+                          type: "numeric",
+                          text: "Please enter a valid number.",
+                        },
+                      ],
+                    },
+                    {
+                      type: "text",
+                      name: "question15",
+                      visibleIf: "{question13} = 2",
+                      title:
+                        "How many times have you received a promotion (with title change but no accompanying pay increase beyond cost of living) while at your current museum?",
+                      isRequired: true,
+                      inputType: "number",
+                      min: 0,
+                      step: 1,
+                      max: 25,
+                      validators: [
+                        {
+                          type: "numeric",
+                          text: "Please enter a valid number.",
+                        },
+                      ],
+                    },
+                    {
+                      type: "text",
+                      name: "question16",
+                      visibleIf: "{question13} = 3",
+                      title:
+                        "How many times have you received a pay increase (beyond cost of living) without a change in title while at your current museum?",
+                      isRequired: true,
+                      inputType: "number",
+                      min: 0,
+                      step: 1,
+                      max: 25,
+                      validators: [
+                        {
+                          type: "numeric",
+                          text: "Please enter a valid number.",
                         },
                       ],
                     },
                     {
                       type: "radiogroup",
-                      name: "question12",
-                      visibleIf: "{question11} = 1",
+                      name: "question17",
                       title:
-                        "How many times have you received a promotion (with title change and pay increase beyond cost of living) while at your current museum?",
-                      isRequired: true,
-                      choices: [
-                        {
-                          value: "1",
-                          text: "1",
-                        },
-                        {
-                          value: "2",
-                          text: "2",
-                        },
-                        {
-                          value: "3",
-                          text: "3",
-                        },
-                        {
-                          value: "4",
-                          text: "4 or more",
-                        },                      ],
-                    },
-                    {
-                      type: "radiogroup",
-                      name: "question13",
-                      title:
-                        "How well does your current compensation from the museum cover your living expenses(e.g., rent, utilities, food, childcare)? My salary is …",
+                        "How well does your current compensation from the museum cover your living expenses(e.g., rent, utilities, food, childcare)? My salary is …",
                       isRequired: true,
                       choices: [
                         {
@@ -464,7 +549,7 @@ define([], function () {
                     },
                     {
                       type: "checkbox",
-                      name: "question14",
+                      name: "question18",
                       title:
                         "Which of the following statements best represent your museum’s post-COVID return-to-work policy, as it applies to you? Select all that apply.",
                       isRequired: true,
@@ -500,8 +585,8 @@ define([], function () {
                     "We have just a few more questions about salary and promotions at your institution.",
                 },
               ],
-              visibleIf: "{question7} < 4",
-              requiredIf: "{question7} < 4",
+              visibleIf: "{question9} < 4",
+              requiredIf: "{question9} < 4",
             },
           ],
         },
@@ -510,7 +595,7 @@ define([], function () {
           elements: [
             {
               type: "matrix",
-              name: "question15",
+              name: "question19",
               title:
                 "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace.",
               "alternateRows": true,
@@ -594,7 +679,7 @@ define([], function () {
           elements: [
             {
               type: "checkbox",
-              name: "question16",
+              name: "question20",
               title:
                 "Which of the following statements best reflect the salary sharing practices of your museum workplace? Select all that apply.",
               isRequired: true,
@@ -632,7 +717,7 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question17",
+              name: "question21",
               title:
                 "In the past 12 months, have you experienced any of the following in your museum workplace? Select all that apply.",
               isRequired: true,
@@ -686,7 +771,7 @@ define([], function () {
           elements: [
             {
               type: "radiogroup",
-              name: "question18",
+              name: "question22",
               title:
                 "Have you ever considered leaving your current museum workplace for another art museum?",
               isRequired: true,
@@ -703,8 +788,8 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question19",
-              visibleIf: "{question18} = 1",
+              name: "question23",
+              visibleIf: "{question22} = 1",
               title:
                 "Which of the following reasons made you consider leaving your current museum workplace for another art museum? Select all that apply.",
               isRequired: true,
@@ -766,7 +851,7 @@ define([], function () {
           elements: [
             {
               type: "radiogroup",
-              name: "question20",
+              name: "question24",
               title: "Have you ever considered leaving the art museum field?",
               isRequired: true,
               choices: [
@@ -782,8 +867,8 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question21",
-              visibleIf: "{question20} = 1",
+              name: "question25",
+              visibleIf: "{question24} = 1",
               title:
                 "Which of the following reasons made you consider leaving the art museum field? Select all that apply.",
               isRequired: true,
@@ -849,7 +934,7 @@ define([], function () {
           elements: [
             {
               type: "radiogroup",
-              name: "question22",
+              name: "question26",
               title:
                 "Have you felt discriminated against or harassed on the basis of a protected characteristic (e.g., gender, sexual orientation, racial or ethnic background, social or economic status, age, disability...) while working in your current museum workplace?",
               isRequired: true,
@@ -870,8 +955,8 @@ define([], function () {
             },
             {
               type: "radiogroup",
-              name: "question23",
-              visibleIf: "{question22} = 1",
+              name: "question27",
+              visibleIf: "{question26} = 1",
               title:
                 "How often have you felt discriminated against and/or harassed while working in your current museum workplace?",
               isRequired: true,
@@ -896,8 +981,8 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question24",
-              visibleIf: "{question22} = 1",
+              name: "question28",
+              visibleIf: "{question26} = 1",
               title:
                 "Which of the following forms of discrimination and/or harassment, have you experienced in your current museum workplace? Please select ALL that apply.",
               isRequired: true,
@@ -938,8 +1023,8 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question25",
-              visibleIf: "{question22} = 1",
+              name: "question29",
+              visibleIf: "{question26} = 1",
               title:
                 "Have you taken any of the following actions in response to discrimination and/or harassment in your current museum workplace? Please select ALL that apply.",
               isRequired: true,
@@ -954,28 +1039,28 @@ define([], function () {
                 },
                 {
                   value: "3",
-                  text: "I followed a union-provided grievance process for reporting",
-                },
-                {
-                  value: "4",
                   text: "I used an anonymous reporting mechanism",
                 },
                 {
-                  value: "5",
+                  value: "4",
                   text: "I used an employee complaint hotline",
                 },
                 {
-                  value: "6",
+                  value: "5",
                   text: "I talked to a neutral employee or manager who can communicate the issues to HR",
                 },
                 {
-                  value: "7",
+                  value: "6",
                   text: "I used a third-party reporting process (e.g., use of an ombudsman)",
                 },
                 {
-                  value: "8",
+                  value: "7",
                   text: "I used another reporting mechanism",
                 },
+                {
+                  value: "8",
+                  text: "I followed a union-provided grievance process for reporting",
+                },                
                 {
                   value: "9",
                   text: "I did something else",
@@ -988,8 +1073,8 @@ define([], function () {
             },
             {
               type: "radiogroup",
-              name: "question26",
-              visibleIf: "{question25} < 10",
+              name: "question30",
+              visibleIf: "{question29} < 9",
               title:
                 "How satisfied are you with how HR and /or the museum resolved your complaint(s) overall?",
               isRequired: true,
@@ -1010,7 +1095,7 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question27",
+              name: "question31",
               title:
                 "If you have experienced any discrimination or harassment and decided NOT to take action in response, what were your reasons? Select all that apply.",
               isRequired: true,
@@ -1043,6 +1128,10 @@ define([], function () {
                   value: "7",
                   text: "I always reported my experiences of discrimination and harassment",
                 },
+                {
+                  value: "8",
+                  text: "I haven't experienced discrimination or harassment",
+                },
               ],
             },
           ],
@@ -1052,7 +1141,7 @@ define([], function () {
           elements: [
             {
               type: "checkbox",
-              name: "question28",
+              name: "question32",
               title:
                 "Thinking about the past 12 months in your workplace (or your total tenure if less than 12 months), which of the following 3 emotions do you most associate with working at your museum? Select up to THREE.",
               maxSelectedChoices: 3,
@@ -1106,7 +1195,7 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question29",
+              name: "question33",
               title:
                 "What kind of role, if any, do you have in your museum’s diversity, equity, and inclusion efforts? Select all that apply.",
               isRequired: true,
@@ -1143,7 +1232,7 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question30",
+              name: "question34",
               title:
                 "To your knowledge, has your museum measured the composition of any of the following groups with respect to gender, race, and ethnicity within the last 3 years? Select ALL that apply.",
               isRequired: true,
@@ -1172,7 +1261,7 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question31",
+              name: "question35",
               title:
                 "What/Who do you believe has a large impact on your museum leadership’s decisions? Please select all that apply.",
               isRequired: true,
@@ -1211,28 +1300,28 @@ define([], function () {
           elements: [
             {
               type: "text",
-              name: "question32",
+              name: "question36",
               title: "In what year were you born?",
               isRequired: true,
               inputType: "number",
               autoComplete: "bday-year",
-              min: 1900,
+              min: 1922,
               max: 2022,
               step: 1,
             },
             {
               type: "radiogroup",
-              name: "question33",
+              name: "question37",
               title: "What is your gender? Please select all that apply.",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "Female",
+                  text: "Woman",
                 },
                 {
                   value: "2",
-                  text: "Male",
+                  text: "Man",
                 },
                 {
                   value: "3",
@@ -1250,7 +1339,7 @@ define([], function () {
             },
             {
               type: "radiogroup",
-              name: "question34",
+              name: "question38",
               title: "How would you define your sexual orientation?",
               isRequired: true,
               choices: [
@@ -1302,7 +1391,7 @@ define([], function () {
           elements: [
             {
               type: "checkbox",
-              name: "question35",
+              name: "question39",
               title:
                 "With which of the following racial and ethnic groups do you identify as? Please select all that apply.",
               isRequired: true,
@@ -1355,7 +1444,7 @@ define([], function () {
             },
             {
               type: "radiogroup",
-              name: "question36",
+              name: "question40",
               title:
                 "What is the highest level of education that you’ve completed?",
               isRequired: true,
@@ -1392,7 +1481,7 @@ define([], function () {
             },
             {
               type: "radiogroup",
-              name: "question37",
+              name: "question41",
               title:
                 "Do you identify as a person with a disability and/or as neuroatypical/neurodivergent?",
               isRequired: true,

@@ -47,16 +47,16 @@ define([], function () {
               type: "text",
               name: "question2",
               title:
-                "In your last complete fiscal year, what proportion of your annual budget was allocated to staff compensation and benefits? ",
-              placeHolder : "XX%",
+                "In your last complete fiscal year, what proportion of your annual budget was allocated to staff compensation and benefits? (Please exclude any non-numeric characters)",
+              placeHolder : "XX",
               inputType: "number",
               isRequired: true,
               validators: [
                 {
-                  type: "expression",
-                  text: "Must be between 0 and 100",
-                  expression:
-                    "{question2} <= 100 and {question2} >= 0",
+                  type: "numeric",
+                  text: "Must be between 0 and 100, and exclude any non-numeric characters (eg. no % symbol)",
+                  minValue: 0,
+                  maxValue: 100,
                 },
               ],
             },
@@ -64,16 +64,16 @@ define([], function () {
               type: "text",
               name: "question3",
               title:
-                "For your last complete fiscal year, what proportion of your organization’s revenue was directly contributed by board members?",
-              placeHolder : "XX%",
+                "For your last complete fiscal year, what proportion of your organization’s revenue was directly contributed by board members? (Please exclude any non-numeric characters)",
+              placeHolder : "XX",
               inputType: "number",
               isRequired: true,
               validators: [
                 {
-                  type: "expression",
-                  text: "Must be between 0 and 100",
-                  expression:
-                    "{question3} <= 100 and {question3} >= 0",
+                  type: "numeric",
+                  text: "Must be between 0 and 100, and exclude any non-numeric characters (eg. no % symbol)",
+                  minValue: 0,
+                  maxValue: 100,
                 },
               ],
             },
@@ -108,16 +108,16 @@ define([], function () {
               colCount: 2,
               items: [
                 {
-                  name: "female",
+                  name: "woman",
                   isRequired: true,
                   inputType: "number",
-                  title: "Female",
+                  title: "Woman",
                 },
                 {
-                  name: "male",
+                  name: "man",
                   isRequired: true,
                   inputType: "number",
-                  title: "Male",
+                  title: "Man",
                 },
                 {
                   name: "queergender",

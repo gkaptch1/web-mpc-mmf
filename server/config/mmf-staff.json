@@ -14,7 +14,7 @@
   "client": {
     "table_template": "data/mmf-staff",
     "organization": "MUSEUMS MOVING FORWARD",
-    "subtitle": "2022 Data Study - Test Survey",
+    "subtitle": "2022 Data Study - Staff Survey",
     "dragAndDropInput" : false,
     "tables" : false,
     "surveyjs" : true,
