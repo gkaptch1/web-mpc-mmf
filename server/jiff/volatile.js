@@ -27,8 +27,7 @@ module.exports = function (JIFFWrapper) {
         var history = await modulesWrappers.History.query(session_key);
         for (var submission of history) {
           var party_id = submission.jiff_party_id;
-          Object.assign(self.serverInstance.computationMaps.keys, {[session_key]: {}});
-          Object.assign(self.serverInstance.computationMaps.keys[session_key], {[party_id]: ''});
+          self.serverInstance.computationMaps.keys[session_key][party_id] = '';
         }
       }
 

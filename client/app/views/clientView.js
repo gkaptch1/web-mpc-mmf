@@ -139,7 +139,6 @@ define([
             alertHandler.error("The link you used to access this site will not allow you to submit responses. Please use the unique link provided to you.  If you need help, please contact your HR department or email us at help@museumsmovingforward.com.");
           }
         });
-        console.log("test")
       }
 
       $participationCode.val(getParameterByName("participationCode"));
