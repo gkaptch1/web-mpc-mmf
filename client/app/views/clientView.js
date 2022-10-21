@@ -133,6 +133,15 @@ define([
           : decodeURIComponent(results[1].replace(/\+/g, " "));
       };
 
+      if ( document.getElementById("session").getAttribute("hidden") != null && document.getElementById("participation-code").getAttribute("hidden") != null ) {
+        clientController.verifySessionServerExplicitParams(getParameterByName("session"), getParameterByName("participationCode"), function(suc, resp) {
+          if(!suc) {
+            alertHandler.error("The link you used to access this site will not allow you to submit responses. Please use the unique link provided to you.  If you need help, please contact your HR department or email us at help@museumsmovingforward.com.");
+          }
+        });
+        console.log("test")
+      }
+
       $participationCode.val(getParameterByName("participationCode"));
       $session.val(getParameterByName("session"));
       if (String($session.val()).trim() !== "") {
