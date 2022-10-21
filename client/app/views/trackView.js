@@ -194,7 +194,7 @@ define(['jquery', 'controllers/analystController', 'table_template', 'Ladda', 'f
         $existingParticipants = $('#participants-existing-' + cohortId);
         $existingParticipants.html(urls.filter(item => !item.includes("subscribe")).join('\n'));
         $existingParticipants = $('#subscriber-existing-' + cohortId);
-        $existingParticipants.html(urls.filter(item => item.includes("subscribe")).join('\n'));
+        $existingParticipants.html(urls.filter(item => item.includes("subscribe")).join('\n').replace(/subscribe\?/g,"/subscribe?"));
       }
     }
 
