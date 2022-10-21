@@ -6,7 +6,7 @@ define([], function () {
   return {
     tables: [
       {
-        name: "Table 1 - Numbers of employees by position",
+        name: "Table 1 - How many people are currently employed by your organization in each of the following categories? Please choose the best single category for each employee if more than one could apply.",
         element: "position-employee",
         //The format for linear regression is an array of pairs where each pair is an array of the independent variable
         //followed by the dependent variable. The independent variable and dependent variable are both arrays of two elements,
@@ -80,10 +80,10 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "Test",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
+            sheet: "1. Employee general",
+            start: "B9",
+            end: "B15",
+            firstrow: "Full-Time Employees",
           },
         ],
         tooltips: [
@@ -103,7 +103,7 @@ define([], function () {
         ],
       },
       {
-        name: "Table 2 - Full-time employees by compensation",
+        name: "Table 2 - In the past calendar year, how many full-time staff in your organization received an annual salary/compensation of...",
         element: "ft-comp",
         operations: { SUM: true, STD: true, LIN: null },
         cohortOperations: { SUM: true },
@@ -132,15 +132,15 @@ define([], function () {
           },
           {
             key: "100to150",
-            label: "$100,000 - $150,000",
+            label: "$100,000 - $149,999",
           },
           {
             key: "150to200",
-            label: "$150,000 - $200,000",
+            label: "$150,000 - $199,999",
           },
           {
             key: "200to300",
-            label: "$200,000 - $30,000",
+            label: "$200,000 - $299,999",
           },
           {
             key: "morethan300",
@@ -169,10 +169,10 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "Test2",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
+            sheet: "2. Compensation",
+            start: "B10",
+            end: "B17",
+            firstrow: "Less than $25,000",
           },
         ],
         tooltips: [
@@ -192,7 +192,7 @@ define([], function () {
         ],
       },
       {
-        name: "Table 3 - Part-time of employees by compensation",
+        name: "Table 3 - In the past calendar year, how many part-time staff, seasonal staff, temporary staff, and paid interns in your organization received an annual salary/compensation of...",
         element: "pt-comp",
         operations: { SUM: true, STD: true, LIN: null },
         cohortOperations: { SUM: true },
@@ -221,15 +221,15 @@ define([], function () {
           },
           {
             key: "100to150",
-            label: "$100,000 - $150,000",
+            label: "$100,000 - $149,999",
           },
           {
             key: "150to200",
-            label: "$150,000 - $200,000",
+            label: "$150,000 - $199,999",
           },
           {
             key: "200to300",
-            label: "$200,000 - $30,000",
+            label: "$200,000 - $299,999",
           },
           {
             key: "morethan300",
@@ -258,10 +258,10 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "Test2",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
+            sheet: "2. Compensation",
+            start: "B23",
+            end: "B30",
+            firstrow: "Less than $25,000",
           },
         ],
         tooltips: [
@@ -281,7 +281,7 @@ define([], function () {
         ],
       },
       {
-        name: "Table 4 - Promotion rates by compensation",
+        name: "Table 4 - In the past calendar year, how many staff received a promotion (with title change and pay increase beyond cost of living) that resulted in a salary within each of the following pay levels?",
         element: "promotion-comp",
         operations: { SUM: true, STD: true, LIN: null },
         cohortOperations: { SUM: true },
@@ -310,15 +310,15 @@ define([], function () {
           },
           {
             key: "100to150",
-            label: "$100,000 - $150,000",
+            label: "$100,000 - $149,999",
           },
           {
             key: "150to200",
-            label: "$150,000 - $200,000",
+            label: "$150,000 - $199,999",
           },
           {
             key: "200to300",
-            label: "$200,000 - $30,000",
+            label: "$200,000 - $299,999",
           },
           {
             key: "morethan300",
@@ -347,10 +347,10 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "Test2",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
+            sheet: "2. Compensation",
+            start: "B36",
+            end: "B43",
+            firstrow: "Less than $25,000",
           },
         ],
         tooltips: [
@@ -370,7 +370,7 @@ define([], function () {
         ],
       },
       {
-        name: "Table 5 - Hired by compensation",
+        name: "Table 5 - Over the past calendar year, how many staff members were hired by your organization at pay level...",
         element: "hired-comp",
         operations: { SUM: true, STD: true, LIN: null },
         cohortOperations: { SUM: true },
@@ -399,15 +399,15 @@ define([], function () {
           },
           {
             key: "100to150",
-            label: "$100,000 - $150,000",
+            label: "$100,000 - $149,999",
           },
           {
             key: "150to200",
-            label: "$150,000 - $200,000",
+            label: "$150,000 - $199,999",
           },
           {
             key: "200to300",
-            label: "$200,000 - $30,000",
+            label: "$200,000 - $299,999",
           },
           {
             key: "morethan300",
@@ -436,10 +436,10 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "Test2",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
+            sheet: "3. New hires and departures",
+            start: "B9",
+            end: "B16",
+            firstrow: "Less than $25,000",
           },
         ],
         tooltips: [
@@ -459,32 +459,29 @@ define([], function () {
         ],
       },
       {
-        name: "Table 6 - Covid hires",
-        element: "covid-hire",
+        name: "Table 6 - In the past TWO calendar years (2020 and 2021), how many full-time regular employees have been hired by your organization?",
+        element: "hires",
         operations: { SUM: true, STD: true, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
-          rowHeaderWidth: 150,
-          height: 230,
+          rowHeaderWidth: 200,
+          height: 500,
           colWidths: [150],
           stretchH: "none",
         },
         rows: [
           {
-            key: "hired",
-            label: "Hired",
-          },
-          {
-            key: "stillemployed",
-            label: "Still Employedd",
+            key: "recenthires",
+            label: "Full-Time Hires",
           },
         ],
         cols: [
           [
             {
-              key: "num",
-              label: "Number of employees",
+              key: "hires",
+              label: "Number of hires",
             },
+
           ],
         ],
         types: [
@@ -495,16 +492,16 @@ define([], function () {
             },
             type: "int",
             min: 0,
-            max_warning: 200,
+            max_warning: 1,
             empty: false,
           },
         ],
         excel: [
           {
-            sheet: "Test2",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
+            sheet: "3. New hires and departures",
+            start: "B22",
+            end: "B22",
+            firstrow: "Number of hires",
           },
         ],
         tooltips: [
@@ -524,8 +521,131 @@ define([], function () {
         ],
       },
       {
+        name: "Table 7 - How many of your recent full-time regular hires from the last two years (from Table 6 above) still work for your organization?",
+        element: "retentions",
+        operations: { SUM: true, STD: true, LIN: null },
+        cohortOperations: { SUM: true },
+        hot_parameters: {
+          rowHeaderWidth: 200,
+          height: 500,
+          colWidths: [150],
+          stretchH: "none",
+        },
+        rows: [
+          {
+            key: "retentions",
+            label: "Number Retained",
+          },
+        ],
+        cols: [
+          [
+            {
+              key: "hires",
+              label: "Number of hires",
+            },
 
-        name: "Table 7 - Departed by compensation",
+          ],
+        ],
+        types: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            type: "int",
+            min: 0,
+            max_warning: 1,
+            empty: false,
+          },
+        ],
+        excel: [
+          {
+            sheet: "3. New hires and departures",
+            start: "B26",
+            end: "B26",
+            firstrow: "Number of hires",
+          },
+        ],
+        tooltips: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            tooltip: {
+              errorTitle: "Invalid Data Entry",
+              error:
+                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+              warningTitle: "Warning: Data is too big",
+              warning: "Are you sure this value is correct?",
+            },
+          },
+        ],
+      },
+      {
+        name: "Table 8 - Are new employees required to sign binding arbitration or confidentiality agreements during their onboarding process (e.g., in an employment letter, employee handbook)?",
+        element: "nda",
+        operations: { SUM: true, STD: true, LIN: null },
+        cohortOperations: { SUM: true },
+        hot_parameters: {
+          rowHeaderWidth: 200,
+          height: 500,
+          colWidths: [150],
+          stretchH: "none",
+        },
+        rows: [
+          {
+            key: "nda",
+            label: "NDA",
+          },
+        ],
+        cols: [
+          [
+            {
+              key: "hires",
+              label: "Number of hires",
+            },
+
+          ],
+        ],
+        types: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            type: "int",
+            min: 0,
+            max_warning: 1,
+            empty: false,
+          },
+        ],
+        excel: [
+          {
+            sheet: "3. New hires and departures",
+            start: "B30",
+            end: "B30",
+            firstrow: "Number of hires",
+          },
+        ],
+        tooltips: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            tooltip: {
+              errorTitle: "Invalid Data Entry",
+              error:
+                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+              warningTitle: "Warning: Data is too big",
+              warning: "Are you sure this value is correct?",
+            },
+          },
+        ],
+      },
+      {
+        name: "Table 9 - Over the past calendar year, how many staff members departed your organization (voluntary or involuntary) at pay level:",
         element: "departed-comp",
         operations: { SUM: true, STD: true, LIN: null },
         cohortOperations: { SUM: true },
@@ -554,15 +674,15 @@ define([], function () {
           },
           {
             key: "100to150",
-            label: "$100,000 - $150,000",
+            label: "$100,000 - $149,999",
           },
           {
             key: "150to200",
-            label: "$150,000 - $200,000",
+            label: "$150,000 - $199,999",
           },
           {
             key: "200to300",
-            label: "$200,000 - $30,000",
+            label: "$200,000 - $299,999",
           },
           {
             key: "morethan300",
@@ -591,10 +711,10 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "Test2",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
+            sheet: "3. New hires and departures",
+            start: "B39",
+            end: "B46",
+            firstrow: "Less than $25,000",
           },
         ],
         tooltips: [
@@ -614,7 +734,281 @@ define([], function () {
         ],
       },
       {
-        name: "Table 8 - Employee Benefits",
+        name: "Table 10 - How many of those staff who departed your organization (voluntary or involuntary) over the past calendar year signed NDAs (Non-Disclosure Agreements)?",
+        element: "nda-departures",
+        operations: { SUM: true, STD: true, LIN: null },
+        cohortOperations: { SUM: true },
+        hot_parameters: {
+          rowHeaderWidth: 200,
+          height: 500,
+          colWidths: [150],
+          stretchH: "none",
+        },
+        rows: [
+          {
+            key: "nda",
+            label: "Number NDA",
+          },
+        ],
+        cols: [
+          [
+            {
+              key: "departures",
+              label: "Number of departures",
+            },
+
+          ],
+        ],
+        types: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            type: "int",
+            min: 0,
+            max_warning: 1,
+            empty: false,
+          },
+        ],
+        excel: [
+          {
+            sheet: "3. New hires and departures",
+            start: "B51",
+            end: "B51",
+            firstrow: "Number of departures",
+          },
+        ],
+        tooltips: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            tooltip: {
+              errorTitle: "Invalid Data Entry",
+              error:
+                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+              warningTitle: "Warning: Data is too big",
+              warning: "Are you sure this value is correct?",
+            },
+          },
+        ],
+      },
+      {
+        name: "Table 11 - Unionization",
+        element: "unionization",
+        operations: { SUM: true, STD: true, LIN: null },
+        cohortOperations: { SUM: true },
+        hot_parameters: {
+          rowHeaderWidth: 200,
+          height: 500,
+          colWidths: [150],
+          stretchH: "none",
+        },
+        rows: [
+            {
+              key: "unionized-yes",
+              label: "Unionization - Yes",
+            },
+            {
+              key: "unionized-no",
+              label: "Unionization - No",
+            },
+            {
+              key: "unionized-neg",
+              label: "Unionization - Negotiation",
+            },
+        ],
+        cols: [
+          [
+            {
+              key: "nda",
+              label: "Is any portion of your employee workforce unionized?",
+            },
+          ],
+        ],
+        types: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            type: "int",
+            min: 0,
+            max_warning: 1,
+            empty: false,
+          },
+        ],
+        excel: [
+          {
+            sheet: "1. Employee general",
+            start: "B20",
+            end: "B22",
+            firstrow: "Unionization - Yes",
+          },
+        ],
+        tooltips: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            tooltip: {
+              errorTitle: "Invalid Data Entry",
+              error:
+                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+              warningTitle: "Warning: Data is too big",
+              warning: "Are you sure this value is correct?",
+            },
+          },
+        ],
+      },
+      {
+        name: "Table 12 - Unionization Year",
+        element: "unionization-year",
+        operations: { SUM: true, STD: true, LIN: null },
+        cohortOperations: { SUM: true },
+        hot_parameters: {
+          rowHeaderWidth: 200,
+          height: 500,
+          colWidths: [150],
+          stretchH: "none",
+        },
+        rows: [
+          {
+            key: "nda",
+            label: "Is any portion of your employee workforce unionized?",
+          },
+        ],
+        cols: [
+          [
+            {
+              key: "unionization-year",
+              label: "Unionization - Year",
+            },
+          ],
+        ],
+        types: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            type: "int",
+            min: 0,
+            max_warning: 1,
+            empty: false,
+          },
+        ],
+        excel: [
+          {
+            sheet: "1. Employee general",
+            start: "B26",
+            end: "B26",
+            firstrow: "Unionization - Year",
+          },
+        ],
+        tooltips: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            tooltip: {
+              errorTitle: "Invalid Data Entry",
+              error:
+                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+              warningTitle: "Warning: Data is too big",
+              warning: "Are you sure this value is correct?",
+            },
+          },
+        ],
+      },
+      {
+        name: "Table 13 - Has your organization measured the composition of any of the following groups with respect to gender, race, and ethnicity within the last 3 years? Select all that apply.",
+        element: "measured",
+        operations: { SUM: true, STD: true, LIN: null },
+        cohortOperations: { SUM: true },
+        hot_parameters: {
+          rowHeaderWidth: 200,
+          height: 500,
+          colWidths: [150],
+          stretchH: "none",
+        },
+        rows: [
+            {
+              key: "artists",
+              label: "Artists in the collection",
+            },
+            {
+              key: "board",
+              label: "Board and/or trustee members",
+            },
+            {
+              key: "staff",
+              label: "Staff members",
+            },
+            {
+              key: "volunteers",
+              label: "Volunteers",
+            },
+            {
+              key: "none",
+              label: "None of the above",
+            },
+            {
+              key: "idk",
+              label: "I don't know",
+            },
+        ],
+        cols: [
+          [
+            {
+              key: "measured",
+              label: "Measured",
+            },
+          ]
+        ],
+        types: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            type: "int",
+            min: 0,
+            max_warning: 1,
+            empty: false,
+          },
+        ],
+        excel: [
+          {
+            sheet: "1. Employee general",
+            start: "B31",
+            end: "B36",
+            firstrow: "Artists in the collection",
+          },
+        ],
+        tooltips: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            tooltip: {
+              errorTitle: "Invalid Data Entry",
+              error:
+                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+              warningTitle: "Warning: Data is too big",
+              warning: "Are you sure this value is correct?",
+            },
+          },
+        ],
+      },
+
+      {
+        name: "Table 14 - Which of the following benefits does your organization provide for the following types of employees? Select all that apply.",
         element: "benefits",
         operations: { SUM: true, STD: true, LIN: null },
         cohortOperations: { SUM: true },
@@ -745,10 +1139,10 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "Test2",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
+            sheet: "4. Benefits",
+            start: "B8",
+            end: "D27",
+            firstrow: "Health insurance (covered 100% by the employer)",
           },
         ],
         tooltips: [
@@ -768,7 +1162,182 @@ define([], function () {
         ],
       },
       {
-        name: "Table 9 - Complains",
+        name: "Table 15 - Which of the following statements best reflect the salary sharing practices of your museum? Select all that apply.",
+        element: "salarysharing",
+        operations: { SUM: true, STD: true, LIN: null },
+        cohortOperations: { SUM: true },
+        hot_parameters: {
+          rowHeaderWidth: 200,
+          height: 500,
+          colWidths: [150],
+          stretchH: "none",
+        },
+        rows: [
+          {
+              key: "specific",
+              label: "The museum shares the specific salaries of all employees publicly",
+            },
+            {
+              key: "handbook",
+              label: "A union handbook lists salary levels for each job at the museum",
+            },
+            {
+              key: "positions",
+              label: "The museum shares salary ranges for all positions or levels with employees",
+            },
+            {
+              key: "ranges",
+              label: "The museum posts salary ranges for each open position ",
+            },
+            {
+              key: "discourages",
+              label: "The museum actively discourages employees from discussing their salaries",
+            },
+            {
+              key: "none",
+              label: "None of the above",
+            },
+        ],
+        cols: [
+          [
+            {
+              key: "practices",
+              label: "Practices",
+            },
+          ],
+        ],
+        types: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            type: "int",
+            min: 0,
+            max_warning: 1,
+            empty: false,
+          },
+        ],
+        excel: [
+          {
+            sheet: "1. Employee general",
+            start: "B40",
+            end: "B45",
+            firstrow: "The museum shares the specific salaries of all employees publicly",
+          },
+        ],
+        tooltips: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            tooltip: {
+              errorTitle: "Invalid Data Entry",
+              error:
+                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+              warningTitle: "Warning: Data is too big",
+              warning: "Are you sure this value is correct?",
+            },
+          },
+        ],
+      },
+      {
+        name: "Table 16 - What kind of reporting mechanisms for workplace disputes, harassment, or discrimination are currently in place at your organization? Select all that apply.",
+        element: "harassment",
+        operations: { SUM: true, STD: true, LIN: null },
+        cohortOperations: { SUM: true },
+        hot_parameters: {
+          rowHeaderWidth: 200,
+          height: 500,
+          colWidths: [150],
+          stretchH: "none",
+        },
+        rows: [
+          {
+              key: "form",
+              label: "An HR complaint form (i.e., in-person or online)",
+            },
+            {
+              key: "staff",
+              label: "An HR staff member who is available to employees",
+            },
+            {
+              key: "union",
+              label: "A union-provided grievance process for reporting",
+            },
+            {
+              key: "anonymous",
+              label: "An anonymous reporting mechanism",
+            },
+            {
+              key: "hotline",
+              label: "An employee complaint hotline",
+            },
+            {
+              key: "neutral",
+              label: "A neutral employee or manager who can communicate the issues to HR",
+            },
+            {
+              key: "ombudsman",
+              label: "A third-party reporting process (e.g., use of an ombudsman)",
+            },
+            {
+              key: "another",
+              label: "Another reporting mechanism",
+            },
+            {
+              key: "none",
+              label: "My organization doesn’t have any reporting mechanisms",
+            },
+        ],
+        cols: [
+          [
+            {
+              key: "practices",
+              label: "Practices",
+            },
+          ],
+        ],
+        types: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            type: "int",
+            min: 0,
+            max_warning: 1,
+            empty: false,
+          },
+        ],
+        excel: [
+          {
+            sheet: "5. Complaints",
+            start: "B7",
+            end: "B15",
+            firstrow: "An HR complaint form (i.e., in-person or online)",
+          },
+        ],
+        tooltips: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            tooltip: {
+              errorTitle: "Invalid Data Entry",
+              error:
+                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+              warningTitle: "Warning: Data is too big",
+              warning: "Are you sure this value is correct?",
+            },
+          },
+        ],
+      },
+
+      {
+        name: "Table 17 - In the past calendar year, how many staff (please consider ALL staff members, including Full-Time and Part-Time) have formally and/or informally expressed concern or dissatisfaction related to the following topics.  If you don't track informal complaints, please make your best estimate.",
         element: "complaints",
         operations: { SUM: true, STD: true, LIN: null },
         cohortOperations: { SUM: true },
@@ -810,23 +1379,6 @@ define([], function () {
               key: "informal",
               label: "Informal complaints",
             },
-            {
-              key: "legal",
-              label: "Complaints resulted in legal action",
-            },
-            {
-              key: "internalinvestigation",
-              label: "Complaints resulted in an internal investigation",
-            },
-            {
-              key: "externalinvestigation",
-              label: "Complaints resulted in an external investigation",
-            },
-            {
-              key: "disciplinary",
-              label: "Complaints resulted in disciplinary action",
-            },
-
           ],
         ],
         types: [
@@ -843,9 +1395,9 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "Test2",
-            start: "B2",
-            end: "B2",
+            sheet: "5. Complaints",
+            start: "B21",
+            end: "C25",
             firstrow: "Test",
           },
         ],
@@ -866,8 +1418,97 @@ define([], function () {
         ],
       },
       {
-        name: "Table 10 - Climes Filed",
-        element: "claims",
+        name: "Table 18 - In the past calendar year, how many staff (please consider ALL staff members, including Full-Time and Part-Time) have formally and/or informally expressed concern or dissatisfaction related to the following topics.  If you don't track informal complaints, please make your best estimate.",
+        element: "complaints2",
+        operations: { SUM: true, STD: true, LIN: null },
+        cohortOperations: { SUM: true },
+        hot_parameters: {
+          rowHeaderWidth: 150,
+          height: 550,
+          colWidths: [150],
+          stretchH: "none",
+        },
+        rows: [
+          {
+            key: "culture",
+            label: "Workplace culture (e.g., being welcomed or included)",
+          },
+          {
+            key: "comp",
+            label: "Compensation or Salary",
+          },
+          {
+            key: "title",
+            label: "Title or Promotion or Advancement",
+          },
+          {
+            key: "racism",
+            label: "Racism, race-based discrimination, microaggressions",
+          },
+          {
+            key: "gender",
+            label: "Gender, sexual orientation, gender expression, gender-based discrimination",
+          },
+        ],
+        cols: [
+          [
+            {
+              key: "legal",
+              label: "Complaints resulted in legal action",
+            },
+            {
+              key: "internalinvestigation",
+              label: "Complaints resulted in an internal investigation",
+            },
+            {
+              key: "externalinvestigation",
+              label: "Complaints resulted in an external investigation",
+            },
+            {
+              key: "disciplinary",
+              label: "Complaints resulted in disciplinary action",
+            },
+          ],
+        ],
+        types: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            type: "int",
+            min: 0,
+            max_warning: 1,
+            empty: false,
+          },
+        ],
+        excel: [
+          {
+            sheet: "5. Complaints",
+            start: "B30",
+            end: "E34",
+            firstrow: "Test",
+          },
+        ],
+        tooltips: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            tooltip: {
+              errorTitle: "Invalid Data Entry",
+              error:
+                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+              warningTitle: "Warning: Data is too big",
+              warning: "Are you sure this value is correct?",
+            },
+          },
+        ],
+      },
+      {
+        name: "Table 19 - How many claims were filed with the EEOC (Equal Employment Opportunity Commission) last calendar year?",
+        element: "eeocclaims",
         operations: { SUM: true, STD: true, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
@@ -879,11 +1520,7 @@ define([], function () {
         rows: [
           {
             key: "eeoc",
-            label: "How many claims were filed with the EEOC (Equal Employment Opportunity Commission) last calendar year?",
-          },
-          {
-            key: "state",
-            label: "How many claims were filed with your city or state municipality in the last calendar year?",
+            label: "EEOC Claims",
           },
         ],
         cols: [
@@ -909,10 +1546,72 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "Test2",
-            start: "B2",
-            end: "B2",
-            firstrow: "Test",
+            sheet: "5. Complaints",
+            start: "B38",
+            end: "B38",
+            firstrow: "EEOC Claims",
+          },
+        ],
+        tooltips: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            tooltip: {
+              errorTitle: "Invalid Data Entry",
+              error:
+                "Please do not input any text or leave any cells blank. If the value is zero, please input zero.",
+              warningTitle: "Warning: Data is too big",
+              warning: "Are you sure this value is correct?",
+            },
+          },
+        ],
+      },
+{
+        name: "Table 20 - How many claims were filed with your city or state municipality in the last calendar year?",
+        element: "stateclaims",
+        operations: { SUM: true, STD: true, LIN: null },
+        cohortOperations: { SUM: true },
+        hot_parameters: {
+          rowHeaderWidth: 200,
+          height: 500,
+          colWidths: [150],
+          stretchH: "none",
+        },
+        rows: [
+          {
+            key: "state",
+            label: "State Claims",
+          },
+        ],
+        cols: [
+          [
+            {
+              key: "claims",
+              label: "Number of claims",
+            },
+
+          ],
+        ],
+        types: [
+          {
+            range: {
+              row: "*",
+              col: "*",
+            },
+            type: "int",
+            min: 0,
+            max_warning: 1,
+            empty: false,
+          },
+        ],
+        excel: [
+          {
+            sheet: "5. Complaints",
+            start: "B42",
+            end: "B42",
+            firstrow: "State Claims",
           },
         ],
         tooltips: [

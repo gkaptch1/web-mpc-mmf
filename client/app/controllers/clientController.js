@@ -210,6 +210,41 @@ define([
         });
     }
 
+
+    function verifySessionServerExplicitParams(sessionIn, participationCodeIn, callback) {
+      var session = sessionIn.trim().toLowerCase();
+      var participationCode = participationCodeIn.trim().toLowerCase();
+
+      if (session === "" || participationCode === "") {
+        callback && callback(false, null);
+        return;
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/sessioninfo",
+        contentType: "application/json",
+        data: JSON.stringify({ session: session, userkey: participationCode }),
+        dataType: "text",
+      })
+        .then(function (response) {
+          JSON.parse(response); // verify response is json (error responses are string messages)
+          callback && callback(true, response);
+        })
+        .catch(function (err) {
+          var errorMsg = SERVER_ERR;
+          if (
+            err &&
+            err.hasOwnProperty("responseText") &&
+            err.responseText !== undefined
+          ) {
+            errorMsg = err.responseText;
+          }
+          callback && callback(false, err);
+        });
+    }
+
+
     /**
      * Called when the submit button is pressed.
      */
@@ -656,6 +691,7 @@ define([
       validate: validate,
       constructAndSend: constructAndSend,
       validateSessionInput: validateSessionInput,
+      verifySessionServerExplicitParams: verifySessionServerExplicitParams,
     };
   })();
 

@@ -14,7 +14,7 @@ define([], function () {
             {
               type: "radiogroup",
               name: "question1",
-              title: "Through what group or fund is your salary as a museum director predominantly (or wholly) paid??",
+              title: "Through what group or fund is your salary as a museum director predominantly (or wholly) paid?",
               isRequired: true,
               choices: [
                 {
@@ -47,7 +47,7 @@ define([], function () {
               type: "text",
               name: "question2",
               title:
-                "In your last complete fiscal year, what proportion of your annual budget was allocated to staff compensation and benefits? (Please exclude any non-numeric characters)",
+                "In your last complete fiscal year, approximately what proportion of your annual budget was allocated to staff compensation and benefits? (Please exclude any non-numeric characters)",
               placeHolder : "XX",
               inputType: "number",
               isRequired: true,
@@ -64,7 +64,7 @@ define([], function () {
               type: "text",
               name: "question3",
               title:
-                "For your last complete fiscal year, what proportion of your organization’s revenue was directly contributed by board members? (Please exclude any non-numeric characters)",
+                "For your last complete fiscal year, approximately what proportion of your organization’s revenue was directly contributed by board members? (Please exclude any non-numeric characters)",
               placeHolder : "XX",
               inputType: "number",
               isRequired: true,
@@ -102,7 +102,7 @@ define([], function () {
             {
               type: "multipletext",
               name: "question5",
-              title: "Keeping in mind just your board members who are on the Finance and/or Executive committees, how many members of each gender do you have?",
+              title: "Keeping in mind just your board members who are on the Finance and/or Executive committees, how many members of each gender do you have? Please mark 0 where applicable in the categories below.",
               visibleIf: "{question4} = 1",
               isRequired: true,             
               colCount: 2,
@@ -139,7 +139,7 @@ define([], function () {
                   name: "queergender",
                   isRequired: true,
                   inputType: "number",
-                  title: "Queergender",
+                  title: "Non-binary/genderqueer/third gender",
                   validators: [
                       {
                         type: "numeric",
@@ -169,7 +169,7 @@ define([], function () {
               type: "multipletext",
               name: "question6",
               title:
-                "Keeping in mind just your board members who are on the Finance and/or Executive committees, how many members of each gender do you have?",
+                "Keeping in mind just your board members who are on the Finance and/or Executive committees, how many members of each gender do you have? Please mark 0 where applicable in the categories below.",
               visibleIf: "{question4} = 1",
               isRequired: true,
               items: [
