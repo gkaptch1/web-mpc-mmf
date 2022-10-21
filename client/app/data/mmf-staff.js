@@ -154,10 +154,6 @@ define([], function () {
                 },
                 {
                   value: "7",
-                  text: "Freelancer/consultant/contractor who works across institutions",
-                },
-                {
-                  value: "8",
                   text: "Prefer not to answer",
                 },
               ],
