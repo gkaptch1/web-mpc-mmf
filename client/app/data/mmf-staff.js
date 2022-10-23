@@ -1141,8 +1141,85 @@ define([], function () {
           name: "page9",
           elements: [
             {
-              type: "checkbox",
+              type: "matrix",
               name: "question32",
+              title:
+                "In your current employment situation (across all jobs), how satisfied are you with each of the following characteristics?",
+              "alternateRows": true,
+              "isAllRowRequired": true,
+              columns: [
+                {
+                  value: "1",
+                  text: "not at all satisfied",
+                },
+                {
+                  value: "2",
+                  text: "",
+                },
+                {
+                  value: "3",
+                  text: "",
+                },
+                {
+                  value: "4",
+                  text: "",
+                },
+                {
+                  value: "5",
+                  text: "extremely satisfied",
+                },
+              ],
+              rows: [
+                {
+                  value: "1",
+                  text: "Level of pay",
+                },
+                { 
+                  value: "2",
+                  text: "Stable and predictable pay"
+                },
+                {
+                  value: "3",
+                  text: "Stable and predictable hours",
+                },
+                {
+                  value: "4",
+                  text: "Control over hours and/or location (e.g., ability to work flexible hours, work remotely)",
+                },
+                {
+                  value: "5",
+                  text: "Job security",
+                },
+                {
+                  value: "6",
+                  text: "Employee benefits (e.g., health care, retirement)",
+                },
+                {
+                  value: "7",
+                  text: "Career advancement opportunities (e.g., promotion path, learning new skills)",
+                },
+                {
+                  value: "8",
+                  text: "Enjoying your day-to-day work (e.g., good coworkers/managers, pleasant work environment, manageable stress level)",
+                },
+                {
+                  value: "9",
+                  text: "Having a sense of purpose and dignity in your work",
+                },
+                {
+                  value: "10",
+                  text: "I feel comfortable speaking up about unfairness, discrimination, and harassment without fear of retaliation in this organization",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "page10",
+          elements: [
+            {
+              type: "checkbox",
+              name: "question33",
               title:
                 "Thinking about the past 12 months in your workplace (or your total tenure if less than 12 months), which of the following 3 emotions do you most associate with working at your museum? Select up to THREE.",
               maxSelectedChoices: 3,
@@ -1196,7 +1273,7 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question33",
+              name: "question34",
               title:
                 "What kind of role, if any, do you have in your museum’s diversity, equity, and inclusion efforts? Select all that apply.",
               isRequired: true,
@@ -1233,7 +1310,7 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question34",
+              name: "question35",
               title:
                 "To your knowledge, has your museum measured the composition of any of the following groups with respect to gender, race, and ethnicity within the last 3 years? Select all that apply.",
               isRequired: true,
@@ -1266,7 +1343,7 @@ define([], function () {
             },
             {
               type: "checkbox",
-              name: "question35",
+              name: "question36",
               title:
                 "What/Who do you believe has a large impact on your museum leadership’s decisions? Please select all that apply.",
               isRequired: true,
@@ -1301,7 +1378,7 @@ define([], function () {
           ],
         },
         { 
-          name: "page10",
+          name: "page11",
           elements: [
             {
               type: "panel",
@@ -1309,7 +1386,7 @@ define([], function () {
               elements: [
                 {
                   type: "text",
-                  name: "question36",
+                  name: "question37",
                   title: "In what year were you born?",
                   isRequired: true,
                   inputType: "number",
@@ -1320,7 +1397,7 @@ define([], function () {
                 },
                 {
                   type: "radiogroup",
-                  name: "question37",
+                  name: "question38",
                   title: "What is your gender? Please select all that apply.",
                   isRequired: true,
                   choices: [
@@ -1348,7 +1425,7 @@ define([], function () {
                 },
                 {
                   type: "radiogroup",
-                  name: "question38",
+                  name: "question39",
                   title: "How would you define your sexual orientation?",
                   isRequired: true,
                   choices: [
@@ -1397,11 +1474,11 @@ define([], function () {
           ],
         },
         {
-          name: "page11",
+          name: "page12",
           elements: [
             {
               type: "checkbox",
-              name: "question39",
+              name: "question40",
               title:
                 "With which of the following racial and ethnic groups do you identify as? Please select all that apply.",
               isRequired: true,
@@ -1454,7 +1531,7 @@ define([], function () {
             },
             {
               type: "radiogroup",
-              name: "question40",
+              name: "question41",
               title:
                 "What is the highest level of education that you’ve completed?",
               isRequired: true,
@@ -1491,7 +1568,7 @@ define([], function () {
             },
             {
               type: "radiogroup",
-              name: "question41",
+              name: "question42",
               title:
                 "Do you identify as a person with a disability and/or as neuroatypical/neurodivergent?",
               isRequired: true,
@@ -1513,7 +1590,7 @@ define([], function () {
           ],
         },
         {
-          name: "page12",
+          name: "page13",
           elements: [
             {
               type: "text",
@@ -1523,7 +1600,7 @@ define([], function () {
               isRequired: true,
             },
           ],
-          title: "Page 12"
+          title: "Page 13"
         }
       ],
       showPageTitles: false,
