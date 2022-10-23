@@ -344,8 +344,11 @@ define([
                       cohort = $("#cohortDrop").val();
                     }
 
-                    var survey = window.survey.data;
-                    delete survey.password;
+                    var survey = null;
+                    if (table_template.survey !== undefined) {
+                      survey =  window.survey.data;
+                      delete survey.password;
+                    }
 
                     clientController.constructAndSend(tables, survey, cohort, la);
                   } catch (e) {
