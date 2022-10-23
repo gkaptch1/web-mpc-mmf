@@ -330,16 +330,16 @@ define([], function () {
               type: "radiogroup",
               name: "question8",
               visibleIf: "{question7} = 1",
-              title: "Is your museum part of a university or college?",
+              title: "What’s the governance structure of your museum?",
               isRequired: true,
               choices: [
                 {
                   value: "1",
-                  text: "Yes, my museum has an independent governance board",
+                  text: "My museum has an independent governance board",
                 },
                 {
                   value: "2",
-                  text: "No, my museum has the same board as the university",
+                  text: "My museum has the same board as the university",
                 },
               ],
             },

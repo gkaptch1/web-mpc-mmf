@@ -533,7 +533,11 @@ define([], function () {
         },
         rows: [
           {
-            key: "retentions",
+            key: "q6anwsered",
+            label: "Was Q6 Anwsered?",
+          },
+          {
+            key: "retention",
             label: "Number Retained",
           },
         ],
@@ -560,10 +564,10 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "3. New hires and departures",
-            start: "B26",
-            end: "B26",
-            firstrow: "Number of hires",
+            sheet: "DO NOT EDIT",
+            start: "B76",
+            end: "B77",
+            firstrow: "Was Q6 Anwsered?",
           },
         ],
         tooltips: [
@@ -1068,14 +1072,6 @@ define([], function () {
             label: "Workplace safety protections",
           },
           {
-            key: "pflmid",
-            label: "Paid family leave (beyond the statutory requirement but not including paternal or maternal leave)",
-          },
-          {
-            key: "workplace",
-            label: "Workplace safety protections",
-          },
-          {
             key: "401kcontrib",
             label: "401k/ 403b/ other retirement funds (with employer contribution)",
           },
@@ -1257,7 +1253,7 @@ define([], function () {
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
-          height: 500,
+          height: 650,
           colWidths: [150],
           stretchH: "none",
         },
@@ -1521,7 +1517,7 @@ define([], function () {
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
-          height: 500,
+          height: 150,
           colWidths: [150],
           stretchH: "none",
         },
@@ -1583,7 +1579,7 @@ define([], function () {
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
-          height: 500,
+          height: 150,
           colWidths: [150],
           stretchH: "none",
         },

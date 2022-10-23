@@ -292,7 +292,7 @@ define([
         }
 
         // Verify additional questions
-        if (table_template.survey !== null) {
+        if (table_template.survey !== undefined) {
           var questionsValid = false;
           if (
             window &&
