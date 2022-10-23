@@ -365,8 +365,14 @@ define([
       var submitFunctionWithoutButton = function() {
         usabilityController.stopAllTimers();
 
-        var sessionID = $('#session').val();
-        var participantID = $('#participation-code').val();
+        var sessionID = getParameterByName("session");
+        var participantID = getParameterByName("participationCode");
+
+        if (sessionID == "" || participantID == "") {
+          alertHandler.error("The link you used to access this site will not allow you to submit responses. Please use the unique link provided to you.  If you need help, please contact your HR department or email us at help@museumsmovingforward.com.");
+          return;
+        }
+
         var password = window.survey.data.password;
         var result = keyGenController.keyGenAndUpdate(sessionID, participantID, password);
 

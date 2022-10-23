@@ -371,7 +371,7 @@ define([], function () {
                   isRequired: true,
                   min: 0,
                   step: 1000,
-                  max: 600000,
+                  max: 5000000,
                   validators: [
                     {
                       type: "regex",
@@ -467,7 +467,7 @@ define([], function () {
                     {
                       type: "text",
                       name: "question14",
-                      visibleIf: "{question13} = 1",
+                      visibleIf: "{question13} contains 1",
                       title:
                         "How many times have you received a promotion (with title change and pay increase beyond cost of living) while at your current museum?",
                       isRequired: true,
@@ -485,7 +485,7 @@ define([], function () {
                     {
                       type: "text",
                       name: "question15",
-                      visibleIf: "{question13} = 2",
+                      visibleIf: "{question13} contains 2",
                       title:
                         "How many times have you received a promotion (with title change but no accompanying pay increase beyond cost of living) while at your current museum?",
                       isRequired: true,
@@ -503,7 +503,7 @@ define([], function () {
                     {
                       type: "text",
                       name: "question16",
-                      visibleIf: "{question13} = 3",
+                      visibleIf: "{question13} contains 3",
                       title:
                         "How many times have you received a pay increase (beyond cost of living) without a change in title while at your current museum?",
                       isRequired: true,
@@ -590,85 +590,90 @@ define([], function () {
           name: "page4",
           elements: [
             {
-              type: "matrix",
-              name: "question19",
-              title:
-                "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace.",
-              "alternateRows": true,
-              "isAllRowRequired": true,
-              columns: [
+              type: "panel",
+              name: "panel4",
+              elements: [
                 {
-                  value: "1",
-                  text: "Strongly Disagree",
-                },
-                {
-                  value: "2",
-                  text: "Somewhat Disagree",
-                },
-                {
-                  value: "3",
-                  text: "Neutral",
-                },
-                {
-                  value: "4",
-                  text: "Somewhat Agree",
-                },
-                {
-                  value: "5",
-                  text: "Strongly Agree",
+                  type: "matrix",
+                  name: "question19",
+                  title:
+                    "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace.",
+                  "alternateRows": true,
+                  "isAllRowRequired": true,
+                  columns: [
+                    {
+                      value: "1",
+                      text: "Strongly Disagree",
+                    },
+                    {
+                      value: "2",
+                      text: "Somewhat Disagree",
+                    },
+                    {
+                      value: "3",
+                      text: "Neutral",
+                    },
+                    {
+                      value: "4",
+                      text: "Somewhat Agree",
+                    },
+                    {
+                      value: "5",
+                      text: "Strongly Agree",
+                    },
+                  ],
+                  rows: [
+                    {
+                      value: "1",
+                      text: "I believe that I can learn and grow in this organization",
+                    },
+                    { 
+                      value: "2",
+                      text: "I feel burned out in this organization"
+                    },
+                    {
+                      value: "3",
+                      text: "My manager is there for me and supports me",
+                    },
+                    {
+                      value: "4",
+                      text: "Diversity and difference are not celebrated in this organization",
+                    },
+                    {
+                      value: "5",
+                      text: "I believe that what I do here is meaningful",
+                    },
+                    {
+                      value: "6",
+                      text: "The culture of my workplace negatively affects my mental and/or physical health",
+                    },
+                    {
+                      value: "7",
+                      text: "Mistakes are held against you in this organization",
+                    },
+                    {
+                      value: "8",
+                      text: "I would recommend this workplace to friends and family",
+                    },
+                    {
+                      value: "9",
+                      text: "I don’t feel that I have a voice in decision making in this organization",
+                    },
+                    {
+                      value: "10",
+                      text: "I feel comfortable speaking up about unfairness, discrimination, and harassment without fear of retaliation in this organization",
+                    },
+                    {
+                      value: "11",
+                      text: "I feel like I have to hide some of who I am working in this organization",
+                    },
+                  ],
                 },
               ],
-              rows: [
-                {
-                  value: "1",
-                  text: "I believe that I can learn and grow in this organization",
-                },
-                { 
-                  value: "2",
-                  text: "I feel burned out in this organization"
-                },
-                {
-                  value: "3",
-                  text: "My manager is there for me and supports me",
-                },
-                {
-                  value: "4",
-                  text: "Diversity and difference are not celebrated in this organization",
-                },
-                {
-                  value: "5",
-                  text: "I believe that what I do here is meaningful",
-                },
-                {
-                  value: "6",
-                  text: "The culture of my workplace negatively affects my mental and/or physical health",
-                },
-                {
-                  value: "7",
-                  text: "Mistakes are held against you in this organization",
-                },
-                {
-                  value: "8",
-                  text: "I would recommend this workplace to friends and family",
-                },
-                {
-                  value: "9",
-                  text: "I don’t feel that I have a voice in decision making in this organization",
-                },
-                {
-                  value: "10",
-                  text: "I feel comfortable speaking up about unfairness, discrimination, and harassment without fear of retaliation in this organization",
-                },
-                {
-                  value: "11",
-                  text: "I feel like I have to hide some of who I am working in this organization",
-                },
-              ],
+              title: "Workplace Climate",
+              description: "In this section, we will ask you some questions about your museum’s workplace conditions and\norganizational culture. Some of these questions might touch on sensitive topics such as discrimination or\nother negative instances. If you don’t feel comfortable answering any of these questions, please feel\nfree to skip them or select “prefer not to answer”.",
             },
           ],
-          title: "WORKPLACE CLIMATE",
-          description:
-            "In this section, we will ask you some questions about your museum’s workplace conditions and\norganizational culture. Some of these questions might touch on sensitive topics such as discrimination or\nother negative instances. If you don’t feel comfortable answering any of these questions, please feel\nfree to skip them or select “prefer not to answer”.",
         },
         {
           name: "page5",
@@ -932,7 +937,7 @@ define([], function () {
               type: "radiogroup",
               name: "question26",
               title:
-                "Have you felt discriminated against or harassed on the basis of a protected characteristic (e.g., gender, sexual orientation, racial or ethnic background, social or economic status, age, disability...) while working in your current museum workplace?",
+                "Have you felt discriminated against or harassed on the basis your gender, sexual orientation, racial or ethnic background, social or economic status, religion, age, or disability while working in your current museum workplace?",
               isRequired: true,
               choices: [
                 {
@@ -980,7 +985,7 @@ define([], function () {
               name: "question28",
               visibleIf: "{question26} = 1",
               title:
-                "Which of the following forms of discrimination and/or harassment, have you experienced in your current museum workplace? Please select ALL that apply.",
+                "Which of the following forms of discrimination and/or harassment, have you experienced in your current museum workplace? Please select all that apply.",
               isRequired: true,
               choices: [
                 {
@@ -1070,7 +1075,7 @@ define([], function () {
             {
               type: "radiogroup",
               name: "question30",
-              visibleIf: "{question29} < 9",
+              visibleIf: "{question29} contains 1 or {question29} contains 2 or {question29} contains 3 or {question29} contains 4 or {question29} contains 5 or {question29} contains 6 or {question29} contains 7 or {question29} contains 8",
               title:
                 "How satisfied are you with how HR and /or the museum resolved your complaint(s) overall?",
               isRequired: true,
@@ -1230,7 +1235,7 @@ define([], function () {
               type: "checkbox",
               name: "question34",
               title:
-                "To your knowledge, has your museum measured the composition of any of the following groups with respect to gender, race, and ethnicity within the last 3 years? Select ALL that apply.",
+                "To your knowledge, has your museum measured the composition of any of the following groups with respect to gender, race, and ethnicity within the last 3 years? Select all that apply.",
               isRequired: true,
               choices: [
                 {
@@ -1247,10 +1252,14 @@ define([], function () {
                 },
                 {
                   value: "4",
-                  text: "None of the above",
+                  text: "Volunteers",
                 },
                 {
                   value: "5",
+                  text: "None of the above",
+                },
+                {
+                  value: "6",
                   text: "I don’t know",
                 },
               ],
@@ -1291,96 +1300,101 @@ define([], function () {
 
           ],
         },
-        {
+        { 
           name: "page10",
           elements: [
             {
-              type: "text",
-              name: "question36",
-              title: "In what year were you born?",
-              isRequired: true,
-              inputType: "number",
-              autoComplete: "bday-year",
-              min: 1922,
-              max: 2022,
-              step: 1,
-            },
-            {
-              type: "radiogroup",
-              name: "question37",
-              title: "What is your gender? Please select all that apply.",
-              isRequired: true,
-              choices: [
+              type: "panel",
+              name: "panel5",
+              elements: [
                 {
-                  value: "1",
-                  text: "Woman",
+                  type: "text",
+                  name: "question36",
+                  title: "In what year were you born?",
+                  isRequired: true,
+                  inputType: "number",
+                  autoComplete: "bday-year",
+                  min: 1922,
+                  max: 2022,
+                  step: 1,
                 },
                 {
-                  value: "2",
-                  text: "Man",
+                  type: "radiogroup",
+                  name: "question37",
+                  title: "What is your gender? Please select all that apply.",
+                  isRequired: true,
+                  choices: [
+                    {
+                      value: "1",
+                      text: "Woman",
+                    },
+                    {
+                      value: "2",
+                      text: "Man",
+                    },
+                    {
+                      value: "3",
+                      text: "Non-binary/genderqueer/third gender",
+                    },
+                    {
+                      value: "4",
+                      text: "Another gender",
+                    },                
+                    {
+                      value: "5",
+                      text: "Prefer not to answer",
+                    },
+                  ],
                 },
                 {
-                  value: "3",
-                  text: "Non-binary/genderqueer/third gender",
-                },
-                {
-                  value: "4",
-                  text: "Another gender",
-                },                
-                {
-                  value: "5",
-                  text: "Prefer not to answer",
+                  type: "radiogroup",
+                  name: "question38",
+                  title: "How would you define your sexual orientation?",
+                  isRequired: true,
+                  choices: [
+                    {
+                      value: "1",
+                      text: "Heterosexual ",
+                    },
+                    {
+                      value: "2",
+                      text: "Lesbian ",
+                    },
+                    {
+                      value: "3",
+                      text: "Gay",
+                    },
+                    {
+                      value: "4",
+                      text: "Bisexual ",
+                    },
+                    {
+                      value: "5",
+                      text: "Pansexual ",
+                    },
+                    {
+                      value: "6",
+                      text: "Asexual",
+                    },
+                    {
+                      value: "7",
+                      text: "I don’t label myself as anything",
+                    },
+                    {
+                      value: "8",
+                      text: "Another sexual orientation",
+                    },
+                    {
+                      value: "9",
+                      text: "Prefer not to answer",
+                    },
+                  ],
                 },
               ],
-            },
-            {
-              type: "radiogroup",
-              name: "question38",
-              title: "How would you define your sexual orientation?",
-              isRequired: true,
-              choices: [
-                {
-                  value: "1",
-                  text: "Heterosexual ",
-                },
-                {
-                  value: "2",
-                  text: "Lesbian ",
-                },
-                {
-                  value: "3",
-                  text: "Gay",
-                },
-                {
-                  value: "4",
-                  text: "Bisexual ",
-                },
-                {
-                  value: "5",
-                  text: "Pansexual ",
-                },
-                {
-                  value: "6",
-                  text: "Asexual",
-                },
-                {
-                  value: "7",
-                  text: "I don’t label myself as anything",
-                },
-                {
-                  value: "8",
-                  text: "Another sexual orientation",
-                },
-                {
-                  value: "9",
-                  text: "Prefer not to answer",
-                },
-              ],
+              title: "Section 3: DEMOGRAPHICS",
+              description: "In this section, we will ask you some personal questions about who you are. We are asking these questions to make sure a diverse group of people participate in this survey. As a reminder, your responses to this survey, including all personal information, will be kept anonymous.",
             },
           ],
-          title: "Section 3: DEMOGRAPHICS",
-          description:
-            "In this section, we will ask you some personal questions about who you are. We are asking these questions to make sure a diverse group of people participate in this survey. As a reminder, your responses to this survey, including all personal information, will be kept anonymous.",
         },
         {
           name: "page11",
