@@ -42,7 +42,7 @@ define([
      * Error messages definitions
      */
     var SUCCESS_MESSAGE =
-      "Thank you for participating in the data submission! If you discover that there was an error in your submission, you may correct your data, revist this page, and submit your data again.";
+      "Thank you for completing the survey! We are grateful for your time and for your contribution to this fieldwide initiative";
     var SESSION_KEY_ERROR = "Invalid session number";
     var PARTICIPATION_CODE_ERROR = "Invalid participation code";
 

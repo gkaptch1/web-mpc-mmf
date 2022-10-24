@@ -100,7 +100,7 @@ define([], function () {
                 },
                 {
                   value: "4",
-                  text: "Manager",
+                  text: "Manager (with one/more direct reports)",
                 },
                 {
                   value: "5",
@@ -108,7 +108,7 @@ define([], function () {
                 },
                 {
                   value: "6",
-                  text: "Executive",
+                  text: "Executive/Museum Leadership",
                 },
                 {
                   value: "7",
@@ -142,18 +142,22 @@ define([], function () {
                 },
                 {
                   value: "4",
-                  text: "Paid intern",
+                  text: "Seasonal employee",
                 },
                 {
                   value: "5",
-                  text: "Unpaid intern",
+                  text: "Paid intern",
                 },
                 {
                   value: "6",
-                  text: "Apprentice / Fellow",
+                  text: "Unpaid intern",
                 },
                 {
                   value: "7",
+                  text: "Apprentice / Fellow",
+                },
+                {
+                  value: "8",
                   text: "Prefer not to answer",
                 },
               ],
@@ -167,102 +171,118 @@ define([], function () {
               choices: [
                 {
                   value: "1",
-                  text: "Conservation",
-                },
-                {
-                  value: "2",
-                  text: "Curatorial",
-                },
-                {
-                  value: "3",
-                  text: "Digital Strategy/Web Development (e.g., graphic design)",
-                },
-                {
-                  value: "4",
-                  text: "Diversity/Equity/Inclusion",
-                },
-                {
-                  value: "5",
-                  text: "Education",
-                },
-                {
-                  value: "6",
-                  text: "Exhibition Design and Construction (includes Fabrication)",
-                },
-                {
-                  value: "7",
-                  text: "Facilities / Operations",
-                },
-                {
-                  value: "8",
-                  text: "Finance / Accounting",
-                },
-                {
-                  value: "9",
-                  text: "Gardens/Grounds",
-                },
-                {
-                  value: "10",
-                  text: "Human Resources",
-                },
-                {
-                  value: "11",
-                  text: "Information Technology",
-                },
-                {
-                  value: "12",
-                  text: "Library",
-                },
-                {
-                  value: "13",
-                  text: "Marketing/Public Relations",
-                },
-                {
-                  value: "14",
-                  text: "Membership/Development (includes Event Planning)",
-                },
-                {
-                  value: "15",
-                  text: "Museum Leadership (includes executive positions)",
-                },
-                {
-                  value: "16",
-                  text: "Preparators/Art Handlers",
-                },
-                {
-                  value: "17",
-                  text: "Public Engagement",
-                },
-                {
-                  value: "18",
-                  text: "Publication/Editorial",
-                },
-                {
-                  value: "19",
-                  text: "Registration",
-                },
-                {
-                  value: "20",
-                  text: "Retail / Museum Store",
-                },
-                {
-                  value: "21",
-                  text: "Rights/Reproduction (includes Photography)",
-                },
-                {
-                  value: "22",
-                  text: "Security",
-                },
-                {
-                  value: "23",
                   text: "Administration",
                 },
                 {
+                  value: "2",
+                  text: "Conservation",
+                },
+                {
+                  value: "3",
+                  text: "Collections Information and Management",
+                },                
+                {
+                  value: "4",
+                  text: "Curatorial",
+                },
+                {
+                  value: "5",
+                  text: "Digital Strategy/Web Development (e.g., graphic design)",
+                },
+                {
+                  value: "6",
+                  text: "Diversity/Equity/Inclusion (e.g., in job title/position description)",
+                },
+                {
+                  value: "7",
+                  text: "Education",
+                },
+                {
+                  value: "8",
+                  text: "Exhibition Design and Construction (includes Fabrication)",
+                },
+                {
+                  value: "9",
+                  text: "Facilities / Operations",
+                },
+                {
+                  value: "10",
+                  text: "Finance / Accounting",
+                },
+                {
+                  value: "11",
+                  text: "Food services / Cafe",
+                },
+                {
+                  value: "12",
+                  text: "Gardens/Grounds",
+                },
+                {
+                  value: "13",
+                  text: "Human Resources",
+                },
+                {
+                  value: "14",
+                  text: "Information Systems and Technology",
+                },
+                {
+                  value: "15",
+                  text: "Janitorial",
+                },
+                {
+                  value: "16",
+                  text: "Library",
+                },
+                {
+                  value: "17",
+                  text: "Marketing/Public Relations/Communications",
+                },
+                {
+                  value: "18",
+                  text: "Membership/Development (includes Event Planning)",
+                },
+                {
+                  value: "19",
+                  text: "Museum Leadership (includes executive positions)",
+                },
+                {
+                  value: "20",
+                  text: "Preparators/Art Handlers",
+                },
+                {
+                  value: "21",
+                  text: "Public Engagement",
+                },
+                {
+                  value: "22",
+                  text: "Publication/Editorial",
+                },
+                {
+                  value: "23",
+                  text: "Registration",
+                },
+                {
                   value: "24",
-                  text: "Visitor Services",
+                  text: "Research and Evaluation",
                 },
                 {
                   value: "25",
+                  text: "Retail / Museum Store",
+                },
+                {
+                  value: "26",
+                  text: "Rights/Reproduction (includes Photography)",
+                },
+                {
+                  value: "27",
+                  text: "Security",
+                },
+                {
+                  value: "28",
+                  text: "Visitor Services",
+                },
+                {
+                  value: "29",
                   text: "None of the above",
                 },
               ],
@@ -285,7 +305,7 @@ define([], function () {
                 },
                 {
                   value: "2",
-                  text: "No, I’m employed by a government agency (e.g., city, county, state, etc.)"
+                  text: "No, I’m employed by a government agency (e.g., city, county, state)"
                 },
                 {
                   value: "3",
@@ -441,7 +461,7 @@ define([], function () {
                     {
                       type: "checkbox",
                       name: "question13",
-                      visibleIf: "{question4} < 5 or {question4} > 5 and {question9} < 4",
+                      visibleIf: "{question3} notcontains '1' or {question4} notcontains '6' and {question9} notcontains '4'",
                       title:
                         "Have you ever received any of the following combinations of promotions and pay increases while at your current museum? Select all that apply. (Please consider ONLY pay increases beyond cost of living or inflation adjustment - typically 2-3% per year).",
                       isRequired: true,
@@ -543,39 +563,6 @@ define([], function () {
                         },
                       ],
                     },
-                    {
-                      type: "checkbox",
-                      name: "question18",
-                      title:
-                        "Which of the following statements best represent your museum’s post-COVID return-to-work policy, as it applies to you? Select all that apply.",
-                      isRequired: true,
-                      choices: [
-                        {
-                          value: "1",
-                          text: "I am/will be working in-person only",
-                        },
-                        {
-                          value: "2",
-                          text: "I am/will be working in a hybrid setup where the museum chooses how many and which days to work from home and which days to work from the museum",
-                        },
-                        {
-                          value: "3",
-                          text: "I am/will be working in a hybrid setup where I get to choose how many and which days to work from home and which days to work in the museum",
-                        },
-                        {
-                          value: "4",
-                          text: "I am/will be working in a hybrid setup where the museum chooses how many days to work from home and how many days to work from the museum and I get to choose which days",
-                        },
-                        {
-                          value: "5",
-                          text: "I am/will be working from home only",
-                        },
-                        {
-                          value: "6",
-                          text: "I don’t know much about the museum’s return-to-work plans",
-                        },
-                      ],
-                    },
                   ],
                   title:
                     "We have just a few more questions about salary and promotions at your institution.",
@@ -592,6 +579,52 @@ define([], function () {
             {
               type: "panel",
               name: "panel4",
+              elements: [
+                {
+                  type: "checkbox",
+                  name: "question18",
+                  title:
+                    "Which of the following statements best represent your museum’s post-COVID return-to-work policy, as it applies to you? Select all that apply.",
+                  isRequired: true,
+                  choices: [
+                    {
+                      value: "1",
+                      text: "I am/will be working in-person only",
+                    },
+                    {
+                      value: "2",
+                      text: "I am/will be working in a hybrid setup where the museum chooses how many and which days to work from home and which days to work from the museum",
+                    },
+                    {
+                      value: "3",
+                      text: "I am/will be working in a hybrid setup where I get to choose how many and which days to work from home and which days to work in the museum",
+                    },
+                    {
+                      value: "4",
+                      text: "I am/will be working in a hybrid setup where the museum chooses how many days to work from home and how many days to work from the museum and I get to choose which days",
+                    },
+                    {
+                      value: "5",
+                      text: "I am/will be working from home only",
+                    },
+                    {
+                      value: "6",
+                      text: "I don’t know much about the museum’s return-to-work plans",
+                    },
+                  ],
+                },
+              ],
+              title: "Workplace Climate",
+              description: "In this section, we will ask you some questions about your museum’s workplace conditions and\norganizational culture. Some of these questions might touch on sensitive topics such as discrimination or\nother negative instances. If you don’t feel comfortable answering any of these questions, please feel\nfree to skip them or select “prefer not to answer”.",
+            },
+          ],
+        },
+        {
+          name: "page5",
+          elements: [
+            {
+              type: "panel",
+              name: "panel5",
               elements: [
                 {
                   type: "matrix",
@@ -637,50 +670,56 @@ define([], function () {
                     },
                     {
                       value: "3",
-                      text: "My manager is there for me and supports me",
+                      text: "My manager supports me",
                     },
                     {
                       value: "4",
-                      text: "Diversity and difference are not celebrated in this organization",
+                      text: "I believe performance reviews contribute to growth and/or advancement in my institution",
                     },
                     {
                       value: "5",
-                      text: "I believe that what I do here is meaningful",
+                      text: "Diversity and difference are not celebrated in this organization",
                     },
                     {
                       value: "6",
-                      text: "The culture of my workplace negatively affects my mental and/or physical health",
+                      text: "I believe that what I do here is meaningful",
                     },
                     {
                       value: "7",
-                      text: "Mistakes are held against you in this organization",
+                      text: "The culture of my workplace negatively affects my mental and/or physical health",
                     },
                     {
                       value: "8",
-                      text: "I would recommend this workplace to friends and family",
+                      text: "Mistakes are held against you in this organization",
                     },
                     {
                       value: "9",
-                      text: "I don’t feel that I have a voice in decision making in this organization",
+                      text: "I would recommend this workplace to friends and family",
                     },
                     {
                       value: "10",
-                      text: "I feel comfortable speaking up about unfairness, discrimination, and harassment without fear of retaliation in this organization",
+                      text: "I don’t feel that I have a voice in decision making in this organization",
                     },
                     {
                       value: "11",
+                      text: "My institution provides management and/or leadership training for all supervisors",
+                    },
+                    {
+                      value: "12",
+                      text: "People in my organization are held accountable for discrimination and harassment",
+                    },
+                    {
+                      value: "13",
                       text: "I feel like I have to hide some of who I am working in this organization",
                     },
                   ],
                 },
               ],
-              title: "Workplace Climate",
-              description: "In this section, we will ask you some questions about your museum’s workplace conditions and\norganizational culture. Some of these questions might touch on sensitive topics such as discrimination or\nother negative instances. If you don’t feel comfortable answering any of these questions, please feel\nfree to skip them or select “prefer not to answer”.",
             },
           ],
         },
         {
-          name: "page5",
+          name: "page6",
           elements: [
             {
               type: "checkbox",
@@ -757,14 +796,10 @@ define([], function () {
                 },
                 {
                   value: "8",
-                  text: "I received a performance review",
-                },
-                {
-                  value: "9",
                   text: "Another employee yelled, raised their voice, or spoke to me in an unprofessional manner",
                 },
                 {
-                  value: "10",
+                  value: "9",
                   text: "None of these",
                 },
               ],
@@ -772,7 +807,7 @@ define([], function () {
           ],
         },
         {
-          name: "page6",
+          name: "page7",
           elements: [
             {
               type: "radiogroup",
@@ -813,38 +848,50 @@ define([], function () {
                 },
                 {
                   value: "4",
-                  text: "Experiences of discrimination or harassment",
+                  text: "Opportunities for growth the other museum",
                 },
                 {
                   value: "5",
-                  text: "Lack of opportunities for growth",
+                  text: "Experiences of discrimination or harassment",
                 },
                 {
                   value: "6",
-                  text: "Unsafe working conditions",
+                  text: "Lack of opportunities for growth at my museum",
                 },
                 {
                   value: "7",
-                  text: "Burnout",
+                  text: "Unsafe working conditions",
                 },
                 {
                   value: "8",
-                  text: "Interpersonal issues with other staff members",
+                  text: "Positive reputation of the other museum",
                 },
                 {
                   value: "9",
-                  text: "Poor management",
+                  text: "Burnout",
                 },
                 {
                   value: "10",
-                  text: "I don’t believe my institution can change for the better",
+                  text: "Desire to live in a different town or city",
                 },
                 {
                   value: "11",
-                  text: "Personal reasons unrelated to my current museum workplace",
+                  text: "Interpersonal issues with other staff members",
                 },
                 {
                   value: "12",
+                  text: "Poor management",
+                },
+                {
+                  value: "13",
+                  text: "I don’t believe my institution can change for the better",
+                },
+                {
+                  value: "14",
+                  text: "Personal reasons unrelated to my current museum workplace",
+                },
+                {
+                  value: "15",
                   text: "None of the above",
                 },
               ],
@@ -852,7 +899,7 @@ define([], function () {
           ],
         },
         {
-          name: "page7",
+          name: "page8",
           elements: [
             {
               type: "radiogroup",
@@ -888,250 +935,51 @@ define([], function () {
                 },
                 {
                   value: "3",
+                  text: "More interested in other fields",
+                },
+                {
+                  value: "4",
                   text: "Full-time work is unavailable to me in most art museums",
                 },
                 {
-                  value: "4",
+                  value: "5",
                   text: "Experiences of discrimination or harassment in art museums",
                 },
                 {
-                  value: "5",
+                  value: "6",
                   text: "Lack of opportunities for growth in art museums",
                 },
                 {
-                  value: "6",
+                  value: "7",
                   text: "Unsafe working conditions in art museums",
                 },
                 {
-                  value: "7",
+                  value: "8",
                   text: "Burnout in the art museum field",
                 },
                 {
-                  value: "8",
-                  text: "Interpersonal issues with other staff members are common in art museums",
-                },
-                {
                   value: "9",
-                  text: "Poor management in art museums",
+                  text: "Exciting opportunities in other fields",
                 },
                 {
                   value: "10",
-                  text: "Less interested in art or art museums",
+                  text: "Interpersonal issues with other staff members are common in art museums",
                 },
                 {
                   value: "11",
-                  text: "I don’t believe art museums can change for the better",
+                  text: "Poor management in art museums",
                 },
                 {
                   value: "12",
-                  text: "Personal reasons unrelated to art and/or museums",
+                  text: "I don’t believe art museums can change for the better",
                 },
                 {
                   value: "13",
+                  text: "Personal reasons unrelated to art and/or museums",
+                },
+                {
+                  value: "14",
                   text: "None of the above",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "page8",
-          elements: [
-            {
-              type: "radiogroup",
-              name: "question26",
-              title:
-                "Have you felt discriminated against or harassed on the basis your gender, sexual orientation, racial or ethnic background, social or economic status, religion, age, or disability while working in your current museum workplace?",
-              isRequired: true,
-              choices: [
-                {
-                  value: "1",
-                  text: "Yes",
-                },
-                {
-                  value: "2",
-                  text: "No",
-                },
-                {
-                  value: "3",
-                  text: "Prefer not to answer",
-                },
-              ],
-            },
-            {
-              type: "radiogroup",
-              name: "question27",
-              visibleIf: "{question26} = 1",
-              title:
-                "How often have you felt discriminated against and/or harassed while working in your current museum workplace?",
-              isRequired: true,
-              choices: [
-                {
-                  value: "1",
-                  text: "Very frequently (e.g., daily or almost daily)",
-                },
-                {
-                  value: "2",
-                  text: "Often (e.g., a few times a month)",
-                },
-                {
-                  value: "3",
-                  text: "Sometimes (e.g., a few times a year) ",
-                },
-                {
-                  value: "4",
-                  text: "Rarely (e.g., one or two times total)",
-                },
-              ],
-            },
-            {
-              type: "checkbox",
-              name: "question28",
-              visibleIf: "{question26} = 1",
-              title:
-                "Which of the following forms of discrimination and/or harassment, have you experienced in your current museum workplace? Please select all that apply.",
-              isRequired: true,
-              choices: [
-                {
-                  value: "1",
-                  text: "Discrimination and/or harassment based on gender (including pregnancy, gender expression, gender identity, etc.)",
-                },
-                {
-                  value: "2",
-                  text: "Discrimination and/or harassment based on sexual orientation",
-                },
-                {
-                  value: "3",
-                  text: "Discrimination and/or harassment based on race and/or ethnicity",
-                },
-                {
-                  value: "4",
-                  text: "Discrimination and/or harassment based on social or economic status",
-                },
-                {
-                  value: "5",
-                  text: "Discrimination and/or harassment based on age",
-                },
-                {
-                  value: "6",
-                  text: "Discrimination and/or harassment based on disability",
-                },
-                {
-                  value: "7",
-                  text: "Another form of discrimination and/or harassment",
-                },
-                {
-                  value: "8",
-                  text: "I don’t know ",
-                },
-              ],
-            },
-            {
-              type: "checkbox",
-              name: "question29",
-              visibleIf: "{question26} = 1",
-              title:
-                "Have you taken any of the following actions in response to discrimination and/or harassment in your current museum workplace? Please select ALL that apply.",
-              isRequired: true,
-              choices: [
-                {
-                  value: "1",
-                  text: "I filed an HR complaint form (i.e., in-person or online)",
-                },
-                {
-                  value: "2",
-                  text: "I talked to an HR staff member who is available to employees",
-                },
-                {
-                  value: "3",
-                  text: "I used an anonymous reporting mechanism",
-                },
-                {
-                  value: "4",
-                  text: "I used an employee complaint hotline",
-                },
-                {
-                  value: "5",
-                  text: "I talked to a neutral employee or manager who can communicate the issues to HR",
-                },
-                {
-                  value: "6",
-                  text: "I used a third-party reporting process (e.g., use of an ombudsman)",
-                },
-                {
-                  value: "7",
-                  text: "I used another reporting mechanism",
-                },              
-                {
-                  value: "8",
-                  text: "I did something else",
-                },
-                {
-                  value: "9",
-                  text: "I haven’t done anything in response",
-                },
-              ],
-            },
-            {
-              type: "radiogroup",
-              name: "question30",
-              visibleIf: "{question29} contains 1 or {question29} contains 2 or {question29} contains 3 or {question29} contains 4 or {question29} contains 5 or {question29} contains 6 or {question29} contains 7",
-              title:
-                "How satisfied are you with how HR and /or the museum resolved your complaint(s) overall?",
-              isRequired: true,
-              choices: [
-                {
-                  value: "1",
-                  text: "Not at all satisfied",
-                },
-                {
-                  value: "2",
-                  text: "Somewhat satisfied",
-                },
-                {
-                  value: "3",
-                  text: "Very satisfied",
-                },
-              ],
-            },
-            {
-              type: "checkbox",
-              name: "question31",
-              title:
-                "If you have experienced any discrimination or harassment and decided NOT to take action in response, what were your reasons? Select all that apply.",
-              isRequired: true,
-              choices: [
-                {
-                  value: "1",
-                  text: "I worried about retaliation from people in leadership at the institution",
-                },
-                {
-                  value: "2",
-                  text: "I worried about retaliation from the person who discriminated against/harassed me",
-                },
-                {
-                  value: "3",
-                  text: "I didn’t think anything would be done about it",
-                },
-                {
-                  value: "4",
-                  text: "I didn’t think anything could be done about it because the person who discriminated against/harassed me is not an employee of the museum (e.g., visitor, board member, artist...)",
-                },
-                {
-                  value: "5",
-                  text: "I didn’t know about what actions I could take",
-                },
-                {
-                  value: "6",
-                  text: "My workplace doesn’t provide any mechanisms to report discrimination and/or harassment",
-                },
-                {
-                  value: "7",
-                  text: "I always reported my experiences of discrimination and harassment",
-                },
-                {
-                  value: "8",
-                  text: "I haven't experienced discrimination or harassment",
                 },
               ],
             },
@@ -1140,11 +988,230 @@ define([], function () {
         {
           name: "page9",
           elements: [
+          {
+              type: "panel",
+              name: "panel6",
+              elements: [
+                {
+                  type: "radiogroup",
+                  name: "question26",
+                  title:
+                    "Have you felt discriminated against or harassed on the basis your gender, sexual orientation, racial or ethnic background, social or economic status, religion, age, or disability while working in your current museum workplace?",
+                  isRequired: true,
+                  choices: [
+                    {
+                      value: "1",
+                      text: "Yes",
+                    },
+                    {
+                      value: "2",
+                      text: "No",
+                    },
+                    {
+                      value: "3",
+                      text: "Prefer not to answer",
+                    },
+                  ],
+                },
+                {
+                  type: "radiogroup",
+                  name: "question27",
+                  visibleIf: "{question26} = 1",
+                  title:
+                    "How often have you felt discriminated against and/or harassed while working in your current museum workplace?",
+                  isRequired: true,
+                  choices: [
+                    {
+                      value: "1",
+                      text: "Very frequently (e.g., daily or almost daily)",
+                    },
+                    {
+                      value: "2",
+                      text: "Often (e.g., a few times a month)",
+                    },
+                    {
+                      value: "3",
+                      text: "Sometimes (e.g., a few times a year) ",
+                    },
+                    {
+                      value: "4",
+                      text: "Rarely (e.g., one or two times total)",
+                    },
+                  ],
+                },
+                {
+                  type: "checkbox",
+                  name: "question28",
+                  visibleIf: "{question26} = 1",
+                  title:
+                    "Which of the following forms of discrimination and/or harassment, have you experienced in your current museum workplace? Please select all that apply.",
+                  isRequired: true,
+                  choices: [
+                    {
+                      value: "1",
+                      text: "Discrimination and/or harassment based on gender (including pregnancy, gender expression, gender identity, etc.)",
+                    },
+                    {
+                      value: "2",
+                      text: "Discrimination and/or harassment based on sexual orientation",
+                    },
+                    {
+                      value: "3",
+                      text: "Discrimination and/or harassment based on race and/or ethnicity",
+                    },
+                    {
+                      value: "4",
+                      text: "Discrimination and/or harassment based on social or economic status",
+                    },
+                    {
+                      value: "5",
+                      text: "Discrimination and/or harassment based on religion",
+                    },
+                    {
+                      value: "6",
+                      text: "Discrimination and/or harassment based on age",
+                    },
+                    {
+                      value: "7",
+                      text: "Discrimination and/or harassment based on disability",
+                    },
+                    {
+                      value: "8",
+                      text: "Another form of discrimination and/or harassment",
+                    },
+                    {
+                      value: "9",
+                      text: "I don’t know ",
+                    },
+                  ],
+                },
+                {
+                  type: "checkbox",
+                  name: "question29",
+                  visibleIf: "{question26} = 1",
+                  title:
+                    "Have you taken any of the following actions in response to discrimination and/or harassment in your current museum workplace? Please select ALL that apply.",
+                  isRequired: true,
+                  choices: [
+                    {
+                      value: "1",
+                      text: "I filed an HR complaint form (i.e., in-person or online)",
+                    },
+                    {
+                      value: "2",
+                      text: "I talked to an HR staff member who is available to employees",
+                    },
+                    {
+                      value: "3",
+                      text: "I used an anonymous reporting mechanism",
+                    },
+                    {
+                      value: "4",
+                      text: "I used an employee complaint hotline",
+                    },
+                    {
+                      value: "5",
+                      text: "I talked to a neutral employee or manager who can communicate the issues to HR",
+                    },
+                    {
+                      value: "6",
+                      text: "I used a third-party reporting process (e.g., use of an ombudsman)",
+                    },
+                    {
+                      value: "7",
+                      text: "I used another reporting mechanism",
+                    },   
+                    {
+                      value: "8",
+                      text: "I followed a union-provided grievance process for reporting",
+                    },              
+                    {
+                      value: "9",
+                      text: "I did something else",
+                    },
+                    {
+                      value: "10",
+                      text: "I haven’t done anything in response",
+                    },
+                  ],
+                },
+                {
+                  type: "radiogroup",
+                  name: "question30",
+                  visibleIf: "{question29} contains 1 or {question29} contains 2 or {question29} contains 3 or {question29} contains 4 or {question29} contains 5 or {question29} contains 6 or {question29} contains 7",
+                  title:
+                    "How satisfied are you with how HR and /or the museum resolved your complaint(s) overall?",
+                  isRequired: true,
+                  choices: [
+                    {
+                      value: "1",
+                      text: "Not at all satisfied",
+                    },
+                    {
+                      value: "2",
+                      text: "Somewhat satisfied",
+                    },
+                    {
+                      value: "3",
+                      text: "Very satisfied",
+                    },
+                  ],
+                },
+                {
+                  type: "checkbox",
+                  name: "question31",
+                  visibleIf: "{question26} = 1",
+                  title:
+                    "If you have experienced any discrimination or harassment and decided NOT to take action in response, what were your reasons? Select all that apply.",
+                  isRequired: true,
+                  choices: [
+                    {
+                      value: "1",
+                      text: "I worried about retaliation from people in leadership at the institution",
+                    },
+                    {
+                      value: "2",
+                      text: "I worried about retaliation from the person who discriminated against/harassed me",
+                    },
+                    {
+                      value: "3",
+                      text: "I didn’t think anything would be done about it",
+                    },
+                    {
+                      value: "4",
+                      text: "I didn’t think anything could be done about it because the person who discriminated against/harassed me is not an employee of the museum (e.g., visitor, board member, artist...)",
+                    },
+                    {
+                      value: "5",
+                      text: "I didn’t know about what actions I could take",
+                    },
+                    {
+                      value: "6",
+                      text: "My workplace doesn’t provide any mechanisms to report discrimination and/or harassment",
+                    },
+                    {
+                      value: "7",
+                      text: "I always reported my experiences of discrimination and harassment",
+                    },
+                    {
+                      value: "8",
+                      text: "I haven't experienced discrimination or harassment",
+                    },
+                  ],
+                },
+              ],
+              description: "The next few questions may be distressing for some staff members. We’ll be asking about experiences of discrimination or harassment in your current workplace.",
+            },
+          ],
+        },
+        {
+          name: "page10",
+          elements: [
             {
               type: "matrix",
               name: "question32",
               title:
-                "In your current employment situation (across all jobs), how satisfied are you with each of the following characteristics?",
+                "In your current employment situation, how satisfied are you with each of the following characteristics?",
               "alternateRows": true,
               "isAllRowRequired": true,
               columns: [
@@ -1208,14 +1275,14 @@ define([], function () {
                 },
                 {
                   value: "10",
-                  text: "I feel comfortable speaking up about unfairness, discrimination, and harassment without fear of retaliation in this organization",
+                  text: "Having the power to change things about your job that you’re not satisfied with",
                 },
               ],
             },
           ],
         },
         {
-          name: "page10",
+          name: "page11",
           elements: [
             {
               type: "checkbox",
@@ -1370,7 +1437,7 @@ define([], function () {
                 },
                 {
                   value: "6",
-                  text: "None of the above",
+                  text: "None of the above/ I don't know",
                 },
               ],
             },            
@@ -1378,11 +1445,11 @@ define([], function () {
           ],
         },
         { 
-          name: "page11",
+          name: "page12",
           elements: [
             {
               type: "panel",
-              name: "panel5",
+              name: "panel7",
               elements: [
                 {
                   type: "text",
@@ -1474,7 +1541,7 @@ define([], function () {
           ],
         },
         {
-          name: "page12",
+          name: "page13",
           elements: [
             {
               type: "checkbox",
@@ -1590,7 +1657,7 @@ define([], function () {
           ],
         },
         {
-          name: "page13",
+          name: "page14",
           elements: [
             {
               type: "text",
@@ -1605,7 +1672,7 @@ define([], function () {
       ],
       showPageTitles: false,
       clearInvisibleValues: "none",
-      completedHtml: "<p><h4>Thank you for completing the survey! We are grateful for your time and for your contribution to this fieldwide initiative.</h4></p><p><h4>Your answers are being submitted.  Please don't close the page until you see a popup confirming your submission.</h4></p>",
+      completedHtml: "<p><h4>Your answers are being submitted.  <b>Please don't close the page until you see a popup</b> confirming your submission. Please be patient-this might take as long as 1 minute.</h4></p>",
       completeText: "Submit Answers",
       widthMode: "responsive",
     },
