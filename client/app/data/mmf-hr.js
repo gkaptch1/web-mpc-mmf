@@ -324,6 +324,14 @@ define([], function () {
             key: "morethan300",
             label: "More than $300,000",
           },
+          {
+            key: "total",
+            label: "Total",
+          },
+          {
+            key: "totalanswered",
+            label: "Total Answered"
+          }
         ],
         cols: [
           [
@@ -347,9 +355,9 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "2. Compensation",
-            start: "B36",
-            end: "B43",
+            sheet: "DO NOT EDIT",
+            start: "B87",
+            end: "B96",
             firstrow: "Less than $25,000",
           },
         ],
@@ -376,7 +384,7 @@ define([], function () {
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 150,
-          height: 500,
+          height: 550,
           colWidths: [150],
           stretchH: "none",
         },
@@ -413,6 +421,14 @@ define([], function () {
             key: "morethan300",
             label: "More than $300,000",
           },
+          {
+            key: "total",
+            label: "Total",
+          },
+          {
+            key: "totalanswered",
+            label: "Total Answered"
+          }
         ],
         cols: [
           [
@@ -436,9 +452,9 @@ define([], function () {
         ],
         excel: [
           {
-            sheet: "3. New hires and departures",
-            start: "B9",
-            end: "B16",
+            sheet: "DO NOT EDIT",
+            start: "B104",
+            end: "B113",
             firstrow: "Less than $25,000",
           },
         ],
@@ -465,7 +481,7 @@ define([], function () {
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
-          height: 500,
+          height: 550,
           colWidths: [150],
           stretchH: "none",
         },
@@ -663,7 +679,7 @@ define([], function () {
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 150,
-          height: 500,
+          height: 550,
           colWidths: [150],
           stretchH: "none",
         },
@@ -700,6 +716,14 @@ define([], function () {
             key: "morethan300",
             label: "More than $300,000",
           },
+          {
+            key: "total",
+            label: "Total",
+          },
+          {
+            key: "totalanswered",
+            label: "Total Answered"
+          }
         ],
         cols: [
           [
@@ -717,15 +741,15 @@ define([], function () {
             },
             type: "int",
             min: 0,
-            max_error: 200,
+            max_error: 1000,
             empty: false,
           },
         ],
         excel: [
           {
-            sheet: "3. New hires and departures",
-            start: "B39",
-            end: "B46",
+            sheet: "DO NOT EDIT",
+            start: "B119",
+            end: "B128",
             firstrow: "Less than $25,000",
           },
         ],
