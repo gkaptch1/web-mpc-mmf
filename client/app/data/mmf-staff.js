@@ -611,11 +611,15 @@ define([], function () {
                       value: "6",
                       text: "I don’t know much about the museum’s return-to-work plans",
                     },
+                    {
+                      value: "7",
+                      text: "Prefer not to answer",
+                    },
                   ],
                 },
               ],
               title: "Workplace Climate",
-              description: "In this section, we will ask you some questions about your museum’s workplace conditions and\norganizational culture. Some of these questions might touch on sensitive topics such as discrimination or\nother negative instances. If you don’t feel comfortable answering any of these questions, please feel\nfree to skip them or select “prefer not to answer”.",
+              description: "In this section, we will ask you some questions about your museum’s workplace conditions and\norganizational culture. Some of these questions might touch on sensitive topics such as discrimination or\nother negative experiences. If you don’t feel comfortable answering any of these questions, please select “prefer not to answer”.",
             },
           ],
         },
@@ -848,7 +852,7 @@ define([], function () {
                 },
                 {
                   value: "4",
-                  text: "Opportunities for growth the other museum",
+                  text: "Opportunities for growth at the other museum",
                 },
                 {
                   value: "5",
