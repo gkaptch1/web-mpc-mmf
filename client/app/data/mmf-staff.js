@@ -1130,7 +1130,7 @@ define([], function () {
                       text: "I did something else",
                     },
                     {
-                      value: "910",
+                      value: "10",
                       text: "I haven’t done anything in response",
                     },
                   ],
@@ -1672,7 +1672,7 @@ define([], function () {
       ],
       showPageTitles: false,
       clearInvisibleValues: "none",
-      completedHtml: "<p><h4>Your answers are being submitted.  <b>Please don't close the page until you see a popup</b> confirming your submission.</h4></p>",
+      completedHtml: "<p><h4>Your answers are being submitted.  <b>Please don't close the page until you see a popup</b> confirming your submission. Please be patient-this might take as long as 1 minute.</h4></p>",
       completeText: "Submit Answers",
       widthMode: "responsive",
     },
