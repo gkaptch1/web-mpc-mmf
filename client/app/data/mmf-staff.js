@@ -1061,17 +1061,13 @@ define([], function () {
                 {
                   value: "7",
                   text: "I used another reporting mechanism",
-                },
+                },              
                 {
                   value: "8",
-                  text: "I followed a union-provided grievance process for reporting",
-                },                
-                {
-                  value: "9",
                   text: "I did something else",
                 },
                 {
-                  value: "10",
+                  value: "9",
                   text: "I haven’t done anything in response",
                 },
               ],
@@ -1079,7 +1075,7 @@ define([], function () {
             {
               type: "radiogroup",
               name: "question30",
-              visibleIf: "{question29} contains 1 or {question29} contains 2 or {question29} contains 3 or {question29} contains 4 or {question29} contains 5 or {question29} contains 6 or {question29} contains 7 or {question29} contains 8",
+              visibleIf: "{question29} contains 1 or {question29} contains 2 or {question29} contains 3 or {question29} contains 4 or {question29} contains 5 or {question29} contains 6 or {question29} contains 7",
               title:
                 "How satisfied are you with how HR and /or the museum resolved your complaint(s) overall?",
               isRequired: true,
