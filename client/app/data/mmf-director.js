@@ -47,7 +47,7 @@ define([], function () {
               type: "text",
               name: "question2",
               title:
-                "In your last complete fiscal year, approximately what proportion of your annual budget was allocated to staff compensation and benefits? (Please exclude any non-numeric characters)",
+                "In your last complete fiscal year, approximately what proportion (%) of your annual budget was allocated to staff compensation and benefits? (Please exclude any non-numeric characters)",
               placeHolder : "XX",
               inputType: "number",
               isRequired: true,
@@ -64,7 +64,7 @@ define([], function () {
               type: "text",
               name: "question3",
               title:
-                "For your last complete fiscal year, approximately what proportion of your organization’s revenue was directly contributed by board members? (Please exclude any non-numeric characters)",
+                "For your last complete fiscal year, approximately what proportion (%) of your organization’s revenue was directly contributed by board members? (Please exclude any non-numeric characters)",
               placeHolder : "XX",
               inputType: "number",
               isRequired: true,
@@ -169,7 +169,7 @@ define([], function () {
               type: "multipletext",
               name: "question6",
               title:
-                "Keeping in mind just your board members who are on the Finance and/or Executive committees, how many members of each gender do you have? Please mark 0 where applicable in the categories below.",
+                "Keeping in mind just your board members who are on the Finance and/or Executive committees, how many members of each race and ethnicity do you have? Please mark 0 where applicable in the categories below. (if any of the committee members fall into more than one of these categories, please select “another race or ethnicity”)",
               visibleIf: "{question4} = 1",
               isRequired: true,
               items: [
@@ -361,7 +361,7 @@ define([], function () {
       ],
       showPageTitles: false,
       clearInvisibleValues: "none",
-      completedHtml: "<p><h4>Thank you for completing the survey! We are grateful for your time and for your contribution to this fieldwide initiative.</h4></p><p><h4>Your answers are being submitted.  Please don't close the page until you see a popup confirming your submission.</h4></p>",
+      completedHtml: "<p><h4>Your answers are being submitted.  <b>Please don't close the page until you see a popup</b> confirming your submission.</h4></p>",
       completeText: "Submit Answers",
       widthMode: "responsive",
     },
