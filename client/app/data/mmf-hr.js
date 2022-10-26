@@ -853,7 +853,7 @@ define([], function () {
             },
             {
               key: "unionized-neg",
-              label: "Unionization - Negotiation",
+              label: "Unionization - Negotiating",
             },
         ],
         cols: [

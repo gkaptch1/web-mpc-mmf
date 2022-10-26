@@ -151,7 +151,7 @@ define(['alertHandler', 'XLSX'], function (alertHandler) {
           throw 'Spreadsheet name does not match with format.'
         }
       }
-      alertHandler.success('The tables below have been populated. Please confirm that your data is accurate, verify, and submit your data');
+      alertHandler.success('Your data has been processed. Please proceed to creating a password and submitting your data.');
     }
 
 

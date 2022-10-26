@@ -208,8 +208,8 @@ define([
 
       if ('dragAndDropInput' in table_template && table_template.dragAndDropInput) {
         var _workend = function (status) {
-          $("#tables-area").show();
-          tableController.updateWidth(tables);
+          // $("#tables-area").show();
+          // tableController.updateWidth(tables);
           spinner.stop();
         };
       }
