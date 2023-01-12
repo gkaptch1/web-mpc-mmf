@@ -159,8 +159,8 @@ define([
       party_id: null,
     };
 
-    // console.log(dataSubmission);
-    // console.log(values);
+    console.log(dataSubmission);
+    console.log(values);
 
     // Initialize and submit
     var jiff = initialize(sessionkey, "client", options);
@@ -181,7 +181,7 @@ define([
       // then share the rest
       for (i = ordering.tables.length; i < values.length; i++) {
         if (typeof values[i] === "string") continue;
-        // console.log(values[i]);
+        console.log(values[i]);
         jiff.share(values[i], null, [1, "s1"], [jiff.id]);
       }
       jiff.restFlush();
@@ -206,6 +206,8 @@ define([
       },
     };
 
+    options.crypto_provider = true;
+
     // Initialize
     var jiff = initialize(sessionkey, "analyst", options);
     // Listen to the submitter ids from server
@@ -221,10 +223,17 @@ define([
       var submitters = JSON.parse(msg);
 
       // Compute and Format
-      var promise = mpc.compute(jiff, submitters, ordering, progressBar);
+      var promise = mpc.compute(jiff, submitters, ordering, table_template, progressBar);
       promise
         .then(function (result) {
           jiff.disconnect(false, false);
+
+          // GABE: THIS IS THE WAY TO GET THE CLIENT'S KEYS
+          // analystController.getClientKeys(sessionKey, sessionPass).then(function (keys) {
+          //   console.log(keys);
+          // });
+          // GABE: Encrypt and use the update
+
           callback(mpc.format(result, submitters, ordering));
         })
         .catch(function (err) {

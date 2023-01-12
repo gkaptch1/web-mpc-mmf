@@ -133,6 +133,21 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
       });
   }
 
+  function getClientKeys(session, password) {
+    return $.ajax({
+      type: 'POST',
+      url: '/get_client_public_keys',
+      contentType: 'application/json',
+      data: JSON.stringify({session: session, password: password})
+    })
+      .then(function (resp) {
+        return resp.result;
+      })
+      .catch(function (err) {
+        throw new Error(err.responseText);
+      });
+  }
+
   function generateSession(title, description) {
     if (title == null || description == null || title === '' || description === '') {
       alertHandler.error('Session title and description are required');
@@ -198,6 +213,7 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
     getExistingParticipants: getExistingParticipants,
     getExistingCohorts: getExistingCohorts,
     getSubmissionHistory: getSubmissionHistory,
+    getClientKeys: getClientKeys,
     generateSession: generateSession,
     getParameterByName: getParameterByName,
     addCohorts: addCohorts,

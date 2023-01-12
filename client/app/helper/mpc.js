@@ -339,12 +339,17 @@ define(["constants"], function (constants) {
       }
     }
 
+    question_length = 0;
+    for (question of ordering.questions) {
+      question_length += question.items.length;
+    }
+
     for (
       var k = 0;
       k <
       2 * ordering.tables.length +
         lin_reg_products_num +
-        ordering.questions.length +
+        question_length +
         ordering.usability.length;
       k++
     ) {
@@ -357,7 +362,7 @@ define(["constants"], function (constants) {
         result.squares.push(share);
       } else if (k < 2 * ordering.tables.length + lin_reg_products_num) {
         result.lin_reg_products.push(share);
-      } else if (k < 2 * ordering.tables.length + ordering.questions.length) {
+      } else if (k < 2 * ordering.tables.length + question_length) {
         result.questions.push(share);
       } else {
         result.usability.push(share);
@@ -376,6 +381,25 @@ define(["constants"], function (constants) {
       accumulator[i] = accumulator[i].sadd(shares[i]);
     }
     return accumulator;
+  };
+
+  // Sum the given two shares
+  var sumAndAccumulateSingleShares = function (accumulator, share) {
+    if (accumulator == null || share == null) {
+      return share;
+    }
+    return accumulator.sadd(share);
+  };
+
+  var multShareAndVector = function (share, vector) {
+    if (share == null) {
+      return vector;
+    }
+
+    for (var i = 0; i < vector.length; i++) {
+      vector[i] = vector[i].smult(share);
+    }
+    return vector;
   };
 
   // Sum the given two arrays of secret shares, placing the result in the first array
@@ -448,12 +472,17 @@ define(["constants"], function (constants) {
     jiff_instance,
     submitters,
     ordering,
+    table_template,
     progressBar
   ) {
     updateProgress(progressBar, 0);
 
+
     // Compute these entities in order
-    var sums,
+    var newShares,
+      newShare,
+      outputs,
+      sums,
       squaresSums,
       productSums,
       questions = null,
@@ -465,6 +494,126 @@ define(["constants"], function (constants) {
     sums = { all: null }; // sums['all'] is for everyone, sums[<cohort>] is for <cohort> only
     squaresSums = { all: null };
     productSums = { all: null };
+
+
+    outputs = {};
+
+    for (output of table_template.computation.outputs) {
+      outputs[output.name] = {}; // Setting up the map.  Results will be stored under the filter name, with "nofilter" as the default
+    }
+
+    newShares = {};
+
+    indexMap = {};
+    newVarIndexMap = {};
+
+    let count=0;
+    for (q of ordering.questions) {
+      for (let i=0; i<q.items.length; i++) {
+        if(indexMap[q.id] == undefined) {
+          indexMap[q.id] = {};
+        }
+        indexMap[q.id][i+1] = count; // We are 1 indexing the values
+        count = count+1;
+      }
+    }
+
+    count=0;
+    for (newVar of Object.keys(table_template.computation.newVariables)) {
+      for (choice of table_template.computation.newVariables[newVar].choices) {
+        if(newVarIndexMap[newVar] == undefined) {
+          newVarIndexMap[newVar] = {};
+        }
+        newVarIndexMap[newVar][choice.value] = count;
+        count = count+1;
+      }
+    }
+
+    for (i = 0; i < submitters["all"].length; i++) {
+      var partyID = submitters["all"][i];
+
+      newShares[partyID] = [];
+
+      shares = getShares(jiff_instance, partyID, ordering);
+
+      // var j = 0;
+      // for (i = 1; i < 40; i++) {
+      //   openValues(jiff_instance, [shares.questions[i]], [1]).then( function (allpartyshares) {
+      //     console.log("Opened " + (j++) + " shares: " + allpartyshares);
+      //   });
+      // }
+
+      // return new Promise(function(){});
+
+      // For each newVariable, we need to compute shares of the new variable, and append it to the shares that we have
+      for (newVar of Object.keys(table_template.computation.newVariables)) {
+        if (table_template.computation.newVariables[newVar].operation = "bin") {
+          // We are binning existing answers together.  We know that only one of the answers will be set, so we can just use addition 
+          // Iterate through all the possible values the newVar can take
+          for (choice of table_template.computation.newVariables[newVar].choices) {
+            newShare = null;
+            // Iterate through all the things that are getting binned together and sum them together
+            for (wayToGetThere of choice.waysToGetThere) {
+              newShare = sumAndAccumulateSingleShares(newShare, shares.questions[indexMap[wayToGetThere.question][wayToGetThere.values]]);
+            }
+            // Append the share to the party's list of shares
+            // let result = await openValues(jiff_instance, newShare, [1]);
+            // console.log("Binning for "+ partyID + ":" + result);
+            newShares[partyID].push(newShare);
+          }
+        }
+      }
+
+      for (output of table_template.computation.outputs) {
+
+        if (output.function == "mean" || output.function == "radiogroupSum" || output.function == "checkboxSum") {
+
+          for (j=0;j<output.inputQuestions.length;j++) {
+            inputQuestion = output.inputQuestions[j];
+
+            // Default nofilter option
+            if (indexMap[inputQuestion] == undefined) { //We should try looking in the newVars instead
+              outputs[output.name]["nofilter"] = sumAndAccumulate(outputs[output.name]["nofilter"], newShares[partyID].slice(newVarIndexMap[inputQuestion]['1'], newVarIndexMap[inputQuestion]['1'] + Object.keys(newVarIndexMap[inputQuestion]).length));
+            } else {
+              outputs[output.name]["nofilter"] = sumAndAccumulate(outputs[output.name]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['1'], indexMap[inputQuestion]['1'] + Object.keys(indexMap[inputQuestion]).length));
+            }
+
+            // Iterate through the filters
+            filteredData = {};
+            for (filtername of output.filters) {
+              var f = table_template.computation.filters[filtername];
+              // Generate the filtered data 
+
+              // First, pull out the shares for the filter
+              if (filteredData[filtername] == undefined) {
+                filterShares = [];
+                if (indexMap[f.question] == undefined) { //We should try looking in the newVars instead
+                  filterShares = shares.questions.slice(newVarIndexMap[f.question]['1'], newVarIndexMap[f.question]['1'] + Object.keys(newVarIndexMap[f.question]).length);
+                } else {
+                  filterShares = shares.questions.slice(indexMap[f.question]['1'], indexMap[f.question]['1'] + Object.keys(indexMap[f.question]).length);
+                }
+
+                // Next, pull out the shares of the input questions
+                inputQuestionShares = [];
+                if (indexMap[inputQuestion] == undefined) { //We should try looking in the newVars instead
+                  inputQuestionShares = shares.questions.slice(newVarIndexMap[inputQuestion]['1'], newVarIndexMap[inputQuestion]['1'] + Object.keys(newVarIndexMap[inputQuestion]).length);
+                } else {
+                  inputQuestionShares = shares.questions.slice(indexMap[inputQuestion]['1'], indexMap[inputQuestion]['1'] + Object.keys(indexMap[inputQuestion]).length);
+                }
+
+                // Take the product 
+                for(fShare of filterShares) {
+                  filteredData[filtername] = multShareAndVector(fShare,inputQuestionShares);
+                }
+              }
+
+              // Now do the actual accumulation into the outputs
+              outputs[output.name][filtername] = sumAndAccumulate(outputs[output.name][f],filteredData[filtername]);
+            }
+          }
+        }
+      }
+    }
 
     // Process shares from parties that do not belong to any cohort (their cohort has too few elements)
     var counter = 0;
@@ -492,92 +641,101 @@ define(["constants"], function (constants) {
     }
 
     // Compute all the results: computation proceeds by party in order
-    for (i = 0; i < submitters["cohorts"].length; i++) {
-      cohort = submitters["cohorts"][i];
+    // for (i = 0; i < submitters["cohorts"].length; i++) {
+    //   cohort = submitters["cohorts"][i];
 
-      for (p = 0; p < submitters[cohort].length; p++) {
-        var partyID = submitters[cohort][p];
+    //   for (p = 0; p < submitters[cohort].length; p++) {
+    //     var partyID = submitters[cohort][p];
 
-        // Get all shares this party sent: values, squares of values, questions, and usability.
-        shares = getShares(jiff_instance, partyID, ordering);
+    //     // Get all shares this party sent: values, squares of values, questions, and usability.
+    //     shares = getShares(jiff_instance, partyID, ordering);
 
-        // Sum all things
-        if (ordering.table_meta.cohort_group_by !== ALL) {
-          sums[cohort] = sumAndAccumulateCohort(
-            sums[cohort],
-            shares.shares,
-            ordering
-          );
-          squaresSums[cohort] = sumAndAccumulateCohort(
-            squaresSums[cohort],
-            shares.squares,
-            ordering
-          );
-        } else {
-          sums[cohort] = sumAndAccumulate(sums[cohort], shares.shares);
-          squaresSums[cohort] = sumAndAccumulate(
-            squaresSums[cohort],
-            shares.squares
-          );
-        }
-        sums["all"] = sumAndAccumulate(sums["all"], shares.shares);
-        squaresSums["all"] = sumAndAccumulate(
-          squaresSums["all"],
-          shares.squares
-        );
-        productSums["all"] = sumAndAccumulate(
-          productSums["all"],
-          shares.lin_reg_products
-        );
-        questions = sumAndAccumulate(questions, shares.questions);
-        usability = sumAndAccumulate(usability, shares.usability);
+    //     // Sum all things
+    //     if (ordering.table_meta.cohort_group_by !== ALL) {
+    //       sums[cohort] = sumAndAccumulateCohort(
+    //         sums[cohort],
+    //         shares.shares,
+    //         ordering
+    //       );
+    //       squaresSums[cohort] = sumAndAccumulateCohort(
+    //         squaresSums[cohort],
+    //         shares.squares,
+    //         ordering
+    //       );
+    //     } else {
+    //       sums[cohort] = sumAndAccumulate(sums[cohort], shares.shares);
+    //       squaresSums[cohort] = sumAndAccumulate(
+    //         squaresSums[cohort],
+    //         shares.squares
+    //       );
+    //     }
+    //     sums["all"] = sumAndAccumulate(sums["all"], shares.shares);
+    //     squaresSums["all"] = sumAndAccumulate(
+    //       squaresSums["all"],
+    //       shares.squares
+    //     );
+    //     productSums["all"] = sumAndAccumulate(
+    //       productSums["all"],
+    //       shares.lin_reg_products
+    //     );
+    //     questions = sumAndAccumulate(questions, shares.questions);
+    //     usability = sumAndAccumulate(usability, shares.usability);
 
-        // garbage
-        shares = null;
-        await usability[usability.length - 1].promise;
+    //     // garbage
+    //     shares = null;
+    //     await usability[usability.length - 1].promise;
 
-        // progress
-        counter++;
-        updateProgress(
-          progressBar,
-          (counter / submitters["all"].length) * 0.94
-        );
-      }
+    //     // progress
+    //     counter++;
+    //     updateProgress(
+    //       progressBar,
+    //       (counter / submitters["all"].length) * 0.94
+    //     );
+    //   }
 
-      // Cohort averages are done, open them (do not use await so that we do not block the main thread)
-      var avgPromise = openValues(jiff_instance, sums[cohort], [1]);
-      var squaresPromise = openValues(jiff_instance, squaresSums[cohort], [1]);
-      promises.push(...[avgPromise, squaresPromise]);
+    //   // Cohort averages are done, open them (do not use await so that we do not block the main thread)
+    //   var avgPromise = openValues(jiff_instance, sums[cohort], [1]);
+    //   var squaresPromise = openValues(jiff_instance, squaresSums[cohort], [1]);
+    //   promises.push(...[avgPromise, squaresPromise]);
+    // }
+
+    for (output of Object.keys(outputs)) {
+      let result = await openValues(jiff_instance, outputs[output], [1]);
+      console.log(""+ output+ ":" + result);
     }
 
-    // wait for cohort outputs
-    var cohortOutputs = await Promise.all(promises);
-    updateProgress(progressBar, 0.96);
-    for (i = 0; i < submitters["cohorts"].length * 2; i++) {
-      // every 2 outputs belongs to same cohort - evens are sums; odds are square sums
-      let idx = Math.floor(i / 2);
-      console.log(idx, submitters["cohorts"][idx]);
-      if (i % 2 === 0) {
-        sums[submitters["cohorts"][idx]] = cohortOutputs[i];
-      } else {
-        squaresSums[submitters["cohorts"][idx]] = cohortOutputs[i];
-      }
-    }
+    console.log("End");
 
-    // Open all sumsm sums of squares and productSums
-    sums["all"] = await openValues(jiff_instance, sums["all"], [1]);
-    squaresSums["all"] = await openValues(jiff_instance, squaresSums["all"], [
-      1,
-    ]);
-    productSums["all"] = await openValues(jiff_instance, productSums["all"], [
-      1,
-    ]);
-    updateProgress(progressBar, 0.98);
+    // sums["all"] = await openValues(jiff_instance, sums["all"], [1]);
 
-    // Open questions and usability
-    questions = await openValues(jiff_instance, questions, [1]);
-    usability = await openValues(jiff_instance, usability, [1]);
-    updateProgress(progressBar, 1);
+    // // wait for cohort outputs
+    // var cohortOutputs = await Promise.all(promises);
+    // updateProgress(progressBar, 0.96);
+    // for (i = 0; i < submitters["cohorts"].length * 2; i++) {
+    //   // every 2 outputs belongs to same cohort - evens are sums; odds are square sums
+    //   let idx = Math.floor(i / 2);
+    //   console.log(idx, submitters["cohorts"][idx]);
+    //   if (i % 2 === 0) {
+    //     sums[submitters["cohorts"][idx]] = cohortOutputs[i];
+    //   } else {
+    //     squaresSums[submitters["cohorts"][idx]] = cohortOutputs[i];
+    //   }
+    // }
+
+    // // Open all sumsm sums of squares and productSums
+    // sums["all"] = await openValues(jiff_instance, sums["all"], [1]);
+    // squaresSums["all"] = await openValues(jiff_instance, squaresSums["all"], [
+    //   1,
+    // ]);
+    // productSums["all"] = await openValues(jiff_instance, productSums["all"], [
+    //   1,
+    // ]);
+    // updateProgress(progressBar, 0.98);
+
+    // // Open questions and usability
+    // questions = await openValues(jiff_instance, questions, [1]);
+    // usability = await openValues(jiff_instance, usability, [1]);
+    // updateProgress(progressBar, 1);
 
     // Put results in object
     return {

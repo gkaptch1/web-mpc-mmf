@@ -217,13 +217,13 @@ module.exports.getClientKeys = function (context, body, res) {
   // Password verified already by authentication!
   var promise = modelWrappers.UserKey.query(body.session);
 
-  promise.then(function (registerdata) {
+  promise.then(function (data) {
     var pseudonymnsAndKeys = {};
     for (var d of data) {
       // pseudonymnsAndKeys[d.cohort].push({pseudonymn: d.pseudonymn, key:d.pub_key});
       // var cohort = table_template.cohort_selection === true ? 0 : d.cohort;
       var arr = pseudonymnsAndKeys[d.cohort] == null ? [] : pseudonymnsAndKeys[d.cohort];
-      arr.push({pseudonymn: d.pseudonymn, key:d.pub_key});
+      arr.push({pseudonymn: d.pseudonymn, key:d.pub_key, party_id:d.jiff_party_id});
       pseudonymnsAndKeys[d.cohort] = arr;
     }
     console.log('client keys fetched:', body.session);
@@ -240,7 +240,7 @@ module.exports.analystBulkUpdateResultMessages = function (context, body, res) {
     updates.push(modelWrappers.UserKey.analystMessageUpdate(body.session,d.pseduonymn,d.analystMessage));
   }
   Promise.all(updates).then(function(values) {
-    console.log('client keys fetched:', body.session);
+    console.log('Analyst update of result messages:', body.session);
     res.json({num_updates:values.length});
   }).catch(function(err) {
     console.log('Error in analyst update of results messages', err);

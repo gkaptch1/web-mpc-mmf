@@ -48,6 +48,8 @@ module.exports = {
     userkey: schemaTemplates.userKeySchema
   },
 
+  getClientKeys: Object.assign({}, schemaTemplates.keyPasswordTemplate),
+
   getCohortsManage: Object.assign({}, schemaTemplates.keyPasswordTemplate),
 
   createNewCohort: Object.assign({
