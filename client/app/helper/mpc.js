@@ -567,7 +567,6 @@ define(["constants"], function (constants) {
       for (output of table_template.computation.outputs) {
 
         if (output.function == "mean" || output.function == "radiogroupSum" || output.function == "checkboxSum") {
-
           for (j=0;j<output.inputQuestions.length;j++) {
             inputQuestion = output.inputQuestions[j];
 
@@ -956,11 +955,13 @@ define(["constants"], function (constants) {
     }
 
     // format usability as usability[<metric>][<field>] = value
-    for (i = 0; i < ordering.usability.length; i++) {
-      var metric = ordering.usability[i].metric;
-      var field = ordering.usability[i].field;
-      var value = result.usability[i];
-      setOrAssign(usability, [metric, field], value.toString());
+    if (result.usability.length > 0) {
+      for (i = 0; i < ordering.usability.length; i++) {
+        var metric = ordering.usability[i].metric;
+        var field = ordering.usability[i].field;
+        var value = result.usability[i];
+        setOrAssign(usability, [metric, field], value.toString());
+      }
     }
 
     return {
@@ -974,10 +975,80 @@ define(["constants"], function (constants) {
       cohorts: submitters,
     };
   };
+  
+  
+  // Perform MPC computation for averages, deviations, questions, and usability
+  var compute_kinan = async function (
+    jiff_instance,
+    submitters,
+    ordering,
+    table_template,
+    progressBar
+  ) {
+    updateProgress(progressBar, 0);
+
+    // Temporary variables
+    var cohort, i, p, shares;
+    var promises = [];
+    var all_shares = [];
+
+    // Get everyone's shares.
+    for (var i = 0; i < submitters["all"].length; i++) {
+      var partyID = submitters["all"][i];
+      var shares = getShares(jiff_instance, partyID, ordering);
+      all_shares.push(shares.questions);
+
+      // Wait for all shares to be received.
+      var promises = [];
+      for (var share of shares.questions) {
+        if (!share.ready)
+          promises.push(share.value);
+      }
+      await Promise.all(promises);
+
+      // Update progress bar.
+      updateProgress(progressBar, ((i + 1) / submitters["all"].length) * 0.94);
+      console.log("party", i);
+    }
+
+    // Add all shares element wise.
+    var products = all_shares[0];
+    for (var i = 1; i < all_shares.length; i++) {
+      for (var j = 0; j < products.length; j++) {
+        products[j] = products[j].smult(all_shares[i][j]);
+      }
+    }
+
+    // reconstruct sum.
+    var promises = [];
+    for (var i = 0; i < products.length; i++) {
+      var promise = jiff_instance.open(products[i], [1]);
+      if (promise != null) {
+        promises.push(promise);
+      }
+    }
+    var values = await Promise.all(promises);
+    var string_values = [];
+    for (var val of values) {
+      string_values.push(val.toString());
+    }
+    console.log('End result', string_values);
+    updateProgress(progressBar, 1);
+
+    // Put results in object
+    return {
+      sums: [],
+      squaresSums: [],
+      productSums: [],
+      questions: [],
+      usability: [],
+    };
+  };
 
   return {
     consistentOrdering: consistentOrdering,
-    compute: compute,
+    // TO GABE: return compute instead of compute_kinan.
+    compute: compute_kinan,
     format: format,
   };
 });

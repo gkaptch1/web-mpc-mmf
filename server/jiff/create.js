@@ -29,7 +29,9 @@ const options = { logs: false, sodium: false, hooks: {} };
 const computeOptions = {
   sodium: false,
   safemod: false,
+  logs: true,
   Zp: '618970019642690137449562111',  // 2^89-1
+  crypto_provider : "http://localhost:4321",
   hooks: {
     createSecretShare: [function (jiff, share) {
       share.refresh = function () {
@@ -80,17 +82,27 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
   var copy = Object.assign({}, computeOptions);
   copy.hooks = Object.assign({}, computeOptions.hooks, cryptoHooks);
   const computationInstance = this.serverInstance.compute(session_key, computeOptions);
-  computationInstance.counters.reset();
-  computationInstance.connect();
+  
+  var self = this;
+  // Wait for the analyst to tell us to compute.
+  computationInstance.listen("compute", async function (party_id, msg) {
+    console.log('Analyst indicates time to compute');
 
-  // Send submitters ids to analyst
-  var submitters = await this.getTrackerParties(session_key);
-  computationInstance.emit('compute', [ 1 ], JSON.stringify(submitters), false);
+    // Reset the instance state as if it's fresh for every time the analyst
+    // invokes compute.
+    computationInstance.counters.reset();
+    // Re-initializes the computation instace and re-reads its mailbox.
+    computationInstance.socket.connect();
 
-  // Perform server-side MPC
-  var table_template = require('../../client/app/' + config.client.table_template + '.js');
-  var ordering = mpc.consistentOrdering(table_template);
-  await mpc.compute(computationInstance, submitters, ordering);
+    // Send submitters ids to analyst
+    var submitters = await self.getTrackerParties(session_key);
+    computationInstance.emit('compute', [ 1 ], JSON.stringify(submitters), false);
+
+    // Perform server-side MPC
+    var table_template = require('../../client/app/' + config.client.table_template + '.js');
+    var ordering = mpc.consistentOrdering(table_template);
+    await mpc.compute(computationInstance, submitters, ordering);
+  });
 };
 
 module.exports = JIFFWrapper;
