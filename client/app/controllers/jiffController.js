@@ -88,6 +88,20 @@ define([
     };
     baseOptions = Object.assign(baseOptions, options);
     baseOptions.hooks = Object.assign({}, baseOptions.hooks, cryptoHooks);
+    /*
+    baseOptions.hooks['beforeOperation'] = [
+      function (jiff, label, msg) {
+        console.log("Sending to server", label, msg);
+        return msg;
+      }
+    ];
+    baseOptions.hooks['afterOperation'] = [
+      function (jiff, label, msg) {
+        console.log("Received from server", label, msg);
+        return msg;
+      }
+    ];
+    */
     var bigNumberOptions = {
       Zp: "618970019642690137449562111", // Must be set to a prime number! Currently 2^89-1
       safemod: false,
@@ -98,8 +112,9 @@ define([
       pollInterval: 0,
       maxBatchSize: 5000,
     };
-    if (role === "analyst") {
-      restOptions["flushInterval"] = 6000; // 6 seconds
+    
+    if (role == "analyst") {
+      baseOptions.crypto_provider = "http://127.0.0.1:4321";
     }
 
     var port = window.location.port === "8080" ? ":8080" : "";
@@ -109,7 +124,10 @@ define([
       baseOptions
     );
     instance.apply_extension(jiff_bignumber, bigNumberOptions);
-    instance.apply_extension(jiff_client_restful, restOptions);
+    
+    if (role != "analyst") {
+      instance.apply_extension(jiff_client_restful, restOptions);
+    }
 
     instance.connect();
     return instance;
@@ -181,7 +199,6 @@ define([
       // then share the rest
       for (i = ordering.tables.length; i < values.length; i++) {
         if (typeof values[i] === "string") continue;
-        console.log(values[i]);
         jiff.share(values[i], null, [1, "s1"], [jiff.id]);
       }
       jiff.restFlush();
@@ -206,14 +223,14 @@ define([
       },
     };
 
-    options.crypto_provider = true;
-
     // Initialize
     var jiff = initialize(sessionkey, "analyst", options);
+    // Tell the server to compute.
+    jiff.emit('compute', [ 's1' ], 'compute', false);
     // Listen to the submitter ids from server
     jiff.listen("compute", function (party_id, msg) {
+      console.log("Got the compute signal from server");
       jiff.remove_listener("compute");
-
       if (party_id !== "s1") {
         return;
       }
@@ -226,17 +243,17 @@ define([
       var promise = mpc.compute(jiff, submitters, ordering, table_template, progressBar);
       promise
         .then(function (result) {
-          jiff.disconnect(false, false);
+          jiff.disconnect(true, false);
 
           // GABE: THIS IS THE WAY TO GET THE CLIENT'S KEYS
           // analystController.getClientKeys(sessionKey, sessionPass).then(function (keys) {
           //   console.log(keys);
           // });
           // GABE: Encrypt and use the update
-
           callback(mpc.format(result, submitters, ordering));
         })
         .catch(function (err) {
+          console.log(err);
           error(err.toString());
         });
     });
