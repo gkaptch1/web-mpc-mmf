@@ -66,7 +66,7 @@ define([], function () {
         },
       },
       filters: {
-        "filterAge" : {
+        "filterSeniority" : {
           question: "newVarSeniority",
         },
         "filterPosition" : {
@@ -78,7 +78,7 @@ define([], function () {
           name: "test-survey-1",
           inputQuestions: ["question1"],
           function: "mean",
-          filters: [],
+          filters: ["filterSeniority"],
           outputParties: {
             analyst: "true",
             cohort: "true",

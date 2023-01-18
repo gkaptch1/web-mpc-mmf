@@ -25,7 +25,7 @@ const cryptoHooks =  {
 };
 
 // Options and Hooks
-const options = { logs: false, sodium: false, hooks: {} };
+const options = { logs: true, sodium: false, hooks: {} };
 const computeOptions = {
   sodium: false,
   safemod: false,
@@ -101,7 +101,7 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
     // Perform server-side MPC
     var table_template = require('../../client/app/' + config.client.table_template + '.js');
     var ordering = mpc.consistentOrdering(table_template);
-    await mpc.compute(computationInstance, submitters, ordering);
+    await mpc.compute(computationInstance, submitters, ordering, table_template);
   });
 };
 

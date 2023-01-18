@@ -64,54 +64,524 @@ define([], function () {
             },
           ]
         },
-        "newVarSalaryCategories": {
-          operation: "numericBin",
+        "newVarPositionCategories": {
+          operation: "bin",
+          resultType: "checkbox",
           choices: [
             {
               value: "1",
+              text: "Administration",
               waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "1",
+                },
+                {
+                  question: "question5",
+                  values: "6",
+                },
+                {
+                  question: "question5",
+                  values: "10",
+                },
+                {
+                  question: "question5",
+                  values: "13",
+                },
+                {
+                  question: "question5",
+                  values: "14",
+                },
+                {
+                  question: "question5",
+                  values: "18",
+                },
+                {
+                  question: "question5",
+                  values: "19",
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "Building Operations",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "8",
+                },
+                {
+                  question: "question5",
+                  values: "9",
+                },
+                {
+                  question: "question5",
+                  values: "11",
+                },
+                {
+                  question: "question5",
+                  values: "12",
+                },
+                {
+                  question: "question5",
+                  values: "15",
+                },
+                {
+                  question: "question5",
+                  values: "16",
+                },
+                {
+                  question: "question5",
+                  values: "27",
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "Collections",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "2",
+                },
+                {
+                  question: "question5",
+                  values: "3",
+                },
+                {
+                  question: "question5",
+                  values: "4",
+                },
+                {
+                  question: "question5",
+                  values: "16",
+                  _comment : "TODO: Double Check.  16 in both collections and building ops"
+                },
+                {
+                  question: "question5",
+                  values: "20",
+                },
+                {
+                  question: "question5",
+                  values: "23",
+                },
+              ]
+            },
+            {
+              value: "4",
+              text: "Communications",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "5",
+                },
+                {
+                  question: "question5",
+                  values: "17",
+                },
+                {
+                  question: "question5",
+                  values: "22",
+                },
+                {
+                  question: "question5",
+                  values: "26",
+                },
+              ]
+            },
+            {
+              value: "5",
+              text: "Public Engagement",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "7",
+                },
+                {
+                  question: "question5",
+                  values: "21",
+                },
+                {
+                  question: "question5",
+                  values: "28",
+                },
+              ]
+            },
+          ]
+        },
+        "newVarSalaryCategories": {
+          operation: "numericBin",
+          resultType: "radiogroup"
+          maxValue: 5000000,
+          minValue: 0,
+          choices: [
+            {
+              value: "1",
+              waysToGetThere: 
+              [
                 {
                   question: "question10",
                   minValue : 0,
                   maxValue : 24999,
                 },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
                 {
                   question: "question10",
                   minValue : 25000,
                   maxValue : 49999,
                 },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
                 {
                   question: "question10",
                   minValue : 50000,
                   maxValue : 74999,
                 },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
                 {
                   question: "question10",
                   minValue : 75000,
                   maxValue : 99999,
                 },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
                 {
                   question: "question10",
                   minValue : 100000,
                   maxValue : 149999,
                 },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
                 {
                   question: "question10",
                   minValue : 150000,
                   maxValue : 199999,
                 },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
                 {
                   question: "question10",
                   minValue : 200000,
                   maxValue : 299999,
                 },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
                 {
                   question: "question10",
                   minValue : 300000,
                   maxValue : "Infinity",
                 },
               ]
+            },
+          ]
+        },
+        "newVarGender" : {
+          operation: "bin",
+          resultType: "radiogroup",
+          choices: [
+            {
+              value: "1",
+              text: "Man",
+              waysToGetThere:
+              [
+                {
+                  question: "question38",
+                  values: "1",
+                }
+              ]
+            },
+            {
+              value: "2",
+              text: "Woman",
+              waysToGetThere:
+              [
+                {
+                  question: "question38",
+                  values: "2",
+                }
+              ]
+            },
+            {
+              value: "3",
+              text: "Non-binary and Another Gender",
+              waysToGetThere:
+              [
+                {
+                  question: "question38",
+                  values: "3",
+                },
+                {
+                  question: "question38",
+                  values: "4",
+                },
+                {
+                  question: "question38",
+                  values: "5",
+                }
+              ]
             }
+          ]
+        },
+        "newVarSexualOrientation" : {
+          operation: "bin",
+          resultType: "radiogroup",
+          choices: [
+            {
+              value: "1",
+              text: "Heterosexual",
+              waysToGetThere:
+              [
+                {
+                  question: "question39",
+                  values: "1",
+                }
+              ]
+            },
+            {
+              value: "2",
+              text: "LGBTQ",
+              waysToGetThere:
+              [
+                {
+                  question: "question39",
+                  values: "2",
+                },
+                {
+                  question: "question39",
+                  values: "3",
+                },
+                {
+                  question: "question39",
+                  values: "4",
+                },
+                {
+                  question: "question39",
+                  values: "5",
+                },
+                {
+                  question: "question39",
+                  values: "6",
+                },
+                {
+                  question: "question39",
+                  values: "7",
+                },
+                {
+                  question: "question39",
+                  values: "8",
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "Prefer Not To Answer",
+              waysToGetThere:
+              [
+                {
+                  question: "question39",
+                  values: "9",
+                }
+              ]
+            },
+          ]
+        },
+        "newVarMultiracial" : {
+          operation : "threshold",
+          _comment : "GABE TODO",
+          resultType : "checkbox",
+          choices: {
+            value: "1",
+            text: "multiracial",
+            threshold: 2
+            inputs : 
+            [
+              {
+                question: "question40"
+                values: "1"
+              },
+              {
+                question: "question40"
+                values: "2"
+              },
+              {
+                question: "question40"
+                values: "4"
+              },
+              {
+                question: "question40"
+                values: "5"
+              },
+              {
+                question: "question40"
+                values: "6"
+              },
+              {
+                question: "question40"
+                values: "7"
+              },
+              {
+                question: "question40"
+                values: "8"
+              },
+              {
+                question: "question40"
+                values: "9"
+              },
+            ]
+          }
+        }
+        "newVarRaceAndEthnicity" : {
+          operation : "bin",
+          resultType : "checkbox",
+          choices: [
+            {
+              value: "1",
+              text: "Asian or Asian American",
+              waysToGetThere:
+              [
+                {
+                  question: "question40"
+                  values: "2"
+                },
+                {
+                  question: "question40"
+                  values: "7"
+                },
+                {
+                  question: "question40"
+                  values: "8"
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "Middle Eastern or North African",
+              waysToGetThere:
+              [
+                {
+                  question: "question40"
+                  values: "4"
+                }
+              ]
+            },
+            {
+              value: "3",
+              text: "Black or African American",
+              waysToGetThere:
+              [
+                {
+                  question: "question40"
+                  values: "1"
+                }
+              ]
+            },
+            {
+              value: "4",
+              text: "Hispanic or Latina/o/x",
+              waysToGetThere:
+              [
+                {
+                  question: "question40"
+                  values: "3"
+                }
+              ]
+            },
+            {
+              value: "4",
+              text: "Native American or Alaska Native",
+              waysToGetThere:
+              [
+                {
+                  question: "question40"
+                  values: "5"
+                }
+              ]
+            },
+            {
+              value: "5",
+              text: "Native Hawaiian or Other Pacific Islander",
+              waysToGetThere:
+              [
+                {
+                  question: "question40"
+                  values: "6"
+                }
+              ]
+            },
+            {
+              value: "6",
+              text: "White or European American",
+              waysToGetThere:
+              [
+                {
+                  question: "question40"
+                  values: "9"
+                }
+              ]
+            },
+            {
+              value: "7",
+              text: "Multiracial",
+              waysToGetThere:
+              [
+                {
+                  question: "newVarMultiracial"
+                  values: "1"
+                }
+              ]
+            },
+            {
+              value: "8",
+              text: "Other Race",
+              waysToGetThere:
+              [
+                {
+                  question: "question40"
+                  values: "10"
+                }
+              ]
+            },
+            {
+              value: "9",
+              text: "Prefer Not To Answer",
+              waysToGetThere:
+              [
+                {
+                  question: "question40"
+                  values: "11"
+                }
+              ]
+            },
           ]
         },
         "newVarSalaryParityGender" : {
@@ -130,13 +600,52 @@ define([], function () {
           "_comment" : "GABE TODO",
         },
         "newVarPostCovidWork" : {
-          "_comment" : "GABE TODO",
-        },
-        "newVarTransparencyScore" : {
-          "_comment" : "GABE TODO",
-        },
-        "newVarCultureScore" : {
-          "_comment" : "GABE TODO",
+          operation: "bin",
+          resultType: "radiogroup",
+          choices: [
+            {
+              value: "1",
+              _comment: "TODO: What about prefer not to answer",
+              text: "in-person only"
+              waysToGetThere: 
+              [
+                {
+                  question: "question18",
+                  value: "1"
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "hybrid"
+              waysToGetThere: 
+              [
+                {
+                  question: "question18",
+                  value: "2"
+                },
+                {
+                  question: "question18",
+                  value: "3"
+                },
+                {
+                  question: "question18",
+                  value: "4"
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "remote only"
+              waysToGetThere: 
+              [
+                {
+                  question: "question18",
+                  value: "5"
+                },
+              ]
+            },
+          ]
         },
         "newVarCultureParityGender" :{
           "_comment" : "GABE TODO",
@@ -144,58 +653,133 @@ define([], function () {
         "newVarCultureParityRace" :{
           "_comment" : "GABE TODO",
         },
+        "newVarDiscriminationParityGender" :{
+          "_comment" : "GABE TODO",
+        },
+        "newVarDiscriminationParityRace" :{
+          "_comment" : "GABE TODO",
+        },
+        "newVarInstitutionalSatisfaction" : {
+
+        },
+        "newVarInstitutionalSatisfactionParityGender" : {
+          _comment: "TODO",
+        },
+        "newVarInstitutionalSatisfactionParityRace" : {
+          _comment: "TODO",
+        },
+        "newVarEmotionScore" : {
+          _comment: "TODO",
+        },
+        "newVarGeneration" : {
+          operation: "numericBin",
+          resultType: "radiogroup"
+          maxValue: 2048,
+          minValue: 0,
+          choices: [
+            {
+              value: "1",
+              text: "The Silent Generation",
+              waysToGetThere: 
+              [
+                {
+                  question: "question37",
+                  minValue : 1928,
+                  maxValue : 1945,
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "Baby Boomers",
+              waysToGetThere: 
+              [
+                {
+                  question: "question37",
+                  minValue : 1946,
+                  maxValue : 1964,
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "Generation X",
+              waysToGetThere: 
+              [
+                {
+                  question: "question37",
+                  minValue : 1965,
+                  maxValue : 1980,
+                },
+              ]
+            },
+            {
+              value: "4",
+              text: "Generation X",
+              waysToGetThere: 
+              [
+                {
+                  question: "question37",
+                  minValue : 1981,
+                  maxValue : 1996,
+                },
+              ]
+            },
+            {
+              value: "5",
+              text: "Generation Z",
+              waysToGetThere: 
+              [
+                {
+                  question: "question37",
+                  minValue : 1997,
+                  maxValue : 2012,
+                },
+              ]
+            },
+          ]
+        },
+
       },
       filters: {
-        "seniority-entry": {
-          options: [
-            {
-              question: "newVarSeniority",
-              type: "newVariables",
-              value: "1"
-            }
-          ]
+        "filterSeniority": {
+          question: "newVarSeniority",
         },
-        "seniority-mid": {
-          options: [
-            {
-              question: "newVarSeniority",
-              type: "newVariables",
-              value: "2"
-            }
-          ]
+        "filterTypeOfPosition": {
+          question: "question4",
         },
-        "seniority-senior": {
-          options: [
-            {
-              question: "newVarSeniority",
-              type: "newVariables",
-              value: "3"
-            }
-          ]
+        "filterPositionCategories":  {
+          question: "question5",
         },
-        "typeOfPosition": {
+        "filterEmployerType":  {
+          question: "question6",
         },
-        "positionCategories":  {
+        "filterUnionMembership":  {
+          question: "question8",
         },
-        "employerType":  {
+        "filterPostCovidWork":  {
+          question: "newVarPostCovidWork",
         },
-        "unionMembership":  {
+        "filterDiscrimination":  {
+          question: "question26",
         },
-        "postCovidWork":  {
+        "filterAge":  {
+          question: "newVarSalaryCategories",
         },
-        "discrimination":  {
+        "filterGender":  {
+          question: "newVarGender",
         },
-        "age":  {
-        },
-        "gender":  {
-        },
-        "sexualOrientation":  {
+        "filterSexualOrientation":  {
+          question: "newVarSexualOrientation",
         },
         "raceAndEthnicity":  {
+          question: "newVarRaceAndEthnicity",
         },
         "education":  {
+          question: "question41",
         },
         "disability":  {
+          question: "question42",
         },
       },
       outputs: [
@@ -369,10 +953,9 @@ define([], function () {
         },
         {
           name: "staff-survey-14",
-          inputQuestions: ["question14","question2"],
-          timing: "afterOpening",
-          function: "division",
-          _comment: "We can just compute this as a linear function of existing outputs.  Division not worth it"
+          inputQuestions: ["question14"],
+          timing: "beforeOpening",
+          function: "sum",
           filters: [],
           outputParties: {
             analyst: "true",
@@ -382,10 +965,9 @@ define([], function () {
         },
         {
           name: "staff-survey-15",
-          inputQuestions: ["question15","question2"],
-          timing: "afterOpening",
-          function: "division",
-          _comment: "We can just compute this as a linear function of existing outputs.  Division not worth it"
+          inputQuestions: ["question15"],
+          timing: "beforeOpening",
+          function: "sum",
           filters: [],
           outputParties: {
             analyst: "true",
@@ -395,10 +977,9 @@ define([], function () {
         },
         {
           name: "staff-survey-16",
-          inputQuestions: ["question16","question2"],
-          timing: "afterOpening",
-          function: "division",
-          _comment: "We can just compute this as a linear function of existing outputs.  Division not worth it"
+          inputQuestions: ["question16"],
+          timing: "beforeOpening",
+          function: "sum",
           filters: [],
           outputParties: {
             analyst: "true",
@@ -713,6 +1294,608 @@ define([], function () {
           inputQuestions: ["question42"],
           timing: "beforeOpening",
           function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "months-working",
+          inputQuestions: ["staff-survey-2"],
+          timing: "afterOpening",
+          function: "linearcombination",
+          inputs: [
+            {
+              question: "staff-survey-2",
+              value: "1",
+              coefficient: 12,
+            },
+            {
+              question: "staff-survey-2",
+              value: "2",
+              coefficient: 1,
+            },
+          ],
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "promotion-rate-1",
+          inputQuestions: ["staff-survey-14", "months-working"],
+          timing: "afterOpening",
+          function: "division",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "promotion-rate-2",
+          inputQuestions: ["staff-survey-14", "months-working"],
+          timing: "afterOpening",
+          function: "division",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "promotion-rate-3",
+          inputQuestions: ["staff-survey-14", "months-working"],
+          timing: "afterOpening",
+          function: "division",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "transparency-score ",
+          operation: "linearcombination",
+          inputQuestions: ["staff-survey-33"],
+          timing: "afterOpening",
+          _comment: "TODO: Implement linearcombination",
+          inputs: [
+            {
+              question: "staff-survey-20",
+              value: "1",
+              coefficient: 3,
+            },
+            {
+              question: "staff-survey-20",
+              value: "2",
+              coefficient: 2,
+            },
+            {
+              question: "staff-survey-20",
+              value: "3",
+              coefficient: 2,
+            },
+            {
+              question: "staff-survey-20",
+              value: "4",
+              coefficient: 2,
+            },
+            {
+              question: "staff-survey-20",
+              value: "5",
+              coefficient: -3,
+            },
+          ],
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "culture-subscore",
+          operation: "linearcombinationMatrix",
+          timing: "afterOpening",
+          inputs: [
+            {
+              question: "question19",
+              _comment: "Q19a -- Positive Framing",
+              row: "1",
+              col: "1",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19a -- Positive Framing",
+              row: "1",
+              col: "2",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19a -- Positive Framing",
+              row: "1",
+              col: "4",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19a -- Positive Framing",
+              row: "1",
+              col: "5",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19b -- Negative Framing",
+              row: "2",
+              col: "1",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19b -- Negative Framing",
+              row: "2",
+              col: "2",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19b -- Negative Framing",
+              row: "2",
+              col: "4",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19b -- Negative Framing",
+              row: "2",
+              col: "5",
+              coefficient: -1,
+            },
+
+            {
+              question: "question19",
+              _comment: "Q19c -- Positive Framing",
+              row: "3",
+              col: "1",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19c -- Positive Framing",
+              row: "3",
+              col: "2",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19c -- Positive Framing",
+              row: "3",
+              col: "4",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19c -- Positive Framing",
+              row: "3",
+              col: "5",
+              coefficient: 1,
+            },
+
+            {
+              question: "question19",
+              _comment: "Q19d -- Positive Framing",
+              row: "4",
+              col: "1",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19d -- Positive Framing",
+              row: "4",
+              col: "2",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19d -- Positive Framing",
+              row: "4",
+              col: "4",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19d -- Positive Framing",
+              row: "4",
+              col: "5",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19e -- Negative Framing",
+              row: "5",
+              col: "1",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19e -- Negative Framing",
+              row: "5",
+              col: "2",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19e -- Negative Framing",
+              row: "5",
+              col: "4",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19e -- Negative Framing",
+              row: "5",
+              col: "5",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19f -- Positive Framing",
+              row: "6",
+              col: "1",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19f -- Positive Framing",
+              row: "6",
+              col: "2",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19f -- Positive Framing",
+              row: "6",
+              col: "4",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19f -- Positive Framing",
+              row: "6",
+              col: "5",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19g -- Negative Framing",
+              row: "7",
+              col: "1",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19g -- Negative Framing",
+              row: "7",
+              col: "2",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19g -- Negative Framing",
+              row: "7",
+              col: "4",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19g -- Negative Framing",
+              row: "7",
+              col: "5",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19h -- Negative Framing",
+              row: "8",
+              col: "1",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19h -- Negative Framing",
+              row: "8",
+              col: "2",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19h -- Negative Framing",
+              row: "8",
+              col: "4",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19h -- Negative Framing",
+              row: "8",
+              col: "5",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19i -- Positive Framing",
+              row: "9",
+              col: "1",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19i -- Positive Framing",
+              row: "9",
+              col: "2",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19i -- Positive Framing",
+              row: "9",
+              col: "4",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19i -- Positive Framing",
+              row: "9",
+              col: "5",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19j -- Negative Framing",
+              row: "10",
+              col: "1",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19j -- Negative Framing",
+              row: "10",
+              col: "2",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19j -- Negative Framing",
+              row: "10",
+              col: "4",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19j -- Negative Framing",
+              row: "10",
+              col: "5",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19k -- Positive Framing",
+              row: "11",
+              col: "1",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19k -- Positive Framing",
+              row: "11",
+              col: "2",
+              coefficient: -1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19k -- Positive Framing",
+              row: "11",
+              col: "4",
+              coefficient: 1,
+            },
+            {
+              question: "question19",
+              _comment: "Q19k -- Positive Framing",
+              row: "11",
+              col: "5",
+              coefficient: 1,
+            },
+          ],
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "culture-score"
+          operation: "linearcombination",
+          _comment: "TODO: Implement linearcombination",
+          resultType: "numeric",
+          inputs: [
+            {
+              question: "newVarCultureSubscoreQuestion19",
+              value: "1",
+              coefficient: 1,
+            },
+            {
+              question: "question21",
+              _comment: "Q21a -- Positive"
+              value: "1",
+              coefficient: 1,
+            },
+            {
+              question: "question21",
+              _comment: "Q21b -- Negative"
+              value: "2",
+              coefficient: -1,
+            },
+            {
+              question: "question21",
+              _comment: "Q21c -- Positive"
+              value: "3",
+              coefficient: 1,
+            },
+            {
+              question: "question21",
+              _comment: "Q21d -- Negative"
+              value: "4",
+              coefficient: -1,
+            },
+            {
+              question: "question21",
+              _comment: "Q21e -- Positive"
+              value: "5",
+              coefficient: 1,
+            },
+            {
+              question: "question21",
+              _comment: "Q21f -- Negative"
+              value: "6",
+              coefficient: -1,
+            },
+            {
+              question: "question21",
+              _comment: "Q21g -- Negative"
+              value: "7",
+              coefficient: -1,
+            },
+            {
+              question: "question21",
+              _comment: "Q21h -- Negative"
+              value: "7",
+              coefficient: -1,
+            },
+          ],
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "Non-report-of-discrimination",
+          operation: "linearcombination",
+          resultType: "numeric",
+          inputs: [
+            {
+              question: "staff-survey-31",
+              _comment: "Q31a"
+              value: "1",
+              coefficient: 1,
+            },
+            {
+              question: "staff-survey-31",
+              _comment: "Q31b"
+              value: "2",
+              coefficient: 1,
+            },
+            {
+              question: "staff-survey-31",
+              _comment: "Q31c"
+              value: "3",
+              coefficient: 1,
+            },
+            {
+              question: "staff-survey-31",
+              _comment: "Q31d"
+              value: "4",
+              coefficient: 1,
+            },
+            {
+              question: "staff-survey-31",
+              _comment: "Q31e"
+              value: "5",
+              coefficient: 1,
+            },
+            {
+              question: "staff-survey-31",
+              _comment: "Q31f"
+              value: "6",
+              coefficient: 1,
+            },
+          ]
+        },
+        {
+          name: "emotion-score",
+          inputQuestions: ["staff-survey-33"],
+          timing: "afterOpening",
+          function: "linearcombination",
+          coefficients: [
+            {
+              question : "staff-survey-33",
+              values : "1",
+              coefficient: 1,
+            },
+            {
+              question : "staff-survey-33",
+              values : "2",
+              coefficient: -1,
+            },
+            {
+              question : "staff-survey-33",
+              values : "3",
+              coefficient: 1,
+            },
+            {
+              question : "staff-survey-33",
+              values : "4",
+              coefficient: -1,
+            },
+            {
+              question : "staff-survey-33",
+              values : "5",
+              coefficient: -1,
+            },
+            {
+              question : "staff-survey-33",
+              values : "6",
+              coefficient: -1,
+            },
+            {
+              question : "staff-survey-33",
+              values : "7",
+              coefficient: -1,
+            },
+            {
+              question : "staff-survey-33",
+              values : "8",
+              coefficient: 1,
+            },
+            {
+              question : "staff-survey-33",
+              values : "9",
+              coefficient: -1,
+            },
+            {
+              question : "staff-survey-33",
+              values : "10",
+              coefficient: 1,
+            },
+            {
+              question : "staff-survey-33",
+              values : "11",
+              coefficient: 0,
+            },
+          ],
           filters: [],
           outputParties: {
             analyst: "true",

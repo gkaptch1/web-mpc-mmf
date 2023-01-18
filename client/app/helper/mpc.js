@@ -396,10 +396,11 @@ define(["constants"], function (constants) {
       return vector;
     }
 
+    toReturn = []
     for (var i = 0; i < vector.length; i++) {
-      vector[i] = vector[i].smult(share);
+      toReturn.push(vector[i].smult(share));
     }
-    return vector;
+    return toReturn;
   };
 
   // Sum the given two arrays of secret shares, placing the result in the first array
@@ -509,12 +510,58 @@ define(["constants"], function (constants) {
 
     let count=0;
     for (q of ordering.questions) {
-      for (let i=0; i<q.items.length; i++) {
-        if(indexMap[q.id] == undefined) {
+      if(indexMap[q.id] == undefined) {
           indexMap[q.id] = {};
+      }
+      
+      if (q.type == "radiogroup" || q.type == "checkbox") {
+        indexMap[q.id]["first"] = count;
+        indexMap[q.id]["answered"] = count;
+        indexMap[q.id]["data"] = [];
+        count = count+1; // The first bit is the indicator bit
+        for (let i=0; i<q.items.length; i++) {
+          indexMap[q.id][i+1] = count; // We are 1 indexing the values
+          indexMap[q.id]["data"].push(count);
+          count = count+1;
         }
-        indexMap[q.id][i+1] = count; // We are 1 indexing the values
+        indexMap[q.id]["length"] = count-indexMap[q.id]["first"];
+      }
+      else if (q.type == "text") {
+        indexMap[q.id]["first"] = count;
+        indexMap[q.id]["answered"] = count;
+        indexMap[q.id]["data"] = [];
+        count = count+1; // The first bit is the indicator bit
+        indexMap[q.id][1] = count; // We are 1 indexing the values
+        indexMap[q.id]["data"].push(count);
         count = count+1;
+        indexMap[q.id]["length"] = count-indexMap[q.id]["first"];
+      }
+      else if (q.type == "multipletext") {
+        indexMap[q.id]["first"] = count;
+        indexMap[q.id]["data"] = [];
+        for (let i=0; i<q.items.length; i++) {
+          indexMap[q.id]["answered" + (i+1)] = count;
+          count = count+1;
+          indexMap[q.id][i+1] = count; // We are 1 indexing the values
+          indexMap[q.id]["data"].push(count);
+          count = count+1;
+        }
+        indexMap[q.id]["length"] = count-indexMap[q.id]["first"];
+      }
+      else if (q.type == "matrix") {
+        indexMap[q.id]["first"] = count;
+        indexMap[q.id]["data"] = [];
+        // TODO GABE THIS IS PROB BROKEN
+        for (let i=0; i<q.items.length; i++) {
+          for (let j=0; j<q.items.items; j++) {
+            indexMap[q.id]["answered" + (i+1)] = count;
+            count = count+1;
+            indexMap[q.id][i+1] = count; // We are 1 indexing the values
+            indexMap[q.id]["data"].push(count);
+            count = count+1;
+          }
+        }
+        indexMap[q.id]["length"] = count-indexMap[q.id]["first"];
       }
     }
 
@@ -536,14 +583,9 @@ define(["constants"], function (constants) {
 
       shares = getShares(jiff_instance, partyID, ordering);
 
-      // var j = 0;
-      // for (i = 1; i < 40; i++) {
-      //   openValues(jiff_instance, [shares.questions[i]], [1]).then( function (allpartyshares) {
-      //     console.log("Opened " + (j++) + " shares: " + allpartyshares);
-      //   });
-      // }
 
-      // return new Promise(function(){});
+      let result = await openValues(jiff_instance, shares.questions, [1]);
+      console.log("Opening shares for party "+ partyID+ ": " + result.toString());
 
       // For each newVariable, we need to compute shares of the new variable, and append it to the shares that we have
       for (newVar of Object.keys(table_template.computation.newVariables)) {
@@ -574,167 +616,104 @@ define(["constants"], function (constants) {
             if (indexMap[inputQuestion] == undefined) { //We should try looking in the newVars instead
               outputs[output.name]["nofilter"] = sumAndAccumulate(outputs[output.name]["nofilter"], newShares[partyID].slice(newVarIndexMap[inputQuestion]['1'], newVarIndexMap[inputQuestion]['1'] + Object.keys(newVarIndexMap[inputQuestion]).length));
             } else {
-              outputs[output.name]["nofilter"] = sumAndAccumulate(outputs[output.name]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['1'], indexMap[inputQuestion]['1'] + Object.keys(indexMap[inputQuestion]).length));
+              outputs[output.name]["nofilter"] = sumAndAccumulate(outputs[output.name]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
             }
 
             // Iterate through the filters
             filteredData = {};
             for (filtername of output.filters) {
-              var f = table_template.computation.filters[filtername];
+              var filter = table_template.computation.filters[filtername];
               // Generate the filtered data 
 
-              // First, pull out the shares for the filter
               if (filteredData[filtername] == undefined) {
                 filterShares = [];
-                if (indexMap[f.question] == undefined) { //We should try looking in the newVars instead
-                  filterShares = shares.questions.slice(newVarIndexMap[f.question]['1'], newVarIndexMap[f.question]['1'] + Object.keys(newVarIndexMap[f.question]).length);
+
+                // First, pull out the shares for the filter
+                if (indexMap[filter.question] == undefined) { //We should try looking in the newVars instead
+                  filterShares = newShares[partyID].slice(newVarIndexMap[filter.question]['1'], newVarIndexMap[filter.question]['1'] + Object.keys(newVarIndexMap[filter.question]).length);
                 } else {
-                  filterShares = shares.questions.slice(indexMap[f.question]['1'], indexMap[f.question]['1'] + Object.keys(indexMap[f.question]).length);
+                  // Pull out all the shares that represent real data (aka ignore the "answered" bits)
+                  for (index of indexMap[filter.question]['data']) {
+                    filterShares.push(shares.questions[index]);
+                  }
                 }
+
+                // resulttwo = await openValues(jiff_instance, filterShares, [1]);
+                // console.log("PartyID "+ partyID+ "--" + filtername + "--filterShares: " + resulttwo.toString());
+
 
                 // Next, pull out the shares of the input questions
                 inputQuestionShares = [];
                 if (indexMap[inputQuestion] == undefined) { //We should try looking in the newVars instead
-                  inputQuestionShares = shares.questions.slice(newVarIndexMap[inputQuestion]['1'], newVarIndexMap[inputQuestion]['1'] + Object.keys(newVarIndexMap[inputQuestion]).length);
+                  inputQuestionShares = newShares[partyID].slice(newVarIndexMap[inputQuestion]['1'], newVarIndexMap[inputQuestion]['1'] + Object.keys(newVarIndexMap[inputQuestion]).length);
                 } else {
-                  inputQuestionShares = shares.questions.slice(indexMap[inputQuestion]['1'], indexMap[inputQuestion]['1'] + Object.keys(indexMap[inputQuestion]).length);
+                  // Pull the entire vector 
+                  inputQuestionShares = shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']);
+
+                  // let resultone = await openValues(jiff_instance, inputQuestionShares, [1]);
+                  // console.log("PartyID "+ partyID+ "--" + filtername + "--InputShares: " + resultone.toString());
+                }
+
+                if (filteredData[filtername] == undefined) {
+                  filteredData[filtername] = {};
                 }
 
                 // Take the product 
-                for(fShare of filterShares) {
-                  filteredData[filtername] = multShareAndVector(fShare,inputQuestionShares);
+                for (let shareIndex=0; shareIndex<filterShares.length; shareIndex++) {
+
+                  // console.log("Inside Product Loop -- " + shareIndex);
+
+                  // let filtershareresult = await openValues(jiff_instance, [filterShares[shareIndex]], [1]);
+                  // console.log("FilterShare--" + shareIndex + ": " + filtershareresult.toString());
+
+                  // let inputshareresult = await openValues(jiff_instance, inputQuestionShares, [1]);
+                  // console.log("InputQuestionShares--" + shareIndex + ": " + inputshareresult.toString());
+
+                  filteredData[filtername][shareIndex+1] = multShareAndVector(filterShares[shareIndex],inputQuestionShares);
+
+                  // let prodshareresult = await openValues(jiff_instance, filteredData[filtername][shareIndex+1], [1]);
+                  // console.log("ProductShares--" + (shareIndex+1) + ": " + prodshareresult.toString());         
                 }
               }
 
+
+              // for (let shareIndex=1; shareIndex<=filterShares.length;shareIndex++) {
+              //   result = await openValues(jiff_instance, filteredData[filtername][shareIndex], [1]);
+              //   console.log("PartyID "+ partyID+ "--" + filter + "--ProductShares--" + shareIndex + ": " + result.toString());
+              // }
+
+
               // Now do the actual accumulation into the outputs
-              outputs[output.name][filtername] = sumAndAccumulate(outputs[output.name][f],filteredData[filtername]);
+              if (outputs[output.name][filtername] == undefined) {
+                outputs[output.name][filtername] = {};
+              }
+              for (let shareIndex=1; shareIndex<=filterShares.length;shareIndex++) {
+                outputs[output.name][filtername][shareIndex] = sumAndAccumulate(outputs[output.name][filtername][shareIndex],filteredData[filtername][shareIndex]);
+              }
             }
+          }
+        }
+      }
+    }  
+
+    for (output of Object.keys(outputs)) {
+      for(filter of Object.keys(outputs[output])) {
+        if(filter == "nofilter") {
+          let result = await openValues(jiff_instance, outputs[output][filter], [1]);
+          console.log(""+ output+ "--" + filter + ": " + result.toString());
+        } else {
+          for(opt of Object.keys(outputs[output][filter])) {
+            let result = await openValues(jiff_instance, outputs[output][filter][opt], [1]);
+            console.log(""+ output+ "--" + filter + "--"+ opt +": " + result.toString());
           }
         }
       }
     }
 
-    // Process shares from parties that do not belong to any cohort (their cohort has too few elements)
-    var counter = 0;
-    for (i = 0; i < submitters["none"].length; i++) {
-      // Get all shares this party sent: values, squares of values, lin_reg products, questions, and usability.
-      shares = getShares(jiff_instance, submitters["none"][i], ordering);
+    updateProgress(progressBar, 1);
 
-      // Sum all things
-      sums["all"] = sumAndAccumulate(sums["all"], shares.shares);
-      squaresSums["all"] = sumAndAccumulate(squaresSums["all"], shares.squares);
-      productSums["all"] = sumAndAccumulate(
-        productSums["all"],
-        shares.lin_reg_products
-      );
-      questions = sumAndAccumulate(questions, shares.questions);
-      usability = sumAndAccumulate(usability, shares.usability);
-
-      // garbage
-      shares = null;
-      await usability[usability.length - 1].promise;
-
-      // progress
-      counter++;
-      updateProgress(progressBar, (counter / submitters["all"].length) * 0.94);
-    }
-
-    // Compute all the results: computation proceeds by party in order
-    // for (i = 0; i < submitters["cohorts"].length; i++) {
-    //   cohort = submitters["cohorts"][i];
-
-    //   for (p = 0; p < submitters[cohort].length; p++) {
-    //     var partyID = submitters[cohort][p];
-
-    //     // Get all shares this party sent: values, squares of values, questions, and usability.
-    //     shares = getShares(jiff_instance, partyID, ordering);
-
-    //     // Sum all things
-    //     if (ordering.table_meta.cohort_group_by !== ALL) {
-    //       sums[cohort] = sumAndAccumulateCohort(
-    //         sums[cohort],
-    //         shares.shares,
-    //         ordering
-    //       );
-    //       squaresSums[cohort] = sumAndAccumulateCohort(
-    //         squaresSums[cohort],
-    //         shares.squares,
-    //         ordering
-    //       );
-    //     } else {
-    //       sums[cohort] = sumAndAccumulate(sums[cohort], shares.shares);
-    //       squaresSums[cohort] = sumAndAccumulate(
-    //         squaresSums[cohort],
-    //         shares.squares
-    //       );
-    //     }
-    //     sums["all"] = sumAndAccumulate(sums["all"], shares.shares);
-    //     squaresSums["all"] = sumAndAccumulate(
-    //       squaresSums["all"],
-    //       shares.squares
-    //     );
-    //     productSums["all"] = sumAndAccumulate(
-    //       productSums["all"],
-    //       shares.lin_reg_products
-    //     );
-    //     questions = sumAndAccumulate(questions, shares.questions);
-    //     usability = sumAndAccumulate(usability, shares.usability);
-
-    //     // garbage
-    //     shares = null;
-    //     await usability[usability.length - 1].promise;
-
-    //     // progress
-    //     counter++;
-    //     updateProgress(
-    //       progressBar,
-    //       (counter / submitters["all"].length) * 0.94
-    //     );
-    //   }
-
-    //   // Cohort averages are done, open them (do not use await so that we do not block the main thread)
-    //   var avgPromise = openValues(jiff_instance, sums[cohort], [1]);
-    //   var squaresPromise = openValues(jiff_instance, squaresSums[cohort], [1]);
-    //   promises.push(...[avgPromise, squaresPromise]);
-    // }
-
-    for (output of Object.keys(outputs)) {
-      let result = await openValues(jiff_instance, outputs[output], [1]);
-      console.log(""+ output+ ":" + result);
-    }
 
     console.log("End");
-
-    // sums["all"] = await openValues(jiff_instance, sums["all"], [1]);
-
-    // // wait for cohort outputs
-    // var cohortOutputs = await Promise.all(promises);
-    // updateProgress(progressBar, 0.96);
-    // for (i = 0; i < submitters["cohorts"].length * 2; i++) {
-    //   // every 2 outputs belongs to same cohort - evens are sums; odds are square sums
-    //   let idx = Math.floor(i / 2);
-    //   console.log(idx, submitters["cohorts"][idx]);
-    //   if (i % 2 === 0) {
-    //     sums[submitters["cohorts"][idx]] = cohortOutputs[i];
-    //   } else {
-    //     squaresSums[submitters["cohorts"][idx]] = cohortOutputs[i];
-    //   }
-    // }
-
-    // // Open all sumsm sums of squares and productSums
-    // sums["all"] = await openValues(jiff_instance, sums["all"], [1]);
-    // squaresSums["all"] = await openValues(jiff_instance, squaresSums["all"], [
-    //   1,
-    // ]);
-    // productSums["all"] = await openValues(jiff_instance, productSums["all"], [
-    //   1,
-    // ]);
-    // updateProgress(progressBar, 0.98);
-
-    // // Open questions and usability
-    // questions = await openValues(jiff_instance, questions, [1]);
-    // usability = await openValues(jiff_instance, usability, [1]);
-    // updateProgress(progressBar, 1);
 
     // Put results in object
     return {
@@ -992,10 +971,21 @@ define(["constants"], function (constants) {
     var promises = [];
     var all_shares = [];
 
+
+
     // Get everyone's shares.
     for (var i = 0; i < submitters["all"].length; i++) {
       var partyID = submitters["all"][i];
       var shares = getShares(jiff_instance, partyID, ordering);
+
+      // openValues(jiff_instance, shares.questions, [1]).then( function (allpartyshares) {
+      //   var string_values = [];
+      //   for (var share of allpartyshares) {
+      //     string_values.push(share.toString());
+      //   }
+      //   console.log("Opening shares for party "+ partyID+ ": " + string_values);
+      // });
+
       all_shares.push(shares.questions);
 
       // Wait for all shares to be received.
@@ -1047,8 +1037,8 @@ define(["constants"], function (constants) {
 
   return {
     consistentOrdering: consistentOrdering,
-    // TO GABE: return compute instead of compute_kinan.
-    compute: compute_kinan,
+    // compute: compute_kinan,
+    compute: compute,
     format: format,
   };
 });
