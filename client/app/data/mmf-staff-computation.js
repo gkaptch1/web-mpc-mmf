@@ -128,7 +128,7 @@ define([], function () {
                 },
                 {
                   question: "question5",
-                  values: "16",
+                  values: "25",
                 },
                 {
                   question: "question5",
@@ -155,7 +155,6 @@ define([], function () {
                 {
                   question: "question5",
                   values: "16",
-                  _comment : "TODO: Double Check.  16 in both collections and building ops"
                 },
                 {
                   question: "question5",
@@ -299,7 +298,7 @@ define([], function () {
                 {
                   question: "question10",
                   minValue : 300000,
-                  maxValue : "Infinity",
+                  maxValue : 5000000,
                 },
               ]
             },
@@ -419,47 +418,49 @@ define([], function () {
           operation : "threshold",
           _comment : "GABE TODO",
           resultType : "checkbox",
-          choices: {
-            value: "1",
-            text: "multiracial",
-            threshold: 2
-            inputs : 
-            [
-              {
-                question: "question40"
-                values: "1"
-              },
-              {
-                question: "question40"
-                values: "2"
-              },
-              {
-                question: "question40"
-                values: "4"
-              },
-              {
-                question: "question40"
-                values: "5"
-              },
-              {
-                question: "question40"
-                values: "6"
-              },
-              {
-                question: "question40"
-                values: "7"
-              },
-              {
-                question: "question40"
-                values: "8"
-              },
-              {
-                question: "question40"
-                values: "9"
-              },
-            ]
-          }
-        }
+          choices: [
+            {
+              value: "1",
+              text: "multiracial",
+              threshold: 2,
+              inputs : 
+              [
+                {
+                  question: "question40"
+                  values: "1"
+                },
+                {
+                  question: "question40"
+                  values: "2"
+                },
+                {
+                  question: "question40"
+                  values: "4"
+                },
+                {
+                  question: "question40"
+                  values: "5"
+                },
+                {
+                  question: "question40"
+                  values: "6"
+                },
+                {
+                  question: "question40"
+                  values: "7"
+                },
+                {
+                  question: "question40"
+                  values: "8"
+                },
+                {
+                  question: "question40"
+                  values: "9"
+                },
+              ]
+            },
+          ],
+        },
         "newVarRaceAndEthnicity" : {
           operation : "bin",
           resultType : "checkbox",
@@ -660,7 +661,7 @@ define([], function () {
           "_comment" : "GABE TODO",
         },
         "newVarInstitutionalSatisfaction" : {
-
+          "_comment" : "GABE TODO",
         },
         "newVarInstitutionalSatisfactionParityGender" : {
           _comment: "TODO",

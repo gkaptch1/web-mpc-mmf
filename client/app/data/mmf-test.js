@@ -62,7 +62,126 @@ define([], function () {
                 },
               ]
             },
-          ]
+          ],
+        },
+        "newVarMultitasking" : {
+          operation : "threshold",
+          _comment: "TODO WORK IN PROGRESS",
+          resultType : "checkbox",
+          choices: [
+            {
+              value: "1",
+              text: "multiracial",
+              threshold: 2,
+              inputs : 
+              [
+                {
+                  question: "question4",
+                  values: "1",
+                },
+                {
+                  question: "question4",
+                  values: "2",
+                },
+                {
+                  question: "question4",
+                  values: "4",
+                },
+                {
+                  question: "question4",
+                  values: "5",
+                },
+                {
+                  question: "question4",
+                  values: "6",
+                },
+                {
+                  question: "question4",
+                  values: "7",
+                },
+                {
+                  question: "question4",
+                  values: "8",
+                },
+                {
+                  question: "question4",
+                  values: "9",
+                },
+                {
+                  question: "question4",
+                  values: "10",
+                },
+                {
+                  question: "question4",
+                  values: "11",
+                },
+                {
+                  question: "question4",
+                  values: "12",
+                },
+                {
+                  question: "question4",
+                  values: "14",
+                },
+                {
+                  question: "question4",
+                  values: "15",
+                },
+                {
+                  question: "question4",
+                  values: "16",
+                },
+                {
+                  question: "question4",
+                  values: "17",
+                },
+                {
+                  question: "question4",
+                  values: "18",
+                },
+                {
+                  question: "question4",
+                  values: "19",
+                },
+                {
+                  question: "question4",
+                  values: "20",
+                },
+                {
+                  question: "question4",
+                  values: "21",
+                },
+                {
+                  question: "question4",
+                  values: "22",
+                },
+                {
+                  question: "question4",
+                  values: "23",
+                },
+                {
+                  question: "question4",
+                  values: "24",
+                },
+                {
+                  question: "question4",
+                  values: "25",
+                },
+                {
+                  question: "question4",
+                  values: "26",
+                },
+                {
+                  question: "question4",
+                  values: "27",
+                },
+                {
+                  question: "question4",
+                  values: "28",
+                },
+              ]
+            },
+          ],
         },
       },
       filters: {
@@ -77,6 +196,7 @@ define([], function () {
         {
           name: "test-survey-1",
           inputQuestions: ["question1"],
+          timing: "beforeOpening",
           function: "mean",
           filters: ["filterSeniority"],
           outputParties: {
@@ -88,6 +208,7 @@ define([], function () {
         {
           name: "test-survey-2",
           inputQuestions: ["question2"],
+          timing: "beforeOpening",
           function: "mean",
           filters: [],
           outputParties: {
@@ -99,6 +220,7 @@ define([], function () {
         {
           name: "test-survey-3",
           inputQuestions: ["newVarSeniority"],
+          timing: "beforeOpening",
           function: "radiogroupSum",
           filters: [],
           outputParties: {
@@ -110,6 +232,7 @@ define([], function () {
         {
           name: "test-survey-4",
           inputQuestions: ["question4"],
+          timing: "beforeOpening",
           function: "checkboxSum",
           filters: [],
           outputParties: {
@@ -117,6 +240,42 @@ define([], function () {
             cohort: "true",
             tags: [],
           },
+        },
+        {
+          name: "count-of-multitasking",
+          inputQuestions: ["newVarMultitasking"],
+          timing: "beforeOpening",
+          function: "mean",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "months-working",
+          inputQuestions: ["staff-survey-2"],
+          timing: "afterOpening",
+          function: "linearcombination",
+          inputs: [
+            {
+              question: "staff-survey-2",
+              value: "1",
+              coefficient: 12,
+            },
+            {
+              question: "staff-survey-2",
+              value: "2",
+              coefficient: 1,
+            },
+          ],
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
         },
       ],
     },

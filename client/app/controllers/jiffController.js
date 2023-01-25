@@ -245,11 +245,6 @@ define([
         .then(function (result) {
           jiff.disconnect(true, false);
 
-          // GABE: THIS IS THE WAY TO GET THE CLIENT'S KEYS
-          // analystController.getClientKeys(sessionKey, sessionPass).then(function (keys) {
-          //   console.log(keys);
-          // });
-          // GABE: Encrypt and use the update
           callback(mpc.format(result, submitters, ordering));
         })
         .catch(function (err) {

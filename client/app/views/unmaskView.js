@@ -1,7 +1,7 @@
 /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
-define(['jquery', 'controllers/jiffController', 'controllers/tableController', 'controllers/analystController', 'helper/drop_sheet', 'alertHandler', 'table_template', 'spin'],
-  function ($, jiffController, tableController, analystController, DropSheet, alertHandler, table_template, Spinner) {
+define(['jquery', 'controllers/jiffController', 'controllers/tableController', 'controllers/analystController', 'helper/drop_sheet', 'alertHandler', 'table_template', 'spin', 'pki'],
+  function ($, jiffController, tableController, analystController, DropSheet, alertHandler, table_template, Spinner, pki) {
     function error(msg) {
       alertHandler.error(msg);
     }
@@ -28,8 +28,21 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
           var privateKey = e.target.result;
           var progressBar = document.getElementById('unmask-progress-bar');
 
+          // var client_keys = await analystController.getClientKeys(sessionKey, sessionPass);
           jiffController.analyst.computeAndFormat(sessionKey, sessionPass, privateKey, progressBar, error, function (result) {
             analystController.getExistingCohorts(sessionKey, sessionPass).then(function (cohortMapping) {
+              analystController.getClientKeys(sessionKey, sessionPass).then(function (keyRequestResult) {
+                var decryptPromises = [];
+                for (client of keyRequestResult[1]) {
+                  console.log(client);
+                  decryptPromises.push(pki.decrypt(atob(client.key), pki.parsePrivateKey(privateKey)));
+                }
+                Promise.all(decryptPromises).then(function(values) {
+                  console.log(values);
+                  pki.encryptMessageWithSymmetricKey(values[0], "message", "associateddata"); // TODO FiX the message and AD
+                });
+              });
+
               tableController.saveTables(result['averages'], sessionKey, 'Averages', result['cohorts'], cohortMapping);
               tableController.saveTables(result['deviations'], sessionKey, 'Standard_Deviations', result['cohorts'], cohortMapping);
               
