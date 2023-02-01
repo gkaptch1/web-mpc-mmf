@@ -513,12 +513,12 @@ define(["constants"], function (constants) {
     var newShares,
       newShare,
       outputs,
+      toEncrypt,
       sums,
       squaresSums,
       productSums,
       questions = null,
       usability = {};
-      toEncrypt = {};
 
 
     // Temporary variables
@@ -530,6 +530,7 @@ define(["constants"], function (constants) {
 
 
     outputs = {};
+    toEncrypt = {}
 
     for (output of table_template.computation.outputs) {
       outputs[output.name] = {}; // Setting up the map.  Results will be stored under the filter name, with "nofilter" as the default
@@ -606,12 +607,8 @@ define(["constants"], function (constants) {
       }
 
       shares = getShares(jiff_instance, partyID, ordering);
-
-      toEncrypt[partyID] = [shares]; // GABE TODO REMOVE
-
-
-      let result = await openValues(jiff_instance, shares.questions, [1]);
-      console.log("Opening shares for party "+ partyID+ ": " + result.toString());
+      // let result = await openValues(jiff_instance, shares.questions, [1]);
+      // console.log("Opening shares for party "+ partyID+ ": " + result.toString());
 
       // For each newVariable, we need to compute shares of the new variable, and append it to the shares that we have
       for (newVar of Object.keys(table_template.computation.newVariables)) {
@@ -677,8 +674,69 @@ define(["constants"], function (constants) {
             // Default nofilter option
             if (indexMap[inputQuestion] == undefined) { //We should try looking in the newVars instead
               outputs[output.name]["nofilter"] = sumAndAccumulate(outputs[output.name]["nofilter"], newShares[partyID][inputQuestion]);
+
+              // Also accumulate into all the relevant tags
+              for ( tag of output.outputParties.tags ) {
+                if (toEncrypt[output.name] == undefined) {
+                  toEncrypt[output.name] = {};
+                }
+                if (toEncrypt[output.name][tag] == undefined) {
+                  toEncrypt[output.name][tag] = {};
+                }
+                toEncrypt[output.name][tag]["nofilter"] = sumAndAccumulate(toEncrypt[output.name][tag]["nofilter"], newShares[partyID][inputQuestion]);
+              }
+
+              //Find the appropriate cohort for this party and accumulate into their results
+              if (output.outputParties.cohort=="true") {
+                
+                // WE MAKE THE ASSUMPTION THAT EACH USER IS IN EXACTLY ONE 
+                for (cohort of Object.keys(submitters.cohorts)) {
+                  if (submitters.cohorts[cohort].includes(partyID)) {
+
+                    if (toEncrypt[output.name] == undefined) {
+                      toEncrypt[output.name] = {};
+                    }
+                    if (toEncrypt[output.name][cohort] == undefined) {
+                      toEncrypt[output.name][cohort] = {};
+                    }
+
+                    toEncrypt[output.name][cohort]["nofilter"] = sumAndAccumulate(toEncrypt[output.name][cohort]["nofilter"], newShares[partyID][inputQuestion]);
+                  }
+                }
+              }
+
             } else {
               outputs[output.name]["nofilter"] = sumAndAccumulate(outputs[output.name]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
+
+              // Also accumulate into all the relevant tags
+              for ( tag of output.outputParties.tags ) {
+                if (toEncrypt[output.name] == undefined) {
+                  toEncrypt[output.name] = {};
+                }
+                if (toEncrypt[output.name][tag] == undefined) {
+                  toEncrypt[output.name][tag] = {};
+                }
+                toEncrypt[output.name][tag]["nofilter"] = sumAndAccumulate(toEncrypt[output.name][tag]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
+              }
+
+              //Find the appropriate cohort for this party and accumulate into their results
+              if (output.outputParties.cohort=="true") {
+                // WE MAKE THE ASSUMPTION THAT EACH USER IS IN EXACTLY ONE 
+                for (cohort of Object.keys(submitters.cohorts)) {
+                  if (submitters.cohorts[cohort].includes(partyID)) {
+
+                    if (toEncrypt[output.name] == undefined) {
+                      toEncrypt[output.name] = {};
+                    }
+                    if (toEncrypt[output.name][cohort] == undefined) {
+                      toEncrypt[output.name][cohort] = {};
+                    }
+                       
+                    toEncrypt[output.name][cohort]["nofilter"] = sumAndAccumulate(toEncrypt[output.name][cohort]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
+                  }
+                }
+              }
+
             }
 
             // Iterate through the filters
@@ -751,18 +809,40 @@ define(["constants"], function (constants) {
               }
               for (let shareIndex=1; shareIndex<=filterShares.length;shareIndex++) {
                 outputs[output.name][filtername][shareIndex] = sumAndAccumulate(outputs[output.name][filtername][shareIndex],filteredData[filtername][shareIndex]);
+
+                // Below is code to accumulate filtered data into tags and cohorts, which I dont think we are planning on doing.
+
+                // Also accumulate into all the relevant tags
+                // for ( tag of output.outputParties.tags ) {
+                //   if (outputs[output.name][tag] == undefined) {
+                //     outputs[output.name][tag] = {};
+                //     outputs[output.name][tag][filtername] = {};
+                //   }
+                //   outputs[output.name][tag][filtername][shareIndex] = sumAndAccumulate(outputs[output.name][filtername][shareIndex],filteredData[filtername][shareIndex]);
+                // }
+
+                //Find the appropriate cohort for this party and accumulate into their results
+                // if (output.outputParties.cohort=="true") {
+                //   // WE MAKE THE ASSUMPTION THAT EACH USER IS IN EXACTLY ONE 
+                //   if (outputs[output.name][cohort] == undefined) {
+                //     outputs[output.name][cohort] = {};
+                //     outputs[output.name][cohort][filtername] = {};
+                //   }
+                //   for (cohort of Object.keys(submitters.cohorts)) {
+                //     if (submitters.cohorts[cohort].includes(partyID)) {
+                //       if (outputs[output.name][cohort][filtername] == undefined) {
+                //         outputs[output.name][cohort][filtername] = {};
+                //       }
+                //       outputs[output.name][cohort][filtername][shareIndex] = sumAndAccumulate(outputs[output.name][filtername][shareIndex],filteredData[filtername][shareIndex]);
+                //     }
+                //   }
+                // }   
               }
             }
           }
         }
       }
     }
-
-    // GABE: THIS IS THE WAY TO GET THE CLIENT'S KEYS
-    // keys = await analystController.getClientKeys(sessionKey, sessionPass).then(function (keys) {
-    //   console.log(keys);
-    // });
-    // GABE: Encrypt and use the update
 
     // // Testing Opening
     // for (output of Object.keys(outputs)) {
@@ -801,19 +881,32 @@ define(["constants"], function (constants) {
       }
     }
 
-    for (output of table_template.computation.outputs) {
-      if(output.timing != "afterOpening") {
-        continue;
-      }
+    // for (output of table_template.computation.outputs) {
+    //   if(output.timing != "afterOpening") {
+    //     continue;
+    //   }
 
-      if(output.function == "linearcombination") {
-        // TODO GABE THIS IS FOR SURE BROKEN
-        for(filter of output.filters) {
-          result = 0;
-          for(coef of coefficients) {
-            result = result + coef.coefficient * opened_outputs[question][values];
-          }
-          opened_outputs[output.name][filter][values] = result;
+    //   if(output.function == "linearcombination") {
+    //     // TODO GABE THIS IS FOR SURE BROKEN
+    //     for(filter of output.filters) {
+    //       result = 0;
+    //       for(coef of coefficients) {
+    //         result = result + coef.coefficient * opened_outputs[question][values];
+    //       }
+    //       opened_outputs[output.name][filter][values] = result;
+    //     }
+    //   }
+    // }
+
+    var stringShares = {};
+
+    for (outputs of Object.keys(toEncrypt)) {
+      stringShares[outputs] = {};
+      for (cohort of Object.keys(toEncrypt[outputs])) {
+        stringShares[outputs][cohort] = {};
+        stringShares[outputs][cohort]["nofilter"] = [];
+        for (share of toEncrypt[outputs][cohort]["nofilter"]){
+          stringShares[outputs][cohort]["nofilter"].push(share.toString());
         }
       }
     }
@@ -829,7 +922,7 @@ define(["constants"], function (constants) {
       productSums: productSums,
       questions: opened_outputs,
       usability: usability,
-      toEncrypt: toEncrypt,
+      shares:stringShares,
     };
   };
 

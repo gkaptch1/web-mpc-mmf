@@ -147,38 +147,6 @@ define([], function () {
                   question: "question4",
                   values: "20",
                 },
-                {
-                  question: "question4",
-                  values: "21",
-                },
-                {
-                  question: "question4",
-                  values: "22",
-                },
-                {
-                  question: "question4",
-                  values: "23",
-                },
-                {
-                  question: "question4",
-                  values: "24",
-                },
-                {
-                  question: "question4",
-                  values: "25",
-                },
-                {
-                  question: "question4",
-                  values: "26",
-                },
-                {
-                  question: "question4",
-                  values: "27",
-                },
-                {
-                  question: "question4",
-                  values: "28",
-                },
               ]
             },
           ],

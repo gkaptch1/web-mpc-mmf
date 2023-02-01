@@ -206,6 +206,23 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   }
 
+  function postBulkResultsMessage(session, password, data) {
+    return $.ajax({
+      type: 'POST',
+      url: '/bulk_update_result_messages',
+      contentType: 'application/json',
+      data: JSON.stringify({session: session, password: password, data: data}),
+    })
+    .then(function (res) {
+      return res;
+    })
+    .catch(function (err) {
+      if (err && err.hasOwnProperty('responseText') && err.responseText !== undefined) {
+        alertHandler.error(err.responseText);
+      }
+    });
+  }
+
   return {
     checkStatus: checkStatus,
     changeStatus: changeStatus,
@@ -216,6 +233,7 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
     getClientKeys: getClientKeys,
     generateSession: generateSession,
     getParameterByName: getParameterByName,
+    postBulkResultsMessage: postBulkResultsMessage,
     addCohorts: addCohorts,
     START: 'START',
     PAUSE: 'PAUSE',

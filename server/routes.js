@@ -51,4 +51,7 @@ module.exports = [
   { url: '/get_client_public_keys', route: clientURLsRoutes.getClientKeys, validation: validation.getClientKeys, authentication: auth.password },
 
   { url: '/bulk_update_result_messages', route: clientURLsRoutes.analystBulkUpdateResultMessages, validation: validation.analystBulkUpdateResultMessages, authentication: auth.password },
+    // Adding the ability for clients to pull all their encrypted shares
+  { url: '/get_result_messages', route: clientURLsRoutes.getResultMessage, validation: validation.getResultMessage, authentication: auth.userKey },
+
 ];

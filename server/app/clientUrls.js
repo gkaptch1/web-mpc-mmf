@@ -223,7 +223,7 @@ module.exports.getClientKeys = function (context, body, res) {
       // pseudonymnsAndKeys[d.cohort].push({pseudonymn: d.pseudonymn, key:d.pub_key});
       // var cohort = table_template.cohort_selection === true ? 0 : d.cohort;
       var arr = pseudonymnsAndKeys[d.cohort] == null ? [] : pseudonymnsAndKeys[d.cohort];
-      arr.push({pseudonymn: d.pseudonymn, key:d.pub_key, party_id:d.jiff_party_id});
+      arr.push({pseudonymn: d.pseudonymn, key:d.pub_key, party_id:d.jiff_party_id, cohort:d.cohort});
       pseudonymnsAndKeys[d.cohort] = arr;
     }
     console.log('client keys fetched:', body.session);
@@ -234,16 +234,67 @@ module.exports.getClientKeys = function (context, body, res) {
   });
 };
 
+
+// endpoint for returning previously created client urls
+module.exports.getResultMessage = function (context, body, res) {
+  var promise = modelWrappers.ResultMessage.client.get({_id: body.session + body.userkey});
+  promise.then(function (data) {
+    // console.log(data.servermessages);
+    // console.log(data.analystmessages);
+    res.json({ servermessages: data.servermessages, analystmessages:data.analystmessages });
+  }).catch(function (err) {
+    console.log('Error in getting result message', err);
+    res.status(500).send('Error in getting result message.')
+  });
+};
+
+
 module.exports.analystBulkUpdateResultMessages = function (context, body, res) {
-  updates = []
-  for (var d of body.data) {
-    updates.push(modelWrappers.UserKey.analystMessageUpdate(body.session,d.pseduonymn,d.analystMessage));
-  }
-  Promise.all(updates).then(function(values) {
-    console.log('Analyst update of result messages:', body.session);
-    res.json({num_updates:values.length});
-  }).catch(function(err) {
-    console.log('Error in analyst update of results messages', err);
-    res.status(500).send('Error in analyst update of results messages');
+  var arbitrarycounter = 0;
+  var promise = modelWrappers.UserKey.query(body.session);
+  promise.then(function (data) {
+    updates = [];
+    for (var d of body.data) {
+      userKey = data.find(o => o.pseudonymn === d.pseudonymn);
+      let filter = {_id: userKey._id, session:userKey.session, userkey:userKey.userkey, pseudonymn:userKey.pseudonymn};
+      updates.push(modelWrappers.ResultMessage.analyst.update(filter,d.analystMessage));
+      arbitrarycounter++;
+    }
+
+    Promise.all(updates).then(function(values) {
+      console.log('Analyst update of result messages:', body.session);
+      res.json({num_updates:values.length});
+    }).catch(function(err) {
+      console.log('Error in analyst update of results messages', err);
+      res.status(500).send('Error in analyst update of results messages');
+    });
+  }).catch(function (err) {
+    console.log('Error in getting client keys', err);
+    res.status(500).send('Error getting client keys.')
+  });
+};
+
+module.exports.serverBulkUpdateResultMessages = function (context, body, res) {
+
+  var promise = modelWrappers.UserKey.query(body.session);
+  promise.then(function (data) {
+    updates = [];
+    for (var d of data) {
+      userKey = data.find(o => o.pseudonymn === d.pseudonymn);
+
+      let filter = {_id: d._id, session:d.session, userkey:d.userkey, pseudonymn:d.pseudonymn};
+      updates.push(modelWrappers.ResultMessage.server.update(filter,d.serverMessage));
+    }
+
+    Promise.all(updates).then(function(values) {
+      console.log('Analyst update of result messages:', body.session);
+      res.json({num_updates:values.length});
+    }).catch(function(err) {
+      console.log('Error in analyst update of results messages', err);
+      res.status(500).send('Error in analyst update of results messages');
+    });
+  }).catch(function (err) {
+    console.log('Error in getting client keys', err);
+    res.status(500).send('Error getting client keys.')
   });
 };

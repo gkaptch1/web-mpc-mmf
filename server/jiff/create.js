@@ -9,6 +9,8 @@ const mpc = require('../../client/app/helper/mpc.js');
 const mailbox_hooks = require('./mailbox.js');
 const authentication_hooks = require('./auth.js');
 
+const modelWrappers = require('../models/modelWrappers.js')
+
 const MAX_SIZE = config.MAX_SIZE;
 
 // Crypto hooks
@@ -96,12 +98,49 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
 
     // Send submitters ids to analyst
     var submitters = await self.getTrackerParties(session_key);
-    computationInstance.emit('compute', [ 1 ], JSON.stringify(submitters), false);
+    // console.log(submitters);
 
-    // Perform server-side MPC
-    var table_template = require('../../client/app/' + config.client.table_template + '.js');
-    var ordering = mpc.consistentOrdering(table_template);
-    await mpc.compute(computationInstance, submitters, ordering, table_template);
+    submitters["cohorts"] = {};
+
+    var promise = modelWrappers.UserKey.query(session_key);
+
+    promise.then(function (data) {
+
+      var userKeysAlreadyLoaded = data;
+
+      for (var d of data) {
+        if(submitters["cohorts"][d.cohort] == undefined) {
+          submitters["cohorts"][d.cohort] = [];
+        }
+        submitters["cohorts"][d.cohort].push(""+d.jiff_party_id)
+      }
+
+      // console.log(submitters);
+      computationInstance.emit('compute', [ 1 ], JSON.stringify(submitters), false);
+
+      // Perform server-side MPC
+      var table_template = require('../../client/app/' + config.client.table_template + '.js');
+      var ordering = mpc.consistentOrdering(table_template);
+      mpc.compute(computationInstance, submitters, ordering, table_template).then(function(result) {
+
+        console.log("Finished Computation");
+
+        updates = [];
+        for (var d of userKeysAlreadyLoaded) {
+          userKey = userKeysAlreadyLoaded.find(o => o.pseudonymn === d.pseudonymn);
+          console.log(userKey);
+
+          let filter = {_id: d._id, session:d.session, userkey:d.userkey, pseudonymn:d.pseudonymn};
+          updates.push(modelWrappers.ResultMessage.server.update(filter,d.serverMessage));
+        }
+
+        Promise.all(updates).then(function(values) {
+          console.log('Server update of result messages');
+        }).catch(function(err) {
+          console.log('Error in server update of results messages', err);
+        });
+      });
+    });
   });
 };
 

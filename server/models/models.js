@@ -80,5 +80,6 @@ module.exports = {
   History: HistoryModel,
   Mailbox: MailboxModel,
   SessionInfo: SessionInfoModel,
-  UserKey: UserKeyModel
+  UserKey: UserKeyModel,
+  ResultMessage: ResultMessageModel
 };

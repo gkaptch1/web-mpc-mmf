@@ -244,6 +244,21 @@ define([
         });
     }
 
+    function getResultMessage(sessionIn,participationCodeIn) {
+      return $.ajax({
+        type: 'POST',
+        url: '/get_result_messages',
+        contentType: 'application/json',
+        data: JSON.stringify({session: sessionIn, userkey: participationCodeIn})
+      }).then(function (resp) {
+        return JSON.parse(resp);
+      }).catch(function (err) {
+        if (err && err.hasOwnProperty('responseText') && err.responseText !== undefined) {
+          alertHandler.error(err.responseText);
+        }
+      });
+    }
+
 
     /**
      * Called when the submit button is pressed.
@@ -692,6 +707,7 @@ define([
       constructAndSend: constructAndSend,
       validateSessionInput: validateSessionInput,
       verifySessionServerExplicitParams: verifySessionServerExplicitParams,
+      getResultMessage: getResultMessage,
     };
   })();
 

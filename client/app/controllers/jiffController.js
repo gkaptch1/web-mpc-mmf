@@ -245,7 +245,7 @@ define([
         .then(function (result) {
           jiff.disconnect(true, false);
 
-          callback(mpc.format(result, submitters, ordering));
+          callback(mpc.format(result, submitters, ordering),result);
         })
         .catch(function (err) {
           console.log(err);
