@@ -108,7 +108,7 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
 
       var userKeysAlreadyLoaded = data;
 
-      for (var d of data) {
+      for (var d of data) { // GABE TODO: Maybe switch the iteration order.  Iterate trhough the "all", and make sure only they get added
         if(submitters["cohorts"][d.cohort] == undefined) {
           submitters["cohorts"][d.cohort] = [];
         }
@@ -121,18 +121,50 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
       // Perform server-side MPC
       var table_template = require('../../client/app/' + config.client.table_template + '.js');
       var ordering = mpc.consistentOrdering(table_template);
-      mpc.compute(computationInstance, submitters, ordering, table_template).then(function(result) {
+      mpc.compute(computationInstance, submitters, ordering, table_template).then(function(rawresults) {
 
+        //Go get all the users in the session so we can properly load their server side messages
         console.log("Finished Computation");
 
-        updates = [];
-        for (var d of userKeysAlreadyLoaded) {
-          userKey = userKeysAlreadyLoaded.find(o => o.pseudonymn === d.pseudonymn);
-          console.log(userKey);
 
-          let filter = {_id: d._id, session:d.session, userkey:d.userkey, pseudonymn:d.pseudonymn};
-          updates.push(modelWrappers.ResultMessage.server.update(filter,d.serverMessage));
+        var updates = [];
+        for (cohort of Object.keys(submitters.cohorts)) {
+          for(jiffPartyID of submitters.cohorts[cohort]) {
+
+            //Lookup the actual client information corresponding to this jiff party ID
+            userKeyData = userKeysAlreadyLoaded.find(o => o.jiff_party_id == jiffPartyID);
+            // TODO some error handing thats better than this
+            if (userKeyData == undefined) {
+              continue;
+            }
+
+            var sharesForClient = {};
+            // Go get the struct that we need to send the client
+            for (output of table_template.computation.outputs) {
+
+              if(output.timing != "beforeOpening") {
+                continue;
+              }
+
+              if (output.outputParties.cohort == "true") {
+                if (sharesForClient[output.name] == undefined) {
+                  sharesForClient[output.name] = {};
+                }
+                sharesForClient[output.name][cohort] = rawresults.shares[output.name][cohort];
+              }
+              for (tag of output.outputParties.tags) { // GABE TODO check to make sure they arent getting sent all tags.
+                if (sharesForClient[output.name] == undefined) {
+                  sharesForClient[output.name] = {};
+                }
+                sharesForClient[output.name][tag] = rawresults.shares[output.name][tag];
+              }
+            }
+            updates.push(modelWrappers.ResultMessage.server.update({_id: userKeyData._id, session:userKeyData.session, userkey:userKeyData.userkey, pseudonymn:userKeyData.pseudonymn},JSON.stringify(sharesForClient)));
+          }
         }
+
+        // console.log(result);
+        // console.log(JSON.stringify(result));
 
         Promise.all(updates).then(function(values) {
           console.log('Server update of result messages');
