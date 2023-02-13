@@ -254,10 +254,62 @@ define([
     });
   };
 
+  var parseShare = function(jiff, shareString, source) {
+    value = jiff.helpers.BigNumber(shareString.substring(shareString.indexOf("share:")+7, shareString.indexOf("Holders: ")-2));
+    holders = JSON.parse(shareString.substring(shareString.indexOf("Holders: ")+9, shareString.indexOf("Threshold: ")-2));
+    threshold = JSON.parse(shareString.substring(shareString.indexOf("Threshold: ")+11, shareString.indexOf("Zp: ")-2));
+    zp = shareString.substring(shareString.indexOf("Zp: ")+4, shareString.length-1);
+    toReturn = new jiff.SecretShare(value, holders, threshold, zp);
+    if (source == "server") {
+      toReturn.sender_id = "1"
+    } else {
+     toReturn.sender_id = "s1"
+    }
+    return toReturn;
+  };
+
+  var reconstructClientResults = function(serverSharesAsStrings, analystSharesAsStrings) {
+
+    //Create a dummy jiff instance
+    jiff = initialize("","");
+
+    // Create a structure to hold the results
+    var resultShares = {};
+
+
+    for (question of Object.keys(serverSharesAsStrings)) {
+      resultShares[question] = {};
+
+      for(cohort of Object.keys(serverSharesAsStrings[question])) {
+          resultShares[question][cohort] = {};
+          
+        for(filter of Object.keys(serverSharesAsStrings[question][cohort])) {
+          resultShares[question][cohort][filter] = [];
+          
+          for (let i = 0; i<serverSharesAsStrings[question][cohort][filter].length;i++) {
+            // (1) Parse the shares
+            // (2) Run reconstruct
+            // (3) push into the appropriate place in the data structure
+            resultShares[question][cohort][filter].push(jiff.hooks.reconstructShare(jiff,
+              [
+                parseShare(jiff, serverSharesAsStrings[question][cohort][filter][i], "server"),
+                parseShare(jiff, analystSharesAsStrings[question][cohort][filter][i], "analyst")
+                ]
+            ));
+          }
+        }
+      }
+    }
+    console.log(resultShares);
+    return resultShares;
+  };
+
+
   // Exports
   return {
     client: {
       submit: clientSubmit,
+      reconstructResults: reconstructClientResults,
     },
     analyst: {
       computeAndFormat: computeAndFormat,

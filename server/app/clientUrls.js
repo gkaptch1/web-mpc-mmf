@@ -212,7 +212,7 @@ module.exports.registerKeyToUser = function (context, body, response) {
 };
 
 
-// endpoint for returning previously created client urls
+// endpoint for returning previously created client keys
 module.exports.getClientKeys = function (context, body, res) {
   // Password verified already by authentication!
   var promise = modelWrappers.UserKey.query(body.session);
@@ -235,7 +235,7 @@ module.exports.getClientKeys = function (context, body, res) {
 };
 
 
-// endpoint for returning previously created client urls
+// endpoint for returning previously created client result messages
 module.exports.getResultMessage = function (context, body, res) {
   var promise = modelWrappers.ResultMessage.client.get({_id: body.session + body.userkey});
   promise.then(function (data) {
