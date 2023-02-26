@@ -4,6 +4,3514 @@ if (typeof define !== "function") {
 
 define([], function () {
   return {
+    computation: {
+      newVariables: {
+        "newVarMonthsWorkedInMusems": {
+          function: "linearcombinationMultipletext",
+          resultType: "numeric",
+          inputs: [
+            {
+              question: "question1",
+              value: "1",
+              coefficient: 12,
+            },
+            {
+              question: "question1",
+              value: "2",
+              coefficient: 1,
+            },
+          ],
+        },
+        "newVarMonthsWorkedInMuseumsBinned": {
+          function: "numericBin",
+          resultType: "radiogroup",
+          maxValue: 1200,
+          minValue: 0,
+          choices: [
+            {
+              value: "1",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  value: "0",
+                  name: "<1",
+                  minValue : 0,
+                  maxValue : 11,
+                },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  value: "0",
+                  name: "1-3",
+                  minValue : 12,
+                  maxValue : 35,
+                },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  value: "0",
+                  name: "4-6",
+                  minValue : 36,
+                  maxValue : 71,
+                },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  value: "0",
+                  name: "7-10",
+                  minValue : 72,
+                  maxValue : 119,
+                },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  value: "0",
+                  name: "10-20",
+                  minValue : 120,
+                  maxValue : 239,
+                },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  value: "0",
+                  name: "20+",
+                  minValue : 240,
+                  maxValue : 1200,
+                },
+              ]
+            },
+          ]
+        },
+        "newVarMonthsWorkedInCurrentMuseum": {
+          function: "linearcombinationMultipletext",
+          resultType: "numeric",
+          inputs: [
+            {
+              question: "question2",
+              value: "1",
+              coefficient: 12,
+            },
+            {
+              question: "question2",
+              value: "2",
+              coefficient: 1,
+            },
+          ],
+        },
+        "newVarMonthsWorkedInCurrentMuseumBinned": {
+          function: "numericBin",
+          resultType: "radiogroup",
+          maxValue: 1200,
+          minValue: 0,
+          choices: [
+            {
+              value: "1",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  value: "0",
+                  name: "<1",
+                  minValue : 0,
+                  maxValue : 11,
+                },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  value: "0",
+                  name: "1-3",
+                  minValue : 12,
+                  maxValue : 35,
+                },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  value: "0",
+                  name: "4-6",
+                  minValue : 36,
+                  maxValue : 71,
+                },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  value: "0",
+                  name: "7-10",
+                  minValue : 72,
+                  maxValue : 119,
+                },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  value: "0",
+                  name: "10-20",
+                  minValue : 120,
+                  maxValue : 239,
+                },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  value: "0",
+                  name: "20+",
+                  minValue : 240,
+                  maxValue : 1200,
+                },
+              ]
+            },
+          ]
+        },
+        "newVarSeniority": {
+          function: "bin",
+          resultType: "radiogroup",
+          choices: [
+            {
+              value: "1",
+              text: "Entry",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "1",
+                },
+                {
+                  question: "question3",
+                  values: "2",
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "Mid",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "3",
+                },
+                {
+                  question: "question3",
+                  values: "4",
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "Senior",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "5",
+                },
+                {
+                  question: "question3",
+                  values: "6",
+                },
+              ]
+            },
+            {
+              value: "4",
+              text: "Prefer Not To Answer",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "7",
+                },
+              ]
+            },
+          ]
+        },
+        "newVarPositionCategories": {
+          function: "bin",
+          resultType: "checkbox",
+          choices: [
+            {
+              value: "1",
+              text: "Administration",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "1",
+                },
+                {
+                  question: "question5",
+                  values: "6",
+                },
+                {
+                  question: "question5",
+                  values: "10",
+                },
+                {
+                  question: "question5",
+                  values: "13",
+                },
+                {
+                  question: "question5",
+                  values: "14",
+                },
+                {
+                  question: "question5",
+                  values: "18",
+                },
+                {
+                  question: "question5",
+                  values: "19",
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "Building Operations",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "8",
+                },
+                {
+                  question: "question5",
+                  values: "9",
+                },
+                {
+                  question: "question5",
+                  values: "11",
+                },
+                {
+                  question: "question5",
+                  values: "12",
+                },
+                {
+                  question: "question5",
+                  values: "15",
+                },
+                {
+                  question: "question5",
+                  values: "25",
+                },
+                {
+                  question: "question5",
+                  values: "27",
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "Collections",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "2",
+                },
+                {
+                  question: "question5",
+                  values: "3",
+                },
+                {
+                  question: "question5",
+                  values: "4",
+                },
+                {
+                  question: "question5",
+                  values: "16",
+                },
+                {
+                  question: "question5",
+                  values: "20",
+                },
+                {
+                  question: "question5",
+                  values: "23",
+                },
+              ]
+            },
+            {
+              value: "4",
+              text: "Communications",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "5",
+                },
+                {
+                  question: "question5",
+                  values: "17",
+                },
+                {
+                  question: "question5",
+                  values: "22",
+                },
+                {
+                  question: "question5",
+                  values: "26",
+                },
+              ]
+            },
+            {
+              value: "5",
+              text: "Public Engagement",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "7",
+                },
+                {
+                  question: "question5",
+                  values: "21",
+                },
+                {
+                  question: "question5",
+                  values: "28",
+                },
+              ]
+            },
+          ]
+        },
+      //   "newVarSalaryCategories": {
+      //     function: "numericBin",
+      //     resultType: "radiogroup",
+      //     maxValue: 5000000,
+      //     minValue: 0,
+      //     choices: [
+      //       {
+      //         value: "1",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question10",
+      //             minValue : 0,
+      //             maxValue : 24999,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "2",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question10",
+      //             minValue : 25000,
+      //             maxValue : 49999,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "3",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question10",
+      //             minValue : 50000,
+      //             maxValue : 74999,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "4",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question10",
+      //             minValue : 75000,
+      //             maxValue : 99999,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "5",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question10",
+      //             minValue : 100000,
+      //             maxValue : 149999,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "6",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question10",
+      //             minValue : 150000,
+      //             maxValue : 199999,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "2",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question10",
+      //             minValue : 200000,
+      //             maxValue : 299999,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "2",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question10",
+      //             minValue : 300000,
+      //             maxValue : 5000000,
+      //           },
+      //         ]
+      //       },
+      //     ]
+      //   },
+        "newVarGender" : {
+          function: "bin",
+          resultType: "radiogroup",
+          choices: [
+            {
+              value: "1",
+              text: "Man",
+              waysToGetThere:
+              [
+                {
+                  question: "question38",
+                  values: "1",
+                }
+              ]
+            },
+            {
+              value: "2",
+              text: "Woman",
+              waysToGetThere:
+              [
+                {
+                  question: "question38",
+                  values: "2",
+                }
+              ]
+            },
+            {
+              value: "3",
+              text: "Non-binary and Another Gender",
+              waysToGetThere:
+              [
+                {
+                  question: "question38",
+                  values: "3",
+                },
+                {
+                  question: "question38",
+                  values: "4",
+                },
+                {
+                  question: "question38",
+                  values: "5",
+                }
+              ]
+            }
+          ]
+        },
+        "newVarSexualOrientation" : {
+          function: "bin",
+          resultType: "radiogroup",
+          choices: [
+            {
+              value: "1",
+              text: "Heterosexual",
+              waysToGetThere:
+              [
+                {
+                  question: "question39",
+                  values: "1",
+                }
+              ]
+            },
+            {
+              value: "2",
+              text: "LGBTQ",
+              waysToGetThere:
+              [
+                {
+                  question: "question39",
+                  values: "2",
+                },
+                {
+                  question: "question39",
+                  values: "3",
+                },
+                {
+                  question: "question39",
+                  values: "4",
+                },
+                {
+                  question: "question39",
+                  values: "5",
+                },
+                {
+                  question: "question39",
+                  values: "6",
+                },
+                {
+                  question: "question39",
+                  values: "7",
+                },
+                {
+                  question: "question39",
+                  values: "8",
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "Prefer Not To Answer",
+              waysToGetThere:
+              [
+                {
+                  question: "question39",
+                  values: "9",
+                }
+              ]
+            },
+          ]
+        },
+        "newVarMultiracial" : {
+          function : "threshold",
+          resultType : "checkbox",
+          choices: [
+            {
+              value: "1",
+              text: "multiracial",
+              threshold: 2,
+              inputs : 
+              [
+                {
+                  question: "question40",
+                  values: "1",
+                },
+                {
+                  question: "question40",
+                  values: "2",
+                },
+                {
+                  question: "question40",
+                  values: "4",
+                },
+                {
+                  question: "question40",
+                  values: "5",
+                },
+                {
+                  question: "question40",
+                  values: "6",
+                },
+                {
+                  question: "question40",
+                  values: "7",
+                },
+                {
+                  question: "question40",
+                  values: "8",
+                },
+                {
+                  question: "question40",
+                  values: "9",
+                },
+              ]
+            },
+          ],
+        },
+        "newVarRaceAndEthnicityCensus" : {
+          function : "bin",
+          resultType : "checkbox",
+          choices: [
+            {
+              value: "1",
+              text: "Asian or Asian American",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "2",
+                },
+                {
+                  question: "question40",
+                  values: "7",
+                },
+                {
+                  question: "question40",
+                  values: "8",
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "Middle Eastern or North African",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "4",
+                }
+              ]
+            },
+            {
+              value: "3",
+              text: "Black or African American",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "1",
+                }
+              ]
+            },
+            {
+              value: "4",
+              text: "Hispanic or Latina/o/x",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "3",
+                }
+              ]
+            },
+            {
+              value: "5",
+              text: "Native American or Alaska Native",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "5",
+                }
+              ]
+            },
+            {
+              value: "6",
+              text: "Native Hawaiian or Other Pacific Islander",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "6",
+                }
+              ]
+            },
+            {
+              value: "7",
+              text: "White or European American",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "9",
+                }
+              ]
+            },
+            {
+              value: "8",
+              text: "Multiracial",
+              waysToGetThere:
+              [
+                {
+                  question: "newVarMultiracial",
+                  values: "1",
+                }
+              ]
+            },
+            {
+              value: "9",
+              text: "Other Race",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "10",
+                }
+              ]
+            },
+            {
+              value: "10",
+              text: "Prefer Not To Answer",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "11",
+                }
+              ]
+            },
+          ]
+        },
+      //   "newVarSalaryFilteredeByGender" : {
+      //     function: "scalarVectorMultiplication",
+      //     resultType: "numericVector",
+      //     scalar: "question10",
+      //     vector: "newVarGender",
+      //   },
+      //   "newVarSalaryFilteredeByRaceAndEthnicityCensus" : {
+      //     function: "scalarVectorMultiplication",
+      //     resultType: "numericVector",
+      //     scalar: "question10",
+      //     vector: "newVarRaceAndEthnicityCensus",
+      //   },
+      //   "newVarSalaryParityGender" : {
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarSalaryParityRace" : {
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarPerceptionAccuracy" : {
+      //     "_comment" : "GABE TODO",
+      //   },
+        "newVarPromotionBinned": {
+          function: "numericBin",
+          resultType: "radiogroup",
+          maxValue: 100,
+          minValue: 0,
+          choices: [
+            {
+              value: "0",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "0",
+                  minValue : 0,
+                  maxValue : 0,
+                },
+              ]
+            },
+            {
+              value: "1",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "1",
+                  minValue : 1,
+                  maxValue : 1,
+                },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "2",
+                  minValue : 2,
+                  maxValue : 2,
+                },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "3",
+                  minValue : 3,
+                  maxValue : 3,
+                },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "4",
+                  minValue : 4,
+                  maxValue : 4,
+                },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "5",
+                  minValue : 5,
+                  maxValue : 5,
+                },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "6",
+                  minValue : 6,
+                  maxValue : 6,
+                },
+              ]
+            },
+            {
+              value: "7",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "7",
+                  minValue : 7,
+                  maxValue : 7,
+                },
+              ]
+            },
+            {
+              value: "8",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "8",
+                  minValue : 8,
+                  maxValue : 8,
+                },
+              ]
+            },
+            {
+              value: "9",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "9",
+                  minValue : 9,
+                  maxValue : 9,
+                },
+              ]
+            },
+            {
+              value: "10",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  value: "1",
+                  name: "10+",
+                  minValue : 10,
+                  maxValue : 100,
+                },
+              ]
+            },
+          ]
+        },
+        "newVarPromotionNoPayBinned": {
+          function: "numericBin",
+          resultType: "radiogroup",
+          maxValue: 100,
+          minValue: 0,
+          choices: [
+            {
+              value: "0",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "0",
+                  minValue : 0,
+                  maxValue : 0,
+                },
+              ]
+            },
+            {
+              value: "1",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "1",
+                  minValue : 1,
+                  maxValue : 1,
+                },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "2",
+                  minValue : 2,
+                  maxValue : 2,
+                },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "3",
+                  minValue : 3,
+                  maxValue : 3,
+                },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "4",
+                  minValue : 4,
+                  maxValue : 4,
+                },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "5",
+                  minValue : 5,
+                  maxValue : 5,
+                },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "6",
+                  minValue : 6,
+                  maxValue : 6,
+                },
+              ]
+            },
+            {
+              value: "7",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "7",
+                  minValue : 7,
+                  maxValue : 7,
+                },
+              ]
+            },
+            {
+              value: "8",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "8",
+                  minValue : 8,
+                  maxValue : 8,
+                },
+              ]
+            },
+            {
+              value: "9",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "9",
+                  minValue : 9,
+                  maxValue : 9,
+                },
+              ]
+            },
+            {
+              value: "10",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  value: "1",
+                  name: "10+",
+                  minValue : 10,
+                  maxValue : 100,
+                },
+              ]
+            },
+          ]
+        },
+      //   "newVarPromotionNoTitleBinned": {
+      //     function: "numericBin",
+      //     resultType: "radiogroup",
+      //     maxValue: 100,
+      //     minValue: 0,
+      //     choices: [
+      //       {
+      //         value: "0",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "0",
+      //             minValue : 0,
+      //             maxValue : 0,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "1",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "1",
+      //             minValue : 1,
+      //             maxValue : 1,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "2",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "2",
+      //             minValue : 2,
+      //             maxValue : 2,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "3",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "3",
+      //             minValue : 3,
+      //             maxValue : 3,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "4",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "4",
+      //             minValue : 4,
+      //             maxValue : 4,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "5",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "5",
+      //             minValue : 5,
+      //             maxValue : 5,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "6",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "6",
+      //             minValue : 6,
+      //             maxValue : 6,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "7",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "7",
+      //             minValue : 7,
+      //             maxValue : 7,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "8",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "8",
+      //             minValue : 8,
+      //             maxValue : 8,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "9",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "9",
+      //             minValue : 9,
+      //             maxValue : 9,
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "10",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question16",
+      //             name: "10+",
+      //             minValue : 10,
+      //             maxValue : 100,
+      //           },
+      //         ]
+      //       },
+      //     ]
+      //   },
+      //   "newVarTransparencyScore" : {
+      //     function: "linearcombination",
+      //     timing: "beforeOpening",
+      //     inputs: [
+      //       {
+      //         question: "question20",
+      //         value: "1",
+      //         coefficient: 3,
+      //       },
+      //       {
+      //         question: "question20",
+      //         value: "2",
+      //         coefficient: 2,
+      //       },
+      //       {
+      //         question: "question20",
+      //         value: "3",
+      //         coefficient: 2,
+      //       },
+      //       {
+      //         question: "question20",
+      //         value: "4",
+      //         coefficient: 2,
+      //       },
+      //       {
+      //         question: "question20",
+      //         value: "5",
+      //         coefficient: -3,
+      //       },
+      //     ],
+      //   },
+      //   "newVarPromotionRate" : {
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarPromotionParityGender" : {
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarPromotionParityRace" : {
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarPromotionNoPayParityGender" : {
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarPromotionNoPayParityRace" : {
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarPromotionNoTitleParityGender" : {
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarPromotionNoTitleParityRace" : {
+      //     "_comment" : "GABE TODO",
+      //   },        
+      //   "newVarPostCovidWork" : {
+      //     function: "bin",
+      //     resultType: "radiogroup",
+      //     choices: [
+      //       {
+      //         value: "1",
+      //         _comment: "TODO: What about prefer not to answer",
+      //         text: "in-person only",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question18",
+      //             value: "1",
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "2",
+      //         text: "hybrid",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question18",
+      //             value: "2",
+      //           },
+      //           {
+      //             question: "question18",
+      //             value: "3",
+      //           },
+      //           {
+      //             question: "question18",
+      //             value: "4",
+      //           },
+      //         ]
+      //       },
+      //       {
+      //         value: "3",
+      //         text: "remote only",
+      //         waysToGetThere: 
+      //         [
+      //           {
+      //             question: "question18",
+      //             value: "5",
+      //           },
+      //         ]
+      //       },
+      //     ]
+      //   },
+      //   "newVarCultureParityGender" :{
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarCultureParityRace" :{
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarDiscriminationParityGender" :{
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarDiscriminationParityRace" :{
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarInstitutionalSatisfaction" : {
+      //     "_comment" : "GABE TODO",
+      //   },
+      //   "newVarInstitutionalSatisfactionParityGender" : {
+      //     _comment: "TODO",
+      //   },
+      //   "newVarInstitutionalSatisfactionParityRace" : {
+      //     _comment: "TODO",
+      //   },
+      //   "newVarEmotionScore" : {
+      //     _comment: "TODO",
+      //   },
+      //   "newVarSalaryPerception" : {
+      //     _comment: "TODO"
+      //   },
+        "newVarGeneration" : {
+          function: "numericBin",
+          resultType: "radiogroup",
+          maxValue: 2047,
+          minValue: 0,
+          choices: [
+            {
+              value: "1",
+              text: "The Silent Generation",
+              waysToGetThere: 
+              [
+                {
+                  question: "question37",
+                  value: "1",
+                  minValue : 1928,
+                  maxValue : 1945,
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "Baby Boomers",
+              waysToGetThere: 
+              [
+                {
+                  question: "question37",
+                  value: "1",
+                  minValue : 1946,
+                  maxValue : 1964,
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "Generation X",
+              waysToGetThere: 
+              [
+                {
+                  question: "question37",
+                  value: "1",
+                  minValue : 1965,
+                  maxValue : 1980,
+                },
+              ]
+            },
+            {
+              value: "4",
+              text: "Generation Y",
+              waysToGetThere: 
+              [
+                {
+                  question: "question37",
+                  value: "1",
+                  minValue : 1981,
+                  maxValue : 1996,
+                },
+              ]
+            },
+            {
+              value: "5",
+              text: "Generation Z",
+              waysToGetThere: 
+              [
+                {
+                  question: "question37",
+                  value: "1",
+                  minValue : 1997,
+                  maxValue : 2012,
+                },
+              ]
+            },
+          ]
+        },
+      },
+      filters: {
+        "filterSeniority": {
+          question: "newVarSeniority",
+        },
+        "filterTypeOfPosition": {
+          question: "question4",
+        },
+        "filterPositionCategories":  {
+          question: "question5",
+        },
+        "filterEmployerType":  {
+          question: "question6",
+        },
+        "filterUnionMembership":  {
+          question: "question8",
+        },
+        "filterPostCovidWork":  {
+          question: "newVarPostCovidWork",
+        },
+        "filterDiscrimination":  {
+          question: "question26",
+        },
+        "filterAge":  {
+          question: "newVarSalaryCategories",
+        },
+        "filterGender":  {
+          question: "newVarGender",
+        },
+        "filterSexualOrientation":  {
+          question: "newVarSexualOrientation",
+        },
+        "raceAndEthnicity":  {
+          question: "newVarRaceAndEthnicityCensus",
+        },
+        "education":  {
+          question: "question41",
+        },
+        "disability":  {
+          question: "question42",
+        },
+      },
+      outputs: [
+        {
+          name: "demographics-time-in-art-museums",
+          inputQuestions: ["question1"],
+          timing: "beforeOpening",
+          function: "mean",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "demographics-time-in-art-museums-binned",
+          inputQuestions: ["newVarMonthsWorkedInMuseumsBinned"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "demographics-time-in-current-art-museum",
+          inputQuestions: ["question2"],
+          timing: "beforeOpening",
+          function: "mean",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-time-in-current-art-museum-binned",
+          inputQuestions: ["newVarMonthsWorkedInCurrentMuseumBinned"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "demographics-seniority",
+          inputQuestions: ["question3"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-seniority-recode",
+          inputQuestions: ["newVarSeniority"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-position-in-museum",
+          inputQuestions: ["question4"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-position-category-in-museum",
+          inputQuestions: ["newVarPositionCategories"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-generation",
+          inputQuestions: ["newVarGeneration"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-gender",
+          inputQuestions: ["question38"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-gender-recode",
+          inputQuestions: ["newVarGender"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-orientation",
+          inputQuestions: ["question39"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-orientation-recode",
+          inputQuestions: ["newVarSexualOrientation"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-race",
+          inputQuestions: ["question40"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-race-census",
+          inputQuestions: ["newVarRaceAndEthnicityCensus"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-education",
+          inputQuestions: ["question41"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-disability",
+          inputQuestions: ["question42"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-compensation-type",
+          inputQuestions: ["question9"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        // {
+        //   name: "salary-and-promotion-salary-recode",
+        //   inputQuestions: ["newVarSalaryCategories"],
+        //   timing: "beforeOpening",
+        //   function: "radiogroupSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-parity-salary-gender",
+        //   _comment: "TODO",
+        //   inputQuestions: ["question10"],
+        //   timing: "beforeOpening",
+        //   function: "radiogroupSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-parity-salary-race-and-ethnicity",
+        //   _comment: "TODO",
+        //   inputQuestions: ["question10"],
+        //   timing: "beforeOpening",
+        //   function: "radiogroupSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        {
+          name: "salary-and-promotion-similar-position-institution",
+          inputQuestions: ["question11"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-similar-position",
+          inputQuestions: ["question12"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        // {
+        //   name: "salary-and-promotion-similar-position-recode",
+        //   inputQuestions: ["newVarSalaryPerception"],
+        //   _comment : "TODO",
+        //   timing: "beforeOpening",
+        //   function: "radiogroupSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        {
+          name: "salary-and-promotion-promotions",
+          inputQuestions: ["question13"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-number-of-promotions-binned",
+          inputQuestions: ["newVarPromotionBinned"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-number-of-promotions-total",
+          inputQuestions: ["question14"],
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        // {
+        //   name: "salary-and-promotion-promotion-rate-gender",
+        //   inputQuestions: ["newVarPromotionParityGender"],
+        //   _comment: "GABE TODO RECODE THIS BOX",
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-promotion-rate-race",
+        //   inputQuestions: ["newVarPromotionParityRace"],
+        //   _comment: "GABE TODO RECODE THIS BOX",
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        {
+          name: "salary-and-promotion-number-of-promotions-no-pay-increase-binned",
+          inputQuestions: ["newVarPromotionNoPayBinned"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-number-of-promotions-no-pay-total",
+          inputQuestions: ["question15"],
+          _comment: "GABE TODO POSTPROCESSING",
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        // {
+        //   name: "salary-and-promotion-promotion-no-pay-rate-gender",
+        //   inputQuestions: ["newVarPromotionNoPayParityGender"],
+        //   _comment: "GABE TODO RECODE THIS BOX",
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-promotion-no-pay-rate-race",
+        //   inputQuestions: ["newVarPromotionNoPayParityRace"],
+        //   _comment: "GABE TODO RECODE THIS BOX",
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-number-of-promotions-no-title-increase-binned",
+        //   inputQuestions: ["newVarPromotionNoTitleBinned"],
+        //   timing: "beforeOpening",
+        //   function: "radiogroupSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-number-of-promotions-no-title-total",
+        //   inputQuestions: ["question16"],
+        //   _comment: "GABE TODO POSTPROCESSING",
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-promotion-no-title-rate-gender",
+        //   inputQuestions: ["newVarPromotionNoTitleParityGender"],
+        //   _comment: "GABE TODO RECODE THIS BOX",
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-promotion-no-title-rate-race",
+        //   inputQuestions: ["newVarPromotionNoTitleParityRace"],
+        //   _comment: "GABE TODO RECODE THIS BOX",
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        {
+          name: "staff-satisfaction-satisfaction",
+          inputQuestions: ["question32"],
+          _comment : "TODO After the computation we need to combine the boxes",
+          _comment2 : "TODO After the computation compute means",
+          timing: "beforeOpening",
+          function: "matrixSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        // {
+        //   name: "staff-satisfaction-satisfaction-parity-race",
+        //   inputQuestions: ["newVarInstitutionalSatisfactionParityRace"],
+        //   _comment : "TODO Implement",
+        //   timing: "beforeOpening",
+        //   function: "matrixSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "staff-satisfaction-satisfaction-parity-gender",
+        //   inputQuestions: ["newVarInstitutionalSatisfactionParityGender"],
+        //   _comment : "TODO Implement",
+        //   timing: "beforeOpening",
+        //   function: "matrixSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        {
+          name: "staff-satisfaction-emotions",
+          inputQuestions: ["question33"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-total",
+          inputQuestions: ["question26"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        // {
+        //   name: "discrimination-parity-gender",
+        //   _comment: "TODO",
+        //   inputQuestions: ["newVarDiscriminationParityGender"],
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "discrimination-parity-race",
+        //   _comment: "TODO",
+        //   inputQuestions: ["newVarDiscriminationParityRace"],
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        {
+          name: "discrimination-rate",
+          inputQuestions: ["question27"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-forms",
+          inputQuestions: ["question28"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-actions",
+          inputQuestions: ["question29"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-satisfaction-with-response",
+          inputQuestions: ["question30"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-reasons-no-report",
+          inputQuestions: ["question31"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          _comment: "This one breaks thing for some reason",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "leaving-leave-current-museum",
+          inputQuestions: ["question22"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "leaving-leave-current-museum-why",
+          inputQuestions: ["question23"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "leaving-leave-current-field",
+          inputQuestions: ["question24"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          _comment: "This is also breaking the computation",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "leaving-leave-current-field-why",
+          inputQuestions: ["question25"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "dei-role",
+          inputQuestions: ["question34"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "dei-measured",
+          inputQuestions: ["question35"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "union-measured",
+          inputQuestions: ["question8"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "policies-measured",
+          inputQuestions: ["question18"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "policies-salary-transparency",
+          inputQuestions: ["question20"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "org-salary-transparency",
+          inputQuestions: ["question19"],
+          timing: "beforeOpening",
+          function: "martixSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "org-experiences",
+          inputQuestions: ["question21"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        // {
+        //   name: "org-parity-gender",
+        //   inputQuestions: ["newVarCultureParityGender"],
+        //   _comment: "TODO",
+        //   timing: "beforeOpening",
+        //   function: "checkboxSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "org-parity-gender",
+        //   inputQuestions: ["newVarCultureParityRace"],
+        //   _comment: "TODO",
+        //   timing: "beforeOpening",
+        //   function: "checkboxSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        {
+          name: "leadership-parity-gender",
+          inputQuestions: ["question36"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        // {
+        //   name: "months-working-total",
+        //   inputQuestions: ["newVarMonthsWorkedInMusems"],
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "months-working-current-museum-total",
+        //   inputQuestions: ["newVarMonthsWorkedInCurrentMuseum"],
+        //   timing: "beforeOpening",
+        //   function: "sum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "promotion-rate-total",
+        //   inputQuestions: ["salary-and-promotion-number-of-promotions-total", "months-working"],
+        //   timing: "afterOpening",
+        //   function: "division",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "promotion-rate-title-change-no-pay-increase",
+        //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-total", "months-working"],
+        //   timing: "afterOpening",
+        //   function: "division",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "promotion-rate-no-title-change-pay-increase",
+        //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-title-total", "months-working"],
+        //   timing: "afterOpening",
+        //   function: "division",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "transparency-score",
+        //   function: "sum",
+        //   inputQuestions: ["newVarTransparencyScore"],
+        //   timing: "beforeOpening",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "culture-subscore",
+        //   function: "linearcombinationMatrix",
+        //   timing: "afterOpening",
+        //   inputs: [
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19a -- Positive Framing",
+        //       row: "1",
+        //       col: "1",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19a -- Positive Framing",
+        //       row: "1",
+        //       col: "2",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19a -- Positive Framing",
+        //       row: "1",
+        //       col: "4",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19a -- Positive Framing",
+        //       row: "1",
+        //       col: "5",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19b -- Negative Framing",
+        //       row: "2",
+        //       col: "1",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19b -- Negative Framing",
+        //       row: "2",
+        //       col: "2",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19b -- Negative Framing",
+        //       row: "2",
+        //       col: "4",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19b -- Negative Framing",
+        //       row: "2",
+        //       col: "5",
+        //       coefficient: -1,
+        //     },
+
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19c -- Positive Framing",
+        //       row: "3",
+        //       col: "1",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19c -- Positive Framing",
+        //       row: "3",
+        //       col: "2",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19c -- Positive Framing",
+        //       row: "3",
+        //       col: "4",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19c -- Positive Framing",
+        //       row: "3",
+        //       col: "5",
+        //       coefficient: 1,
+        //     },
+
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19d -- Positive Framing",
+        //       row: "4",
+        //       col: "1",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19d -- Positive Framing",
+        //       row: "4",
+        //       col: "2",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19d -- Positive Framing",
+        //       row: "4",
+        //       col: "4",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19d -- Positive Framing",
+        //       row: "4",
+        //       col: "5",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19e -- Negative Framing",
+        //       row: "5",
+        //       col: "1",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19e -- Negative Framing",
+        //       row: "5",
+        //       col: "2",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19e -- Negative Framing",
+        //       row: "5",
+        //       col: "4",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19e -- Negative Framing",
+        //       row: "5",
+        //       col: "5",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19f -- Positive Framing",
+        //       row: "6",
+        //       col: "1",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19f -- Positive Framing",
+        //       row: "6",
+        //       col: "2",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19f -- Positive Framing",
+        //       row: "6",
+        //       col: "4",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19f -- Positive Framing",
+        //       row: "6",
+        //       col: "5",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19g -- Negative Framing",
+        //       row: "7",
+        //       col: "1",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19g -- Negative Framing",
+        //       row: "7",
+        //       col: "2",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19g -- Negative Framing",
+        //       row: "7",
+        //       col: "4",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19g -- Negative Framing",
+        //       row: "7",
+        //       col: "5",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19h -- Negative Framing",
+        //       row: "8",
+        //       col: "1",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19h -- Negative Framing",
+        //       row: "8",
+        //       col: "2",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19h -- Negative Framing",
+        //       row: "8",
+        //       col: "4",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19h -- Negative Framing",
+        //       row: "8",
+        //       col: "5",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19i -- Positive Framing",
+        //       row: "9",
+        //       col: "1",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19i -- Positive Framing",
+        //       row: "9",
+        //       col: "2",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19i -- Positive Framing",
+        //       row: "9",
+        //       col: "4",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19i -- Positive Framing",
+        //       row: "9",
+        //       col: "5",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19j -- Negative Framing",
+        //       row: "10",
+        //       col: "1",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19j -- Negative Framing",
+        //       row: "10",
+        //       col: "2",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19j -- Negative Framing",
+        //       row: "10",
+        //       col: "4",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19j -- Negative Framing",
+        //       row: "10",
+        //       col: "5",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19k -- Positive Framing",
+        //       row: "11",
+        //       col: "1",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19k -- Positive Framing",
+        //       row: "11",
+        //       col: "2",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19k -- Positive Framing",
+        //       row: "11",
+        //       col: "4",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question19",
+        //       _comment: "Q19k -- Positive Framing",
+        //       row: "11",
+        //       col: "5",
+        //       coefficient: 1,
+        //     },
+        //   ],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "culture-score",
+        //   function: "linearcombination",
+        //   _comment: "TODO: Implement linearcombination",
+        //   resultType: "numeric",
+        //   inputs: [
+        //     {
+        //       question: "newVarCultureSubscoreQuestion19",
+        //       value: "1",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question21",
+        //       _comment: "Q21a -- Positive",
+        //       value: "1",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question21",
+        //       _comment: "Q21b -- Negative",
+        //       value: "2",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question21",
+        //       _comment: "Q21c -- Positive",
+        //       value: "3",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question21",
+        //       _comment: "Q21d -- Negative",
+        //       value: "4",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question21",
+        //       _comment: "Q21e -- Positive",
+        //       value: "5",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "question21",
+        //       _comment: "Q21f -- Negative",
+        //       value: "6",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question21",
+        //       _comment: "Q21g -- Negative",
+        //       value: "7",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question: "question21",
+        //       _comment: "Q21h -- Negative",
+        //       value: "7",
+        //       coefficient: -1,
+        //     },
+        //   ],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "Non-report-of-discrimination",
+        //   function: "linearcombination",
+        //   resultType: "numeric",
+        //   inputs: [
+        //     {
+        //       question: "staff-survey-31",
+        //       _comment: "Q31a",
+        //       value: "1",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "staff-survey-31",
+        //       _comment: "Q31b",
+        //       value: "2",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "staff-survey-31",
+        //       _comment: "Q31c",
+        //       value: "3",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "staff-survey-31",
+        //       _comment: "Q31d",
+        //       value: "4",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "staff-survey-31",
+        //       _comment: "Q31e",
+        //       value: "5",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question: "staff-survey-31",
+        //       _comment: "Q31f",
+        //       value: "6",
+        //       coefficient: 1,
+        //     },
+        //   ]
+        // },
+        // {
+        //   name: "emotion-score",
+        //   inputQuestions: ["staff-survey-33"],
+        //   timing: "afterOpening",
+        //   function: "linearcombination",
+        //   coefficients: [
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "1",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "2",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "3",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "4",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "5",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "6",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "7",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "8",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "9",
+        //       coefficient: -1,
+        //     },
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "10",
+        //       coefficient: 1,
+        //     },
+        //     {
+        //       question : "staff-survey-33",
+        //       values : "11",
+        //       coefficient: 0,
+        //     },
+        //   ],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : [],
+        //   }
+        // },
+      ]
+    },
+    visualization : [
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Approximately how long have you been working in the art museum field?",
+        labels : ["mean", "<1", "1-3", "4-6", "7-10", "10-20", "20+"],
+        data :
+          [
+            {
+              output: "demographics-time-in-art-museums",
+              value: "1",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "1",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "2",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "3",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "4",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "5",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "6",
+            },
+          ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "And how long have you been working at your current museum?",
+        labels : ["mean", "<1", "1-3", "4-6", "7-10", "10-20", "20+"],
+        data : 
+          [
+            {
+              output: "demographics-time-in-art-museums",
+              value: "1",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "1",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "2",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "3",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "4",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "5",
+            },
+            {
+              output: "demographics-time-in-art-museums-binned",
+              value: "6",
+            },
+          ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Current Position Level In The Museum",
+        labels : ["Voluntary (including unpaid internship)", "Entry-level", "Associate/Experienced ", "Manager", "Director", "Executive/Museum Leadership", "Prefer not to answer"],
+        dataSet : 
+          [
+            {
+              output: "demographics-seniority",
+              value: "1",
+            },
+            {
+              output: "demographics-seniority",
+              value: "2",
+            },
+            {
+              output: "demographics-seniority",
+              value: "3",
+            },
+            {
+              output: "demographics-seniority",
+              value: "4",
+            },
+            {
+              output: "demographics-seniority",
+              value: "5",
+            },
+            {
+              output: "demographics-seniority",
+              value: "6",
+            },
+            {
+              output: "demographics-seniority",
+              value: "7",
+            },
+          ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Type of Position In The Museum",
+        labels : ["Full-time/ Permanent Employee", "Part-time Employee", "Temporary Employee", "Seasonal Employee", "Paid Intern", "Unpaid Intern", "Apprentice / Fellow", "Prefer not to answer"],
+        dataSet : [
+            {
+              output: "demographics-position-in-museum",
+              value: "1",
+            },
+            {
+              output: "demographics-position-in-museum",
+              value: "2",
+            },
+            {
+              output: "demographics-position-in-museum",
+              value: "3",
+            },
+            {
+              output: "demographics-position-in-museum",
+              value: "4",
+            },
+            {
+              output: "demographics-position-in-museum",
+              value: "5",
+            },
+            {
+              output: "demographics-position-in-museum",
+              value: "6",
+            },
+            {
+              output: "demographics-position-in-museum",
+              value: "7",
+            },
+            {
+              output: "demographics-position-in-museum",
+              value: "8",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "checkbox",
+        graphType: "column",
+        questionName: "Position Categories",
+        labels: ["Administration", "Building Operations", "Collections", "Communications", "Public Engagement"],
+        dataSet : [
+            {
+              output: "demographics-position-category-in-museum",
+              value: "1",
+            },
+            {
+              output: "demographics-position-category-in-museum",
+              value: "2",
+            },
+            {
+              output: "demographics-position-category-in-museum",
+              value: "3",
+            },
+            {
+              output: "demographics-position-category-in-museum",
+              value: "4",
+            },
+            {
+              output: "demographics-position-category-in-museum",
+              value: "5",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Generation",
+        labels : ["The Silent Generation (1928-1945)", "Baby Boomers (1946-1964)", "Generation X (1965-1980)", "Millennial (1981-1996)", "Generation Z (1997-2012)"],
+        dataSet : [
+            {
+              output: "demographics-generation",
+              value: "1",
+            },
+            {
+              output: "demographics-generation",
+              value: "2",
+            },
+            {
+              output: "demographics-generation",
+              value: "3",
+            },
+            {
+              output: "demographics-generation",
+              value: "4",
+            },
+            {
+              output: "demographics-generation",
+              value: "5",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Gender",
+        labels: ["Man", "Women", "Non-binary and Another Gender"],
+        dataSet : [
+            {
+              output: "demographics-gender-recode",
+              value: "1",
+            },
+            {
+              output: "demographics-gender-recode",
+              value: "2",
+            },
+            {
+              output: "demographics-gender-recode",
+              value: "3",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Sexual Orientation",
+        labels: ["Heterosexual", "LGBTQ", "Prefer Not To Answer"],
+        dataSet : [
+            {
+              output: "demographics-gender-recode",
+              value: "1",
+            },
+            {
+              output: "demographics-gender-recode",
+              value: "2",
+            },
+            {
+              output: "demographics-gender-recode",
+              value: "3",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "checkbox",
+        graphType: "column",
+        questionName: "Race/Ethnicity",
+        labels: ["Black or African American", "East Asian", "Hispanic, Latina, Latino, or Latinx", "Middle Eastern or North African", "Native American/Alaska Native/First Nations", "Native Hawaiian or other Pacific Islander", "South Asian", "Southeast Asian", "White", "Another race of ethnicity", "Prefer not to answer"],
+        dataSet : [
+            {
+              output: "demographics-race",
+              value: "1",
+            },
+            {
+              output: "demographics-race",
+              value: "2",
+            },
+            {
+              output: "demographics-race",
+              value: "3",
+            },
+            {
+              output: "demographics-race",
+              value: "4",
+            },
+            {
+              output: "demographics-race",
+              value: "5",
+            },
+            {
+              output: "demographics-race",
+              value: "6",
+            },
+            {
+              output: "demographics-race",
+              value: "7",
+            },
+            {
+              output: "demographics-race",
+              value: "8",
+            },
+            {
+              output: "demographics-race",
+              value: "9",
+            },
+            {
+              output: "demographics-race",
+              value: "10",
+            },
+            {
+              output: "demographics-race",
+              value: "11",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "checkbox",
+        graphType: "column",
+        questionName: "Race/Ethnicity Census Categories",
+        labels : ["Asian or Asian American", "Middle Eastern or North African", "Black or African American", "Hispanic or Latina/o/x", "Native American or Alaska Native", "Native Hawaiian or other Pacific Islander", "White or European American", "Multiracial", "Other Race", "Prefer Not To Answer"],
+        dataSet : [
+            {
+              output: "demographics-race-census",
+              value: "1",
+            },
+            {
+              output: "demographics-race-census",
+              value: "2",
+            },
+            {
+              output: "demographics-race-census",
+              value: "3",
+            },
+            {
+              output: "demographics-race-census",
+              value: "4",
+            },
+            {
+              output: "demographics-race-census",
+              value: "5",
+            },
+            {
+              output: "demographics-race-census",
+              value: "6",
+            },
+            {
+              output: "demographics-race-census",
+              value: "7",
+            },
+            {
+              output: "demographics-race-census",
+              value: "8",
+            },
+            {
+              output: "demographics-race-census",
+              value: "9",
+            },
+            {
+              output: "demographics-race-census",
+              value: "10",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Education",
+        labels : ["Some high school", "High school graduate", "Some college/Associates degree", "Bachelor’s degree", "Master’s degree", "Professional or doctorate degree", "Prefer Not To Answer"],
+        dataSet : [
+            {
+              output: "demographics-education",
+              value: "1",
+            },
+            {
+              output: "demographics-education",
+              value: "2",
+            },
+            {
+              output: "demographics-education",
+              value: "3",
+            },
+            {
+              output: "demographics-education",
+              value: "4",
+            },
+            {
+              output: "demographics-education",
+              value: "5",
+            },
+            {
+              output: "demographics-education",
+              value: "6",
+            },
+            {
+              output: "demographics-education",
+              value: "7",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Disability",
+        labels: ["Yes", "No", "Prefer Not To Answer"],
+        dataSet : [
+            {
+              output: "demographics-disability",
+              value: "1",
+            },
+            {
+              output: "demographics-disability",
+              value: "2",
+            },
+            {
+              output: "demographics-disability",
+              value: "3",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Compensation Type",
+        labels : ["Annual salary", "Hourly wage", "Stipend", "Voluntary (Unpaid)"],
+        dataSet : [
+            {
+              output: "salary-and-promotion-compensation-type",
+              value: "1",
+            },
+            {
+              output: "salary-and-promotion-compensation-type",
+              value: "2",
+            },
+            {
+              output: "salary-and-promotion-compensation-type",
+              value: "3",
+            },
+            {
+              output: "salary-and-promotion-compensation-type",
+              value: "4",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Compared to people at similar position levels in my institution, I think my salary is:",
+        labels : ["Above others", "About the same as others", "Below others", "N/A"],
+        dataSet : [
+            {
+              output: "salary-and-promotion-similar-position-institution",
+              value: "1",
+            },
+            {
+              output: "salary-and-promotion-similar-position-institution",
+              value: "2",
+            },
+            {
+              output: "salary-and-promotion-similar-position-institution",
+              value: "3",
+            },
+            {
+              output: "salary-and-promotion-similar-position-institution",
+              value: "4",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        questionName: "Compared to people at other art museums with comparable position levels, I think my salary is:",
+        labels : ["Above others", "About the same as others", "Below others"],
+        dataSet : [
+            {
+              output: "salary-and-promotion-similar-position",
+              value: "1",
+            },
+            {
+              output: "salary-and-promotion-similar-position",
+              value: "2",
+            },
+            {
+              output: "salary-and-promotion-similar-position",
+              value: "3",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "checkbox",
+        graphType: "column",
+        questionName: "Compared to people at other art museums with comparable position levels, I think my salary is:",
+        labels : ["Title Change and Pay Increase", "Title Change But No Pay Increase", "Pay Increase But Title Change","None of the above"],
+        dataSet : [
+            {
+              output: "salary-and-promotion-promotions",
+              value: "1",
+            },
+            {
+              output: "salary-and-promotion-promotions",
+              value: "2",
+            },
+            {
+              output: "salary-and-promotion-promotions",
+              value: "3",
+            },
+            {
+              output: "salary-and-promotion-promotions",
+              value: "4",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "checkbox",
+        graphType: "column",
+        questionName: "Compared to people at other art museums with comparable position levels, I think my salary is:",
+        labels : ["Title Change and Pay Increase", "Title Change But No Pay Increase", "Pay Increase But Title Change","None of the above"],
+        dataSet : [
+            {
+              output: "salary-and-promotion-number-of-promotions-no-pay-increase-binned",
+              value: "1",
+            },
+            {
+              output: "salary-and-promotion-number-of-promotions-no-pay-increase-binned",
+              value: "2",
+            },
+            {
+              output: "salary-and-promotion-number-of-promotions-no-pay-increase-binned",
+              value: "3",
+            },
+            {
+              output: "salary-and-promotion-number-of-promotions-no-pay-increase-binned",
+              value: "4",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      // 
+      // {
+      //   questionType: "checkbox",
+      //   graphType: "column",
+      //   questionName: "Compared to people at other art museums with comparable position levels, I think my salary is:",
+      //   labels : ["0","1","2","4","5","6","7","8","9","10+"],
+      //   dataSet : [
+      //     {
+      //       {
+      //         output: "salary-and-promotion-number-of-promotions-binned",
+      //         value: "1",
+      //       },
+      //       {
+      //         output: "salary-and-promotion-number-of-promotions-binned",
+      //         value: "2",
+      //       },
+      //       {
+      //         output: "salary-and-promotion-number-of-promotions-binned",
+      //         value: "3",
+      //       },
+      //       {
+      //         output: "salary-and-promotion-number-of-promotions-binned",
+      //         value: "4",
+      //       },
+      //       {
+      //         output: "salary-and-promotion-number-of-promotions-binned",
+      //         value: "5",
+      //       },
+      //       {
+      //         output: "salary-and-promotion-number-of-promotions-binned",
+      //         value: "6",
+      //       },
+      //       {
+      //         output: "salary-and-promotion-number-of-promotions-binned",
+      //         value: "7",
+      //       },
+      //       {
+      //         output: "salary-and-promotion-number-of-promotions-binned",
+      //         value: "8",
+      //       },
+      //       {
+      //         output: "salary-and-promotion-number-of-promotions-binned",
+      //         value: "9",
+      //       },
+      //       {
+      //         output: "salary-and-promotion-number-of-promotions-binned",
+      //         value: "10",
+      //       },
+      //     }
+      //   ],
+      //   series : ["cohort","tag","all"],
+      //   seriesLabel : ["My Organization", "Tag", "All"],
+      // },
+      {
+        questionType: "checkbox",
+        graphType: "column",
+        questionName: "Compared to people at other art museums with comparable position levels, I think my salary is:",
+        labels : ["Title Change and Pay Increase", "Title Change But No Pay Increase", "Pay Increase But Title Change","None of the above"],
+        dataSet : [
+            {
+              output: "salary-and-promotion-promotions",
+              value: "1",
+            },
+            {
+              output: "salary-and-promotion-promotions",
+              value: "2",
+            },
+            {
+              output: "salary-and-promotion-promotions",
+              value: "3",
+            },
+            {
+              output: "salary-and-promotion-promotions",
+              value: "4",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      {
+        questionType: "checkbox",
+        graphType: "column",
+        questionName: "In your current employment situation, how satisfied are you with each of the following characteristics:",
+        labels : ["1. not at all satisfied", "2", "3", "4", "5. extremely satisfied"],
+        dataSet : [
+            {
+              output: "staff-satisfaction-satisfaction",
+              value: "1",
+            },
+            {
+              output: "staff-satisfaction-satisfaction",
+              value: "2",
+            },
+            {
+              output: "staff-satisfaction-satisfaction",
+              value: "3",
+            },
+            {
+              output: "staff-satisfaction-satisfaction",
+              value: "4",
+            },
+            {
+              output: "staff-satisfaction-satisfaction",
+              value: "5",
+            },
+        ],
+        series : ["cohort","tag","all"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
+      // GABE TODO END OF VIS
+    ],
     tables: [
     ],
     "survey": {
@@ -386,6 +3894,7 @@ define([], function () {
                 {
                   type: "text",
                   name: "question10",
+                  _comment: "This is broken.  TODO: recode with *numeric* like other text questions",
                   title:
                     "What is your approximate gross annual income (before taxes and deductions) from your current position in the museum? (If this changes from month to month, please provide an average). Report only your income from your museum job and round to the nearest multiple of 1000.",
                   isRequired: true,
@@ -613,6 +4122,7 @@ define([], function () {
                     },
                     {
                       value: "7",
+                      _comment: "TODO: this option isn't in the live version of the survey.",
                       text: "Prefer not to answer",
                     },
                   ],

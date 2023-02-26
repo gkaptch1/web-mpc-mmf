@@ -287,6 +287,10 @@ define([
           resultShares[question][cohort][filter] = [];
           
           for (let i = 0; i<serverSharesAsStrings[question][cohort][filter].length;i++) {
+            // Temporary hack to deal with unresolved promises.  TODO GABE FIX
+            if(serverSharesAsStrings[question][cohort][filter][i].includes("promise")) {
+              continue;
+            }
             // (1) Parse the shares
             // (2) Run reconstruct
             // (3) push into the appropriate place in the data structure

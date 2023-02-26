@@ -6,8 +6,200 @@ define([], function () {
   return {
     computation: {
       newVariables: {
+        "newVarMonthsWorkedInMusems": {
+          function: "linearcombinationMultipletext",
+          resultType: "numeric",
+          inputs: [
+            {
+              question: "question1",
+              value: "1",
+              coefficient: 12,
+            },
+            {
+              question: "question1",
+              value: "2",
+              coefficient: 1,
+            },
+          ],
+        },
+        "newVarMonthsWorkedInMuseumsBinned": {
+          function: "numericBin",
+          resultType: "radiogroup"
+          maxValue: 1200,
+          minValue: 0,
+          choices: [
+            {
+              value: "1",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  name: "<1",
+                  minValue : 0,
+                  maxValue : 11,
+                },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  name: "1-3",
+                  minValue : 12,
+                  maxValue : 35,
+                },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  name: "4-6",
+                  minValue : 36,
+                  maxValue : 71,
+                },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  name: "7-10",
+                  minValue : 72,
+                  maxValue : 119,
+                },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  name: "10-20",
+                  minValue : 120,
+                  maxValue : 239,
+                },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInMusems",
+                  name: "20+",
+                  minValue : 240,
+                  maxValue : 1200,
+                },
+              ]
+            },
+          ]
+        },
+        "newVarMonthsWorkedInCurrentMuseum": {
+          function: "linearcombinationMultipletext",
+          resultType: "numeric",
+          inputs: [
+            {
+              question: "question2",
+              value: "1",
+              coefficient: 12,
+            },
+            {
+              question: "question2",
+              value: "2",
+              coefficient: 1,
+            },
+          ],
+        },
+        "newVarMonthsWorkedInCurrentMuseumBinned": {
+          function: "numericBin",
+          resultType: "radiogroup"
+          maxValue: 1200,
+          minValue: 0,
+          choices: [
+            {
+              value: "1",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  name: "<1",
+                  minValue : 0,
+                  maxValue : 11,
+                },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  name: "1-3",
+                  minValue : 12,
+                  maxValue : 35,
+                },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  name: "4-6",
+                  minValue : 36,
+                  maxValue : 71,
+                },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  name: "7-10",
+                  minValue : 72,
+                  maxValue : 119,
+                },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  name: "10-20",
+                  minValue : 120,
+                  maxValue : 239,
+                },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
+                {
+                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  name: "20+",
+                  minValue : 240,
+                  maxValue : 1200,
+                },
+              ]
+            },
+          ]
+        },
         "newVarSeniority": {
-          operation: "bin",
+          function: "bin",
           resultType: "radiogroup",
           choices: [
             {
@@ -65,7 +257,7 @@ define([], function () {
           ]
         },
         "newVarPositionCategories": {
-          operation: "bin",
+          function: "bin",
           resultType: "checkbox",
           choices: [
             {
@@ -209,7 +401,7 @@ define([], function () {
           ]
         },
         "newVarSalaryCategories": {
-          operation: "numericBin",
+          function: "numericBin",
           resultType: "radiogroup"
           maxValue: 5000000,
           minValue: 0,
@@ -305,7 +497,7 @@ define([], function () {
           ]
         },
         "newVarGender" : {
-          operation: "bin",
+          function: "bin",
           resultType: "radiogroup",
           choices: [
             {
@@ -352,7 +544,7 @@ define([], function () {
           ]
         },
         "newVarSexualOrientation" : {
-          operation: "bin",
+          function: "bin",
           resultType: "radiogroup",
           choices: [
             {
@@ -416,7 +608,6 @@ define([], function () {
         },
         "newVarMultiracial" : {
           operation : "threshold",
-          _comment : "GABE TODO",
           resultType : "checkbox",
           choices: [
             {
@@ -461,7 +652,7 @@ define([], function () {
             },
           ],
         },
-        "newVarRaceAndEthnicity" : {
+        "newVarRaceAndEthnicityCensus" : {
           operation : "bin",
           resultType : "checkbox",
           choices: [
@@ -585,6 +776,18 @@ define([], function () {
             },
           ]
         },
+        "newVarSalaryFilteredeByGender" : {
+          function: "scalarVectorMultiplication",
+          resultType: "numericVector",
+          scalar: "question10",
+          vector: "newVarGender",
+        },
+        "newVarSalaryFilteredeByRaceAndEthnicityCensus" : {
+          function: "scalarVectorMultiplication",
+          resultType: "numericVector",
+          scalar: "question10",
+          vector: "newVarRaceAndEthnicityCensus",
+        },
         "newVarSalaryParityGender" : {
           "_comment" : "GABE TODO",
         },
@@ -594,14 +797,480 @@ define([], function () {
         "newVarPerceptionAccuracy" : {
           "_comment" : "GABE TODO",
         },
+        "newVarPromotionBinned": {
+          function: "numericBin",
+          resultType: "radiogroup"
+          maxValue: 100,
+          minValue: 0,
+          choices: [
+            {
+              value: "0",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "0",
+                  minValue : 0,
+                  maxValue : 0,
+                },
+              ]
+            },
+            {
+              value: "1",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "1",
+                  minValue : 1,
+                  maxValue : 1,
+                },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "2",
+                  minValue : 2,
+                  maxValue : 2,
+                },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "3",
+                  minValue : 3,
+                  maxValue : 3,
+                },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "4",
+                  minValue : 4,
+                  maxValue : 4,
+                },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "5",
+                  minValue : 5,
+                  maxValue : 5,
+                },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "6",
+                  minValue : 6,
+                  maxValue : 6,
+                },
+              ]
+            },
+            {
+              value: "7",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "7",
+                  minValue : 7,
+                  maxValue : 7,
+                },
+              ]
+            },
+            {
+              value: "8",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "8",
+                  minValue : 8,
+                  maxValue : 8,
+                },
+              ]
+            },
+            {
+              value: "9",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "9",
+                  minValue : 9,
+                  maxValue : 9,
+                },
+              ]
+            },
+            {
+              value: "10",
+              waysToGetThere: 
+              [
+                {
+                  question: "question14",
+                  name: "10+",
+                  minValue : 10,
+                  maxValue : 100,
+                },
+              ]
+            },
+          ]
+        },
+        "newVarPromotionNoPayBinned": {
+          function: "numericBin",
+          resultType: "radiogroup"
+          maxValue: 100,
+          minValue: 0,
+          choices: [
+            {
+              value: "0",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "0",
+                  minValue : 0,
+                  maxValue : 0,
+                },
+              ]
+            },
+            {
+              value: "1",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "1",
+                  minValue : 1,
+                  maxValue : 1,
+                },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "2",
+                  minValue : 2,
+                  maxValue : 2,
+                },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "3",
+                  minValue : 3,
+                  maxValue : 3,
+                },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "4",
+                  minValue : 4,
+                  maxValue : 4,
+                },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "5",
+                  minValue : 5,
+                  maxValue : 5,
+                },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "6",
+                  minValue : 6,
+                  maxValue : 6,
+                },
+              ]
+            },
+            {
+              value: "7",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "7",
+                  minValue : 7,
+                  maxValue : 7,
+                },
+              ]
+            },
+            {
+              value: "8",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "8",
+                  minValue : 8,
+                  maxValue : 8,
+                },
+              ]
+            },
+            {
+              value: "9",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "9",
+                  minValue : 9,
+                  maxValue : 9,
+                },
+              ]
+            },
+            {
+              value: "10",
+              waysToGetThere: 
+              [
+                {
+                  question: "question15",
+                  name: "10+",
+                  minValue : 10,
+                  maxValue : 100,
+                },
+              ]
+            },
+          ]
+        },
+        "newVarPromotionNoTitleBinned": {
+          function: "numericBin",
+          resultType: "radiogroup"
+          maxValue: 100,
+          minValue: 0,
+          choices: [
+            {
+              value: "0",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "0",
+                  minValue : 0,
+                  maxValue : 0,
+                },
+              ]
+            },
+            {
+              value: "1",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "1",
+                  minValue : 1,
+                  maxValue : 1,
+                },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "2",
+                  minValue : 2,
+                  maxValue : 2,
+                },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "3",
+                  minValue : 3,
+                  maxValue : 3,
+                },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "4",
+                  minValue : 4,
+                  maxValue : 4,
+                },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "5",
+                  minValue : 5,
+                  maxValue : 5,
+                },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "6",
+                  minValue : 6,
+                  maxValue : 6,
+                },
+              ]
+            },
+            {
+              value: "7",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "7",
+                  minValue : 7,
+                  maxValue : 7,
+                },
+              ]
+            },
+            {
+              value: "8",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "8",
+                  minValue : 8,
+                  maxValue : 8,
+                },
+              ]
+            },
+            {
+              value: "9",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "9",
+                  minValue : 9,
+                  maxValue : 9,
+                },
+              ]
+            },
+            {
+              value: "10",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  name: "10+",
+                  minValue : 10,
+                  maxValue : 100,
+                },
+              ]
+            },
+          ]
+        },
+        "newVarTransparencyScore" {
+          function: "linearcombination",
+          timing: "beforeOpening",
+          inputs: [
+            {
+              question: "question20",
+              value: "1",
+              coefficient: 3,
+            },
+            {
+              question: "question20",
+              value: "2",
+              coefficient: 2,
+            },
+            {
+              question: "question20",
+              value: "3",
+              coefficient: 2,
+            },
+            {
+              question: "question20",
+              value: "4",
+              coefficient: 2,
+            },
+            {
+              question: "question20",
+              value: "5",
+              coefficient: -3,
+            },
+          ],
+        },
         "newVarPromotionRate" : {
           "_comment" : "GABE TODO",
         },
         "newVarPromotionParityGender" : {
           "_comment" : "GABE TODO",
         },
+        "newVarPromotionParityRace" : {
+          "_comment" : "GABE TODO",
+        },
+        "newVarPromotionNoPayParityGender" : {
+          "_comment" : "GABE TODO",
+        },
+        "newVarPromotionNoPayParityRace" : {
+          "_comment" : "GABE TODO",
+        },
+        "newVarPromotionNoTitleParityGender" : {
+          "_comment" : "GABE TODO",
+        },
+        "newVarPromotionNoTitleParityRace" : {
+          "_comment" : "GABE TODO",
+        },        
         "newVarPostCovidWork" : {
-          operation: "bin",
+          function: "bin",
           resultType: "radiogroup",
           choices: [
             {
@@ -672,8 +1341,11 @@ define([], function () {
         "newVarEmotionScore" : {
           _comment: "TODO",
         },
+        "newVarSalaryPerception" : {
+          _comment: "TODO"
+        },
         "newVarGeneration" : {
-          operation: "numericBin",
+          function: "numericBin",
           resultType: "radiogroup"
           maxValue: 2048,
           minValue: 0,
@@ -774,7 +1446,7 @@ define([], function () {
           question: "newVarSexualOrientation",
         },
         "raceAndEthnicity":  {
-          question: "newVarRaceAndEthnicity",
+          question: "newVarRaceAndEthnicityCensus",
         },
         "education":  {
           question: "question41",
@@ -785,7 +1457,7 @@ define([], function () {
       },
       outputs: [
         {
-          name: "staff-survey-1",
+          name: "demographics-time-in-art-museums",
           inputQuestions: ["question1"],
           timing: "beforeOpening",
           function: "mean",
@@ -797,7 +1469,19 @@ define([], function () {
           },
         },
         {
-          name: "staff-survey-2",
+          name: "demographics-time-in-art-museums-binned",
+          inputQuestions: ["newVarMonthsWorkedInMuseumsBinned"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "demographics-time-in-current-art-museum",
           inputQuestions: ["question2"],
           timing: "beforeOpening",
           function: "mean",
@@ -809,44 +1493,56 @@ define([], function () {
           }
         },
         {
-          name: "staff-survey-3",
+          name: "demographics-time-in-current-art-museum-binned",
+          inputQuestions: ["newVarMonthsWorkedInCurrentMuseumBinned"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "demographics-seniority",
+          inputQuestions: ["question3"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-seniority-recode",
           inputQuestions: ["newVarSeniority"],
           timing: "beforeOpening",
           function: "radiogroupSum",
           filters: [],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
-          name: "staff-survey-4",
+          name: "demographics-position-in-museum",
           inputQuestions: ["question4"],
           timing: "beforeOpening",
           function: "radiogroupSum",
           filters: [],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
-          name: "staff-survey-5",
-          inputQuestions: ["question5"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-6",
-          inputQuestions: ["question6"],
+          name: "demographics-position-in-museum",
+          inputQuestions: ["newVarPositionCategories"],
           timing: "beforeOpening",
           function: "radiogroupSum",
           filters: [],
@@ -857,8 +1553,8 @@ define([], function () {
           }
         },
         {
-          name: "staff-survey-7",
-          inputQuestions: ["question7"],
+          name: "demographics-generation",
+          inputQuestions: ["newVarGeneration"],
           timing: "beforeOpening",
           function: "radiogroupSum",
           filters: [],
@@ -869,394 +1565,20 @@ define([], function () {
           }
         },
         {
-          name: "staff-survey-8",
-          inputQuestions: ["question8"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-9",
-          inputQuestions: ["question9"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-10",
-          inputQuestions: ["question10"],
-          timing: "beforeOpening",
-          function: "mean",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-11",
-          inputQuestions: ["question11"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-11",
-          inputQuestions: ["question11"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-12",
-          inputQuestions: ["question12"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-13",
-          inputQuestions: ["question13"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-14",
-          inputQuestions: ["question14"],
-          timing: "beforeOpening",
-          function: "sum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-15",
-          inputQuestions: ["question15"],
-          timing: "beforeOpening",
-          function: "sum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-16",
-          inputQuestions: ["question16"],
-          timing: "beforeOpening",
-          function: "sum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-17",
-          inputQuestions: ["question17"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-18",
-          inputQuestions: ["question18"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-19",
-          _comment : "TODO After the computation we need to combine the boxes"
-          inputQuestions: ["question19"],
-          timing: "beforeOpening",
-          function: "matrixSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-20",
-          inputQuestions: ["question20"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-21",
-          inputQuestions: ["question21"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-22",
-          inputQuestions: ["question22"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-23",
-          inputQuestions: ["question23"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-24",
-          inputQuestions: ["question24"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-25",
-          inputQuestions: ["question25"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-26",
-          inputQuestions: ["question26"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-27",
-          inputQuestions: ["question27"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-28",
-          inputQuestions: ["question28"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-29",
-          inputQuestions: ["question29"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-30",
-          inputQuestions: ["question30"],
-          timing: "beforeOpening",
-          function: "radiogroupSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-31",
-          inputQuestions: ["question31"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-32",
-          _comment : "TODO After the computation we need to combine the boxes"
-          inputQuestions: ["question32"],
-          timing: "beforeOpening",
-          function: "matrixSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-33",
-          inputQuestions: ["question33"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-34",
-          inputQuestions: ["question34"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-35",
-          inputQuestions: ["question35"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-36",
-          inputQuestions: ["question36"],
-          timing: "beforeOpening",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-37",
-          inputQuestions: ["question37"],
-          timing: "beforeOpening",
-          function: "mean",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : [],
-          }
-        },
-        {
-          name: "staff-survey-38",
+          name: "demographics-gender",
           inputQuestions: ["question38"],
           timing: "beforeOpening",
           function: "radiogroupSum",
           filters: [],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
-          name: "staff-survey-39",
-          inputQuestions: ["question39"],
+          name: "demographics-gender-recode",
+          inputQuestions: ["newVarGender"],
           timing: "beforeOpening",
           function: "radiogroupSum",
           filters: [],
@@ -1267,7 +1589,31 @@ define([], function () {
           }
         },
         {
-          name: "staff-survey-40",
+          name: "demographics-gender",
+          inputQuestions: ["question39"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-gender-recode",
+          inputQuestions: ["newVarSexualOrientation"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-race",
           inputQuestions: ["question40"],
           timing: "beforeOpening",
           function: "checkboxSum",
@@ -1279,7 +1625,19 @@ define([], function () {
           }
         },
         {
-          name: "staff-survey-41",
+          name: "demographics-race-census",
+          inputQuestions: ["newVarRaceAndEthnicityCensus"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "demographics-education",
           inputQuestions: ["question41"],
           timing: "beforeOpening",
           function: "radiogroupSum",
@@ -1291,7 +1649,7 @@ define([], function () {
           }
         },
         {
-          name: "staff-survey-42",
+          name: "demographics-disability",
           inputQuestions: ["question42"],
           timing: "beforeOpening",
           function: "radiogroupSum",
@@ -1303,22 +1661,10 @@ define([], function () {
           }
         },
         {
-          name: "months-working",
-          inputQuestions: ["staff-survey-2"],
-          timing: "afterOpening",
-          function: "linearcombination",
-          inputs: [
-            {
-              question: "staff-survey-2",
-              value: "1",
-              coefficient: 12,
-            },
-            {
-              question: "staff-survey-2",
-              value: "2",
-              coefficient: 1,
-            },
-          ],
+          name: "salary-and-promotion-compensation-type",
+          inputQuestions: ["question9"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
           filters: [],
           outputParties: {
             analyst: "true",
@@ -1327,8 +1673,591 @@ define([], function () {
           }
         },
         {
-          name: "promotion-rate-1",
-          inputQuestions: ["staff-survey-14", "months-working"],
+          name: "salary-and-promotion-salary-recode",
+          inputQuestions: ["newVarSalaryCategories"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-parity-salary-gender",
+          _comment: "TODO",
+          inputQuestions: ["question10"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-parity-salary-race-and-ethnicity",
+          _comment: "TODO",
+          inputQuestions: ["question10"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-similar-position-institution",
+          inputQuestions: ["question11"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-similar-position",
+          inputQuestions: ["question12"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-similar-position-recode",
+          inputQuestions: ["newVarSalaryPerception"],
+          _comment : "TODO",
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-promotions",
+          inputQuestions: ["question13"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-number-of-promotions-binned",
+          inputQuestions: ["newVarPromotionBinned"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-number-of-promotions-total",
+          inputQuestions: ["question14"],
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-promotion-rate-gender",
+          inputQuestions: ["newVarPromotionParityGender"],
+          _comment: "GABE TODO RECODE THIS BOX",
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-promotion-rate-race",
+          inputQuestions: ["newVarPromotionParityRace"],
+          _comment: "GABE TODO RECODE THIS BOX",
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-number-of-promotions-no-pay-increase-binned",
+          inputQuestions: ["newVarPromotionNoPayBinned"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-number-of-promotions-no-pay-total",
+          inputQuestions: ["question15"],
+          _comment: "GABE TODO POSTPROCESSING",
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-promotion-no-pay-rate-gender",
+          inputQuestions: ["newVarPromotionNoPayParityGender"],
+          _comment: "GABE TODO RECODE THIS BOX",
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-promotion-no-pay-rate-race",
+          inputQuestions: ["newVarPromotionNoPayParityRace"],
+          _comment: "GABE TODO RECODE THIS BOX",
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-number-of-promotions-no-title-increase-binned",
+          inputQuestions: ["newVarPromotionNoTitleBinned"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-number-of-promotions-no-title-total",
+          inputQuestions: ["question16"],
+          _comment: "GABE TODO POSTPROCESSING",
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-promotion-no-title-rate-gender",
+          inputQuestions: ["newVarPromotionNoTitleParityGender"],
+          _comment: "GABE TODO RECODE THIS BOX",
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-promotion-no-title-rate-race",
+          inputQuestions: ["newVarPromotionNoTitleParityRace"],
+          _comment: "GABE TODO RECODE THIS BOX",
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "staff-satisfaction-satisfaction",
+          inputQuestions: ["question32"],
+          _comment : "TODO After the computation we need to combine the boxes",
+          _comment2 : "TODO After the computation compute means",
+          timing: "beforeOpening",
+          function: "matrixSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "staff-satisfaction-satisfaction-parity-race",
+          inputQuestions: ["newVarInstitutionalSatisfactionParityRace"],
+          _comment : "TODO Implement",
+          timing: "beforeOpening",
+          function: "matrixSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "staff-satisfaction-satisfaction-parity-gender",
+          inputQuestions: ["newVarInstitutionalSatisfactionParityGender"],
+          _comment : "TODO Implement",
+          timing: "beforeOpening",
+          function: "matrixSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "staff-satisfaction-emotions",
+          inputQuestions: ["question33"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-total",
+          inputQuestions: ["question26"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-parity-gender",
+          _comment: "TODO",
+          inputQuestions: ["newVarDiscriminationParityGender"],
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-parity-race",
+          _comment: "TODO",
+          inputQuestions: ["newVarDiscriminationParityRace"],
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-rate",
+          inputQuestions: ["question27"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-forms",
+          inputQuestions: ["question28"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-actions",
+          inputQuestions: ["question29"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-satisfaction-with-response",
+          inputQuestions: ["question30"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "discrimination-reasons-no-report",
+          inputQuestions: ["question31"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "leaving-leave-current-museum",
+          inputQuestions: ["question22"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "leaving-leave-current-museum-why",
+          inputQuestions: ["question23"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "leaving-leave-current-field",
+          inputQuestions: ["question24"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "leaving-leave-current-field-why",
+          inputQuestions: ["question25"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "dei-role",
+          inputQuestions: ["question34"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "dei-measured",
+          inputQuestions: ["question35"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "union-measured",
+          inputQuestions: ["question8"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "policies-measured",
+          inputQuestions: ["question18"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "policies-salary-transparency",
+          inputQuestions: ["question20"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "org-salary-transparency",
+          inputQuestions: ["question19"],
+          timing: "beforeOpening",
+          function: "martixSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "org-experiences",
+          inputQuestions: ["question21"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "org-parity-gender",
+          inputQuestions: ["newVarCultureParityGender"],
+          _comment: "TODO",
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "org-parity-gender",
+          inputQuestions: ["newVarCultureParityRace"],
+          _comment: "TODO",
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "leadership-parity-gender",
+          inputQuestions: ["question36"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "months-working-total",
+          inputQuestions: ["newVarMonthsWorkedInMusems"],
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "months-working-current-museum-total",
+          inputQuestions: ["newVarMonthsWorkedInCurrentMuseum"],
+          timing: "beforeOpening",
+          function: "sum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+        {
+          name: "promotion-rate-total",
+          inputQuestions: ["salary-and-promotion-number-of-promotions-total", "months-working"],
           timing: "afterOpening",
           function: "division",
           filters: [],
@@ -1339,8 +2268,8 @@ define([], function () {
           }
         },
         {
-          name: "promotion-rate-2",
-          inputQuestions: ["staff-survey-14", "months-working"],
+          name: "promotion-rate-title-change-no-pay-increase",
+          inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-total", "months-working"],
           timing: "afterOpening",
           function: "division",
           filters: [],
@@ -1351,8 +2280,8 @@ define([], function () {
           }
         },
         {
-          name: "promotion-rate-3",
-          inputQuestions: ["staff-survey-14", "months-working"],
+          name: "promotion-rate-no-title-change-pay-increase",
+          inputQuestions: ["salary-and-promotion-number-of-promotions-no-title-total", "months-working"],
           timing: "afterOpening",
           function: "division",
           filters: [],
@@ -1363,38 +2292,10 @@ define([], function () {
           }
         },
         {
-          name: "transparency-score ",
-          operation: "linearcombination",
-          inputQuestions: ["staff-survey-33"],
-          timing: "afterOpening",
-          _comment: "TODO: Implement linearcombination",
-          inputs: [
-            {
-              question: "staff-survey-20",
-              value: "1",
-              coefficient: 3,
-            },
-            {
-              question: "staff-survey-20",
-              value: "2",
-              coefficient: 2,
-            },
-            {
-              question: "staff-survey-20",
-              value: "3",
-              coefficient: 2,
-            },
-            {
-              question: "staff-survey-20",
-              value: "4",
-              coefficient: 2,
-            },
-            {
-              question: "staff-survey-20",
-              value: "5",
-              coefficient: -3,
-            },
-          ],
+          name: "transparency-score",
+          function: "sum",
+          inputQuestions: ["newVarTransparencyScore"],
+          timing: "beforeOpening",
           filters: [],
           outputParties: {
             analyst: "true",
@@ -1404,7 +2305,7 @@ define([], function () {
         },
         {
           name: "culture-subscore",
-          operation: "linearcombinationMatrix",
+          function: "linearcombinationMatrix",
           timing: "afterOpening",
           inputs: [
             {
@@ -1727,7 +2628,7 @@ define([], function () {
         },
         {
           name: "culture-score"
-          operation: "linearcombination",
+          function: "linearcombination",
           _comment: "TODO: Implement linearcombination",
           resultType: "numeric",
           inputs: [
@@ -1794,7 +2695,7 @@ define([], function () {
         },
         {
           name: "Non-report-of-discrimination",
-          operation: "linearcombination",
+          function: "linearcombination",
           resultType: "numeric",
           inputs: [
             {
