@@ -1095,49 +1095,47 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
     filesaver.saveAs(new Blob([full], {type: 'text/csv;charset=utf-8'}), 'LinearRegressions_' + session + '.csv');
   }
 
-  function saveQuestions(cohorts, session, counts) {
-    if (cohorts == null) {
-      return;
-    }
+  function saveQuestions(outputs, session) {
+    var csv = [];
 
-    var all_cohorts = [];
-    for (var cohort in cohorts) {
-      var questions = cohorts[cohort];
-
-      var results = [];
-      for (var key in questions) {
-        if (!questions.hasOwnProperty(key) || questions[key] == null) {
-          continue;
-        }
-
-        var question = questions[key];
-        for (var option in question) {
-          if (!question.hasOwnProperty(option) || question[option] == null) {
-            continue;
+    //Opening and populating the opened_outputs object
+    for (output of Object.keys(outputs)) {
+      // Write the title row for this output
+      let titlerow = [];
+      titlerow.push("Question Name");
+      // Go get the appropriate set of labels
+      for(let o of table_template["computation"]["outputs"]) {
+        if(o.name == output) {
+          for(let l of o.labels) {
+            titlerow.push(l);
           }
-
-          results.push(key + ',' + option + ',' + question[option]);
+          // break;
         }
-        results.push('\n');
       }
-
-      var count = 'Number of participants ' + counts[cohort].length;
-      if (cohort === 'all') {
-        all_cohorts[0] = 'All Cohorts -- ' + count + '\n' + results.join('\n');
-      } else {
-        all_cohorts[cohort] = 'Cohort #' + cohort + '-- ' + count + '\n' + results.join('\n');
+      csv.push("\n" + titlerow.join(",") + "\n");
+      for(let f of Object.keys(outputs[output])) { // uhoh todo
+        if(f == "nofilter") {
+          csv.push(""+ output+ "--fullDataSet," + outputs[output][f].toString() + "\n");
+        } else {
+          let filterquestion = table_template["computation"]["filters"][f].question;
+          for(opt of Object.keys(outputs[output][f])) {
+            // Find the name associated with the option
+            let opt_name = opt;
+            for(choice of table_template["computation"]["newVariables"][filterquestion].choices) {
+              if (choice.value == opt) {
+                opt_name = choice.text;
+              }
+            }
+            // table_template["computation"]["newVariables"][filterquestion]
+            csv.push(""+ output+ "--" + f + "--"+ opt_name + "," + outputs[output][f][opt].toString() + "\n");
+          }
+        }
       }
     }
 
-    // Sort by cohorts, all appears first
-    var joined = all_cohorts[0];
-    for (var i = 1; i < all_cohorts.length; i++) {
-      if (all_cohorts[i] != null) {
-        joined += '\n\n\n' + all_cohorts[i];
-      }
-    }
+    var full = csv.join('');
 
-    filesaver.saveAs(new Blob([joined], {type: 'text/plain;charset=utf-8'}), 'Questions_' + session + '.csv');
+    filesaver.saveAs(new Blob([full], {type: 'text/plain;charset=utf-8'}), 'Questions_' + session + '.csv');
   }
 
   return {

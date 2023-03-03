@@ -83,7 +83,7 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
               });
 
               if (result['hasQuestions'] === true) {
-                tableController.saveQuestions(result['questions'], sessionKey, result['cohorts']);
+                tableController.saveQuestions(rawresults["questions"], sessionKey);
               }
               if (result['hasUsability'] === true) {
                 tableController.saveUsability(result['usability'], sessionKey, result['cohorts']);

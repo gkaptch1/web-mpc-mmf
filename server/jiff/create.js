@@ -27,11 +27,11 @@ const cryptoHooks =  {
 };
 
 // Options and Hooks
-const options = { logs: true, sodium: false, hooks: {} };
+const options = { logs: false, sodium: false, hooks: {} };
 const computeOptions = {
   sodium: false,
   safemod: false,
-  logs: true,
+  logs: false,
   Zp: '618970019642690137449562111',  // 2^89-1
   crypto_provider : "http://localhost:4321",
   hooks: {

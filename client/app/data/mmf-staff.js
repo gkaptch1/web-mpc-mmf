@@ -1111,149 +1111,160 @@ define([], function () {
             },
           ]
         },
-      //   "newVarPromotionNoTitleBinned": {
-      //     function: "numericBin",
-      //     resultType: "radiogroup",
-      //     maxValue: 100,
-      //     minValue: 0,
-      //     choices: [
-      //       {
-      //         value: "0",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "0",
-      //             minValue : 0,
-      //             maxValue : 0,
-      //           },
-      //         ]
-      //       },
-      //       {
-      //         value: "1",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "1",
-      //             minValue : 1,
-      //             maxValue : 1,
-      //           },
-      //         ]
-      //       },
-      //       {
-      //         value: "2",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "2",
-      //             minValue : 2,
-      //             maxValue : 2,
-      //           },
-      //         ]
-      //       },
-      //       {
-      //         value: "3",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "3",
-      //             minValue : 3,
-      //             maxValue : 3,
-      //           },
-      //         ]
-      //       },
-      //       {
-      //         value: "4",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "4",
-      //             minValue : 4,
-      //             maxValue : 4,
-      //           },
-      //         ]
-      //       },
-      //       {
-      //         value: "5",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "5",
-      //             minValue : 5,
-      //             maxValue : 5,
-      //           },
-      //         ]
-      //       },
-      //       {
-      //         value: "6",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "6",
-      //             minValue : 6,
-      //             maxValue : 6,
-      //           },
-      //         ]
-      //       },
-      //       {
-      //         value: "7",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "7",
-      //             minValue : 7,
-      //             maxValue : 7,
-      //           },
-      //         ]
-      //       },
-      //       {
-      //         value: "8",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "8",
-      //             minValue : 8,
-      //             maxValue : 8,
-      //           },
-      //         ]
-      //       },
-      //       {
-      //         value: "9",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "9",
-      //             minValue : 9,
-      //             maxValue : 9,
-      //           },
-      //         ]
-      //       },
-      //       {
-      //         value: "10",
-      //         waysToGetThere: 
-      //         [
-      //           {
-      //             question: "question16",
-      //             name: "10+",
-      //             minValue : 10,
-      //             maxValue : 100,
-      //           },
-      //         ]
-      //       },
-      //     ]
-      //   },
+        "newVarPromotionNoTitleBinned": {
+          function: "numericBin",
+          resultType: "radiogroup",
+          maxValue: 100,
+          minValue: 0,
+          choices: [
+            {
+              value: "0",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "0",
+                  minValue : 0,
+                  maxValue : 0,
+                },
+              ]
+            },
+            {
+              value: "1",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "1",
+                  minValue : 1,
+                  maxValue : 1,
+                },
+              ]
+            },
+            {
+              value: "2",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "2",
+                  minValue : 2,
+                  maxValue : 2,
+                },
+              ]
+            },
+            {
+              value: "3",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "3",
+                  minValue : 3,
+                  maxValue : 3,
+                },
+              ]
+            },
+            {
+              value: "4",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "4",
+                  minValue : 4,
+                  maxValue : 4,
+                },
+              ]
+            },
+            {
+              value: "5",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "5",
+                  minValue : 5,
+                  maxValue : 5,
+                },
+              ]
+            },
+            {
+              value: "6",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "6",
+                  minValue : 6,
+                  maxValue : 6,
+                },
+              ]
+            },
+            {
+              value: "7",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "7",
+                  minValue : 7,
+                  maxValue : 7,
+                },
+              ]
+            },
+            {
+              value: "8",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "8",
+                  minValue : 8,
+                  maxValue : 8,
+                },
+              ]
+            },
+            {
+              value: "9",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "9",
+                  minValue : 9,
+                  maxValue : 9,
+                },
+              ]
+            },
+            {
+              value: "10",
+              waysToGetThere: 
+              [
+                {
+                  question: "question16",
+                  value: "1",
+                  name: "10+",
+                  minValue : 10,
+                  maxValue : 100,
+                },
+              ]
+            },
+          ]
+        },
       //   "newVarTransparencyScore" : {
       //     function: "linearcombination",
-      //     timing: "beforeOpening",
+      //     timing: "perRespondentProcessing",
       //     inputs: [
       //       {
       //         question: "question20",
@@ -1483,83 +1494,89 @@ define([], function () {
         "filterSexualOrientation":  {
           question: "newVarSexualOrientation",
         },
-        "raceAndEthnicity":  {
+        "filterRaceAndEthnicity":  {
           question: "newVarRaceAndEthnicityCensus",
         },
-        "education":  {
+        "filterEducation":  {
           question: "question41",
         },
-        "disability":  {
+        "filterDisability":  {
           question: "question42",
         },
       },
       outputs: [
         {
-          name: "demographics-time-in-art-museums",
-          inputQuestions: ["question1"],
-          timing: "beforeOpening",
+          name: "demographics-time-in-art-museums-(months)",
+          inputQuestions: ["newVarMonthsWorkedInMusems"],
+          labels : ["total months"],
+          timing: "perRespondentProcessing",
           function: "mean",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags: [],
           },
         },
         {
-          name: "demographics-time-in-art-museums-binned",
+          name: "demographics-time-in-art-museums-(months)-binned",
           inputQuestions: ["newVarMonthsWorkedInMuseumsBinned"],
-          timing: "beforeOpening",
+          labels : ["<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags: [],
           },
         },
         {
-          name: "demographics-time-in-current-art-museum",
-          inputQuestions: ["question2"],
-          timing: "beforeOpening",
+          name: "demographics-time-in-current-art-museum-(months)",
+          inputQuestions: ["newVarMonthsWorkedInCurrentMuseum"],
+          labels : ["total months"],
+          timing: "perRespondentProcessing",
           function: "mean",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
-          name: "demographics-time-in-current-art-museum-binned",
+          name: "demographics-time-in-current-art-museum-(months)-binned",
           inputQuestions: ["newVarMonthsWorkedInCurrentMuseumBinned"],
-          timing: "beforeOpening",
+          labels : ["<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags: [],
           },
         },
         {
           name: "demographics-seniority",
           inputQuestions: ["question3"],
-          timing: "beforeOpening",
+          labels : ["Total Number","Voluntary (including unpaid internship)","Entry-level","Associate/Experienced (non-manager)","Manager (with one/more direct reports)","Director","Executive/Museum Leadership","Prefer not to answer"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "demographics-seniority-recode",
           inputQuestions: ["newVarSeniority"],
-          timing: "beforeOpening",
+          labels : ["Entry","Mid","Senior","Prefer Not To Answer"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
             cohort: "false",
@@ -1569,9 +1586,10 @@ define([], function () {
         {
           name: "demographics-position-in-museum",
           inputQuestions: ["question4"],
-          timing: "beforeOpening",
+          labels : ["Total Number","Full-time/ Permanent Employee", "Part-time Employee", "Temporary Employee", "Seasonal Employee", "Paid Intern", "Unpaid Intern", "Apprentice / Fellow", "Prefer not to answer"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
             cohort: "false",
@@ -1581,9 +1599,10 @@ define([], function () {
         {
           name: "demographics-position-category-in-museum",
           inputQuestions: ["newVarPositionCategories"],
-          timing: "beforeOpening",
+          labels: ["Administration", "Building Operations", "Collections", "Communications", "Public Engagement"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
             cohort: "false",
@@ -1593,21 +1612,23 @@ define([], function () {
         {
           name: "demographics-generation",
           inputQuestions: ["newVarGeneration"],
-          timing: "beforeOpening",
+          labels : ["The Silent Generation (1928-1945)", "Baby Boomers (1946-1964)", "Generation X (1965-1980)", "Millennial (1981-1996)", "Generation Z (1997-2012)"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "demographics-gender",
           inputQuestions: ["question38"],
-          timing: "beforeOpening",
+          labels : ["Total Number", "Woman","Man","Non-binary/genderqueer/third gender","Another gender","Prefer not to answer"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
             cohort: "false",
@@ -1617,21 +1638,23 @@ define([], function () {
         {
           name: "demographics-gender-recode",
           inputQuestions: ["newVarGender"],
-          timing: "beforeOpening",
+          labels: ["Man", "Woman","Non-binary and Another Gender"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "demographics-orientation",
           inputQuestions: ["question39"],
-          timing: "beforeOpening",
+          labels: ["Total Number","Heterosexual ","Lesbian ","Gay","Bisexual ","Pansexual ","Asexual","I don’t label myself as anything","Another sexual orientation","Prefer not to answer"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
             cohort: "false",
@@ -1641,134 +1664,143 @@ define([], function () {
         {
           name: "demographics-orientation-recode",
           inputQuestions: ["newVarSexualOrientation"],
-          timing: "beforeOpening",
+          labels : ["Heterosexual","LGBTQ","Prefer Not To Answer"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "demographics-race",
           inputQuestions: ["question40"],
-          timing: "beforeOpening",
+          labels: ["Total Number","Black or African American", "East Asian", "Hispanic Latina Latino or Latinx", "Middle Eastern or North African", "Native American/Alaska Native/First Nations", "Native Hawaiian or other Pacific Islander", "South Asian", "Southeast Asian", "White", "Another race of ethnicity", "Prefer not to answer"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "demographics-race-census",
           inputQuestions: ["newVarRaceAndEthnicityCensus"],
-          timing: "beforeOpening",
+          labels: ["Asian or Asian American","Middle Eastern or North African","Black or African American","Hispanic or Latina/o/x","Native American or Alaska Native","Native Hawaiian or Other Pacific Islander","White or European American","Multiracial","Other Race","Prefer Not To Answer"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "demographics-education",
           inputQuestions: ["question41"],
-          timing: "beforeOpening",
+          labels : ["Total Number", "Some high school", "High school graduate", "Some college/Associates degree", "Bachelor’s degree", "Master’s degree", "Professional or doctorate degree", "Prefer Not To Answer"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "demographics-disability",
           inputQuestions: ["question42"],
-          timing: "beforeOpening",
+          labels: ["Total Number","Yes", "No", "Prefer Not To Answer"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "salary-and-promotion-compensation-type",
           inputQuestions: ["question9"],
-          timing: "beforeOpening",
+          labels : ["Total Number", "Annual salary", "Hourly wage", "Stipend", "Voluntary (Unpaid)"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         // {
         //   name: "salary-and-promotion-salary-recode",
         //   inputQuestions: ["newVarSalaryCategories"],
-        //   timing: "beforeOpening",
+        //   _comment: "Broken",
+        //   timing: "perRespondentProcessing",
         //   function: "radiogroupSum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         // {
         //   name: "salary-and-promotion-parity-salary-gender",
-        //   _comment: "TODO",
-        //   inputQuestions: ["question10"],
-        //   timing: "beforeOpening",
-        //   function: "radiogroupSum",
-        //   filters: [],
+        //   reference: ["question10"],
+        //   _comment: "Broken",
+        //   timing: "parity",
+        //   function: "parity",
+        //   filters: ["filterGender"],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         // {
         //   name: "salary-and-promotion-parity-salary-race-and-ethnicity",
-        //   _comment: "TODO",
         //   inputQuestions: ["question10"],
-        //   timing: "beforeOpening",
-        //   function: "radiogroupSum",
-        //   filters: [],
+        //   _comment: "Broken",
+        //   timing: "parity",
+        //   function: "parity",
+        //   filters: ["filterRaceAndEthnicity"],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         {
           name: "salary-and-promotion-similar-position-institution",
           inputQuestions: ["question11"],
-          timing: "beforeOpening",
+          labels : ["Total Number", "Above others", "About the same as others", "Below others", "N/A"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "salary-and-promotion-similar-position",
           inputQuestions: ["question12"],
-          timing: "beforeOpening",
+          labels : ["Total Number", "Above others", "About the same as others", "Below others", "N/A"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
@@ -1776,86 +1808,103 @@ define([], function () {
         //   name: "salary-and-promotion-similar-position-recode",
         //   inputQuestions: ["newVarSalaryPerception"],
         //   _comment : "TODO",
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "radiogroupSum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         {
           name: "salary-and-promotion-promotions",
           inputQuestions: ["question13"],
-          timing: "beforeOpening",
+          labels : ["Total Number","Title Change and Pay Increase", "Title Change But No Pay Increase", "Pay Increase But Title Change","None of the above"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "salary-and-promotion-number-of-promotions-binned",
           inputQuestions: ["newVarPromotionBinned"],
-          timing: "beforeOpening",
+          labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "salary-and-promotion-number-of-promotions-total",
           inputQuestions: ["question14"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Number of Promotions"],
+          timing: "perRespondentProcessing",
           function: "sum",
-          filters: [],
+          filters: ["filterGender", "filterRaceAndEthnicity"],
           outputParties: {
-            analyst: "true",
-            cohort: "true",
+            analyst: "false",
+            cohort: "false",
             tags : [],
           }
         },
         // {
-        //   name: "salary-and-promotion-promotion-rate-gender",
-        //   inputQuestions: ["newVarPromotionParityGender"],
-        //   _comment: "GABE TODO RECODE THIS BOX",
-        //   timing: "beforeOpening",
-        //   function: "sum",
-        //   filters: [],
+        //   name: "salary-and-promotion-number-of-promotions-rate",
+        //   inputQuestions: ["salary-and-promotion-number-of-promotions-total", "demographics-time-in-art-museums"],
+        //   timing: "postprocessing1",
+        //   _comment: "TODO",
+        //   function: "division",
+        //   filters: ["filterGender", "filterRaceAndEthnicity"],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         // {
-        //   name: "salary-and-promotion-promotion-rate-race",
-        //   inputQuestions: ["newVarPromotionParityRace"],
-        //   _comment: "GABE TODO RECODE THIS BOX",
-        //   timing: "beforeOpening",
-        //   function: "sum",
-        //   filters: [],
+        //   name: "salary-and-promotion-promotion-rate-parity-gender",
+        //   inputQuestions: ["salary-and-promotion-number-of-promotions-rate"],
+        //   timing: "postprocessing2",
+        //   _comment: "TODO",
+        //   function: "parity",
+        //   filters: ["filterGender"],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-promotion-rate-parity-race",
+        //   inputQuestions: ["salary-and-promotion-number-of-promotions-rate"],
+        //   timing: "postprocessing2",
+        //   _comment: "TODO",
+        //   function: "parity",
+        //   filters: ["filterRaceAndEthnicity"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         {
           name: "salary-and-promotion-number-of-promotions-no-pay-increase-binned",
           inputQuestions: ["newVarPromotionNoPayBinned"],
-          timing: "beforeOpening",
+          labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
@@ -1863,25 +1912,67 @@ define([], function () {
           name: "salary-and-promotion-number-of-promotions-no-pay-total",
           inputQuestions: ["question15"],
           _comment: "GABE TODO POSTPROCESSING",
-          timing: "beforeOpening",
+          labels: ["Total Number", "Number of Promotions"],
+          timing: "perRespondentProcessing",
           function: "sum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
-            analyst: "true",
-            cohort: "true",
+            analyst: "false",
+            cohort: "false",
             tags : [],
           }
         },
         // {
+        //   name: "salary-and-promotion-number-of-promotions-no-pay-rate",
+        //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-total", "demographics-time-in-art-museums"],
+        //   timing: "postprocessing1",
+        //   _comment: "TODO",
+        //   function: "division",
+        //   filters: ["filterGender", "filterRaceAndEthnicity"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "false",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-promotion-no-pay-rate-parity-gender",
+        //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-rate"],
+        //   timing: "postprocessing2",
+        //   _comment: "TODO",
+        //   function: "parity",
+        //   filters: ["filterGender"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "false",
+        //     tags : [],
+        //   }
+        // },
+        // {
+        //   name: "salary-and-promotion-promotion-no-pay-rate-parity-race",
+        //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-rate"],
+        //   timing: "postprocessing2",
+        //   _comment: "TODO",
+        //   function: "parity",
+        //   filters: ["filterRaceAndEthnicity"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "false",
+        //     tags : [],
+        //   }
+        // },
+
+
+        // {
         //   name: "salary-and-promotion-promotion-no-pay-rate-gender",
         //   inputQuestions: ["newVarPromotionNoPayParityGender"],
         //   _comment: "GABE TODO RECODE THIS BOX",
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "sum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -1889,50 +1980,52 @@ define([], function () {
         //   name: "salary-and-promotion-promotion-no-pay-rate-race",
         //   inputQuestions: ["newVarPromotionNoPayParityRace"],
         //   _comment: "GABE TODO RECODE THIS BOX",
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "sum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
-        // {
-        //   name: "salary-and-promotion-number-of-promotions-no-title-increase-binned",
-        //   inputQuestions: ["newVarPromotionNoTitleBinned"],
-        //   timing: "beforeOpening",
-        //   function: "radiogroupSum",
-        //   filters: [],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : [],
-        //   }
-        // },
-        // {
-        //   name: "salary-and-promotion-number-of-promotions-no-title-total",
-        //   inputQuestions: ["question16"],
-        //   _comment: "GABE TODO POSTPROCESSING",
-        //   timing: "beforeOpening",
-        //   function: "sum",
-        //   filters: [],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : [],
-        //   }
-        // },
+        {
+          name: "salary-and-promotion-number-of-promotions-no-title-increase-binned",
+          inputQuestions: ["newVarPromotionNoTitleBinned"],
+          labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
+          timing: "perRespondentProcessing",
+          function: "radiogroupSum",
+          filters: ["filterGender","filterRaceAndEthnicity"],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags : [],
+          }
+        },
+        {
+          name: "salary-and-promotion-number-of-promotions-no-title-total",
+          inputQuestions: ["question16"],
+          labels: ["Total Number", "Number of Promotions"],
+          // _comment: "GABE TODO POSTPROCESSING",
+          timing: "perRespondentProcessing",
+          function: "sum",
+          filters: ["filterGender","filterRaceAndEthnicity"],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags : [],
+          }
+        },
         // {
         //   name: "salary-and-promotion-promotion-no-title-rate-gender",
         //   inputQuestions: ["newVarPromotionNoTitleParityGender"],
         //   _comment: "GABE TODO RECODE THIS BOX",
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "sum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -1940,26 +2033,27 @@ define([], function () {
         //   name: "salary-and-promotion-promotion-no-title-rate-race",
         //   inputQuestions: ["newVarPromotionNoTitleParityRace"],
         //   _comment: "GABE TODO RECODE THIS BOX",
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "sum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         {
           name: "staff-satisfaction-satisfaction",
           inputQuestions: ["question32"],
+          labels : ["Level of pay -- Total Number","Level of pay -- 1","Level of pay -- 2","Level of pay -- 3","Level of pay -- 4","Level of pay -- 5", "Stable and predictable pay-- Total Number","Stable and predictable pay-- 1","Stable and predictable pay-- 2","Stable and predictable pay-- 3","Stable and predictable pay-- 4","Stable and predictable pay-- 5", "Stable and predictable hours-- Total Number","Stable and predictable hours-- 1","Stable and predictable hours-- 2","Stable and predictable hours-- 3","Stable and predictable hours-- 4","Stable and predictable hours-- 5", "Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- Total Number","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 1","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 2","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 3","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 4","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 5", "Job security-- Total Number","Job security-- 1","Job security-- 2","Job security-- 3","Job security-- 4","Job security-- 5", "Employee benefits (e.g. health care retirement)-- Total Number","Employee benefits (e.g. health care retirement)-- 1","Employee benefits (e.g. health care retirement)-- 2","Employee benefits (e.g. health care retirement)-- 3","Employee benefits (e.g. health care retirement)-- 4","Employee benefits (e.g. health care retirement)-- 5", "Career advancement opportunities (e.g. promotion path learning new skills)-- Total Number","Career advancement opportunities (e.g. promotion path learning new skills)-- 1","Career advancement opportunities (e.g. promotion path learning new skills)-- 2","Career advancement opportunities (e.g. promotion path learning new skills)-- 3","Career advancement opportunities (e.g. promotion path learning new skills)-- 4","Career advancement opportunities (e.g. promotion path learning new skills)-- 5", "Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- Total Number","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 1","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 2","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 3","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 4","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 5", "Having a sense of purpose and dignity in your work-- Total Number","Having a sense of purpose and dignity in your work-- 1","Having a sense of purpose and dignity in your work-- 2","Having a sense of purpose and dignity in your work-- 3","Having a sense of purpose and dignity in your work-- 4","Having a sense of purpose and dignity in your work-- 5", "Having the power to change things about your job that you’re not satisfied with-- Total Number","Having the power to change things about your job that you’re not satisfied with-- 1","Having the power to change things about your job that you’re not satisfied with-- 2","Having the power to change things about your job that you’re not satisfied with-- 3","Having the power to change things about your job that you’re not satisfied with-- 4","Having the power to change things about your job that you’re not satisfied with-- 5"],
           _comment : "TODO After the computation we need to combine the boxes",
           _comment2 : "TODO After the computation compute means",
-          timing: "beforeOpening",
+          timing: "perRespondentProcessing",
           function: "matrixSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
@@ -1967,12 +2061,12 @@ define([], function () {
         //   name: "staff-satisfaction-satisfaction-parity-race",
         //   inputQuestions: ["newVarInstitutionalSatisfactionParityRace"],
         //   _comment : "TODO Implement",
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "matrixSum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -1980,36 +2074,38 @@ define([], function () {
         //   name: "staff-satisfaction-satisfaction-parity-gender",
         //   inputQuestions: ["newVarInstitutionalSatisfactionParityGender"],
         //   _comment : "TODO Implement",
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "matrixSum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         {
           name: "staff-satisfaction-emotions",
           inputQuestions: ["question33"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Content","Worried","Excited","Sad","Connected to others","Bored","Angry","Hopeful","Disappointed","Inspired","None of the above"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "discrimination-total",
           inputQuestions: ["question26"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Yes", "No", "Prefer not to answer"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender", "filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
@@ -2017,12 +2113,12 @@ define([], function () {
         //   name: "discrimination-parity-gender",
         //   _comment: "TODO",
         //   inputQuestions: ["newVarDiscriminationParityGender"],
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "sum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -2030,206 +2126,221 @@ define([], function () {
         //   name: "discrimination-parity-race",
         //   _comment: "TODO",
         //   inputQuestions: ["newVarDiscriminationParityRace"],
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "sum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         {
           name: "discrimination-rate",
           inputQuestions: ["question27"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Very frequently (e.g. daily or almost daily)","Often (e.g. a few times a month)","Sometimes (e.g. a few times a year) ","Rarely (e.g. one or two times total)"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "discrimination-forms",
           inputQuestions: ["question28"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Discrimination and/or harassment based on gender (including pregnancy gender expression gender identity etc.)","Discrimination and/or harassment based on sexual orientation","Discrimination and/or harassment based on race and/or ethnicity","Discrimination and/or harassment based on social or economic status","Discrimination and/or harassment based on religion","Discrimination and/or harassment based on age","Discrimination and/or harassment based on disability","Another form of discrimination and/or harassment","I don’t know "],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "discrimination-actions",
           inputQuestions: ["question29"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "I filed an HR complaint form (i.e. in-person or online)","I talked to an HR staff member who is available to employees","I used an anonymous reporting mechanism","I used an employee complaint hotline","I talked to a neutral employee or manager who can communicate the issues to HR","I used a third-party reporting process (e.g. use of an ombudsman)","I used another reporting mechanism","I followed a union-provided grievance process for reporting","I did something else","I haven’t done anything in response"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "discrimination-satisfaction-with-response",
           inputQuestions: ["question30"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Not at all satisfied","Somewhat satisfied","Very satisfied"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "discrimination-reasons-no-report",
           inputQuestions: ["question31"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "I worried about retaliation from people in leadership at the institution","I worried about retaliation from the person who discriminated against/harassed me","I didn’t think anything would be done about it","I didn’t think anything could be done about it because the person who discriminated against/harassed me is not an employee of the museum (e.g. visitor board member artist...)","I didn’t know about what actions I could take","My workplace doesn’t provide any mechanisms to report discrimination and/or harassment","I always reported my experiences of discrimination and harassment","I haven't experienced discrimination or harassment"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          _comment: "This one breaks thing for some reason",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "leaving-leave-current-museum",
           inputQuestions: ["question22"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Yes", "No"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "leaving-leave-current-museum-why",
           inputQuestions: ["question23"],
-          timing: "beforeOpening",
+          labels : ["Total Number", "Pay is too low","Other institutions have more flexible work hours","No full-time work is available in this institution","Opportunities for growth at the other museum","Experiences of discrimination or harassment","Lack of opportunities for growth at my museum","Unsafe working conditions","Positive reputation of the other museum","Burnout","Desire to live in a different town or city","Interpersonal issues with other staff members","Poor management","I don’t believe my institution can change for the better","Personal reasons unrelated to my current museum workplace","None of the above"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "leaving-leave-current-field",
           inputQuestions: ["question24"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Yes", "No"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
           _comment: "This is also breaking the computation",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "leaving-leave-current-field-why",
           inputQuestions: ["question25"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Pay is too low in art museums","Other fields have more flexible work hours","More interested in other fields","Full-time work is unavailable to me in most art museums","Experiences of discrimination or harassment in art museums","Lack of opportunities for growth in art museums","Unsafe working conditions in art museums","Burnout in the art museum field","Exciting opportunities in other fields","Interpersonal issues with other staff members are common in art museums","Poor management in art museums","I don’t believe art museums can change for the better","Personal reasons unrelated to art and/or museums","None of the above"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "dei-role",
           inputQuestions: ["question34"],
-          timing: "beforeOpening",
+          labels: ["Total Number","I personally incorporate principles of diversity equity and inclusion in my overall work","I am currently a member of a diversity equity and inclusion committee at work","I was previously a member of a diversity equity and inclusion committee at work","My position specifically focuses on diversity equity and inclusion","None of the above – I am not involved in my museum’s diversity equity and inclusion efforts","None of the above – I am not clear about how to get involved in my museum’s diversity equity and inclusion efforts","Not applicable – my museum does not have any efforts towards diversity equity and inclusion"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "dei-measured",
           inputQuestions: ["question35"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Artists in the collection", "Board and/or trustee members", "Staff members", "Volunteers", "None of the above", "I don’t know"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "union-measured",
           inputQuestions: ["question8"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "Yes I am a union member for my museum job","No I have the option to be a union member for my museum job but have not chosen to join","No a union is not available for my museum job"],
+          timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "policies-measured",
           inputQuestions: ["question18"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "I am/will be working in-person only","I am/will be working in a hybrid setup where the museum chooses how many and which days to work from home and which days to work from the museum","I am/will be working in a hybrid setup where I get to choose how many and which days to work from home and which days to work in the museum","I am/will be working in a hybrid setup where the museum chooses how many days to work from home and how many days to work from the museum and I get to choose which days","I am/will be working from home only","I don’t know much about the museum’s return-to-work plans","Prefer not to answer"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "policies-salary-transparency",
           inputQuestions: ["question20"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "My workplace shares the specific salaries of all employees publicly","My union handbook lists salary levels for each job","My workplace shares salary ranges for all positions or levels with employees","My workplace posts salary ranges for each open position","My workplace actively discourages employees from discussing their salaries","None of the above ","I don’t know"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "org-salary-transparency",
           inputQuestions: ["question19"],
-          timing: "beforeOpening",
-          function: "martixSum",
-          filters: [],
+          labels: [ "I believe that I can learn and grow in this organization -- Total Number", "I believe that I can learn and grow in this organization -- Strongly Disagree", "I believe that I can learn and grow in this organization -- Somewhat Disagree", "I believe that I can learn and grow in this organization -- Neutral", "I believe that I can learn and grow in this organization -- Somewhat Agree", "I believe that I can learn and grow in this organization -- Strongly Agree", "I believe that I can learn and grow in this organization -- Prefer not to answer",  "I feel burned out in this organization -- Total Number", "I feel burned out in this organization -- Strongly Disagree", "I feel burned out in this organization -- Somewhat Disagree", "I feel burned out in this organization -- Neutral", "I feel burned out in this organization -- Somewhat Agree", "I feel burned out in this organization -- Strongly Agree", "I feel burned out in this organization -- Prefer not to answer",  "My manager supports me -- Total Number", "My manager supports me -- Strongly Disagree", "My manager supports me -- Somewhat Disagree", "My manager supports me -- Neutral", "My manager supports me -- Somewhat Agree", "My manager supports me -- Strongly Agree", "My manager supports me -- Prefer not to answer",  "I believe performance reviews contribute to growth and/or advancement in my institution -- Total Number", "I believe performance reviews contribute to growth and/or advancement in my institution -- Strongly Disagree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Somewhat Disagree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Neutral", "I believe performance reviews contribute to growth and/or advancement in my institution -- Somewhat Agree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Strongly Agree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Prefer not to answer",  "Diversity and difference are not celebrated in this organization -- Total Number", "Diversity and difference are not celebrated in this organization -- Strongly Disagree", "Diversity and difference are not celebrated in this organization -- Somewhat Disagree", "Diversity and difference are not celebrated in this organization -- Neutral", "Diversity and difference are not celebrated in this organization -- Somewhat Agree", "Diversity and difference are not celebrated in this organization -- Strongly Agree", "Diversity and difference are not celebrated in this organization -- Prefer not to answer",  "I believe that what I do here is meaningful -- Total Number", "I believe that what I do here is meaningful -- Strongly Disagree", "I believe that what I do here is meaningful -- Somewhat Disagree", "I believe that what I do here is meaningful -- Neutral", "I believe that what I do here is meaningful -- Somewhat Agree", "I believe that what I do here is meaningful -- Strongly Agree", "I believe that what I do here is meaningful -- Prefer not to answer",  "The culture of my workplace negatively affects my mental and/or physical health -- Total Number", "The culture of my workplace negatively affects my mental and/or physical health -- Strongly Disagree", "The culture of my workplace negatively affects my mental and/or physical health -- Somewhat Disagree", "The culture of my workplace negatively affects my mental and/or physical health -- Neutral", "The culture of my workplace negatively affects my mental and/or physical health -- Somewhat Agree", "The culture of my workplace negatively affects my mental and/or physical health -- Strongly Agree", "The culture of my workplace negatively affects my mental and/or physical health -- Prefer not to answer",  "Mistakes are held against you in this organization -- Total Number", "Mistakes are held against you in this organization -- Strongly Disagree", "Mistakes are held against you in this organization -- Somewhat Disagree", "Mistakes are held against you in this organization -- Neutral", "Mistakes are held against you in this organization -- Somewhat Agree", "Mistakes are held against you in this organization -- Strongly Agree", "Mistakes are held against you in this organization -- Prefer not to answer",  "I would recommend this workplace to friends and family -- Total Number", "I would recommend this workplace to friends and family -- Strongly Disagree", "I would recommend this workplace to friends and family -- Somewhat Disagree", "I would recommend this workplace to friends and family -- Neutral", "I would recommend this workplace to friends and family -- Somewhat Agree", "I would recommend this workplace to friends and family -- Strongly Agree", "I would recommend this workplace to friends and family -- Prefer not to answer",  "I don’t feel that I have a voice in decision making in this organization -- Total Number", "I don’t feel that I have a voice in decision making in this organization -- Strongly Disagree", "I don’t feel that I have a voice in decision making in this organization -- Somewhat Disagree", "I don’t feel that I have a voice in decision making in this organization -- Neutral", "I don’t feel that I have a voice in decision making in this organization -- Somewhat Agree", "I don’t feel that I have a voice in decision making in this organization -- Strongly Agree", "I don’t feel that I have a voice in decision making in this organization -- Prefer not to answer",  "My institution provides management and/or leadership training for all supervisors -- Total Number", "My institution provides management and/or leadership training for all supervisors -- Strongly Disagree", "My institution provides management and/or leadership training for all supervisors -- Somewhat Disagree", "My institution provides management and/or leadership training for all supervisors -- Neutral", "My institution provides management and/or leadership training for all supervisors -- Somewhat Agree", "My institution provides management and/or leadership training for all supervisors -- Strongly Agree", "My institution provides management and/or leadership training for all supervisors -- Prefer not to answer",  "People in my organization are held accountable for discrimination and harassment -- Total Number", "People in my organization are held accountable for discrimination and harassment -- Strongly Disagree", "People in my organization are held accountable for discrimination and harassment -- Somewhat Disagree", "People in my organization are held accountable for discrimination and harassment -- Neutral", "People in my organization are held accountable for discrimination and harassment -- Somewhat Agree", "People in my organization are held accountable for discrimination and harassment -- Strongly Agree", "People in my organization are held accountable for discrimination and harassment -- Prefer not to answer",  "I feel like I have to hide some of who I am working in this organization -- Total Number", "I feel like I have to hide some of who I am working in this organization -- Strongly Disagree", "I feel like I have to hide some of who I am working in this organization -- Somewhat Disagree", "I feel like I have to hide some of who I am working in this organization -- Neutral", "I feel like I have to hide some of who I am working in this organization -- Somewhat Agree", "I feel like I have to hide some of who I am working in this organization -- Strongly Agree", "I feel like I have to hide some of who I am working in this organization -- Prefer not to answer"],
+          timing: "perRespondentProcessing",
+          function: "matrixSum",
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         {
           name: "org-experiences",
           inputQuestions: ["question21"],
-          timing: "beforeOpening",
+          labels: ["Total Number",  "My major accomplishments have been acknowledged or recognized ", "I wasn’t given appropriate resources materials or time to execute a job task or responsibility", "I was given opportunities to do work that will likely help me advance", "Someone took credit for my accomplishment", "I developed positive relationships with my coworkers", "Someone I work with was unfairly blamed or criticized for something", "I was unfairly blamed or criticized for something", "Another employee yelled raised their voice or spoke to me in an unprofessional manner", "None of these"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
@@ -2237,12 +2348,12 @@ define([], function () {
         //   name: "org-parity-gender",
         //   inputQuestions: ["newVarCultureParityGender"],
         //   _comment: "TODO",
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "checkboxSum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -2250,48 +2361,49 @@ define([], function () {
         //   name: "org-parity-gender",
         //   inputQuestions: ["newVarCultureParityRace"],
         //   _comment: "TODO",
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "checkboxSum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         {
-          name: "leadership-parity-gender",
+          name: "leadership-impact",
           inputQuestions: ["question36"],
-          timing: "beforeOpening",
+          labels: ["Total Number", "The museum’s mission vision and/or values", "The museum board’s priorities", "Input from museum staff members", "The interests of current museum visitors", "The interests of the communities around the museum", "None of the above/ I don't know"],
+          timing: "perRespondentProcessing",
           function: "checkboxSum",
-          filters: [],
+          filters: ["filterGender","filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
-            cohort: "true",
+            cohort: "false",
             tags : [],
           }
         },
         // {
         //   name: "months-working-total",
         //   inputQuestions: ["newVarMonthsWorkedInMusems"],
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "sum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
         // {
         //   name: "months-working-current-museum-total",
         //   inputQuestions: ["newVarMonthsWorkedInCurrentMuseum"],
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   function: "sum",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -2303,7 +2415,7 @@ define([], function () {
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -2315,7 +2427,7 @@ define([], function () {
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -2327,7 +2439,7 @@ define([], function () {
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -2335,11 +2447,11 @@ define([], function () {
         //   name: "transparency-score",
         //   function: "sum",
         //   inputQuestions: ["newVarTransparencyScore"],
-        //   timing: "beforeOpening",
+        //   timing: "perRespondentProcessing",
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -2662,7 +2774,7 @@ define([], function () {
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -2729,7 +2841,7 @@ define([], function () {
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -2841,7 +2953,7 @@ define([], function () {
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "true",
+        //     cohort: "false",
         //     tags : [],
         //   }
         // },
@@ -2852,7 +2964,7 @@ define([], function () {
         questionType: "radiogroup",
         graphType: "column",
         questionName: "Approximately how long have you been working in the art museum field?",
-        labels : ["mean", "<1", "1-3", "4-6", "7-10", "10-20", "20+"],
+        labels : ["mean", "<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
         data :
           [
             {
@@ -2891,7 +3003,7 @@ define([], function () {
         questionType: "radiogroup",
         graphType: "column",
         questionName: "And how long have you been working at your current museum?",
-        labels : ["mean", "<1", "1-3", "4-6", "7-10", "10-20", "20+"],
+        labels : ["mean", "<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
         data : 
           [
             {

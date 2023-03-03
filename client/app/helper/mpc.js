@@ -772,7 +772,7 @@ define(["constants"], function (constants) {
 
       jiff_instance.start_barrier();
       for (output of table_template.computation.outputs) {
-        if(output.timing != "beforeOpening") {
+        if(output.timing != "perRespondentProcessing") {
           continue;
         }
         // jiff_instance.start_barrier();
@@ -961,7 +961,35 @@ define(["constants"], function (constants) {
         // await jiff_instance.end_barrier();
       }
       await jiff_instance.end_barrier(); // Add a manual sync to make sure we don't get too far ahead of ourselves in the first iteration
+      updateProgress(progressBar, (95*i)/submitters["all"].length);
     }
+
+    // var postprocessing_counter = 0;
+    // var number_of_post_processing_ops_performed = 0;
+
+    // do {
+
+    //   postprocessing_counter = postprocessing_counter + 1;
+    //   number_of_post_processing_ops_performed = 0;
+    //   postprocessing_iteration = "postprocessing" + postprocessing_counter;
+
+
+    //   // Now we iterate through the list of postprocessing steps until there are no layers left
+    //   for (output of table_template.computation.outputs) {
+    //     if(output.timing != postprocessing_iteration) {
+    //       continue;
+    //     }
+
+
+
+
+
+    //   }
+
+
+
+    // } while(number_of_post_processing_ops_performed>0);
+
 
     // for (output of table_template.computation.outputs) {
     //   if(output.timing != "postAccumulation") {
@@ -988,9 +1016,10 @@ define(["constants"], function (constants) {
           opened_outputs[output][filter] = result;
           console.log(""+ output+ "--" + filter + ": " + result.toString());
         } else {
+          opened_outputs[output][filter] = {};
           for(opt of Object.keys(outputs[output][filter])) {
             let result = await openValues(jiff_instance, outputs[output][filter][opt], [1]);
-            opened_outputs[output][filter] = result;
+            opened_outputs[output][filter][opt] = result;
             console.log(""+ output+ "--" + filter + "--"+ opt +": " + result.toString());
           }
         }
