@@ -4,6 +4,124 @@ if (typeof define !== "function") {
 
 define([], function () {
   return {
+    computation: {
+      newVariables: {
+
+      },
+      filters: {
+
+      },
+      outputs: [
+        {
+          name: "director-salary-source",
+          inputQuestions: ["question1"],
+          labels : ["Total Number", "The general budget of my museum","An endowment for a named position","Another form of endowment","A municipality","A university","Other"],
+          timing: "perRespondentProcessing",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags: [],
+          },
+        },
+        {
+          name: "employee-salary-percentage",
+          inputQuestions: ["question2"],
+          labels : ["Total Number","Percentage"],
+          timing: "perRespondentProcessing",
+          _comment: "divide in excel",
+          function: "mean",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags: [],
+          },
+        },
+        {
+          name: "board-member-contribution-percentage",
+          inputQuestions: ["question3"],
+          labels : ["Total Number","Percentage"],
+          timing: "perRespondentProcessing",
+          _comment: "divide in excel",
+          function: "mean",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags: [],
+          },
+        },
+        {
+          name: "know-gender-of-board",
+          inputQuestions: ["question4"],
+          labels : ["Total Number","Yes","No"],
+          timing: "perRespondentProcessing",
+          _comment: "divide in excel",
+          function: "mean",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags: [],
+          },
+        },
+        {
+          name: "gender-of-board",
+          inputQuestions: ["question5"],
+          labels : ["Total Number","Woman","Man","Non-binary/genderqueer/third gender","Another Gender"],
+          timing: "perRespondentProcessing",
+          function: "multipletextSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags: [],
+          },
+        },
+        {
+          name: "race-of-board",
+          inputQuestions: ["question6"],
+          labels : ["Total Number","African American or Black", "East Asian (including Chinese, Japanese, Korean, Mongolian, Tibetan, and Taiwanese)", "Hispanic, Latina, Latino, or Latinx", "Middle Eastern or North African", "Native American/Alaska Native/First Nations", "Native Hawaiian or other Pacific Islander", "South Asian (including Bangladeshi, Bhutanese, Indian, Nepali, Pakistani, and Sri Lankan)", "Southeast Asian (including Burmese, Cambodian, Filipino, Hmong, Indonesian, Laotian, Malaysian, Mien, Singaporean, Thai, and Vietnamese)", "White", "Another race or ethnicity"],
+          timing: "perRespondentProcessing",
+          _comment: "divide in excel",
+          function: "multipletextSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags: [],
+          },
+        },
+        {
+          name: "university-affiliated",
+          inputQuestions: ["question7"],
+          labels : ["Total Number","Yes","No"],
+          timing: "perRespondentProcessing",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags: [],
+          },
+        },
+        {
+          name: "governance-structure",
+          inputQuestions: ["question8"],
+          labels : ["Total Number","Independent Governance Board","Same Board as the University"],
+          timing: "perRespondentProcessing",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            tags: [],
+          },
+        },
+      ],
+    },
     tables: [],
     survey: {
       pages: [

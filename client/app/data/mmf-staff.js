@@ -6,7 +6,7 @@ define([], function () {
   return {
     computation: {
       newVariables: {
-        "newVarMonthsWorkedInMusems": {
+        "newVar_001_MonthsWorkedInMusems": {
           function: "linearcombinationMultipletext",
           resultType: "numeric",
           inputs: [
@@ -22,7 +22,7 @@ define([], function () {
             },
           ],
         },
-        "newVarMonthsWorkedInMuseumsBinned": {
+        "newVar_002_MonthsWorkedInMuseumsBinned": {
           function: "numericBin",
           resultType: "radiogroup",
           maxValue: 1200,
@@ -33,7 +33,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInMusems",
+                  question: "newVar_001_MonthsWorkedInMusems",
                   value: "0",
                   name: "<1",
                   minValue : 0,
@@ -46,7 +46,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInMusems",
+                  question: "newVar_001_MonthsWorkedInMusems",
                   value: "0",
                   name: "1-3",
                   minValue : 12,
@@ -59,7 +59,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInMusems",
+                  question: "newVar_001_MonthsWorkedInMusems",
                   value: "0",
                   name: "4-6",
                   minValue : 36,
@@ -72,7 +72,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInMusems",
+                  question: "newVar_001_MonthsWorkedInMusems",
                   value: "0",
                   name: "7-10",
                   minValue : 72,
@@ -85,7 +85,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInMusems",
+                  question: "newVar_001_MonthsWorkedInMusems",
                   value: "0",
                   name: "10-20",
                   minValue : 120,
@@ -98,7 +98,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInMusems",
+                  question: "newVar_001_MonthsWorkedInMusems",
                   value: "0",
                   name: "20+",
                   minValue : 240,
@@ -108,7 +108,7 @@ define([], function () {
             },
           ]
         },
-        "newVarMonthsWorkedInCurrentMuseum": {
+        "newVar_003_MonthsWorkedInCurrentMuseum": {
           function: "linearcombinationMultipletext",
           resultType: "numeric",
           inputs: [
@@ -124,7 +124,7 @@ define([], function () {
             },
           ],
         },
-        "newVarMonthsWorkedInCurrentMuseumBinned": {
+        "newVar_004_MonthsWorkedInCurrentMuseumBinned": {
           function: "numericBin",
           resultType: "radiogroup",
           maxValue: 1200,
@@ -135,7 +135,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  question: "newVar_003_MonthsWorkedInCurrentMuseum",
                   value: "0",
                   name: "<1",
                   minValue : 0,
@@ -148,7 +148,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  question: "newVar_003_MonthsWorkedInCurrentMuseum",
                   value: "0",
                   name: "1-3",
                   minValue : 12,
@@ -161,7 +161,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  question: "newVar_003_MonthsWorkedInCurrentMuseum",
                   value: "0",
                   name: "4-6",
                   minValue : 36,
@@ -174,7 +174,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  question: "newVar_003_MonthsWorkedInCurrentMuseum",
                   value: "0",
                   name: "7-10",
                   minValue : 72,
@@ -187,7 +187,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  question: "newVar_003_MonthsWorkedInCurrentMuseum",
                   value: "0",
                   name: "10-20",
                   minValue : 120,
@@ -200,7 +200,7 @@ define([], function () {
               waysToGetThere: 
               [
                 {
-                  question: "newVarMonthsWorkedInCurrentMuseum",
+                  question: "newVar_003_MonthsWorkedInCurrentMuseum",
                   value: "0",
                   name: "20+",
                   minValue : 240,
@@ -210,7 +210,7 @@ define([], function () {
             },
           ]
         },
-        "newVarSeniority": {
+        "newVar_005_Seniority": {
           function: "bin",
           resultType: "radiogroup",
           choices: [
@@ -268,7 +268,7 @@ define([], function () {
             },
           ]
         },
-        "newVarPositionCategories": {
+        "newVar_006_PositionCategories": {
           function: "bin",
           resultType: "checkbox",
           choices: [
@@ -508,13 +508,13 @@ define([], function () {
       //       },
       //     ]
       //   },
-        "newVarGender" : {
+        "newVar_007_Gender" : {
           function: "bin",
           resultType: "radiogroup",
           choices: [
             {
               value: "1",
-              text: "Man",
+              text: "Woman",
               waysToGetThere:
               [
                 {
@@ -525,7 +525,7 @@ define([], function () {
             },
             {
               value: "2",
-              text: "Woman",
+              text: "Man",
               waysToGetThere:
               [
                 {
@@ -555,7 +555,7 @@ define([], function () {
             }
           ]
         },
-        "newVarSexualOrientation" : {
+        "newVar_008_SexualOrientation" : {
           function: "bin",
           resultType: "radiogroup",
           choices: [
@@ -618,7 +618,7 @@ define([], function () {
             },
           ]
         },
-        "newVarMultiracial" : {
+        "newVar_009_Multiracial" : {
           function : "threshold",
           resultType : "checkbox",
           choices: [
@@ -664,7 +664,7 @@ define([], function () {
             },
           ],
         },
-        "newVarRaceAndEthnicityCensus" : {
+        "newVar_010_RaceAndEthnicityCensus" : {
           function : "bin",
           resultType : "checkbox",
           choices: [
@@ -759,7 +759,7 @@ define([], function () {
               waysToGetThere:
               [
                 {
-                  question: "newVarMultiracial",
+                  question: "newVar_009_Multiracial",
                   values: "1",
                 }
               ]
@@ -792,13 +792,13 @@ define([], function () {
       //     function: "scalarVectorMultiplication",
       //     resultType: "numericVector",
       //     scalar: "question10",
-      //     vector: "newVarGender",
+      //     vector: "newVar_007_Gender",
       //   },
       //   "newVarSalaryFilteredeByRaceAndEthnicityCensus" : {
       //     function: "scalarVectorMultiplication",
       //     resultType: "numericVector",
       //     scalar: "question10",
-      //     vector: "newVarRaceAndEthnicityCensus",
+      //     vector: "newVar_010_RaceAndEthnicityCensus",
       //   },
       //   "newVarSalaryParityGender" : {
       //     "_comment" : "GABE TODO",
@@ -809,7 +809,7 @@ define([], function () {
       //   "newVarPerceptionAccuracy" : {
       //     "_comment" : "GABE TODO",
       //   },
-        "newVarPromotionBinned": {
+        "newVar_011_PromotionBinned": {
           function: "numericBin",
           resultType: "radiogroup",
           maxValue: 100,
@@ -960,7 +960,7 @@ define([], function () {
             },
           ]
         },
-        "newVarPromotionNoPayBinned": {
+        "newVar_012_PromotionNoPayBinned": {
           function: "numericBin",
           resultType: "radiogroup",
           maxValue: 100,
@@ -1111,7 +1111,7 @@ define([], function () {
             },
           ]
         },
-        "newVarPromotionNoTitleBinned": {
+        "newVar_013_PromotionNoTitleBinned": {
           function: "numericBin",
           resultType: "radiogroup",
           maxValue: 100,
@@ -1389,7 +1389,7 @@ define([], function () {
       //   "newVarSalaryPerception" : {
       //     _comment: "TODO"
       //   },
-        "newVarGeneration" : {
+        "newVar_014_Generation" : {
           function: "numericBin",
           resultType: "radiogroup",
           maxValue: 2047,
@@ -1465,7 +1465,7 @@ define([], function () {
       },
       filters: {
         "filterSeniority": {
-          question: "newVarSeniority",
+          question: "newVar_005_Seniority",
         },
         "filterTypeOfPosition": {
           question: "question4",
@@ -1489,13 +1489,13 @@ define([], function () {
           question: "newVarSalaryCategories",
         },
         "filterGender":  {
-          question: "newVarGender",
+          question: "newVar_007_Gender",
         },
         "filterSexualOrientation":  {
-          question: "newVarSexualOrientation",
+          question: "newVar_008_SexualOrientation",
         },
         "filterRaceAndEthnicity":  {
-          question: "newVarRaceAndEthnicityCensus",
+          question: "newVar_010_RaceAndEthnicityCensus",
         },
         "filterEducation":  {
           question: "question41",
@@ -1507,7 +1507,7 @@ define([], function () {
       outputs: [
         {
           name: "demographics-time-in-art-museums-(months)",
-          inputQuestions: ["newVarMonthsWorkedInMusems"],
+          inputQuestions: ["newVar_001_MonthsWorkedInMusems"],
           labels : ["total months"],
           timing: "perRespondentProcessing",
           function: "mean",
@@ -1520,7 +1520,7 @@ define([], function () {
         },
         {
           name: "demographics-time-in-art-museums-(months)-binned",
-          inputQuestions: ["newVarMonthsWorkedInMuseumsBinned"],
+          inputQuestions: ["newVar_002_MonthsWorkedInMuseumsBinned"],
           labels : ["<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
@@ -1533,7 +1533,7 @@ define([], function () {
         },
         {
           name: "demographics-time-in-current-art-museum-(months)",
-          inputQuestions: ["newVarMonthsWorkedInCurrentMuseum"],
+          inputQuestions: ["newVar_003_MonthsWorkedInCurrentMuseum"],
           labels : ["total months"],
           timing: "perRespondentProcessing",
           function: "mean",
@@ -1546,7 +1546,7 @@ define([], function () {
         },
         {
           name: "demographics-time-in-current-art-museum-(months)-binned",
-          inputQuestions: ["newVarMonthsWorkedInCurrentMuseumBinned"],
+          inputQuestions: ["newVar_004_MonthsWorkedInCurrentMuseumBinned"],
           labels : ["<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
@@ -1572,7 +1572,7 @@ define([], function () {
         },
         {
           name: "demographics-seniority-recode",
-          inputQuestions: ["newVarSeniority"],
+          inputQuestions: ["newVar_005_Seniority"],
           labels : ["Entry","Mid","Senior","Prefer Not To Answer"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
@@ -1598,7 +1598,7 @@ define([], function () {
         },
         {
           name: "demographics-position-category-in-museum",
-          inputQuestions: ["newVarPositionCategories"],
+          inputQuestions: ["newVar_006_PositionCategories"],
           labels: ["Administration", "Building Operations", "Collections", "Communications", "Public Engagement"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
@@ -1611,7 +1611,7 @@ define([], function () {
         },
         {
           name: "demographics-generation",
-          inputQuestions: ["newVarGeneration"],
+          inputQuestions: ["newVar_014_Generation"],
           labels : ["The Silent Generation (1928-1945)", "Baby Boomers (1946-1964)", "Generation X (1965-1980)", "Millennial (1981-1996)", "Generation Z (1997-2012)"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
@@ -1637,7 +1637,7 @@ define([], function () {
         },
         {
           name: "demographics-gender-recode",
-          inputQuestions: ["newVarGender"],
+          inputQuestions: ["newVar_007_Gender"],
           labels: ["Man", "Woman","Non-binary and Another Gender"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
@@ -1663,7 +1663,7 @@ define([], function () {
         },
         {
           name: "demographics-orientation-recode",
-          inputQuestions: ["newVarSexualOrientation"],
+          inputQuestions: ["newVar_008_SexualOrientation"],
           labels : ["Heterosexual","LGBTQ","Prefer Not To Answer"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
@@ -1689,7 +1689,7 @@ define([], function () {
         },
         {
           name: "demographics-race-census",
-          inputQuestions: ["newVarRaceAndEthnicityCensus"],
+          inputQuestions: ["newVar_010_RaceAndEthnicityCensus"],
           labels: ["Asian or Asian American","Middle Eastern or North African","Black or African American","Hispanic or Latina/o/x","Native American or Alaska Native","Native Hawaiian or Other Pacific Islander","White or European American","Multiracial","Other Race","Prefer Not To Answer"],
           timing: "perRespondentProcessing",
           function: "checkboxSum",
@@ -1832,7 +1832,7 @@ define([], function () {
         },
         {
           name: "salary-and-promotion-number-of-promotions-binned",
-          inputQuestions: ["newVarPromotionBinned"],
+          inputQuestions: ["newVar_011_PromotionBinned"],
           labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
@@ -1897,7 +1897,7 @@ define([], function () {
         // },
         {
           name: "salary-and-promotion-number-of-promotions-no-pay-increase-binned",
-          inputQuestions: ["newVarPromotionNoPayBinned"],
+          inputQuestions: ["newVar_012_PromotionNoPayBinned"],
           labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
@@ -1991,7 +1991,7 @@ define([], function () {
         // },
         {
           name: "salary-and-promotion-number-of-promotions-no-title-increase-binned",
-          inputQuestions: ["newVarPromotionNoTitleBinned"],
+          inputQuestions: ["newVar_013_PromotionNoTitleBinned"],
           labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
@@ -2385,7 +2385,7 @@ define([], function () {
         },
         // {
         //   name: "months-working-total",
-        //   inputQuestions: ["newVarMonthsWorkedInMusems"],
+        //   inputQuestions: ["newVar_001_MonthsWorkedInMusems"],
         //   timing: "perRespondentProcessing",
         //   function: "sum",
         //   filters: [],
@@ -2397,7 +2397,7 @@ define([], function () {
         // },
         // {
         //   name: "months-working-current-museum-total",
-        //   inputQuestions: ["newVarMonthsWorkedInCurrentMuseum"],
+        //   inputQuestions: ["newVar_003_MonthsWorkedInCurrentMuseum"],
         //   timing: "perRespondentProcessing",
         //   function: "sum",
         //   filters: [],
