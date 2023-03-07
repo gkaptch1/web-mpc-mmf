@@ -496,6 +496,38 @@ define(["constants"], function (constants) {
     return Promise.all(promises);
   };
 
+  // Opens the shares corresponding to the logical slice results[rangeStart:rangeEnd) to the specified parties.
+  // The slice is logical, no copies of arrays are created.
+  // The returned result is a promise to an array of size (rangeEnd-rangeStart) containing
+  // the opened results in order. Unless the caller is not specified as one of the result receiving parties
+  // in which case the returned value is a promise to a bunch of nulls.
+  // if rangeStart and/or rangeEnd is not provided, they default to 0 and length respectively.
+  // Exceptions is a sorted array of positions to ignore, these positions are not opened, and instead
+  // a value of '-' is returned for them. Exceptions defaults to [] if not provided.
+  var openValuesWithLabel = function (
+    jiff_instance,
+    results,
+    parties,
+    label,
+    rangeStart,
+    rangeEnd
+  ) {
+    if (rangeStart == null) {
+      rangeStart = 0;
+    }
+    if (rangeEnd == null) {
+      rangeEnd = results.length;
+    }
+    var promises = [];
+    // var exceptionsIndex = 0; // keeps track of the next exception, fast way to check set membership since both set and values are sorted
+    for (var i = rangeStart; i < rangeEnd; i++) {
+      var promise = jiff_instance.open(results[i], parties, label + "openValuesWithLabel" + i);
+      promises.push(promise);
+    }
+
+    return Promise.all(promises);
+  };
+
   // Returns a *sorted* array containing indices of cells which have number of employees lower than threshold
   var verifyThreshold = function (numberOfEmployees) {
     // unused
@@ -994,25 +1026,33 @@ define(["constants"], function (constants) {
 
 
     if (ordering.tables.length > 0 ) {
-
       for (i = 0; i < submitters["all"].length; i++) {
         var partyID = submitters["all"][i];
 
+        jiff_instance.start_barrier();
+
         shares = getShares(jiff_instance, partyID, ordering);
 
-        let result = await openValues(jiff_instance, shares.shares, [1]);
-        console.log("Opening shares for party "+ partyID+ ": " + result.toString());
+        // let result = await openValues(jiff_instance, shares.shares.slice(0,25), [1]);
+        // let result = await openValuesWithLabel(jiff_instance, shares.shares, [1], "openSharesForParty" + partyID);
+        // console.log("Opening shares for party "+ partyID+ ": " + result.toString());
 
         sums['all'] = sumAndAccumulate(sums['all'], shares.shares);
         squaresSums['all'] = sumAndAccumulate(squaresSums['all'], shares.squares);
 
-        let resulttwo = await openValues(jiff_instance,  sums['all'], [1]);
-        console.log("Opening Aggregation after party "+ partyID+ ": " + resulttwo.toString());
+        await jiff_instance.end_barrier(); // Add a manual sync to make sure we don't get too far ahead of ourselves in the first iteration
+
+        updateProgress(progressBar, (.95*i)/submitters["all"].length);      
+
+
+        // let resulttwo = await openValues(jiff_instance,  sums['all'].slice(0,25), [1]);
+        // let resulttwo = await openValuesWithLabel(jiff_instance,  sums['all'], [1], "openSharesPostAccumulation" + partyID);
+        // console.log("Opening Aggregation after party "+ partyID+ ": " + resulttwo.toString());
       }
 
       sums['all'] = await openValues(jiff_instance, sums['all'], [1]);
       squaresSums['all'] = await openValues(jiff_instance, squaresSums['all'], [1]);
-      console.log("Sums: " + sums['all'].toString());
+      // console.log("Sums: " + sums['all'].toString());
 
     }
 
