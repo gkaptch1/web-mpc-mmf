@@ -610,7 +610,7 @@ define(["constants"], function (constants) {
           count = count+1; // The first bit is the indicator bit
           indexMap[q.id][1] = count; // We are 1 indexing the values
           indexMap[q.id]["data"].push(count);
-          if (q.id != "question10") { //TODO GABE THIS IS A HACK TO DEAL WITH A VERY SPECIFIC ERROR IN STAFF SURVEY
+          if (q.id != "question10" || table_template.name != "mmf-staff") { //TODO GABE THIS IS A HACK TO DEAL WITH A VERY SPECIFIC ERROR IN STAFF SURVEY
             count = count+1;
           }
           indexMap[q.id]["length"] = count-indexMap[q.id]["first"];
@@ -623,7 +623,9 @@ define(["constants"], function (constants) {
             count = count+1;
             indexMap[q.id][i+1] = count; // We are 1 indexing the values
             indexMap[q.id]["data"].push(count);
-            count = count+1;
+            if (q.id != "question6" || table_template.name != "mmf-director") { //TODO GABE THIS IS A HACK TO DEAL WITH A VERY SPECIFIC ERROR IN STAFF SURVEY
+              count = count+1;
+            }
           }
           indexMap[q.id]["length"] = count-indexMap[q.id]["first"];
         }
@@ -820,7 +822,7 @@ define(["constants"], function (constants) {
           console.log("Computing " + output.name + " for " + partyID);
 
 
-          if (output.function == "mean" || output.function == "radiogroupSum" || output.function == "checkboxSum" || output.function == "sum" || output.function == "matrixSum") {
+          if (output.function == "mean" || output.function == "radiogroupSum" || output.function == "checkboxSum" || output.function == "sum" || output.function == "matrixSum" || output.function == "multipletextSum") {
 
             for (j=0;j<output.inputQuestions.length;j++) {
               inputQuestion = output.inputQuestions[j];
@@ -1004,7 +1006,8 @@ define(["constants"], function (constants) {
 
         // Process the tables. 
         await jiff_instance.end_barrier(); // Add a manual sync to make sure we don't get too far ahead of ourselves in the first iteration
-        updateProgress(progressBar, (.95*i)/submitters["all"].length);      
+        updateProgress(progressBar, (.95*i)/submitters["all"].length);   
+        newShares[partyID] = null;   
       }
     }
 

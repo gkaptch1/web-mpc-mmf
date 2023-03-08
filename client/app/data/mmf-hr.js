@@ -4,6 +4,7 @@ if (typeof define !== "function") {
 
 define([], function () {
   return {
+    name: "mmf-hr",
     computation: {
       newVariables: {
       },

@@ -4,6 +4,7 @@ if (typeof define !== "function") {
 
 define([], function () {
   return {
+    name: "mmf-director",
     computation: {
       newVariables: {
 
@@ -70,7 +71,7 @@ define([], function () {
         {
           name: "gender-of-board",
           inputQuestions: ["question5"],
-          labels : ["Total Number","Woman","Man","Non-binary/genderqueer/third gender","Another Gender"],
+          labels : ["Number of Answers","Woman","Number of Answers","Man","Number of Answers","Non-binary/genderqueer/third gender","Number of Answers","Another Gender"],
           timing: "perRespondentProcessing",
           function: "multipletextSum",
           filters: [],
@@ -80,20 +81,20 @@ define([], function () {
             tags: [],
           },
         },
-        {
-          name: "race-of-board",
-          inputQuestions: ["question6"],
-          labels : ["Total Number","African American or Black", "East Asian (including Chinese, Japanese, Korean, Mongolian, Tibetan, and Taiwanese)", "Hispanic, Latina, Latino, or Latinx", "Middle Eastern or North African", "Native American/Alaska Native/First Nations", "Native Hawaiian or other Pacific Islander", "South Asian (including Bangladeshi, Bhutanese, Indian, Nepali, Pakistani, and Sri Lankan)", "Southeast Asian (including Burmese, Cambodian, Filipino, Hmong, Indonesian, Laotian, Malaysian, Mien, Singaporean, Thai, and Vietnamese)", "White", "Another race or ethnicity"],
-          timing: "perRespondentProcessing",
-          _comment: "divide in excel",
-          function: "multipletextSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "false",
-            tags: [],
-          },
-        },
+        // {
+        //   name: "race-of-board",
+        //   inputQuestions: ["question6"],
+        //   labels : ["Total Number","African American or Black", "East Asian (including Chinese, Japanese, Korean, Mongolian, Tibetan, and Taiwanese)", "Hispanic, Latina, Latino, or Latinx", "Middle Eastern or North African", "Native American/Alaska Native/First Nations", "Native Hawaiian or other Pacific Islander", "South Asian (including Bangladeshi, Bhutanese, Indian, Nepali, Pakistani, and Sri Lankan)", "Southeast Asian (including Burmese, Cambodian, Filipino, Hmong, Indonesian, Laotian, Malaysian, Mien, Singaporean, Thai, and Vietnamese)", "White", "Another race or ethnicity"],
+        //   timing: "perRespondentProcessing",
+        //   _comment: "divide in excel",
+        //   function: "multipletextSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "false",
+        //     tags: [],
+        //   },
+        // },
         {
           name: "university-affiliated",
           inputQuestions: ["question7"],
