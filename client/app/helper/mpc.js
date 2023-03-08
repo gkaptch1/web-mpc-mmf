@@ -1125,6 +1125,8 @@ define(["constants"], function (constants) {
     //   }
     // }
 
+// TODO we need to await all the promises to be ready, otherwise we are in trouble.
+
     var stringShares = {};
 
     if (ordering.questions.length > 0 ) {
