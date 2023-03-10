@@ -13,6 +13,7 @@ module.exports = function (JIFFWrapper) {
     // We have two pieces of volatile information that we need to load:
     // 1. jiff session information (compute using initializeSession)
     // 2. (empty) keys of clients in 'key_map', so that JIFF server can function correctly.
+    // 3. need to run the server side jiff computation instance for stopped computations.
     var promise = modulesWrappers.SessionInfo.all();
     return promise.then(async function (sessions) {
       for (var session of sessions) {
@@ -28,6 +29,11 @@ module.exports = function (JIFFWrapper) {
         for (var submission of history) {
           var party_id = submission.jiff_party_id;
           self.serverInstance.computationMaps.keys[session_key][party_id] = '';
+        }
+        
+        // Load 3: if session is stopped, run the jiff computation instance.
+        if (session.status === 'STOP') {
+          self.computeSession(session_key);
         }
       }
 

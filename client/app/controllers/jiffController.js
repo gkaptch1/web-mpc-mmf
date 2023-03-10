@@ -88,6 +88,20 @@ define([
     };
     baseOptions = Object.assign(baseOptions, options);
     baseOptions.hooks = Object.assign({}, baseOptions.hooks, cryptoHooks);
+    /*
+    baseOptions.hooks['beforeOperation'] = [
+      function (jiff, label, msg) {
+        console.log("Sending to server", label, msg);
+        return msg;
+      }
+    ];
+    baseOptions.hooks['afterOperation'] = [
+      function (jiff, label, msg) {
+        console.log("Received from server", label, msg);
+        return msg;
+      }
+    ];
+    */
     var bigNumberOptions = {
       Zp: "618970019642690137449562111", // Must be set to a prime number! Currently 2^89-1
       safemod: false,
@@ -98,8 +112,9 @@ define([
       pollInterval: 0,
       maxBatchSize: 5000,
     };
-    if (role === "analyst") {
-      restOptions["flushInterval"] = 6000; // 6 seconds
+    
+    if (role == "analyst") {
+      baseOptions.crypto_provider = "http://127.0.0.1:4321";
     }
 
     var port = window.location.port === "8080" ? ":8080" : "";
@@ -109,7 +124,10 @@ define([
       baseOptions
     );
     instance.apply_extension(jiff_bignumber, bigNumberOptions);
-    instance.apply_extension(jiff_client_restful, restOptions);
+    
+    if (role != "analyst") {
+      instance.apply_extension(jiff_client_restful, restOptions);
+    }
 
     instance.connect();
     return instance;
@@ -159,8 +177,8 @@ define([
       party_id: null,
     };
 
-    // console.log(dataSubmission);
-    // console.log(values);
+    console.log(dataSubmission);
+    console.log(values);
 
     // Initialize and submit
     var jiff = initialize(sessionkey, "client", options);
@@ -181,7 +199,6 @@ define([
       // then share the rest
       for (i = ordering.tables.length; i < values.length; i++) {
         if (typeof values[i] === "string") continue;
-        // console.log(values[i]);
         jiff.share(values[i], null, [1, "s1"], [jiff.id]);
       }
       jiff.restFlush();
@@ -208,10 +225,12 @@ define([
 
     // Initialize
     var jiff = initialize(sessionkey, "analyst", options);
+    // Tell the server to compute.
+    jiff.emit('compute', [ 's1' ], 'compute', false);
     // Listen to the submitter ids from server
     jiff.listen("compute", function (party_id, msg) {
+      console.log("Got the compute signal from server");
       jiff.remove_listener("compute");
-
       if (party_id !== "s1") {
         return;
       }
@@ -221,22 +240,80 @@ define([
       var submitters = JSON.parse(msg);
 
       // Compute and Format
-      var promise = mpc.compute(jiff, submitters, ordering, progressBar);
+      var promise = mpc.compute(jiff, submitters, ordering, table_template, progressBar);
       promise
         .then(function (result) {
-          jiff.disconnect(false, false);
-          callback(mpc.format(result, submitters, ordering));
+          jiff.disconnect(true, false);
+
+          callback(mpc.format(result, submitters, ordering),result);
         })
         .catch(function (err) {
+          console.log(err);
           error(err.toString());
         });
     });
   };
 
+  var parseShare = function(jiff, shareString, source) {
+    value = jiff.helpers.BigNumber(shareString.substring(shareString.indexOf("share:")+7, shareString.indexOf("Holders: ")-2));
+    holders = JSON.parse(shareString.substring(shareString.indexOf("Holders: ")+9, shareString.indexOf("Threshold: ")-2));
+    threshold = JSON.parse(shareString.substring(shareString.indexOf("Threshold: ")+11, shareString.indexOf("Zp: ")-2));
+    zp = shareString.substring(shareString.indexOf("Zp: ")+4, shareString.length-1);
+    toReturn = new jiff.SecretShare(value, holders, threshold, zp);
+    if (source == "server") {
+      toReturn.sender_id = "1"
+    } else {
+     toReturn.sender_id = "s1"
+    }
+    return toReturn;
+  };
+
+  var reconstructClientResults = function(serverSharesAsStrings, analystSharesAsStrings) {
+
+    //Create a dummy jiff instance
+    jiff = initialize("","");
+
+    // Create a structure to hold the results
+    var resultShares = {};
+
+
+    for (question of Object.keys(serverSharesAsStrings)) {
+      resultShares[question] = {};
+
+      for(cohort of Object.keys(serverSharesAsStrings[question])) {
+          resultShares[question][cohort] = {};
+          
+        for(filter of Object.keys(serverSharesAsStrings[question][cohort])) {
+          resultShares[question][cohort][filter] = [];
+          
+          for (let i = 0; i<serverSharesAsStrings[question][cohort][filter].length;i++) {
+            // Temporary hack to deal with unresolved promises.  TODO GABE FIX
+            if(serverSharesAsStrings[question][cohort][filter][i].includes("promise")) {
+              continue;
+            }
+            // (1) Parse the shares
+            // (2) Run reconstruct
+            // (3) push into the appropriate place in the data structure
+            resultShares[question][cohort][filter].push(jiff.hooks.reconstructShare(jiff,
+              [
+                parseShare(jiff, serverSharesAsStrings[question][cohort][filter][i], "server"),
+                parseShare(jiff, analystSharesAsStrings[question][cohort][filter][i], "analyst")
+                ]
+            ));
+          }
+        }
+      }
+    }
+    console.log(resultShares);
+    return resultShares;
+  };
+
+
   // Exports
   return {
     client: {
       submit: clientSubmit,
+      reconstructResults: reconstructClientResults,
     },
     analyst: {
       computeAndFormat: computeAndFormat,

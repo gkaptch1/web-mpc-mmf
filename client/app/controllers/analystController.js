@@ -133,6 +133,21 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
       });
   }
 
+  function getClientKeys(session, password) {
+    return $.ajax({
+      type: 'POST',
+      url: '/get_client_public_keys',
+      contentType: 'application/json',
+      data: JSON.stringify({session: session, password: password})
+    })
+      .then(function (resp) {
+        return resp.result;
+      })
+      .catch(function (err) {
+        throw new Error(err.responseText);
+      });
+  }
+
   function generateSession(title, description) {
     if (title == null || description == null || title === '' || description === '') {
       alertHandler.error('Session title and description are required');
@@ -191,6 +206,23 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   }
 
+  function postBulkResultsMessage(session, password, data) {
+    return $.ajax({
+      type: 'POST',
+      url: '/bulk_update_result_messages',
+      contentType: 'application/json',
+      data: JSON.stringify({session: session, password: password, data: data}),
+    })
+    .then(function (res) {
+      return res;
+    })
+    .catch(function (err) {
+      if (err && err.hasOwnProperty('responseText') && err.responseText !== undefined) {
+        alertHandler.error(err.responseText);
+      }
+    });
+  }
+
   return {
     checkStatus: checkStatus,
     changeStatus: changeStatus,
@@ -198,8 +230,10 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
     getExistingParticipants: getExistingParticipants,
     getExistingCohorts: getExistingCohorts,
     getSubmissionHistory: getSubmissionHistory,
+    getClientKeys: getClientKeys,
     generateSession: generateSession,
     getParameterByName: getParameterByName,
+    postBulkResultsMessage: postBulkResultsMessage,
     addCohorts: addCohorts,
     START: 'START',
     PAUSE: 'PAUSE',
