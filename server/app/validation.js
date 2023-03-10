@@ -17,7 +17,7 @@ schemaTemplates.keyPasswordTemplate = {
 };
 
 const analystServerUpdateTemplate = {
-  pseduonymn: joi.string().alphanum().required(),
+  pseudonymn: joi.string().alphanum().required(),
   analystMessage: joi.string().required()
 };
 
@@ -48,6 +48,8 @@ module.exports = {
     userkey: schemaTemplates.userKeySchema
   },
 
+  getClientKeys: Object.assign({}, schemaTemplates.keyPasswordTemplate),
+
   getCohortsManage: Object.assign({}, schemaTemplates.keyPasswordTemplate),
 
   createNewCohort: Object.assign({
@@ -76,9 +78,14 @@ module.exports = {
       key: joi.string().required() // Maybe base64
   },
 
+  getResultMessage: {
+    session: schemaTemplates.sessionKeySchema,
+    userkey: schemaTemplates.userKeySchema
+  },
+
   analystBulkUpdateResultMessages : Object.assign({
-      data: [analystServerUpdateTemplate],
-  }, schemaTemplates.keyPasswordTemplate)
+      data: joi.array().items(analystServerUpdateTemplate),
+  }, schemaTemplates.keyPasswordTemplate),
 };
 
 

@@ -115,6 +115,42 @@ define(['forge'], function (forge) {
     return derivedKey;
   };
 
+  var encryptMessageWithSymmetricKey = function(symmetricKey, message, associatedata) {
+    var iv = forge.random.getBytesSync(12);
+    var cipher = forge.cipher.createCipher('AES-GCM', symmetricKey);
+    cipher.start({
+      iv: iv, // should be a 12-byte binary-encoded string or byte buffer
+      additionalData: associatedata, // optional
+    });
+    cipher.update(forge.util.createBuffer(message));
+    cipher.finish();
+    return {
+      iv: btoa(iv),
+      ciphertext: btoa(cipher.output.data),
+      tag: btoa(cipher.mode.tag.data),
+      ad: associatedata
+    };
+  };
+
+  var decryptMessageWithSymmetricKey = function(symmetricKey, ciphertextStruct) {
+      var decipher = forge.cipher.createDecipher('AES-GCM', symmetricKey); 
+      
+      decipher.start({
+              iv: forge.util.createBuffer(atob(ciphertextStruct.iv)),
+              additionalData: ciphertextStruct.ad, // optional
+              tag: forge.util.createBuffer(atob(ciphertextStruct.tag)) // authentication tag from encryption
+            });
+
+      decipher.update(forge.util.createBuffer(atob(ciphertextStruct.ciphertext)));
+      var pass = decipher.finish();
+      if(pass) {
+        // outputs decrypted hex
+        return decipher.output.data;
+      } else {
+        throw new Error('Error: Invalid Decryption.  Tag failed to verify');
+      }
+    };
+
   function generateRandomBase32(length) {
     if (length == null) {
       length = 16;
@@ -129,6 +165,8 @@ define(['forge'], function (forge) {
     decrypt: decrypt,
     generateKeyPair: generateKeyPair,
     generateRandomBase32: generateRandomBase32,
-    generateKeyFromPassword: generateKeyFromPassword
+    generateKeyFromPassword: generateKeyFromPassword,
+    encryptMessageWithSymmetricKey: encryptMessageWithSymmetricKey,
+    decryptMessageWithSymmetricKey: decryptMessageWithSymmetricKey
   };
 });

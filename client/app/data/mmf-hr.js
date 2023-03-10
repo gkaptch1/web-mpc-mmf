@@ -4,6 +4,15 @@ if (typeof define !== "function") {
 
 define([], function () {
   return {
+    name: "mmf-hr",
+    computation: {
+      newVariables: {
+      },
+      filters: {
+      },
+      outputs: [
+      ],
+    },
     tables: [
       {
         name: "Table 1 - How many people are currently employed by your organization in each of the following categories? Please choose the best single category for each employee if more than one could apply.",
@@ -14,12 +23,7 @@ define([], function () {
         operations: {
           SUM: true,
           STD: true,
-          LIN: [
-            [
-              ["num_paintings", "value"],
-              ["age", "value"],
-            ],
-          ],
+          LIN: null,
         },
         cohortOperations: { SUM: true },
         hot_parameters: {

@@ -408,6 +408,29 @@ define([
       } else {
         $("#submit").click(submitFunctionWithButton);
       }
+
+      // Test
+      function processResults() {
+        var sessionID = getParameterByName("session");
+        var participantID = getParameterByName("participationCode");
+        var password = getParameterByName("password");
+
+        clientController.getResultMessage(sessionID,participantID).then( function (resultmessages) {
+          var serverMessages = JSON.parse(resultmessages.servermessages);
+          var encryptedAnalystMessages = JSON.parse(resultmessages.analystmessages);
+
+          var key = keyGenController.keyGen(sessionID, participantID, password);
+
+          var analystMessages = JSON.parse(pki.decryptMessageWithSymmetricKey(key,encryptedAnalystMessages));
+
+          var reconstructedResults = clientController.reconstructClientResults(serverMessages,analystMessages);
+          console.log(reconstructedResults);
+        });
+      }
+
+      $("#getResults").click(processResults);
+
+
     });
 
     /* global $buoop */

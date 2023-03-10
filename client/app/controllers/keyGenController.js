@@ -45,8 +45,15 @@ define(['jquery','pki', 'alertHandler'], function ($, pki, alertHandler) {
 		 });
 	}
 
+	function keyGen(sessionID, participantID, password) {
+		return pki.generateKeyFromPassword("sessionID:" + sessionID + "participantID:" +  participantID, "password:" + password.trim());
+	}
+
+
+
   	return {
   		getSessionPublicKey: getSessionPublicKey,
-    	keyGenAndUpdate: keyGenAndUpdate
+    	keyGenAndUpdate: keyGenAndUpdate,
+    	keyGen: keyGen
   	};
 });
