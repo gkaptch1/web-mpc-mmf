@@ -212,7 +212,7 @@ define([], function () {
           ]
         },
         "newVar_005_Seniority": {
-          function: "bin",
+          function: "radiogroupBin",
           resultType: "radiogroup",
           choices: [
             {
@@ -270,7 +270,7 @@ define([], function () {
           ]
         },
         "newVar_006_PositionCategories": {
-          function: "bin",
+          function: "checkboxBin",
           resultType: "checkbox",
           choices: [
             {
@@ -510,7 +510,7 @@ define([], function () {
       //     ]
       //   },
         "newVar_007_Gender" : {
-          function: "bin",
+          function: "radiogroupBin",
           resultType: "radiogroup",
           choices: [
             {
@@ -557,7 +557,7 @@ define([], function () {
           ]
         },
         "newVar_008_SexualOrientation" : {
-          function: "bin",
+          function: "radiogroupBin",
           resultType: "radiogroup",
           choices: [
             {
@@ -666,7 +666,7 @@ define([], function () {
           ],
         },
         "newVar_010_RaceAndEthnicityCensus" : {
-          function : "bin",
+          function : "checkboxBin",
           resultType : "checkbox",
           choices: [
             {
@@ -1316,7 +1316,7 @@ define([], function () {
       //     "_comment" : "GABE TODO",
       //   },        
       //   "newVarPostCovidWork" : {
-      //     function: "bin",
+      //     function: "radiogroupBin",
       //     resultType: "radiogroup",
       //     choices: [
       //       {
@@ -1574,6 +1574,7 @@ define([], function () {
         {
           name: "006-demographics-seniority-recode",
           inputQuestions: ["newVar_005_Seniority"],
+          _comment: "TODO Could remove and compute in excel",
           labels : ["Entry","Mid","Senior","Prefer Not To Answer"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",

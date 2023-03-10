@@ -421,10 +421,38 @@ define(["constants"], function (constants) {
       return share; //GABE TODO create new share of zero
     }
 
-    lessThanMax = share.clteq(max);
+    lessThanMax = share.clteq(max); // TODO hand these max sizes of the value
     greaterThanMin = share.cgteq(min);
 
     return lessThanMax.smult(greaterThanMin);
+  }
+
+  var bitDecompInRanges = function(jiffClient, bitdecomp, min, max, overallmax) {
+    if (bitdecomp == null) {
+      return bitdecomp; //GABE TODO create new share of zero
+    }
+
+    let numbitsneeded = Math.ceil(Math.log2(overallmax))+1; //Math.ceil(Math.log2(overallmax))+1;
+
+    lessThanMax = jiffClient.protocols.bits.clteq(bitdecomp.slice(0,numbitsneeded), max);
+
+    // console.log("bits: " + bitdecomp.slice(0,numbitsneeded));
+    // console.log(bitdecomp.slice(0,numbitsneeded));
+    // console.log("numbitsneeded: " + numbitsneeded);
+    // console.log("min: " + min);
+
+    greaterThanMin = jiffClient.protocols.bits.cgteq(bitdecomp.slice(0,numbitsneeded), min);
+
+    // console.log("lessThanMax.jiff: " + lessThanMax.jiff);
+    // console.log("lessThanMax: " + lessThanMax);
+    // console.log("greaterThanMin.jiff: " + greaterThanMin.jiff);
+    // console.log("greaterThanMin : " + greaterThanMin)
+
+    if(min <= 0) {
+      return lessThanMax;
+    } else {
+      return lessThanMax.smult(greaterThanMin);
+    }
   }
 
   var shareGreaterThanZero = function(share) {
@@ -646,10 +674,8 @@ define(["constants"], function (constants) {
         }
       }
 
-      // jiff_instance.start_barrier();
-      console.log(ordering.questions);
-      console.log(indexMap);
-      // await jiff_instance.end_barrier(); // Add a manual sync to make sure we don't get too far ahead of ourselves in the first iteration
+      // console.log(ordering.questions);
+      // console.log(indexMap);
 
 
       // for (i = 0; i < submitters["all"].length; i++) {
@@ -689,7 +715,7 @@ define(["constants"], function (constants) {
         for (newVar of Object.keys(table_template.computation.newVariables).sort()) { //GABE TODO THINK ABOUT ORDERING.  SORT FIRST?
           jiff_instance.start_barrier();
           console.log("Computing " + newVar + " for " + partyID);
-          if (table_template.computation.newVariables[newVar].function == "bin") {
+          if (table_template.computation.newVariables[newVar].function == "checkboxBin") {
             // We are binning existing answers together.  We know that only one of the answers will be set, so we can just use addition 
             // Iterate through all the possible values the newVar can take
             for (choice of table_template.computation.newVariables[newVar].choices) {
@@ -702,11 +728,9 @@ define(["constants"], function (constants) {
                   newShare = sumAndAccumulateSingleShares(newShare, shares.questions[indexMap[wayToGetThere.question][wayToGetThere.values]]);
                 }
               }
-              // Append the share to the party's list of shares
-              // let result = await openValues(jiff_instance, newShare, [1]);
-              // console.log("Binning for "+ partyID + ":" + result);
-              if (table_template.computation.newVariables[newVar].resultType == "checkbox" || table_template.computation.newVariables[newVar].resultType == "radiogroup") { //TODO this is a hack.  Right now the result type is the same as the input type so we know to normalize
-                //NORMALIZE THE VECTOR TO BE BINARY
+
+              // We only do this when its a checkbox and there was more than one way to get there
+              if (choice.waysToGetThere.length > 1) {
                 newShare = shareGreaterThanZero(newShare);
               }
 
@@ -715,21 +739,46 @@ define(["constants"], function (constants) {
             // let binResult = await openValues(jiff_instance, newShares[partyID][newVar], [1]);
             // console.log("Binning for "+ partyID + " ("+ newVar + "):" + binResult);
           }
+          else if (table_template.computation.newVariables[newVar].function == "radiogroupBin") {
+            // We are binning existing answers together.  We know that only one of the answers will be set, so we can just use addition 
+            // Iterate through all the possible values the newVar can take
+            for (choice of table_template.computation.newVariables[newVar].choices) {
+              newShare = null;
+              // Iterate through all the things that are getting binned together and sum them together
+              for (wayToGetThere of choice.waysToGetThere) {
+                if(indexMap[wayToGetThere.question] == undefined){
+                  newShare = sumAndAccumulateSingleShares(newShare, newShares[partyID][wayToGetThere.question][wayToGetThere.values-1]); //-1 is because the data is 0 indexed but values are 1 indexed
+                } else {
+                  newShare = sumAndAccumulateSingleShares(newShare, shares.questions[indexMap[wayToGetThere.question][wayToGetThere.values]]);
+                }
+              }
+              newShares[partyID][newVar].push(newShare);
+            }
+            // let binResult = await openValues(jiff_instance, newShares[partyID][newVar], [1]);
+            // console.log("Binning for "+ partyID + " ("+ newVar + "):" + binResult);
+          }
           else if (table_template.computation.newVariables[newVar].function == "numericBin") {
+            // OPTIMIZATION we are making the optimization that all of the choices and ways to get there are the same input share
+            let bit_decomp_of_input_share = null;
             for (choice of table_template.computation.newVariables[newVar].choices) {
               newShare = null;
 
               for (wayToGetThere of choice.waysToGetThere) {
-                
-                if ( indexMap[wayToGetThere.question] == undefined ) {
-                  newShare = shareInRange(newShares[partyID][wayToGetThere.question][wayToGetThere.value], wayToGetThere.minValue, wayToGetThere.maxValue);
-                  // let numericBinInput = await openValues(jiff_instance, [newShares[partyID][wayToGetThere.question][wayToGetThere.value]], [1]);
-                  // console.log("Binning for "+ partyID + " ("+ newVar + ") Value:" + numericBinInput);
-                } else {
-                  newShare = shareInRange(shares.questions[indexMap[wayToGetThere.question][wayToGetThere.value]], wayToGetThere.minValue, wayToGetThere.maxValue);
-                  // let numericBinInput = await openValues(jiff_instance, [shares.questions[indexMap[wayToGetThere.question][wayToGetThere.value]]], [1]);
-                  // console.log("Binning for "+ partyID + " ("+ newVar + ") Value( index="+indexMap[wayToGetThere.question][wayToGetThere.value]+"):" + numericBinInput);
+                if (bit_decomp_of_input_share == null) {
+                  if ( indexMap[wayToGetThere.question] == undefined ) {
+                    bit_decomp_of_input_share = newShares[partyID][wayToGetThere.question][wayToGetThere.value].bit_decomposition();
+                    // newShare = shareInRange(newShares[partyID][wayToGetThere.question][wayToGetThere.value], wayToGetThere.minValue, wayToGetThere.maxValue);
+                    // let numericBinInput = await openValues(jiff_instance, [newShares[partyID][wayToGetThere.question][wayToGetThere.value]], [1]);
+                    // console.log("Binning for "+ partyID + " ("+ newVar + ") Value:" + numericBinInput);
+                  } else {
+                    bit_decomp_of_input_share = shares.questions[indexMap[wayToGetThere.question][wayToGetThere.value]].bit_decomposition();
+                    // newShare = shareInRange(shares.questions[indexMap[wayToGetThere.question][wayToGetThere.value]], wayToGetThere.minValue, wayToGetThere.maxValue);
+                    // let numericBinInput = await openValues(jiff_instance, [shares.questions[indexMap[wayToGetThere.question][wayToGetThere.value]]], [1]);
+                    // console.log("Binning for "+ partyID + " ("+ newVar + ") Value( index="+indexMap[wayToGetThere.question][wayToGetThere.value]+"):" + numericBinInput);
+                  }
                 }
+                // OPTIMIZATION there's only 1 way to get there for all our current things.
+                newShare = bitDecompInRanges(jiff_instance, bit_decomp_of_input_share, wayToGetThere.minValue, wayToGetThere.maxValue, table_template.computation.newVariables[newVar].maxValue);
               }
               newShares[partyID][newVar].push(newShare);
             }
@@ -782,7 +831,7 @@ define(["constants"], function (constants) {
             newShare = null;
 
             for (input of table_template.computation.newVariables[newVar].inputs) {
-              // This should be unreachable.  If you get this PANIC!  You probably are taking in a newVar here, but this is only for multipleText which is a artifact of the survey format
+              // OPTIMIZATION This should be unreachable.  If you get this PANIC!  You probably are taking in a newVar here, but this is only for multipleText which is a artifact of the survey format
               if(indexMap[input.question][input.value] == undefined) {
                 console.log("SOMETHING HAS GONE TERRIBLY WRONG.  PLEASE DOUBLE CHECK THE JSON FILE.")
               } 
