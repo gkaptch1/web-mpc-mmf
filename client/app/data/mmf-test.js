@@ -4,6 +4,249 @@ if (typeof define !== "function") {
 
 define([], function () {
   return {
+    computation: {
+      newVariables: {
+        "newVarSeniority": {
+          operation: "bin",
+          resultType: "radiogroup",
+          choices: [
+            {
+              value: "1",
+              text: "Entry",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "1",
+                },
+                {
+                  question: "question3",
+                  values: "2",
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "Mid",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "3",
+                },
+                {
+                  question: "question3",
+                  values: "4",
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "Senior",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "5",
+                },
+                {
+                  question: "question3",
+                  values: "6",
+                },
+              ]
+            },
+            {
+              value: "4",
+              text: "Prefer Not To Answer",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "7",
+                },
+              ]
+            },
+          ],
+        },
+        "newVarMultitasking" : {
+          operation : "threshold",
+          _comment: "TODO WORK IN PROGRESS",
+          resultType : "checkbox",
+          choices: [
+            {
+              value: "1",
+              text: "multiracial",
+              threshold: 2,
+              inputs : 
+              [
+                {
+                  question: "question4",
+                  values: "1",
+                },
+                {
+                  question: "question4",
+                  values: "2",
+                },
+                {
+                  question: "question4",
+                  values: "4",
+                },
+                {
+                  question: "question4",
+                  values: "5",
+                },
+                {
+                  question: "question4",
+                  values: "6",
+                },
+                {
+                  question: "question4",
+                  values: "7",
+                },
+                {
+                  question: "question4",
+                  values: "8",
+                },
+                {
+                  question: "question4",
+                  values: "9",
+                },
+                {
+                  question: "question4",
+                  values: "10",
+                },
+                {
+                  question: "question4",
+                  values: "11",
+                },
+                {
+                  question: "question4",
+                  values: "12",
+                },
+                {
+                  question: "question4",
+                  values: "14",
+                },
+                {
+                  question: "question4",
+                  values: "15",
+                },
+                {
+                  question: "question4",
+                  values: "16",
+                },
+                {
+                  question: "question4",
+                  values: "17",
+                },
+                {
+                  question: "question4",
+                  values: "18",
+                },
+                {
+                  question: "question4",
+                  values: "19",
+                },
+                {
+                  question: "question4",
+                  values: "20",
+                },
+              ]
+            },
+          ],
+        },
+      },
+      filters: {
+        "filterSeniority" : {
+          question: "newVarSeniority",
+        },
+        "filterPosition" : {
+          question: "question4",
+        },
+      },
+      outputs: [
+        {
+          name: "test-survey-1",
+          inputQuestions: ["question1"],
+          timing: "beforeOpening",
+          function: "mean",
+          filters: ["filterSeniority"],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "test-survey-2",
+          inputQuestions: ["question2"],
+          timing: "beforeOpening",
+          function: "mean",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "test-survey-3",
+          inputQuestions: ["newVarSeniority"],
+          timing: "beforeOpening",
+          function: "radiogroupSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "test-survey-4",
+          inputQuestions: ["question4"],
+          timing: "beforeOpening",
+          function: "checkboxSum",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "count-of-multitasking",
+          inputQuestions: ["newVarMultitasking"],
+          timing: "beforeOpening",
+          function: "mean",
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags: [],
+          },
+        },
+        {
+          name: "months-working",
+          inputQuestions: ["staff-survey-2"],
+          timing: "afterOpening",
+          function: "linearcombination",
+          inputs: [
+            {
+              question: "staff-survey-2",
+              value: "1",
+              coefficient: 12,
+            },
+            {
+              question: "staff-survey-2",
+              value: "2",
+              coefficient: 1,
+            },
+          ],
+          filters: [],
+          outputParties: {
+            analyst: "true",
+            cohort: "true",
+            tags : [],
+          }
+        },
+      ],
+    },
     tables: [
     ],
     "survey": {
@@ -113,6 +356,131 @@ define([], function () {
                 {
                   value: "7",
                   text: "Prefer not to answer",
+                },
+              ],
+            },
+            {
+              type: "checkbox",
+              name: "question4",
+              title:
+                "Which of the following categories does your current museum position fall into? Please select ALL that apply.",
+              isRequired: true,
+              choices: [
+                {
+                  value: "1",
+                  text: "Administration",
+                },
+                {
+                  value: "2",
+                  text: "Conservation",
+                },
+                {
+                  value: "3",
+                  text: "Collections Information and Management",
+                },                
+                {
+                  value: "4",
+                  text: "Curatorial",
+                },
+                {
+                  value: "5",
+                  text: "Digital Strategy/Web Development (e.g., graphic design)",
+                },
+                {
+                  value: "6",
+                  text: "Diversity/Equity/Inclusion (e.g., in job title/position description)",
+                },
+                {
+                  value: "7",
+                  text: "Education",
+                },
+                {
+                  value: "8",
+                  text: "Exhibition Design and Construction (includes Fabrication)",
+                },
+                {
+                  value: "9",
+                  text: "Facilities / Operations",
+                },
+                {
+                  value: "10",
+                  text: "Finance / Accounting",
+                },
+                {
+                  value: "11",
+                  text: "Food services / Cafe",
+                },
+                {
+                  value: "12",
+                  text: "Gardens/Grounds",
+                },
+                {
+                  value: "13",
+                  text: "Human Resources",
+                },
+                {
+                  value: "14",
+                  text: "Information Systems and Technology",
+                },
+                {
+                  value: "15",
+                  text: "Janitorial",
+                },
+                {
+                  value: "16",
+                  text: "Library",
+                },
+                {
+                  value: "17",
+                  text: "Marketing/Public Relations/Communications",
+                },
+                {
+                  value: "18",
+                  text: "Membership/Development (includes Event Planning)",
+                },
+                {
+                  value: "19",
+                  text: "Museum Leadership (includes executive positions)",
+                },
+                {
+                  value: "20",
+                  text: "Preparators/Art Handlers",
+                },
+                {
+                  value: "21",
+                  text: "Public Engagement",
+                },
+                {
+                  value: "22",
+                  text: "Publication/Editorial",
+                },
+                {
+                  value: "23",
+                  text: "Registration",
+                },
+                {
+                  value: "24",
+                  text: "Research and Evaluation",
+                },
+                {
+                  value: "25",
+                  text: "Retail / Museum Store",
+                },
+                {
+                  value: "26",
+                  text: "Rights/Reproduction (includes Photography)",
+                },
+                {
+                  value: "27",
+                  text: "Security",
+                },
+                {
+                  value: "28",
+                  text: "Visitor Services",
+                },
+                {
+                  value: "29",
+                  text: "None of the above",
                 },
               ],
             },

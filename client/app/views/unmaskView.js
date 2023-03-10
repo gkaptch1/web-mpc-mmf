@@ -1,7 +1,7 @@
 /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
-define(['jquery', 'controllers/jiffController', 'controllers/tableController', 'controllers/analystController', 'helper/drop_sheet', 'alertHandler', 'table_template', 'spin'],
-  function ($, jiffController, tableController, analystController, DropSheet, alertHandler, table_template, Spinner) {
+define(['jquery', 'controllers/jiffController', 'controllers/tableController', 'controllers/analystController', 'helper/drop_sheet', 'alertHandler', 'table_template', 'spin', 'pki'],
+  function ($, jiffController, tableController, analystController, DropSheet, alertHandler, table_template, Spinner, pki) {
     function error(msg) {
       alertHandler.error(msg);
     }
@@ -28,32 +28,80 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
           var privateKey = e.target.result;
           var progressBar = document.getElementById('unmask-progress-bar');
 
-          jiffController.analyst.computeAndFormat(sessionKey, sessionPass, privateKey, progressBar, error, function (result) {
-            analystController.getExistingCohorts(sessionKey, sessionPass).then(function (cohortMapping) {
-              tableController.saveTables(result['averages'], sessionKey, 'Averages', result['cohorts'], cohortMapping);
-              tableController.saveTables(result['deviations'], sessionKey, 'Standard_Deviations', result['cohorts'], cohortMapping);
-              
+          // var client_keys = await analystController.getClientKeys(sessionKey, sessionPass);
+          analystController.getClientKeys(sessionKey, sessionPass).then(function (keyRequestResult) {
+            var clientPublicKeys = keyRequestResult;
+            jiffController.analyst.computeAndFormat(sessionKey, sessionPass, privateKey, progressBar, error, function (result, rawresults) {
+                // analystController.getClientKeys(sessionKey, sessionPass).then(function (keyRequestResult) {
+                  var decryptPromises = [];
+                  for (cohort of Object.keys(clientPublicKeys)) {
+                    for(client of clientPublicKeys[cohort]) {
+                      // console.log(client);
+                      decryptPromises.push(pki.decrypt(atob(client.key), pki.parsePrivateKey(privateKey)));
+                    }
+                  }
+                  // result
+                  Promise.all(decryptPromises).then(function(decryptedSymmetricKeys) {
+                    var clientIndex = 0;
+                    var dataToSend = [];
+                    for (cohort of Object.keys(clientPublicKeys)) {
+                      for(client of clientPublicKeys[cohort]) {
+
+                        var sharesForClient = {};
+                        // Go get the struct that we need to send the client
+                        for (output of table_template.computation.outputs) {
+
+                          if(output.timing != "beforeOpening") {
+                            continue;
+                          }
+
+                          if (output.outputParties.cohort == "true") {
+                            if (sharesForClient[output.name] == undefined) {
+                              sharesForClient[output.name] = {};
+                            }
+                            sharesForClient[output.name][client.cohort] = rawresults.shares[output.name][client.cohort];
+                          }
+                          for (tag of output.outputParties.tags) {
+                            if (sharesForClient[output.name] == undefined) {
+                              sharesForClient[output.name] = {};
+                            }
+                            sharesForClient[output.name][tag] = rawresults.shares[output.name][tag];
+                          }
+                        }
+                        dataToSend.push({pseudonymn: client.pseudonymn, analystMessage: JSON.stringify(pki.encryptMessageWithSymmetricKey(decryptedSymmetricKeys[clientIndex], JSON.stringify(sharesForClient), "associateddata"))}); // TODO FiX the message and AD
+                        clientIndex++;
+                      }
+                    }
+                    // console.log(dataToSend);
+                    analystController.postBulkResultsMessage(sessionKey, sessionPass, dataToSend);
+                  });
+                // });
+
+              analystController.getExistingCohorts(sessionKey, sessionPass).then(function (cohortMapping) {
+                tableController.saveTables(result['averages'], sessionKey, 'Averages', result['cohorts'], cohortMapping);
+                tableController.saveTables(result['deviations'], sessionKey, 'Standard_Deviations', result['cohorts'], cohortMapping);  
+              });
+
+              if (result['hasQuestions'] === true) {
+                tableController.saveQuestions(rawresults["questions"], sessionKey);
+              }
+              if (result['hasUsability'] === true) {
+                tableController.saveUsability(result['usability'], sessionKey, result['cohorts']);
+              }
+              if(result['linearRegressions'] != null &&  !(Object.keys(result['linearRegressions']).length === 0)){
+                tableController.saveLinearRegressions(result['linearRegressions'], sessionKey, result['cohorts'])
+              }
+              $('#tables-area').show();
+              spinner.stop();
+
+              //  display sums in the table
+              tableController.createTableElems(table_template.tables, '#tables-area');
+              tableController.displayReadTable(result['averages']['all'], 'sum');
+
+              // display standard deviations in the table
+              tableController.createTableElems(table_template.tables, '#tables-area-deviation');
+              tableController.displayReadTable(result['deviations']['all'], 'deviation')
             });
-
-            if (result['hasQuestions'] === true) {
-              tableController.saveQuestions(result['questions'], sessionKey, result['cohorts']);
-            }
-            if (result['hasUsability'] === true) {
-              tableController.saveUsability(result['usability'], sessionKey, result['cohorts']);
-            }
-            if(result['linearRegressions'] != null &&  !(Object.keys(result['linearRegressions']).length === 0)){
-              tableController.saveLinearRegressions(result['linearRegressions'], sessionKey, result['cohorts'])
-            }
-            $('#tables-area').show();
-            spinner.stop();
-
-            //  display sums in the table
-            tableController.createTableElems(table_template.tables, '#tables-area');
-            tableController.displayReadTable(result['averages']['all'], 'sum');
-
-            // display standard deviations in the table
-            tableController.createTableElems(table_template.tables, '#tables-area-deviation');
-            tableController.displayReadTable(result['deviations']['all'], 'deviation')
           });
         });
       }

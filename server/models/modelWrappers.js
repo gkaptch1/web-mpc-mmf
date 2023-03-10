@@ -233,9 +233,9 @@ var queryMailbox = function (session_key, to_jiff_party_id, skip, limit, filter)
 * Result Message Model
 */
 
-var analystMessageUpdate = function(session_key,pseduonymn,analystMessage) {
+var analystMessageUpdate = function(filter,analystMessage) {
   return new Promise(function (resolve, reject) { // TODO protect against updates to the analyst key
-    models.ResultMessage.findOneAndUpdate({session: session_key, pseudonymn:pseduonymn}, {analystmessages:analystMessage}, {upsert: true}, function(err, data) {
+    models.ResultMessage.findOneAndUpdate(filter, {analystmessages:analystMessage}, {upsert: true}, function(err, data) {
       if (err) {
         reject(err);
       } else {
@@ -264,9 +264,21 @@ var insertManyResultMessage = function (array) {
 };
 
 
-var serverMessageUpdate = function(session_key,pseduonymn,serverMessage) {
+var serverMessageUpdate = function(filter,serverMessage) {
   return new Promise(function (resolve, reject) { // TODO protect against updates to the analyst key
-    models.ResultMessage.findOneAndUpdate({session: session_key, pseudonymn:pseduonymn}, {servermessages:serverMessage}, {upsert: true}, function(err, data) {
+    models.ResultMessage.findOneAndUpdate(filter, {servermessages:serverMessage}, {upsert: true}, function(err, data) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
+
+var getResultMessage = function(id) {
+  return new Promise(function (resolve, reject) { 
+    models.ResultMessage.findOne({_id: id}, function(err, data) {
       if (err) {
         reject(err);
       } else {
@@ -311,6 +323,9 @@ module.exports = {
     server: {
       insertMany: insertManyResultMessage,
       update: serverMessageUpdate
+    },
+    client: {
+      get: getResultMessage
     }
   }
 };

@@ -244,6 +244,22 @@ define([
         });
     }
 
+    function getResultMessage(sessionIn,participationCodeIn) {
+      return $.ajax({
+        type: 'POST',
+        url: '/get_result_messages',
+        contentType: 'application/json',
+        data: JSON.stringify({session: sessionIn, userkey: participationCodeIn})
+      }).then(function (resp) {
+        // console.log(JSON.parse(resp);
+        return resp;
+      }).catch(function (err) {
+        if (err && err.hasOwnProperty('responseText') && err.responseText !== undefined) {
+          alertHandler.error(err.responseText);
+        }
+      });
+    }
+
 
     /**
      * Called when the submit button is pressed.
@@ -686,12 +702,18 @@ define([
       callback(true);
     }
 
+    function reconstructClientResults(serverSharesAsStrings, analystSharesAsStrings) {
+      return jiffController.client.reconstructResults(serverSharesAsStrings, analystSharesAsStrings);
+    }
+
     return {
       getUserCohort: getUserCohort,
       validate: validate,
       constructAndSend: constructAndSend,
       validateSessionInput: validateSessionInput,
       verifySessionServerExplicitParams: verifySessionServerExplicitParams,
+      getResultMessage: getResultMessage,
+      reconstructClientResults, reconstructClientResults,
     };
   })();
 
