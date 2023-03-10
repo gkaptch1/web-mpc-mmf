@@ -36,8 +36,10 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
                   var decryptPromises = [];
                   for (cohort of Object.keys(clientPublicKeys)) {
                     for(client of clientPublicKeys[cohort]) {
-                      // console.log(client);
-                      decryptPromises.push(pki.decrypt(atob(client.key), pki.parsePrivateKey(privateKey)));
+                      if(client.key != undefined) {
+                        // console.log(client);
+                        decryptPromises.push(pki.decrypt(atob(client.key), pki.parsePrivateKey(privateKey)));
+                      }
                     }
                   }
                   // result
@@ -46,6 +48,9 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
                     var dataToSend = [];
                     for (cohort of Object.keys(clientPublicKeys)) {
                       for(client of clientPublicKeys[cohort]) {
+                        if (client.key == undefined) {
+                          continue;
+                        }
 
                         var sharesForClient = {};
                         // Go get the struct that we need to send the client
