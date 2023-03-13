@@ -1056,7 +1056,8 @@ define(["constants"], function (constants) {
         // Process the tables. 
         await jiff_instance.end_barrier(); // Add a manual sync to make sure we don't get too far ahead of ourselves in the first iteration
         updateProgress(progressBar, (.95*i)/submitters["all"].length);   
-        newShares[partyID] = null;   
+        newShares[partyID] = null; 
+        shares = null;  
       }
     }
 
