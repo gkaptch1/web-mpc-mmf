@@ -4,6 +4,7 @@
  */
 
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 // Allow maintaining a shared context between all API route handlers.
@@ -14,6 +15,7 @@ app.myPutContext = function (key, value) {
 
 const compression = require('compression');
 app.use(compression());
+app.use(cors());
 
 // for parsing application/json
 const body_parser = require('body-parser');

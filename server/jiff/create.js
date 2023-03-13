@@ -77,6 +77,24 @@ JIFFWrapper.prototype.initializeSession = async function (session_key, public_ke
   await this.serverInstance.handlers.initializeParty(session_key, 1, MAX_SIZE, msg);
 };
 
+JIFFWrapper.prototype.sendSharesToAnalyst = async function (session_key, party_id) {
+  var self = this;
+  var send = function(share) {
+    return new Promise(function(resolve) {
+      self.serverInstance.emit('share', share, session_key, 1, resolve);
+    });
+  };
+
+  var shares = await mailbox_hooks.getAnalystShares(session_key, party_id);
+  var promises = [];
+  for (var i = 0; i < shares.length; i++) {
+    promises.push(send(shares[i]));
+  }
+
+  await Promise.all(promises);
+  console.log("Sent Analyst Shares for ", party_id);
+};
+
 // Setting up a listener for the session, to start computing when analyst requests.
 JIFFWrapper.prototype.computeSession = async function (session_key) {
   console.log('Perform server side computation', session_key);
@@ -121,7 +139,8 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
       // Perform server-side MPC
       var table_template = require('../../client/app/' + config.client.table_template + '.js');
       var ordering = mpc.consistentOrdering(table_template);
-      mpc.compute(computationInstance, submitters, ordering, table_template).then(function(rawresults) {
+      var functor = self.sendSharesToAnalyst.bind(self, session_key);
+      mpc.compute(computationInstance, submitters, ordering, table_template, null, functor).then(function(rawresults) {
 
         //Go get all the users in the session so we can properly load their server side messages
         console.log("Finished Computation");
