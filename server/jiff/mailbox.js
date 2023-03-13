@@ -82,14 +82,18 @@ module.exports = {
 
   getFromMailbox : async function (jiff, computation_id, to_id) {
     try {
-      var db = await modulesWrappers.Mailbox.query(computation_id, to_id);
-      var memory = getFromMemory(computation_id, to_id);
-
       var result = [];
-      for (var d of db) {
-        result.push({msg: d.message, label: d.label, id: null});
+
+      // Read from database if server.
+      if (to_id == 's1') {
+        var db = await modulesWrappers.Mailbox.query(computation_id, to_id);
+        for (var d of db) {
+          result.push({msg: d.message, label: d.label, id: null});
+        }
       }
-      
+
+      // Read from memory for reliability during computation.
+      var memory = getFromMemory(computation_id, to_id);
       var public_key_msg = null;
       for (var d of memory) {
         if (d.label == 'public_keys') {
@@ -122,5 +126,26 @@ module.exports = {
       // Corresponds to an ephemeral in memory message.
       removeFromMemory(computation_id, party_id, mailbox_pointer);
     }
-  }
+  },
+  // Get analyst shares that belong to the given party.
+  getAnalystShares: async function (computation_id, from_id) {
+    try {
+      var db = await modulesWrappers.Mailbox.query(computation_id, 1);
+
+      var result = [];
+      for (var d of db) {
+        if (d.label == 'share') {
+          var json = JSON.parse(d.message);
+          if (json.party_id == from_id) {
+            result.push(d.message);
+          }
+        }
+      }
+
+      return result;
+    } catch (err) {
+      console.log('Error in getting analyst share from ' + from_id, err);
+      throw new Error('Error getting shares');
+    }
+  },
 };

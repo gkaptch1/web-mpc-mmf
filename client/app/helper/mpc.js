@@ -313,7 +313,7 @@ define(["constants"], function (constants) {
   };
 
   // Get all the shares that a party have shared
-  var getShares = function (jiff_instance, partyID, ordering) {
+  var getShares = async function (jiff_instance, partyID, ordering, server_mailbox_hook) {
     var result = {
       shares: [],
       squares: [],
@@ -323,6 +323,9 @@ define(["constants"], function (constants) {
     };
 
     //find number of lin_reg_product pairs
+    if (server_mailbox_hook != null) {
+      await server_mailbox_hook(partyID);
+    }
 
     //loop through all the tables and count the number of lin_reg pairs
     var visited = {}; //keep track of which tables have already been counted
@@ -354,6 +357,8 @@ define(["constants"], function (constants) {
       }
     }
 
+    jiff_instance.start_barrier();
+
     for (
       var k = 0;
       k <
@@ -378,6 +383,10 @@ define(["constants"], function (constants) {
         result.usability.push(share);
       }
     }
+
+    await jiff_instance.end_barrier();
+    console.log("Received shares for ", partyID);
+
     return result;
   };
 
@@ -574,7 +583,8 @@ define(["constants"], function (constants) {
     submitters,
     ordering,
     table_template,
-    progressBar
+    progressBar,
+    server_mailbox_hook
   ) {
     updateProgress(progressBar, 0);
 
@@ -680,7 +690,7 @@ define(["constants"], function (constants) {
 
       // for (i = 0; i < submitters["all"].length; i++) {
       //   var partyID = submitters["all"][i];
-      //   shares = getShares(jiff_instance, partyID, ordering);
+      //   shares = await getShares(jiff_instance, partyID, ordering, server_mailbox_hook);
       //   let result = await openValues(jiff_instance, shares.questions, [1]);
       //   console.log("Opening shares for party "+ partyID+ ": " + result.toString());
       // }
@@ -702,7 +712,7 @@ define(["constants"], function (constants) {
           newShares[partyID][newVar] = [];
         }
         // jiff_instance.start_barrier();
-        shares = getShares(jiff_instance, partyID, ordering);
+        shares = await getShares(jiff_instance, partyID, ordering, server_mailbox_hook);
         // await jiff_instance.end_barrier(); // Add a manual sync to make sure we don't get too far ahead of ourselves in the first iteration
 
         // jiff_instance.start_barrier();
@@ -1084,7 +1094,7 @@ define(["constants"], function (constants) {
 
         jiff_instance.start_barrier();
 
-        shares = getShares(jiff_instance, partyID, ordering);
+        shares = await getShares(jiff_instance, partyID, ordering, server_mailbox_hook);
 
         // let result = await openValues(jiff_instance, shares.shares.slice(0,25), [1]);
         // let result = await openValuesWithLabel(jiff_instance, shares.shares, [1], "openSharesForParty" + partyID);
@@ -1445,7 +1455,8 @@ define(["constants"], function (constants) {
     submitters,
     ordering,
     table_template,
-    progressBar
+    progressBar,
+    server_mailbox_hook
   ) {
     updateProgress(progressBar, 0);
 
@@ -1459,29 +1470,14 @@ define(["constants"], function (constants) {
     // Get everyone's shares.
     for (var i = 0; i < submitters["all"].length; i++) {
       var partyID = submitters["all"][i];
-      var shares = getShares(jiff_instance, partyID, ordering);
-
-      // openValues(jiff_instance, shares.questions, [1]).then( function (allpartyshares) {
-      //   var string_values = [];
-      //   for (var share of allpartyshares) {
-      //     string_values.push(share.toString());
-      //   }
-      //   console.log("Opening shares for party "+ partyID+ ": " + string_values);
-      // });
-
+      var shares = await getShares(jiff_instance, partyID, ordering, server_mailbox_hook);
       all_shares.push(shares.questions);
-
-      // Wait for all shares to be received.
-      var promises = [];
-      for (var share of shares.questions) {
-        if (!share.ready)
-          promises.push(share.value);
-      }
-      await Promise.all(promises);
 
       // Update progress bar.
       updateProgress(progressBar, ((i + 1) / submitters["all"].length) * 0.94);
       console.log("party", i);
+      
+      await new Promise(resolve => { setTimeout(resolve, 5000); });
     }
 
     // Add all shares element wise.
