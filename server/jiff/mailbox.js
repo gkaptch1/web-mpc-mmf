@@ -130,7 +130,7 @@ module.exports = {
   // Get analyst shares that belong to the given party.
   getAnalystShares: async function (computation_id, from_id) {
     try {
-      var db = await modulesWrappers.Mailbox.query(computation_id, 1);
+      var db = await modulesWrappers.Mailbox.query(computation_id, 1, null, null, {"from_id" : from_id});
 
       var result = [];
       for (var d of db) {

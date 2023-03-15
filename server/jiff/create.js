@@ -27,7 +27,11 @@ const cryptoHooks =  {
 };
 
 // Options and Hooks
-const options = { logs: false, sodium: false, hooks: {} };
+const options = { logs: false, sodium: false, hooks: {},
+socketOptions: {
+    pingTimeout: 60000,
+    pingInterval: 120000,
+  }};
 const computeOptions = {
   sodium: false,
   safemod: false,
@@ -41,7 +45,11 @@ const computeOptions = {
       };
       return share;
     }]
-  }
+  },
+  socketOptions: {
+    pingTimeout: 60000,
+    pingInterval: 120000,
+  },
 };
 options.hooks = Object.assign(options.hooks, mailbox_hooks, authentication_hooks, cryptoHooks);
 
@@ -110,9 +118,9 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
 
     // Reset the instance state as if it's fresh for every time the analyst
     // invokes compute.
-    computationInstance.counters.reset();
+    // computationInstance.counters.reset();
     // Re-initializes the computation instace and re-reads its mailbox.
-    computationInstance.socket.connect();
+    // computationInstance.socket.connect();
 
     // Send submitters ids to analyst
     var submitters = await self.getTrackerParties(session_key);
@@ -133,6 +141,8 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
         submitters["cohorts"][d.cohort].push(""+d.jiff_party_id)
       }
 
+      computationInstance.crypto_provider_socket.connect();
+      console.log("connecting to the crypto provider");
       // console.log(submitters);
       computationInstance.emit('compute', [ 1 ], JSON.stringify(submitters), false);
 
