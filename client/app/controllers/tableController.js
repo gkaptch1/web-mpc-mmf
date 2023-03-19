@@ -1116,6 +1116,10 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
       for(let f of Object.keys(outputs[output])) { // uhoh todo
         if(f == "nofilter") {
           csv.push(""+ output+ "--fullDataSet," + outputs[output][f].toString() + "\n");
+        } else if (f == "tags") {
+          for(tag of Object.keys(outputs[output][f])) {
+            csv.push(""+ output+ "--" + f + "--"+ tag + "," + outputs[output][f][tag].toString() + "\n");
+          }
         } else {
           let filterquestion = table_template["computation"]["filters"][f].question;
           for(opt of Object.keys(outputs[output][f])) {

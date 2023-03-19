@@ -872,6 +872,16 @@ define(["constants"], function (constants) {
         }
         // await jiff_instance.end_barrier(); // Add a manual sync to make sure we don't get too far ahead of ourselves in the first iteration
 
+        // Look up the tags associated with this submitter
+        let partyTags = [];
+        for (cohort of Object.keys(submitters.cohorts).sort()) {
+          if (submitters.cohorts[cohort].includes(partyID)) {
+            console.log("" + partyID + " is in cohort " + cohort + " (name: + " + table_template.cohorts[cohort-1].name +") ");
+            partyTags = table_template.cohorts[cohort-1].tags;
+          }
+        }
+
+
         jiff_instance.start_barrier();
         for (output of table_template.computation.outputs) {
           if(output.timing != "perRespondentProcessing") {
@@ -892,13 +902,13 @@ define(["constants"], function (constants) {
 
                 // Also accumulate into all the relevant tags
                 for ( tag of output.outputParties.tags ) {
-                  if (toEncrypt[output.name] == undefined) {
-                    toEncrypt[output.name] = {};
+                  if (outputs[output.name]["tags"] == undefined) {
+                    outputs[output.name]["tags"] = {};
                   }
-                  if (toEncrypt[output.name][tag] == undefined) {
-                    toEncrypt[output.name][tag] = {};
+                  if (partyTags.includes(tag)) {
+                    outputs[output.name]["tags"][tag] = sumAndAccumulate(outputs[output.name]["tags"][tag], newShares[partyID][inputQuestion]);
                   }
-                  toEncrypt[output.name][tag]["nofilter"] = sumAndAccumulate(toEncrypt[output.name][tag]["nofilter"], newShares[partyID][inputQuestion]);
+                  // toEncrypt[output.name][tag]["nofilter"] = sumAndAccumulate(toEncrypt[output.name][tag]["nofilter"], newShares[partyID][inputQuestion]);
                 }
 
                 //Find the appropriate cohort for this party and accumulate into their results
@@ -923,19 +933,15 @@ define(["constants"], function (constants) {
               } else {
                 outputs[output.name]["nofilter"] = sumAndAccumulate(outputs[output.name]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
 
-                // let result = await openValues(jiff_instance, shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']), [1]);
-                // console.log("Accumulating for  ("+ partyID+ "," + output.name + "): " + result.toString());
-
-
                 // Also accumulate into all the relevant tags
                 for ( tag of output.outputParties.tags ) {
-                  if (toEncrypt[output.name] == undefined) {
-                    toEncrypt[output.name] = {};
+                  if (outputs[output.name]["tags"] == undefined) {
+                    outputs[output.name]["tags"] = {};
                   }
-                  if (toEncrypt[output.name][tag] == undefined) {
-                    toEncrypt[output.name][tag] = {};
+                  if (partyTags.includes(tag)) {
+                    outputs[output.name]["tags"][tag] = sumAndAccumulate(outputs[output.name]["tags"][tag], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
                   }
-                  toEncrypt[output.name][tag]["nofilter"] = sumAndAccumulate(toEncrypt[output.name][tag]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
+                  // toEncrypt[output.name][tag]["nofilter"] = sumAndAccumulate(toEncrypt[output.name][tag]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
                 }
 
                 //Find the appropriate cohort for this party and accumulate into their results
@@ -988,9 +994,6 @@ define(["constants"], function (constants) {
                   } else {
                     // Pull the entire vector 
                     inputQuestionShares = shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']);
-
-                    // let resultone = await openValues(jiff_instance, inputQuestionShares, [1]);
-                    // console.log("PartyID "+ partyID+ "--" + filtername + "--InputShares: " + resultone.toString());
                   }
 
                   if (filteredData[filtername] == undefined) {
@@ -999,28 +1002,9 @@ define(["constants"], function (constants) {
 
                   // Take the product 
                   for (let shareIndex=0; shareIndex<filterShares.length; shareIndex++) {
-
-                    // console.log("Inside Product Loop -- " + shareIndex);
-
-                    // let filtershareresult = await openValues(jiff_instance, [filterShares[shareIndex]], [1]);
-                    // console.log("FilterShare--" + shareIndex + ": " + filtershareresult.toString());
-
-                    // let inputshareresult = await openValues(jiff_instance, inputQuestionShares, [1]);
-                    // console.log("InputQuestionShares--" + shareIndex + ": " + inputshareresult.toString());
-
                     filteredData[filtername][shareIndex+1] = multShareAndVector(filterShares[shareIndex],inputQuestionShares);
-
-                    // let prodshareresult = await openValues(jiff_instance, filteredData[filtername][shareIndex+1], [1]);
-                    // console.log("ProductShares--" + (shareIndex+1) + ": " + prodshareresult.toString());         
                   }
                 }
-
-
-                // for (let shareIndex=1; shareIndex<=filterShares.length;shareIndex++) {
-                //   result = await openValues(jiff_instance, filteredData[filtername][shareIndex], [1]);
-                //   console.log("PartyID "+ partyID+ "--" + filter + "--ProductShares--" + shareIndex + ": " + result.toString());
-                // }
-
 
                 // Now do the actual accumulation into the outputs
                 if (outputs[output.name][filtername] == undefined) {
@@ -1151,14 +1135,23 @@ define(["constants"], function (constants) {
         if(opened_outputs[output] == undefined) {
           opened_outputs[output] = {};
         }
-        for(filter of Object.keys(outputs[output])) { // uhoh todo
+        for(filter of Object.keys(outputs[output]).sort()) { // uhoh todo
           if(filter == "nofilter") {
             let result = await openValues(jiff_instance, outputs[output][filter], [1]);
             opened_outputs[output][filter] = result;
             console.log(""+ output+ "--" + filter + ": " + result.toString());
+          } else if (filter == "tags") {
+            if (opened_outputs[output][filter] == undefined) {
+              opened_outputs[output][filter] = {};
+            }
+            for(tag of Object.keys(outputs[output][filter]).sort()) {
+              let result = await openValues(jiff_instance, outputs[output][filter][tag], [1]);
+              opened_outputs[output][filter][tag] = result;
+              console.log(""+ output+ "--" + filter + "--"+ tag +": " + result.toString());
+            }
           } else {
             opened_outputs[output][filter] = {};
-            for(opt of Object.keys(outputs[output][filter])) {
+            for(opt of Object.keys(outputs[output][filter]).sort()) {
               let result = await openValues(jiff_instance, outputs[output][filter][opt], [1]);
               opened_outputs[output][filter][opt] = result;
               console.log(""+ output+ "--" + filter + "--"+ opt +": " + result.toString());
