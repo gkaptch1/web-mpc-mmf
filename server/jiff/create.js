@@ -171,7 +171,7 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
             // Go get the struct that we need to send the client
             for (output of table_template.computation.outputs) {
 
-              if(output.timing != "beforeOpening") {
+              if(output.timing != "perRespondentProcessing") {
                 continue;
               }
 

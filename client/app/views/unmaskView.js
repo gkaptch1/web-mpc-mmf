@@ -56,7 +56,7 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
                         // Go get the struct that we need to send the client
                         for (output of table_template.computation.outputs) {
 
-                          if(output.timing != "beforeOpening") {
+                          if(output.timing != "perRespondentProcessing") {
                             continue;
                           }
 
