@@ -148,6 +148,21 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
       });
   }
 
+  function updateSinglePartyShares(session, password, userkey, computationname) {
+    return $.ajax({
+      type: 'POST',
+      url: '/update_shares',
+      contentType: 'application/json',
+      data: JSON.stringify({session: session, password: password, userkey:userkey, computationname:computationname})
+    })
+      .then(function (resp) {
+        return resp;
+      })
+      .catch(function (err) {
+        throw new Error(err.responseText);
+      });
+  }
+
   function generateSession(title, description) {
     if (title == null || description == null || title === '' || description === '') {
       alertHandler.error('Session title and description are required');
@@ -223,6 +238,41 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
     });
   }
 
+
+  function postSaveState(session, password, savestate, computationname) {
+    return $.ajax({
+      type: 'POST',
+      url: '/store_save_state',
+      contentType: 'application/json',
+      data: JSON.stringify({session: session, password: password, savestate: savestate, computationname: computationname}),
+    })
+    .then(function (res) {
+      return res;
+    })
+    .catch(function (err) {
+      if (err && err.hasOwnProperty('responseText') && err.responseText !== undefined) {
+        alertHandler.error(err.responseText);
+      }
+    });
+  }
+
+  function getSaveState(session, password, computationname) {
+    return $.ajax({
+      type: 'POST',
+      url: '/get_save_state',
+      contentType: 'application/json',
+      data: JSON.stringify({session: session, password: password, computationname: computationname}),
+    })
+    .then(function (res) {
+      return res.savestate;
+    })
+    .catch(function (err) {
+      if (err && err.hasOwnProperty('responseText') && err.responseText !== undefined) {
+        alertHandler.error(err.responseText);
+      }
+    });
+  }
+
   return {
     checkStatus: checkStatus,
     changeStatus: changeStatus,
@@ -235,6 +285,9 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
     getParameterByName: getParameterByName,
     postBulkResultsMessage: postBulkResultsMessage,
     addCohorts: addCohorts,
+    postSaveState: postSaveState,
+    getSaveState: getSaveState,
+    updateSinglePartyShares: updateSinglePartyShares,
     START: 'START',
     PAUSE: 'PAUSE',
     STOP: 'STOP'

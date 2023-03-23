@@ -13,9 +13,9 @@ module.exports = function (app) {
   // serve static files in designated folders
   app.get('/', function (req, res) {
     // /client/index.
-    // res.render('build/index.html', config.client);
+    res.render('build/index.html', config.client);
 
-    rendering['index'].render(app, req, res);
+    // rendering['index'].render(app, req, res);
   });
 
   app.get('/definitions', function (req, res) {
@@ -34,6 +34,11 @@ module.exports = function (app) {
   app.get('/unmask', function (req, res) {
     // /client/unmask.html
     res.render('unmask.html', config.client);
+  });
+
+    app.get('/update', function (req, res) {
+    // /client/update.html
+    res.render('update.html', config.client);
   });
 
   app.get('/subscribe', function (req, res) {

@@ -25,14 +25,34 @@ module.exports = function (JIFFWrapper) {
 
     // Map every id to its cohort
     var id_to_cohort = {};
+    var id_to_subscriber = {};
     for (var code of codes) {
       id_to_cohort[code.jiff_party_id] = code.cohort;
+      if(code.subscriber == true) {
+        id_to_subscriber[code.jiff_party_id] = true;
+      } else {
+        id_to_subscriber[code.jiff_party_id] = false;
+      }
     }
+
+    let exclude =  [];
 
     // Construct submitters object
     var cohorts = [];
     for (var submission of history) {
+      if(exclude.includes(submission.jiff_party_id)) 
+      {
+        console.log("Excluded " + submission.jiff_party_id);
+        continue;
+      }
       var party_id = submission.jiff_party_id;
+
+      if (id_to_subscriber[party_id] == true)
+      {
+        console.log("Skipping Subscriber " + submission.jiff_party_id);
+        continue;   
+      }
+
       var success = submission.success;
       var cohort = id_to_cohort[party_id];
 

@@ -49,6 +49,10 @@ module.exports = {
   },
 
   getClientKeys: Object.assign({}, schemaTemplates.keyPasswordTemplate),
+  updateShares: Object.assign({
+     userkey: schemaTemplates.userKeySchema,
+     computationname: joi.string().required()
+  }, schemaTemplates.keyPasswordTemplate),
 
   getCohortsManage: Object.assign({}, schemaTemplates.keyPasswordTemplate),
 
@@ -86,6 +90,16 @@ module.exports = {
   analystBulkUpdateResultMessages : Object.assign({
       data: joi.array().items(analystServerUpdateTemplate),
   }, schemaTemplates.keyPasswordTemplate),
+
+  analystStoreSaveState: Object.assign({
+    computationname: joi.string().required(),
+    savestate: joi.string().required(),
+  }, schemaTemplates.keyPasswordTemplate),
+
+  analystGetSaveState: Object.assign({
+    computationname: joi.string().required(),
+  }, schemaTemplates.keyPasswordTemplate),
+
 };
 
 

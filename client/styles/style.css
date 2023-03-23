@@ -230,6 +230,44 @@ form .form-group-lg label {
   visibility: hidden;
 }
 
+#drop-area-update {
+  border: 3px dashed #CCC;
+  border-radius: 8px;
+  padding: 30px;
+  background-color: #F0F0F0;
+  transition: border-color 0.5s;
+  text-align: center;
+  display: block;
+  vertical-align: middle;
+  font-size: 22px;
+  width: 100%;
+}
+
+#drop-area-update p {
+  font-size: 13px;
+  margin-top: 25px;
+}
+
+#drop-area-update button {
+  margin-top: -25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 20px;
+}
+
+#drop-area-update.dragenter {
+  border-color: #A6DE2A;
+}
+
+#drop-area-update.dragdefault {
+  border-color: #666;
+}
+
+#choose-file-update {
+  border: none;
+  visibility: hidden;
+}
+
 /* Additional Questions */
 #questions,
 #review-and-submit form {

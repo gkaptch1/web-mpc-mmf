@@ -234,6 +234,52 @@ module.exports.getClientKeys = function (context, body, res) {
   });
 };
 
+// endpoint for returning previously created client keys
+module.exports.updateShares = function (context, body, res) {
+  // TODO actually update the shares in the database here by getting our own shares
+
+  // Password verified already by authentication!
+  var promise = modelWrappers.UserKey.get(body.session, body.userkey);  
+  promise.then(function (data) {
+
+    // Go get the save state that we stored for this computation
+    modelWrappers.SaveState.get(body.session, "server", body.computationname).then(function (savestateobject) {
+
+      let serverMessages = JSON.parse(savestateobject.savestatestring);
+
+      var sharesForClient = {};
+      // Go get the struct that we need to send the client
+      for (output of table_template.computation.outputs) {
+
+        if(output.timing != "perRespondentProcessing") {
+          continue;
+        }
+
+        if (output.outputParties.cohort == "true") {
+          if (sharesForClient[output.name] == undefined) {
+            sharesForClient[output.name] = {};
+          }
+          sharesForClient[output.name][data.cohort] = serverMessages.shares[output.name][data.cohort];
+        }
+      }
+
+      modelWrappers.ResultMessage.server.update({_id:data.session+data.userkey,  session:data.session, userkey:data.userkey, pseudonymn:data.pseudonymn},JSON.stringify(sharesForClient)).then( function(resultwewillignore) {
+        console.log('Result messages updated: ', body.session, body.userkey);
+        res.json({ key: data.pub_key,  pseudonymn: data.pseudonymn, cohort: data.cohort});
+      }).catch(function (err) {
+        console.log('Error in getting client keys', err);
+        res.status(500).send('Error getting client keys.')
+      });
+    }).catch(function (err) {
+      console.log('Error in getting client keys', err);
+      res.status(500).send('Error getting client keys.')
+    });
+  }).catch(function (err) {
+    console.log('Error in getting client keys', err);
+    res.status(500).send('Error getting client keys.')
+  });
+};
+
 
 // endpoint for returning previously created client result messages
 module.exports.getResultMessage = function (context, body, res) {
@@ -296,5 +342,38 @@ module.exports.serverBulkUpdateResultMessages = function (context, body, res) {
   }).catch(function (err) {
     console.log('Error in getting client keys', err);
     res.status(500).send('Error getting client keys.')
+  });
+};
+
+module.exports.analystStoreSaveState = function (context, body, res) {
+  //password is checked already
+  let filter = {};
+  if(body.computationname != null) {
+    filter = {_id: body.session+body.computationname+"analyst", session : body.session, computationname : body.computationname, role: "analyst"};
+  } else {
+    filter = {_id: body.session+"analyst", session:body.session, role: "analyst"};
+  }
+
+  var promise = modelWrappers.SaveState.update(filter, body.savestate);
+
+  promise.then(function (data) {
+    console.log('Analyst saved a state:', body.session);
+    res.json({status:"ok"});
+  }).catch(function (err) {
+    console.log('Error in analyst save state', err);
+    res.status(500).send('Error in analyst save state.')
+  });
+};
+
+// endpoint for returning savepoints
+module.exports.analystGetSaveState = function (context, body, res) {
+  var promise = modelWrappers.SaveState.get(body.session, "analyst", body.computationname);
+  promise.then(function (data) {
+    // console.log(data.servermessages);
+    console.log(data);
+    res.json({ savestate: data.savestatestring });
+  }).catch(function (err) {
+    console.log('Error in getting result message', err);
+    res.status(500).send('Error in getting result message.')
   });
 };

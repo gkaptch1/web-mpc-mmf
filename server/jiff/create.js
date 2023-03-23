@@ -155,6 +155,12 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
         //Go get all the users in the session so we can properly load their server side messages
         console.log("Finished Computation");
 
+        // rawresults
+        let filter = {}; //TODO get the computationname
+        filter = {_id: session_key+"CHANGEME"+"server", session : session_key , computationname : "CHANGEME", role: "server"};
+
+        modelWrappers.SaveState.update(filter, JSON.stringify(rawresults));
+
 
         var updates = [];
         for (cohort of Object.keys(submitters.cohorts)) {
@@ -180,12 +186,6 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
                   sharesForClient[output.name] = {};
                 }
                 sharesForClient[output.name][cohort] = rawresults.shares[output.name][cohort];
-              }
-              for (tag of output.outputParties.tags) { // GABE TODO check to make sure they arent getting sent all tags.
-                if (sharesForClient[output.name] == undefined) {
-                  sharesForClient[output.name] = {};
-                }
-                sharesForClient[output.name][tag] = rawresults.shares[output.name][tag];
               }
             }
             updates.push(modelWrappers.ResultMessage.server.update({_id: userKeyData._id, session:userKeyData.session, userkey:userKeyData.userkey, pseudonymn:userKeyData.pseudonymn},JSON.stringify(sharesForClient)));

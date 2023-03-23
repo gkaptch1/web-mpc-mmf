@@ -87,6 +87,19 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
                 tableController.saveTables(result['deviations'], sessionKey, 'Standard_Deviations', result['cohorts'], cohortMapping);  
               });
 
+
+              var compname = $('#computationname').val();
+              var savepass = $('#savepassword').val();
+
+              if (compname != "" && savepass != "") {
+                let savekey = pki.generateKeyFromPassword("sessionID:" + sessionKey, "password:" + savepass.trim());
+                // console.log(JSON.stringify(rawresults));
+                let savestate = JSON.stringify(pki.encryptMessageWithSymmetricKey(savekey, JSON.stringify(rawresults), "associateddata"))
+                // console.log(savestate);
+                analystController.postSaveState(sessionKey, sessionPass, savestate, compname);
+              }
+
+
               if (result['hasQuestions'] === true) {
                 tableController.saveQuestions(rawresults["questions"], sessionKey);
               }
@@ -141,6 +154,7 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
           errors: {},
           handle_file: handle_file
         });
+
       });
     }
 

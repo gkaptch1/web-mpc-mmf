@@ -15,7 +15,7 @@
 
   <script type="text/javascript" src="app/config/common.js"></script>
   <script type="text/javascript" src="app/config/jiff.js"></script>
-  <script data-main="app/unmask" src="app/vendor/require.js"></script>
+  <script data-main="app/update" src="app/vendor/require.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -42,7 +42,7 @@
 <header>
   <div class="container">
     <h1>Trusted Party<br/>
-      <small>Aggregate Data Unmasker</small>
+      <small>Aggregate Data Update</small>
     </h1>
     <div id="logos">
       <img src="{{ logo }}" alt="{{ organization}} Logo"/>
@@ -53,9 +53,10 @@
 <div id="shadow" class="ss-style-multitriangles"></div>
 
 <main id="content" class="container">
+
   <div class="row">
-    <section id="session-area" class="card col-md-10 col-md-offset-1">
-      <h2 class="text-center">Unmask Aggregate Data</h2>
+    <section id="session-update-area" class="card col-md-10 col-md-offset-1">
+      <h2 class="text-center">Update Organization Report For Particular Party</h2>
       <p class="text-center">Please make sure you have the correct {{ session_key }}, session password, and private key.</p>
       <hr/>
       <div class="row">
@@ -85,6 +86,18 @@
                     aria-hidden="true"></span>
               <span id="session-password-fail-help" class="fail-help help-block hidden">Please input the 26-character session password</span>
               <span id="session-password-fail-custom-help" class="fail-custom help-block hidden"></span>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="target-participant">Participant Identifier</label>
+              <input type="text" id="target-participant" class="form-control" placeholder="Session Password"
+                     pattern="^[a-zA-Z0-9]{26}$"
+                     autocomplete="off" required>
+              <span id="target-participant-success"
+                    class="success-icon glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
+              <span id="target-participant-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="target-participant-fail-help" class="fail-help help-block hidden">Please input the 26-character session password</span>
+              <span id="target-participant-fail-custom-help" class="fail-custom help-block hidden"></span>
             </div>
             <div class="form-group">
               <label class="control-label" for="computationname">Computation Name</label>
@@ -134,31 +147,6 @@
           </div>
         </div>
       </div>
-    </section>
-  </div>
-
-  <div class="row">
-    <section id="instructions" class="card col-md-10 col-md-offset-1">
-      <h2 class="text-center">Aggregate data Test</h2>
-      <p class="text-center">Your data will appear here after you submit the {{ session_key }}, password, and private key.</p>
-      <span id="expand-table-button" class="arrow-down"></span>
-
-      <div id="tables-area">
-        <hr/>
-      </div>
-
-    </section>
-  </div>
-  <div class="row">
-    <section id="instructions" class="card col-md-10 col-md-offset-1">
-      <h2 class="text-center">Standard Deviations</h2>
-      <p class="text-center">Your data will appear here after you submit the {{ session_key }}, password, and private key.</p>
-      <span id="expand-table-button" class="arrow-down"></span>
-
-      <div id="tables-area-deviation">
-        <hr/>
-      </div>
-
     </section>
   </div>
 

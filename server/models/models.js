@@ -73,7 +73,20 @@ const ResultMessageModel = mongoose.model('ResultMessage', new mongoose.Schema({
   analystmessages: String,
   servermessages: String,
   pseudonymn: String
-}))
+}));
+const ComputationOutputsModel = mongoose.model('ComputationOutputs', new mongoose.Schema({
+  _id: String, // concat of session + computationname.
+  session: String,
+  computationname: String,
+  resultsstring: String, // JSON stringify 
+}));
+const SaveStateModel = mongoose.model('SaveState', new mongoose.Schema({
+  _id: String, // concat of session + computationname.
+  session: String,
+  computationname: String,
+  role: String,
+  savestatestring: String, // JSON stringify 
+}));
 
 // Export models
 module.exports = {
@@ -81,5 +94,7 @@ module.exports = {
   Mailbox: MailboxModel,
   SessionInfo: SessionInfoModel,
   UserKey: UserKeyModel,
-  ResultMessage: ResultMessageModel
+  ResultMessage: ResultMessageModel,
+  ComputationOutputs: ComputationOutputsModel,
+  SaveState: SaveStateModel
 };

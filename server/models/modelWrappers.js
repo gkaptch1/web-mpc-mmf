@@ -288,6 +288,49 @@ var getResultMessage = function(id) {
   });
 };
 
+var storeComputationOutput = function(filter, computationOutputs) {
+  return new Promise(function (resolve, reject) {
+    models.ComputationOutputs.findOneAndUpdate(filter, {resultsstring:computationOutputs}, {upsert: true}, function(err, data) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
+
+var storeSaveState = function(filter, SaveState) {
+  return new Promise(function (resolve, reject) {
+    models.SaveState.findOneAndUpdate(filter, {savestatestring:SaveState}, {upsert: true}, function(err, data) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
+
+var getSaveState = function(session_key, role, computationname) {
+  let filter = {};
+  if (computationname != null) {
+    filter = {_id: session_key+computationname+role, session: session_key, role: role, computationname: computationname};
+  } else {
+    filter = {_id: session_key+role, session: session_key, role: role};
+  }
+
+  return new Promise(function (resolve, reject) {
+    models.SaveState.findOne(filter, function (err, data) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
+
 /**
  * CONVENTION:
  * 1. query yields a list (potentially empty).
@@ -327,5 +370,12 @@ module.exports = {
     client: {
       get: getResultMessage
     }
-  }
+  },
+  ComputationOutputs : {
+    update: storeComputationOutput
+  },
+  SaveState : {
+    update: storeSaveState,
+    get: getSaveState
+  },
 };
