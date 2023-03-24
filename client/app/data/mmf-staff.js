@@ -211,64 +211,64 @@ define([], function () {
             },
           ]
         },
-        "newVar_005_Seniority": {
-          function: "radiogroupBin",
-          resultType: "radiogroup",
-          choices: [
-            {
-              value: "1",
-              text: "Entry",
-              waysToGetThere: [
-                {
-                  question: "question3",
-                  values: "1",
-                },
-                {
-                  question: "question3",
-                  values: "2",
-                },
-              ]
-            },
-            {
-              value: "2",
-              text: "Mid",
-              waysToGetThere: [
-                {
-                  question: "question3",
-                  values: "3",
-                },
-                {
-                  question: "question3",
-                  values: "4",
-                },
-              ]
-            },
-            {
-              value: "3",
-              text: "Senior",
-              waysToGetThere: [
-                {
-                  question: "question3",
-                  values: "5",
-                },
-                {
-                  question: "question3",
-                  values: "6",
-                },
-              ]
-            },
-            {
-              value: "4",
-              text: "Prefer Not To Answer",
-              waysToGetThere: [
-                {
-                  question: "question3",
-                  values: "7",
-                },
-              ]
-            },
-          ]
-        },
+        // "newVar_005_Seniority": {
+        //   function: "radiogroupBin",
+        //   resultType: "radiogroup",
+        //   choices: [
+        //     {
+        //       value: "1",
+        //       text: "Entry",
+        //       waysToGetThere: [
+        //         {
+        //           question: "question3",
+        //           values: "1",
+        //         },
+        //         {
+        //           question: "question3",
+        //           values: "2",
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "2",
+        //       text: "Mid",
+        //       waysToGetThere: [
+        //         {
+        //           question: "question3",
+        //           values: "3",
+        //         },
+        //         {
+        //           question: "question3",
+        //           values: "4",
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "3",
+        //       text: "Senior",
+        //       waysToGetThere: [
+        //         {
+        //           question: "question3",
+        //           values: "5",
+        //         },
+        //         {
+        //           question: "question3",
+        //           values: "6",
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "4",
+        //       text: "Prefer Not To Answer",
+        //       waysToGetThere: [
+        //         {
+        //           question: "question3",
+        //           values: "7",
+        //         },
+        //       ]
+        //     },
+        //   ]
+        // },
         "newVar_006_PositionCategories": {
           function: "checkboxBin",
           resultType: "checkbox",
@@ -810,459 +810,459 @@ define([], function () {
       //   "newVarPerceptionAccuracy" : {
       //     "_comment" : "GABE TODO",
       //   },
-        "newVar_011_PromotionBinned": {
-          function: "numericBin",
-          resultType: "radiogroup",
-          maxValue: 100,
-          minValue: 0,
-          choices: [
-            {
-              value: "0",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "0",
-                  minValue : 0,
-                  maxValue : 0,
-                },
-              ]
-            },
-            {
-              value: "1",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "1",
-                  minValue : 1,
-                  maxValue : 1,
-                },
-              ]
-            },
-            {
-              value: "2",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "2",
-                  minValue : 2,
-                  maxValue : 2,
-                },
-              ]
-            },
-            {
-              value: "3",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "3",
-                  minValue : 3,
-                  maxValue : 3,
-                },
-              ]
-            },
-            {
-              value: "4",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "4",
-                  minValue : 4,
-                  maxValue : 4,
-                },
-              ]
-            },
-            {
-              value: "5",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "5",
-                  minValue : 5,
-                  maxValue : 5,
-                },
-              ]
-            },
-            {
-              value: "6",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "6",
-                  minValue : 6,
-                  maxValue : 6,
-                },
-              ]
-            },
-            {
-              value: "7",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "7",
-                  minValue : 7,
-                  maxValue : 7,
-                },
-              ]
-            },
-            {
-              value: "8",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "8",
-                  minValue : 8,
-                  maxValue : 8,
-                },
-              ]
-            },
-            {
-              value: "9",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "9",
-                  minValue : 9,
-                  maxValue : 9,
-                },
-              ]
-            },
-            {
-              value: "10",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "10+",
-                  minValue : 10,
-                  maxValue : 100,
-                },
-              ]
-            },
-          ]
-        },
-        "newVar_012_PromotionNoPayBinned": {
-          function: "numericBin",
-          resultType: "radiogroup",
-          maxValue: 100,
-          minValue: 0,
-          choices: [
-            {
-              value: "0",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "0",
-                  minValue : 0,
-                  maxValue : 0,
-                },
-              ]
-            },
-            {
-              value: "1",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "1",
-                  minValue : 1,
-                  maxValue : 1,
-                },
-              ]
-            },
-            {
-              value: "2",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "2",
-                  minValue : 2,
-                  maxValue : 2,
-                },
-              ]
-            },
-            {
-              value: "3",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "3",
-                  minValue : 3,
-                  maxValue : 3,
-                },
-              ]
-            },
-            {
-              value: "4",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "4",
-                  minValue : 4,
-                  maxValue : 4,
-                },
-              ]
-            },
-            {
-              value: "5",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "5",
-                  minValue : 5,
-                  maxValue : 5,
-                },
-              ]
-            },
-            {
-              value: "6",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "6",
-                  minValue : 6,
-                  maxValue : 6,
-                },
-              ]
-            },
-            {
-              value: "7",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "7",
-                  minValue : 7,
-                  maxValue : 7,
-                },
-              ]
-            },
-            {
-              value: "8",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "8",
-                  minValue : 8,
-                  maxValue : 8,
-                },
-              ]
-            },
-            {
-              value: "9",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "9",
-                  minValue : 9,
-                  maxValue : 9,
-                },
-              ]
-            },
-            {
-              value: "10",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "10+",
-                  minValue : 10,
-                  maxValue : 100,
-                },
-              ]
-            },
-          ]
-        },
-        "newVar_013_PromotionNoTitleBinned": {
-          function: "numericBin",
-          resultType: "radiogroup",
-          maxValue: 100,
-          minValue: 0,
-          choices: [
-            {
-              value: "0",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "0",
-                  minValue : 0,
-                  maxValue : 0,
-                },
-              ]
-            },
-            {
-              value: "1",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "1",
-                  minValue : 1,
-                  maxValue : 1,
-                },
-              ]
-            },
-            {
-              value: "2",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "2",
-                  minValue : 2,
-                  maxValue : 2,
-                },
-              ]
-            },
-            {
-              value: "3",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "3",
-                  minValue : 3,
-                  maxValue : 3,
-                },
-              ]
-            },
-            {
-              value: "4",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "4",
-                  minValue : 4,
-                  maxValue : 4,
-                },
-              ]
-            },
-            {
-              value: "5",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "5",
-                  minValue : 5,
-                  maxValue : 5,
-                },
-              ]
-            },
-            {
-              value: "6",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "6",
-                  minValue : 6,
-                  maxValue : 6,
-                },
-              ]
-            },
-            {
-              value: "7",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "7",
-                  minValue : 7,
-                  maxValue : 7,
-                },
-              ]
-            },
-            {
-              value: "8",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "8",
-                  minValue : 8,
-                  maxValue : 8,
-                },
-              ]
-            },
-            {
-              value: "9",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "9",
-                  minValue : 9,
-                  maxValue : 9,
-                },
-              ]
-            },
-            {
-              value: "10",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "10+",
-                  minValue : 10,
-                  maxValue : 100,
-                },
-              ]
-            },
-          ]
-        },
+        // "newVar_011_PromotionBinned": {
+        //   function: "numericBin",
+        //   resultType: "radiogroup",
+        //   maxValue: 100,
+        //   minValue: 0,
+        //   choices: [
+        //     {
+        //       value: "0",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "0",
+        //           minValue : 0,
+        //           maxValue : 0,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "1",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "1",
+        //           minValue : 1,
+        //           maxValue : 1,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "2",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "2",
+        //           minValue : 2,
+        //           maxValue : 2,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "3",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "3",
+        //           minValue : 3,
+        //           maxValue : 3,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "4",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "4",
+        //           minValue : 4,
+        //           maxValue : 4,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "5",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "5",
+        //           minValue : 5,
+        //           maxValue : 5,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "6",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "6",
+        //           minValue : 6,
+        //           maxValue : 6,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "7",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "7",
+        //           minValue : 7,
+        //           maxValue : 7,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "8",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "8",
+        //           minValue : 8,
+        //           maxValue : 8,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "9",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "9",
+        //           minValue : 9,
+        //           maxValue : 9,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "10",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "10+",
+        //           minValue : 10,
+        //           maxValue : 100,
+        //         },
+        //       ]
+        //     },
+        //   ]
+        // },
+        // "newVar_012_PromotionNoPayBinned": {
+        //   function: "numericBin",
+        //   resultType: "radiogroup",
+        //   maxValue: 100,
+        //   minValue: 0,
+        //   choices: [
+        //     {
+        //       value: "0",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "0",
+        //           minValue : 0,
+        //           maxValue : 0,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "1",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "1",
+        //           minValue : 1,
+        //           maxValue : 1,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "2",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "2",
+        //           minValue : 2,
+        //           maxValue : 2,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "3",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "3",
+        //           minValue : 3,
+        //           maxValue : 3,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "4",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "4",
+        //           minValue : 4,
+        //           maxValue : 4,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "5",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "5",
+        //           minValue : 5,
+        //           maxValue : 5,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "6",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "6",
+        //           minValue : 6,
+        //           maxValue : 6,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "7",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "7",
+        //           minValue : 7,
+        //           maxValue : 7,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "8",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "8",
+        //           minValue : 8,
+        //           maxValue : 8,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "9",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "9",
+        //           minValue : 9,
+        //           maxValue : 9,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "10",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "10+",
+        //           minValue : 10,
+        //           maxValue : 100,
+        //         },
+        //       ]
+        //     },
+        //   ]
+        // },
+        // "newVar_013_PromotionNoTitleBinned": {
+        //   function: "numericBin",
+        //   resultType: "radiogroup",
+        //   maxValue: 100,
+        //   minValue: 0,
+        //   choices: [
+        //     {
+        //       value: "0",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "0",
+        //           minValue : 0,
+        //           maxValue : 0,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "1",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "1",
+        //           minValue : 1,
+        //           maxValue : 1,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "2",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "2",
+        //           minValue : 2,
+        //           maxValue : 2,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "3",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "3",
+        //           minValue : 3,
+        //           maxValue : 3,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "4",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "4",
+        //           minValue : 4,
+        //           maxValue : 4,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "5",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "5",
+        //           minValue : 5,
+        //           maxValue : 5,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "6",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "6",
+        //           minValue : 6,
+        //           maxValue : 6,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "7",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "7",
+        //           minValue : 7,
+        //           maxValue : 7,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "8",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "8",
+        //           minValue : 8,
+        //           maxValue : 8,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "9",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "9",
+        //           minValue : 9,
+        //           maxValue : 9,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "10",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "10+",
+        //           minValue : 10,
+        //           maxValue : 100,
+        //         },
+        //       ]
+        //     },
+        //   ]
+        // },
       //   "newVarTransparencyScore" : {
       //     function: "linearcombination",
       //     timing: "perRespondentProcessing",
@@ -1463,6 +1463,106 @@ define([], function () {
             },
           ]
         },
+        "newVar_015_GenderMan" : {
+          function: "radiogroupBin",
+          resultType: "radiogroup",
+          choices: [
+            {
+              value: "1",
+              text: "Man",
+              waysToGetThere:
+              [
+                {
+                  question: "question38",
+                  values: "2",
+                }
+              ]
+            },
+            {
+              value: "2",
+              text: "Women and Non-binary and Another Gender",
+              waysToGetThere:
+              [
+                {
+                  question: "question38",
+                  values: "1",
+                },
+                {
+                  question: "question38",
+                  values: "3",
+                },
+                {
+                  question: "question38",
+                  values: "4",
+                },
+                {
+                  question: "question38",
+                  values: "5",
+                }
+              ]
+            }
+          ]
+        },
+        "newVar_016_RaceAndEthnicityWhite" : {
+          function : "checkboxBin",
+          resultType : "checkbox",
+          choices: [
+            {
+              value: "1",
+              text: "White or European American",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "9",
+                }
+              ]
+            },
+            {
+              value: "2",
+              text: "Not White",
+              waysToGetThere:
+              [
+                {
+                  question: "question40",
+                  values: "2",
+                },
+                {
+                  question: "question40",
+                  values: "7",
+                },
+                {
+                  question: "question40",
+                  values: "8",
+                },
+                {
+                  question: "question40",
+                  values: "4",
+                },
+                {
+                  question: "question40",
+                  values: "1",
+                },
+                {
+                  question: "question40",
+                  values: "3",
+                },
+                {
+                  question: "question40",
+                  values: "5",
+                },
+                {
+                  question: "question40",
+                  values: "6",
+                },
+                {
+                  question: "question40",
+                  values: "10",
+                }
+              ]
+            },
+          ]
+        },
       },
       filters: {
         "filterSeniority": {
@@ -1492,11 +1592,17 @@ define([], function () {
         "filterGender":  {
           question: "newVar_007_Gender",
         },
+        "filterGenderMan":  {
+          question: "newVar_015_GenderMan",
+        },
         "filterSexualOrientation":  {
           question: "newVar_008_SexualOrientation",
         },
         "filterRaceAndEthnicity":  {
           question: "newVar_010_RaceAndEthnicityCensus",
+        },
+        "filterRaceAndEthnicityWhite":  {
+          question: "newVar_016_RaceAndEthnicityWhite",
         },
         "filterEducation":  {
           question: "question41",
@@ -1512,12 +1618,13 @@ define([], function () {
           labels : ["total months"],
           timing: "perRespondentProcessing",
           function: "mean",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
+          filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
+          // filters: [],
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           },
         },
         {
@@ -1531,7 +1638,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           },
         },
         {
@@ -1540,12 +1648,13 @@ define([], function () {
           labels : ["total months"],
           timing: "perRespondentProcessing",
           function: "mean",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
+          filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
+          // filters: [],
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -1559,7 +1668,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           },
         },
         {
@@ -1573,24 +1683,25 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
-        {
-          name: "006-demographics-seniority-recode",
-          inputQuestions: ["newVar_005_Seniority"],
-          _comment: "TODO Could remove and compute in excel",
-          labels : ["Entry","Mid","Senior","Prefer Not To Answer"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-          }
-        },
+        // {
+        //   name: "006-demographics-seniority-recode",
+        //   inputQuestions: ["newVar_005_Seniority"],
+        //   _comment: "TODO Could remove and compute in excel",
+        //   labels : ["Entry","Mid","Senior","Prefer Not To Answer"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   // filters: ["filterGender","filterRaceAndEthnicity"],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //   }
+        // },
         {
           name: "007-demographics-position-in-museum",
           inputQuestions: ["question4"],
@@ -1602,7 +1713,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -1616,7 +1728,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -1630,23 +1743,25 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
-        {
-          name: "010-demographics-gender",
-          inputQuestions: ["question38"],
-          labels : ["Total Number", "Woman","Man","Non-binary/genderqueer/third gender","Another gender","Prefer not to answer"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-          }
-        },
+        // {
+        //   name: "010-demographics-gender",
+        //   inputQuestions: ["question38"],
+        //   labels : ["Total Number", "Woman","Man","Non-binary/genderqueer/third gender","Another gender","Prefer not to answer"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   // filters: ["filterGender","filterRaceAndEthnicity"],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
         {
           name: "011-demographics-gender-recode",
           inputQuestions: ["newVar_007_Gender"],
@@ -1658,23 +1773,24 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
-        {
-          name: "012-demographics-orientation",
-          inputQuestions: ["question39"],
-          labels: ["Total Number","Heterosexual ","Lesbian ","Gay","Bisexual ","Pansexual ","Asexual","I don’t label myself as anything","Another sexual orientation","Prefer not to answer"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-          }
-        },
+        // {
+        //   name: "012-demographics-orientation",
+        //   inputQuestions: ["question39"],
+        //   labels: ["Total Number","Heterosexual ","Lesbian ","Gay","Bisexual ","Pansexual ","Asexual","I don’t label myself as anything","Another sexual orientation","Prefer not to answer"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   // filters: ["filterGender","filterRaceAndEthnicity"],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //   }
+        // },
         {
           name: "013-demographics-orientation-recode",
           inputQuestions: ["newVar_008_SexualOrientation"],
@@ -1686,7 +1802,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -1700,7 +1817,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -1714,7 +1832,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -1728,7 +1847,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -1742,7 +1862,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -1756,7 +1877,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         // {
@@ -1809,7 +1931,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -1823,7 +1946,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         // {
@@ -1850,34 +1974,36 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
-        {
-          name: "022-salary-and-promotion-number-of-promotions-binned",
-          inputQuestions: ["newVar_011_PromotionBinned"],
-          labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-          }
-        },
+        // {
+        //   name: "022-salary-and-promotion-number-of-promotions-binned",
+        //   inputQuestions: ["newVar_011_PromotionBinned"],
+        //   labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   // filters: ["filterGender","filterRaceAndEthnicity"],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //   }
+        // },
         {
           name: "023-salary-and-promotion-number-of-promotions-total",
           inputQuestions: ["question14"],
           labels: ["Total Number", "Number of Promotions"],
           timing: "perRespondentProcessing",
           function: "sum",
-          filters: ["filterGender", "filterRaceAndEthnicity"],
+          filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
           outputParties: {
             analyst: "false",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         // {
@@ -1919,20 +2045,20 @@ define([], function () {
         //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
         //   }
         // },
-        {
-          name: "024-salary-and-promotion-number-of-promotions-no-pay-increase-binned",
-          inputQuestions: ["newVar_012_PromotionNoPayBinned"],
-          labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-          }
-        },
+        // {
+        //   name: "024-salary-and-promotion-number-of-promotions-no-pay-increase-binned",
+        //   inputQuestions: ["newVar_012_PromotionNoPayBinned"],
+        //   labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   // filters: ["filterGender","filterRaceAndEthnicity"],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //   }
+        // },
         {
           name: "025-salary-and-promotion-number-of-promotions-no-pay-total",
           inputQuestions: ["question15"],
@@ -1940,12 +2066,13 @@ define([], function () {
           labels: ["Total Number", "Number of Promotions"],
           timing: "perRespondentProcessing",
           function: "sum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
+          filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
+          // filters: [],
           outputParties: {
             analyst: "false",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         // {
@@ -2015,20 +2142,20 @@ define([], function () {
         //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
         //   }
         // },
-        {
-          name: "026-salary-and-promotion-number-of-promotions-no-title-increase-binned",
-          inputQuestions: ["newVar_013_PromotionNoTitleBinned"],
-          labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-          }
-        },
+        // {
+        //   name: "026-salary-and-promotion-number-of-promotions-no-title-increase-binned",
+        //   inputQuestions: ["newVar_013_PromotionNoTitleBinned"],
+        //   labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   // filters: ["filterGender","filterRaceAndEthnicity"],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //   }
+        // },
         {
           name: "027-salary-and-promotion-number-of-promotions-no-title-total",
           inputQuestions: ["question16"],
@@ -2036,12 +2163,13 @@ define([], function () {
           // _comment: "GABE TODO POSTPROCESSING",
           timing: "perRespondentProcessing",
           function: "sum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
+          filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
+          // filters: [],
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         // {
@@ -2078,12 +2206,13 @@ define([], function () {
           _comment2 : "TODO After the computation compute means",
           timing: "perRespondentProcessing",
           function: "matrixSum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
-          filters: [],
+          filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
+          // filters: [],
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         // {
@@ -2118,12 +2247,13 @@ define([], function () {
           labels: ["Total Number", "Content","Worried","Excited","Sad","Connected to others","Bored","Angry","Hopeful","Disappointed","Inspired","None of the above"],
           timing: "perRespondentProcessing",
           function: "checkboxSum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
+          // filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
           filters: [],
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2132,11 +2262,12 @@ define([], function () {
           labels: ["Total Number", "Yes", "No", "Prefer not to answer"],
           timing: "perRespondentProcessing",
           function: "radiogroupSum",
-          filters: ["filterGender", "filterRaceAndEthnicity"],
+          filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         // {
@@ -2176,7 +2307,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2190,7 +2322,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2204,7 +2337,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2218,7 +2352,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2232,7 +2367,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2246,7 +2382,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2260,7 +2397,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2275,7 +2413,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2289,7 +2428,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2303,7 +2443,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2317,7 +2458,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2331,7 +2473,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2345,7 +2488,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2359,21 +2503,23 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
-          name: "045-org-salary-transparency",
+          name: "045-org-culture-matrix",
           inputQuestions: ["question19"],
           labels: [ "I believe that I can learn and grow in this organization -- Total Number", "I believe that I can learn and grow in this organization -- Strongly Disagree", "I believe that I can learn and grow in this organization -- Somewhat Disagree", "I believe that I can learn and grow in this organization -- Neutral", "I believe that I can learn and grow in this organization -- Somewhat Agree", "I believe that I can learn and grow in this organization -- Strongly Agree", "I believe that I can learn and grow in this organization -- Prefer not to answer",  "I feel burned out in this organization -- Total Number", "I feel burned out in this organization -- Strongly Disagree", "I feel burned out in this organization -- Somewhat Disagree", "I feel burned out in this organization -- Neutral", "I feel burned out in this organization -- Somewhat Agree", "I feel burned out in this organization -- Strongly Agree", "I feel burned out in this organization -- Prefer not to answer",  "My manager supports me -- Total Number", "My manager supports me -- Strongly Disagree", "My manager supports me -- Somewhat Disagree", "My manager supports me -- Neutral", "My manager supports me -- Somewhat Agree", "My manager supports me -- Strongly Agree", "My manager supports me -- Prefer not to answer",  "I believe performance reviews contribute to growth and/or advancement in my institution -- Total Number", "I believe performance reviews contribute to growth and/or advancement in my institution -- Strongly Disagree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Somewhat Disagree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Neutral", "I believe performance reviews contribute to growth and/or advancement in my institution -- Somewhat Agree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Strongly Agree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Prefer not to answer",  "Diversity and difference are not celebrated in this organization -- Total Number", "Diversity and difference are not celebrated in this organization -- Strongly Disagree", "Diversity and difference are not celebrated in this organization -- Somewhat Disagree", "Diversity and difference are not celebrated in this organization -- Neutral", "Diversity and difference are not celebrated in this organization -- Somewhat Agree", "Diversity and difference are not celebrated in this organization -- Strongly Agree", "Diversity and difference are not celebrated in this organization -- Prefer not to answer",  "I believe that what I do here is meaningful -- Total Number", "I believe that what I do here is meaningful -- Strongly Disagree", "I believe that what I do here is meaningful -- Somewhat Disagree", "I believe that what I do here is meaningful -- Neutral", "I believe that what I do here is meaningful -- Somewhat Agree", "I believe that what I do here is meaningful -- Strongly Agree", "I believe that what I do here is meaningful -- Prefer not to answer",  "The culture of my workplace negatively affects my mental and/or physical health -- Total Number", "The culture of my workplace negatively affects my mental and/or physical health -- Strongly Disagree", "The culture of my workplace negatively affects my mental and/or physical health -- Somewhat Disagree", "The culture of my workplace negatively affects my mental and/or physical health -- Neutral", "The culture of my workplace negatively affects my mental and/or physical health -- Somewhat Agree", "The culture of my workplace negatively affects my mental and/or physical health -- Strongly Agree", "The culture of my workplace negatively affects my mental and/or physical health -- Prefer not to answer",  "Mistakes are held against you in this organization -- Total Number", "Mistakes are held against you in this organization -- Strongly Disagree", "Mistakes are held against you in this organization -- Somewhat Disagree", "Mistakes are held against you in this organization -- Neutral", "Mistakes are held against you in this organization -- Somewhat Agree", "Mistakes are held against you in this organization -- Strongly Agree", "Mistakes are held against you in this organization -- Prefer not to answer",  "I would recommend this workplace to friends and family -- Total Number", "I would recommend this workplace to friends and family -- Strongly Disagree", "I would recommend this workplace to friends and family -- Somewhat Disagree", "I would recommend this workplace to friends and family -- Neutral", "I would recommend this workplace to friends and family -- Somewhat Agree", "I would recommend this workplace to friends and family -- Strongly Agree", "I would recommend this workplace to friends and family -- Prefer not to answer",  "I don’t feel that I have a voice in decision making in this organization -- Total Number", "I don’t feel that I have a voice in decision making in this organization -- Strongly Disagree", "I don’t feel that I have a voice in decision making in this organization -- Somewhat Disagree", "I don’t feel that I have a voice in decision making in this organization -- Neutral", "I don’t feel that I have a voice in decision making in this organization -- Somewhat Agree", "I don’t feel that I have a voice in decision making in this organization -- Strongly Agree", "I don’t feel that I have a voice in decision making in this organization -- Prefer not to answer",  "My institution provides management and/or leadership training for all supervisors -- Total Number", "My institution provides management and/or leadership training for all supervisors -- Strongly Disagree", "My institution provides management and/or leadership training for all supervisors -- Somewhat Disagree", "My institution provides management and/or leadership training for all supervisors -- Neutral", "My institution provides management and/or leadership training for all supervisors -- Somewhat Agree", "My institution provides management and/or leadership training for all supervisors -- Strongly Agree", "My institution provides management and/or leadership training for all supervisors -- Prefer not to answer",  "People in my organization are held accountable for discrimination and harassment -- Total Number", "People in my organization are held accountable for discrimination and harassment -- Strongly Disagree", "People in my organization are held accountable for discrimination and harassment -- Somewhat Disagree", "People in my organization are held accountable for discrimination and harassment -- Neutral", "People in my organization are held accountable for discrimination and harassment -- Somewhat Agree", "People in my organization are held accountable for discrimination and harassment -- Strongly Agree", "People in my organization are held accountable for discrimination and harassment -- Prefer not to answer",  "I feel like I have to hide some of who I am working in this organization -- Total Number", "I feel like I have to hide some of who I am working in this organization -- Strongly Disagree", "I feel like I have to hide some of who I am working in this organization -- Somewhat Disagree", "I feel like I have to hide some of who I am working in this organization -- Neutral", "I feel like I have to hide some of who I am working in this organization -- Somewhat Agree", "I feel like I have to hide some of who I am working in this organization -- Strongly Agree", "I feel like I have to hide some of who I am working in this organization -- Prefer not to answer"],
           timing: "perRespondentProcessing",
           function: "matrixSum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
+          filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
           filters: [],
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         {
@@ -2382,12 +2528,13 @@ define([], function () {
           labels: ["Total Number",  "My major accomplishments have been acknowledged or recognized ", "I wasn’t given appropriate resources materials or time to execute a job task or responsibility", "I was given opportunities to do work that will likely help me advance", "Someone took credit for my accomplishment", "I developed positive relationships with my coworkers", "Someone I work with was unfairly blamed or criticized for something", "I was unfairly blamed or criticized for something", "Another employee yelled raised their voice or spoke to me in an unprofessional manner", "None of these"],
           timing: "perRespondentProcessing",
           function: "checkboxSum",
-          // filters: ["filterGender","filterRaceAndEthnicity"],
+          filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
           filters: [],
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         // {
@@ -2427,7 +2574,8 @@ define([], function () {
           outputParties: {
             analyst: "true",
             cohort: "true",
-            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
           }
         },
         // {
@@ -3088,6 +3236,7 @@ define([], function () {
       {
         questionType: "radiogroup",
         graphType: "column",
+        normalize: "direct",
         questionName: "Which of the following best describes your current position level in the museum?",
         labels : ["Voluntary (including unpaid internship)", "Entry-level", "Associate/Experienced ", "Manager", "Director", "Executive/Museum Leadership", "Prefer not to answer"],
         data : 
@@ -3127,6 +3276,7 @@ define([], function () {
       {
         questionType: "radiogroup",
         graphType: "column",
+        normalize: "direct",
         questionName: "What type of position do you have at the museum?",
         labels : ["Full-time/ Permanent Employee", "Part-time Employee", "Temporary Employee", "Seasonal Employee", "Paid Intern", "Unpaid Intern", "Apprentice / Fellow", "Prefer not to answer"],
         data : [
@@ -3169,6 +3319,7 @@ define([], function () {
       {
         questionType: "checkbox",
         graphType: "column",
+        normalize: "direct",
         questionName: "Which of the following categories does your current museum position fall into?",
         labels: ["Administration", "Building Operations", "Collections", "Communications", "Public Engagement"],
         data : [
@@ -3199,6 +3350,7 @@ define([], function () {
       {
         questionType: "radiogroup",
         graphType: "column",
+        normalize: "direct",
         questionName: "In what year were you born?",
         labels : ["The Silent Generation (1928-1945)", "Baby Boomers (1946-1964)", "Generation X (1965-1980)", "Millennial (1981-1996)", "Generation Z (1997-2012)"],
         data : [
@@ -3230,6 +3382,7 @@ define([], function () {
         questionType: "radiogroup",
         graphType: "column",
         questionName: "What is your gender?",
+        normalize: "direct",
         labels: ["Man", "Women", "Non-binary and Another Gender"],
         data : [
             {
@@ -3252,6 +3405,7 @@ define([], function () {
         questionType: "radiogroup",
         graphType: "column",
         questionName: "How would you define your sexual orientation?",
+        normalize: "direct",
         labels: ["Heterosexual", "LGBTQ", "Prefer Not To Answer"],
         data : [
             {
@@ -3377,13 +3531,11 @@ define([], function () {
       {
         questionType: "radiogroup",
         graphType: "column",
+        normalize: "local",
         questionName: "What is the highest level of education that you’ve completed?",
         labels : ["Some high school", "High school graduate", "Some college/Associates degree", "Bachelor’s degree", "Master’s degree", "Professional or doctorate degree", "Prefer Not To Answer"],
         data : [
-            {
-              output: "016-demographics-education",
-              value: "1",
-            },
+                  // 1 is total
             {
               output: "016-demographics-education",
               value: "2",
@@ -3408,6 +3560,10 @@ define([], function () {
               output: "016-demographics-education",
               value: "7",
             },
+            {
+              output: "016-demographics-education",
+              value: "8",
+            },
         ],
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
@@ -3415,13 +3571,11 @@ define([], function () {
       {
         questionType: "radiogroup",
         graphType: "column",
+        normalize: "local",
         questionName: "Do you identify as a person with a disability and/or as neuroatypical/neurodivergent?",
         labels: ["Yes", "No", "Prefer Not To Answer"],
         data : [
-            {
-              output: "017-demographics-disability",
-              value: "1",
-            },
+          // 1 is total
             {
               output: "017-demographics-disability",
               value: "2",
@@ -3430,6 +3584,10 @@ define([], function () {
               output: "017-demographics-disability",
               value: "3",
             },
+            {
+              output: "017-demographics-disability",
+              value: "4",
+            },
         ],
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
@@ -3437,13 +3595,11 @@ define([], function () {
       {
         questionType: "radiogroup",
         graphType: "column",
+        normalize: "local",
         questionName: "How are you compensated in this position?",
         labels : ["Annual salary", "Hourly wage", "Stipend", "Voluntary (Unpaid)"],
         data : [
-            {
-              output: "018-salary-and-promotion-compensation-type",
-              value: "1",
-            },
+          // 1 is total
             {
               output: "018-salary-and-promotion-compensation-type",
               value: "2",
@@ -3456,6 +3612,10 @@ define([], function () {
               output: "018-salary-and-promotion-compensation-type",
               value: "4",
             },
+            {
+              output: "018-salary-and-promotion-compensation-type",
+              value: "5",
+            },
         ],
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
@@ -3463,13 +3623,11 @@ define([], function () {
       {
         questionType: "radiogroup",
         graphType: "column",
+        normalize: "local",
         questionName: "Compared to people at similar position levels in my institution, I think my salary is:",
         labels : ["Above others", "About the same as others", "Below others", "N/A"],
         data : [
-            {
-              output: "019-salary-and-promotion-similar-position-institution",
-              value: "1",
-            },
+        // 1 is total
             {
               output: "019-salary-and-promotion-similar-position-institution",
               value: "2",
@@ -3482,6 +3640,10 @@ define([], function () {
               output: "019-salary-and-promotion-similar-position-institution",
               value: "4",
             },
+            {
+              output: "019-salary-and-promotion-similar-position-institution",
+              value: "5",
+            },
         ],
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
@@ -3489,13 +3651,11 @@ define([], function () {
       {
         questionType: "radiogroup",
         graphType: "column",
+        normalize: "local",
         questionName: "Compared to people at other art museums with comparable position levels, I think my salary is:",
         labels : ["Above others", "About the same as others", "Below others"],
         data : [
-            {
-              output: "020-salary-and-promotion-similar-position",
-              value: "1",
-            },
+        // 1 is total
             {
               output: "020-salary-and-promotion-similar-position",
               value: "2",
@@ -3503,6 +3663,10 @@ define([], function () {
             {
               output: "020-salary-and-promotion-similar-position",
               value: "3",
+            },
+            {
+              output: "020-salary-and-promotion-similar-position",
+              value: "4",
             },
         ],
         series : ["cohort","nofilter","tag"],
@@ -3511,14 +3675,12 @@ define([], function () {
       {
         _comment: "id=15",
         questionType: "checkbox",
+        normalize: "local",
         graphType: "column",
         questionName: "Have you ever received any of the following combinations of promotions and pay increases while at your current museum? Select all that apply. (Please consider ONLY pay increases beyond cost of living or inflation adjustment - typically 2-3% per year).",
         labels : ["A simultaneous promotion with title change and a pay increase beyond cost of living","A promotion with title change but no accompanying pay increase beyond cost of living", "A pay increase beyond cost of living without a change in title","None of the above"],
         data : [
-            {
-              output: "021-salary-and-promotion-promotions",
-              value: "1",
-            },
+        // 1 is total
             {
               output: "021-salary-and-promotion-promotions",
               value: "2",
@@ -3530,6 +3692,10 @@ define([], function () {
             {
               output: "021-salary-and-promotion-promotions",
               value: "4",
+            },
+            {
+              output: "021-salary-and-promotion-promotions",
+              value: "5",
             },
         ],
         series : ["cohort","nofilter","tag"],
@@ -3539,6 +3705,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the level of pay.",
+        normalize: "local",
         "labels" : ["1", "2", "3","4", "5"],
         data : [
         // 1 is the total number.
@@ -3570,6 +3737,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the stability and predictability of pay.",
+        normalize: "local",
         "labels" : ["1", "2", "3","4", "5"],
         data : [
         // 7 is the total number.
@@ -3601,6 +3769,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the stability and predictability of hours.",
+        normalize: "local",
         "labels" : ["1", "2", "3","4", "5"],
         data : [
         // 13 is the total number.
@@ -3632,6 +3801,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with your control over hours and/or location (e.g., ability to work flexible hours, work remotely).",
+        normalize: "local",
         "labels" : ["1", "2", "3","4", "5"],
         data : [
         // 19 is the total number.
@@ -3663,6 +3833,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the job security.",
+        normalize: "local",
         "labels" : ["1", "2", "3","4", "5"],
         data : [
         // 25 is the total number.
@@ -3694,6 +3865,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the employee benefits (e.g., health care, retirement).",
+        normalize: "local",
         "labels" : ["1", "2", "3","4", "5"],
         data : [
         // 31 is the total number.
@@ -3725,6 +3897,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the career advancement opportunities (e.g., promotion path, learning new skills).",
+        normalize: "local",
         "labels" : ["1", "2", "3","4", "5"],
         data : [
         // 37 is the total number.
@@ -3756,6 +3929,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with enjoying your day-to-day work (e.g., good coworkers/managers, pleasant work environment, manageable stress level).",
+        normalize: "local",
         "labels" : ["1", "2", "3","4", "5"],
         data : [
         // 43 is the total number.
@@ -3787,6 +3961,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with having a sense of purpose and dignity in your work.",
+        normalize: "local",
         "labels" : ["1", "2", "3","4", "5"],
         data : [
         // 49 is the total number.
@@ -3818,6 +3993,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with having the power to change things about your job that you’re not satisfied with.",
+        normalize: "local",
         "labels" : ["1", "2", "3","4", "5"],
         data : [
         // 55 is the total number.
@@ -3882,6 +4058,7 @@ define([], function () {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "Thinking about the past 12 months in your workplace (or your total tenure if less than 12 months), which of the following 3 emotions do you most associate with working at your museum? Select up to THREE.",
+        normalize: "local",
         "labels" : [ "Content",  "Worried",  "Excited",  "Sad",  "Connected to others",  "Bored",  "Angry",  "Hopeful",  "Disappointed",  "Inspired",  "None of the above",],
         data : [
         // 1 is the total
@@ -3936,6 +4113,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "Have you felt discriminated against or harassed on the basis your gender, sexual orientation, racial or ethnic background, social or economic status, religion, age, or disability while working in your current museum workplace?",
         "labels" : ["All: Yes","All: No","All: Prefer Not To Answer","Men", "Women", "Non-binary and Another Gender","Asian or Asian American","Middle Eastern or North African","Black or African American","Hispanic or Latina/o/x","Native American or Alaska Native","Native Hawaiian or Other Pacific Islander","White or European American","Multiracial","Other Race","Prefer Not To Answer"],
         data : [
@@ -3960,6 +4138,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "How often have you felt discriminated against?",
         "labels" : ["Very frequently (e.g., daily or almost daily)","Often (e.g., a few times a month)","Sometimes (e.g., a few times a year) ","Rarely (e.g., one or two times total)"],
         data : [
@@ -3987,6 +4166,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "Which of the following forms of discrimination and/or harassment, have you experienced in your current museum workplace? Please select all that apply.",
         "labels" : ["Discrimination and/or harassment based on gender (including pregnancy, gender expression, gender identity, etc.)","Discrimination and/or harassment based on sexual orientation","Discrimination and/or harassment based on race and/or ethnicity","Discrimination and/or harassment based on social or economic status","Discrimination and/or harassment based on religion","Discrimination and/or harassment based on age","Discrimination and/or harassment based on disability","Another form of discrimination and/or harassment","I don’t know ",],
         data : [
@@ -4034,6 +4214,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "Have you taken any of the following actions in response to discrimination and/or harassment in your current museum workplace? Please select ALL that apply.",
         "labels" : ["I filed an HR complaint form (i.e., in-person or online)","I talked to an HR staff member who is available to employees","I used an anonymous reporting mechanism","I used an employee complaint hotline","I talked to a neutral employee or manager who can communicate the issues to HR","I used a third-party reporting process (e.g., use of an ombudsman)","I used another reporting mechanism","I followed a union-provided grievance process for reporting","I did something else","I haven’t done anything in response",],
         data : [
@@ -4085,6 +4266,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "How satisfied are you with how HR and /or the museum resolved your complaint(s) overall?",
         "labels" : ["Not at all satisfied","Somewhat satisfied","Very satisfied"],
         data : [
@@ -4108,6 +4290,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "If you have experienced any discrimination or harassment and decided NOT to take action in response, what were your reasons? Select all that apply.",
         "labels" : ["I worried about retaliation from people in leadership at the institution","I worried about retaliation from the person who discriminated against/harassed me","I didn’t think anything would be done about it","I didn’t think anything could be done about it because the person who discriminated against/harassed me is not an employee of the museum (e.g., visitor, board member, artist...)","I didn’t know about what actions I could take","My workplace doesn’t provide any mechanisms to report discrimination and/or harassment","I always reported my experiences of discrimination and harassment","I haven't experienced discrimination or harassment"],
         data : [
@@ -4131,6 +4314,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "Have you ever considered leaving your current museum workplace for another art museum?",
         "labels" : ["Yes","No"],
         data : [
@@ -4150,6 +4334,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName":  "Which of the following reasons made you consider leaving your current museum workplace for another art museum? Select all that apply.",
         "labels" : ["Pay is too low","Other institutions have more flexible work hours","No full-time work is available in this institution","Opportunities for growth at the other museum","Experiences of discrimination or harassment","Lack of opportunities for growth at my museum","Unsafe working conditions","Positive reputation of the other museum","Burnout","Desire to live in a different town or city","Interpersonal issues with other staff members","Poor management","I don’t believe my institution can change for the better","Personal reasons unrelated to my current museum workplace","None of the above",],
         data : [
@@ -4221,6 +4406,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "Have you ever considered leaving the art museum field?",
         "labels" : ["Yes","No"],
         data : [
@@ -4240,6 +4426,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "Which of the following reasons made you consider leaving the art museum field? Select all that apply.",
         "labels" : ["Pay is too low in art museums","Other fields have more flexible work hours","More interested in other fields","Full-time work is unavailable to me in most art museums","Experiences of discrimination or harassment in art museums","Lack of opportunities for growth in art museums","Unsafe working conditions in art museums","Burnout in the art museum field","Exciting opportunities in other fields","Interpersonal issues with other staff members are common in art museums","Poor management in art museums","I don’t believe art museums can change for the better","Personal reasons unrelated to art and/or museums","None of the above",],
         data : [
@@ -4311,6 +4498,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "What kind of role, if any, do you have in your museum’s diversity, equity, and inclusion efforts? Select all that apply.",
         "labels" : ["I personally incorporate principles of diversity, equity, and inclusion in my overall work","I am currently a member of a diversity, equity, and inclusion committee at work","I was previously a member of a diversity, equity, and inclusion committee at work","My position specifically focuses on diversity, equity, and inclusion","None of the above – I am not involved in my museum’s diversity, equity, and inclusion efforts","None of the above – I am not clear about how to get involved in my museum’s diversity, equity, and inclusion efforts","Not applicable – my museum does not have any efforts towards diversity, equity, and inclusion"],
         data : [
@@ -4350,6 +4538,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "Has your museum measured the composition of any of the following groups?",
         "labels" : ["Artists in the collection","Board and/or trustee members","Staff members","Volunteers","None of the above","I don’t know"],
         data : [
@@ -4385,6 +4574,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+         normalize: "local",
         "questionName": "Are you a member, or do you have the option of being a member, of a union as part of your museum job?",
         "labels" : ["Yes, I am a union member for my museum job","No, I have the option to be a union member for my museum job but have not chosen to join","No, a union is not available for my museum job"],
         data : [
@@ -4408,6 +4598,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "Which of the following statements best represent your museum’s post-COVID return-to- work policy, as it applies to you? Select all that apply.",
         "labels" : ["I am/will be working in-person only","I am/will be working in a hybrid setup where the museum chooses how many and which days to work from home and which days to work from the museum","I am/will be working in a hybrid setup where I get to choose how many and which days to work from home and which days to work in the museum","I am/will be working in a hybrid setup where the museum chooses how many days to work from home and how many days to work from the museum and I get to choose which days","I am/will be working from home only","I don’t know much about the museum’s return-to-work plans"],
         data : [
@@ -4443,6 +4634,7 @@ define([], function () {
       {
         "questionType": "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "Which of the following statements best reflect the salary sharing practices of your museum workplace? Select all that apply",
         "labels" : ["My workplace shares the specific salaries of all employees publicly","My union handbook lists salary levels for each job","My workplace shares salary ranges for all positions or levels with employees","My workplace posts salary ranges for each open position","My workplace actively discourages employees from discussing their salaries","None of the above ","I don’t know"],
         data : [
@@ -4479,31 +4671,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: I believe that I can learn and grow in this organization",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 1 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "2",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "3",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "4",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "5",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "6",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "7",
             },
         ],
@@ -4514,31 +4707,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: I feel burned out in this organization",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 8 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "9",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "10",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "11",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "12",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "13",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "14",
             },
         ],
@@ -4549,31 +4743,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: My manager supports me",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 15 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "16",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "17",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "18",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "19",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "20",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "21",
             },
         ],
@@ -4584,31 +4779,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: I believe performance reviews contribute to growth and/or advancement in my institution",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 22 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "23",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "24",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "25",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "26",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "27",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "28",
             },
         ],
@@ -4619,31 +4815,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: Diversity and difference are not celebrated in this organization",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 29 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "30",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "31",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "32",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "33",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "34",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "35",
             },
         ],
@@ -4654,31 +4851,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: I believe that what I do here is meaningful",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 36 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "37",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "38",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "39",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "40",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "41",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "42",
             },
         ],
@@ -4689,31 +4887,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: The culture of my workplace negatively affects my mental and/or physical health",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 43 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "44",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "45",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "46",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "47",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "48",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "49",
             },
         ],
@@ -4724,31 +4923,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: Mistakes are held against you in this organization",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 50 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "51",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "52",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "53",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "54",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "55",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "56",
             },
         ],
@@ -4759,31 +4959,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: I would recommend this workplace to friends and family",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 57 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "58",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "59",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "60",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "61",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "62",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "63",
             },
         ],
@@ -4794,31 +4995,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: I don’t feel that I have a voice in decision making in this organization",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 64 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "65",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "66",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "67",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "68",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "69",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "70",
             },
         ],
@@ -4829,31 +5031,32 @@ define([], function () {
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: My institution provides management and/or leadership training for all supervisors",
         graphType: "column",
         questionType: "radiogroup",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 71 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "72",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "73",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "74",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "75",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "76",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "77",
             },
         ],
@@ -4864,31 +5067,32 @@ define([], function () {
         questionType: "radiogroup",
         graphType: "column",
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: People in my organization are held accountable for discrimination and harassment",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 78 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "79",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "80",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "81",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "82",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "83",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "84",
             },
         ],
@@ -4899,31 +5103,32 @@ define([], function () {
         questionType: "radiogroup",
         graphType: "column",
         "questionName": "Please rate how much you agree or disagree with the following statements in relation to the culture of your current museum workplace: I feel like I have to hide some of who I am working in this organization",
+        normalize: "local",
         "labels" : ["Strongly Disagree","Somewhat Disagree","Neutral","Somewhat Agree","Strongly Agree","Prefer not to answer",],
         data : [
         // 85 is the total
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "86",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "87",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "88",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "89",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "90",
             },
             {
-              output: "045-org-salary-transparency",
+              output: "045-org-culture-matrix",
               value: "91",
             },
         ],
@@ -4938,27 +5143,27 @@ define([], function () {
       //   data : [
       //   // 85 is the total
       //       {
-      //         output: "045-org-salary-transparency",
+      //         output: "045-org-culture-matrix",
       //         value: "86",
       //       },
       //       {
-      //         output: "045-org-salary-transparency",
+      //         output: "045-org-culture-matrix",
       //         value: "87",
       //       },
       //       {
-      //         output: "045-org-salary-transparency",
+      //         output: "045-org-culture-matrix",
       //         value: "88",
       //       },
       //       {
-      //         output: "045-org-salary-transparency",
+      //         output: "045-org-culture-matrix",
       //         value: "89",
       //       },
       //       {
-      //         output: "045-org-salary-transparency",
+      //         output: "045-org-culture-matrix",
       //         value: "90",
       //       },
       //       {
-      //         output: "045-org-salary-transparency",
+      //         output: "045-org-culture-matrix",
       //         value: "91",
       //       },
       //   ],
@@ -4969,6 +5174,7 @@ define([], function () {
         questionType: "radiogroup",
         graphType: "column",
         "questionName": "In the past 12 months, have you experienced any of the following in your museum workplace? Select all that apply.",
+        normalize: "local",
         "labels" : ["My major accomplishments have been acknowledged or recognized ","I wasn’t given appropriate resources, materials, or time to execute a job task or responsibility","I was given opportunities to do work that will likely help me advance","Someone took credit for my accomplishment","I developed positive relationships with my coworkers","Someone I work with was unfairly blamed or criticized for something","I was unfairly blamed or criticized for something","Another employee yelled, raised their voice, or spoke to me in an unprofessional manner","None of these"],
         data : [
         // 1 is the total
@@ -5062,6 +5268,7 @@ define([], function () {
       {
         questionType: "radiogroup",
         graphType: "column",
+        normalize: "local",
         "questionName": "What/Who do you believe has a large impact on your museum leadership’s decisions? Please select all that apply.  ",
         "labels" : ["The museum’s mission, vision, and/or values","The museum board’s priorities","Input from museum staff members","The interests of current museum visitors","The interests of the communities around the museum","None of the above/ I don't know"],
         data : [

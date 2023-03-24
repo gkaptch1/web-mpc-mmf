@@ -1024,22 +1024,25 @@ define(["constants"], function (constants) {
                   //   outputs[output.name][tag][filtername][shareIndex] = sumAndAccumulate(outputs[output.name][filtername][shareIndex],filteredData[filtername][shareIndex]);
                   // }
 
-                  //Find the appropriate cohort for this party and accumulate into their results
-                  // if (output.outputParties.cohort=="true") {
-                  //   // WE MAKE THE ASSUMPTION THAT EACH USER IS IN EXACTLY ONE 
-                  //   if (outputs[output.name][cohort] == undefined) {
-                  //     outputs[output.name][cohort] = {};
-                  //     outputs[output.name][cohort][filtername] = {};
-                  //   }
-                  //   for (cohort of Object.keys(submitters.cohorts)) {
-                  //     if (submitters.cohorts[cohort].includes(partyID)) {
-                  //       if (outputs[output.name][cohort][filtername] == undefined) {
-                  //         outputs[output.name][cohort][filtername] = {};
-                  //       }
-                  //       outputs[output.name][cohort][filtername][shareIndex] = sumAndAccumulate(outputs[output.name][filtername][shareIndex],filteredData[filtername][shareIndex]);
-                  //     }
-                  //   }
-                  // }   
+                  // Find the appropriate cohort for this party and accumulate into their results
+                  if (output.outputParties.cohort=="true") {
+                    for (cohort of Object.keys(submitters.cohorts).sort()) {
+                      if (submitters.cohorts[cohort].includes(partyID)) {
+
+                        if (toEncrypt[output.name][cohort] == undefined) {
+                          toEncrypt[output.name][cohort][filtername] = {};
+                        }
+
+                        if (toEncrypt[output.name][cohort][filtername] == undefined) {
+                          toEncrypt[output.name][cohort][filtername] = {};
+                        }
+                        for (let shareIndex=1; shareIndex<=filterShares.length;shareIndex++) {
+                          toEncrypt[output.name][cohort][filtername][shareIndex] = sumAndAccumulate(toEncrypt[output.name][cohort][filtername][shareIndex],filteredData[filtername][shareIndex]);
+                        }
+                        // toEncrypt[output.name][cohort][filtername][shareIndex] = sumAndAccumulate(toEncrypt[output.name][filtername][shareIndex],filteredData[filtername][shareIndex]);
+                      }
+                    }
+                  }   
                 }
               }
             }
@@ -1184,19 +1187,43 @@ define(["constants"], function (constants) {
 
     if (ordering.questions.length > 0 ) {
 
-      for (outputs of Object.keys(toEncrypt)) {
+      for (outputs of Object.keys(toEncrypt).sort()) {
         stringShares[outputs] = {};
-        for (cohort of Object.keys(toEncrypt[outputs])) {
+        for (cohort of Object.keys(toEncrypt[outputs]).sort()) {
           stringShares[outputs][cohort] = {};
-          stringShares[outputs][cohort]["nofilter"] = [];
-          for (share of toEncrypt[outputs][cohort]["nofilter"]){
-            stringShares[outputs][cohort]["nofilter"].push(share.toString());
+          for (filter of Object.keys(toEncrypt[outputs][cohort]).sort()) {
+            if(filter == "nofilter") {
+              stringShares[outputs][cohort][filter] = [];
+              for (share of toEncrypt[outputs][cohort][filter]){
+                stringShares[outputs][cohort][filter].push(share.toString());
+              }
+            } else {
+              stringShares[outputs][cohort][filter] = {};
+              for(opt of Object.keys(toEncrypt[outputs][cohort][filter]).sort()) {
+                stringShares[outputs][cohort][filter][opt] = [];
+                for (share of toEncrypt[outputs][cohort][filter][opt]){
+                  stringShares[outputs][cohort][filter][opt].push(share.toString());
+                }
+              }
+            }
           }
         }
       }
     }
 
     updateProgress(progressBar, 1);
+
+    // console.log("stringShares");
+
+    // for (outputs of Object.keys(stringShares).sort()) {
+    //   for (cohort of Object.keys(stringShares[outputs]).sort()) {
+    //     for (filt of Object.keys(stringShares[outputs][cohort]).sort()) {
+    //       console.log(""+ outputs + "--" + cohort + "--" +filt + ": " + stringShares[outputs][cohort][filt].toString());
+    //     }
+    //   }
+    // }
+
+    // console.log(stringShares);
 
     console.log("End Computation");
 
