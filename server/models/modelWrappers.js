@@ -132,6 +132,18 @@ var getUserKey = function (session_key, user_key) {
   });
 };
 
+var getUserKeyByPseudonym = function (session_key, pseudonym) {
+  return new Promise(function (resolve, reject) {
+    models.UserKey.findOne({session: session_key,  pseudonymn:pseudonym}, function (err, data) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
+
 // find user keys by session key
 var queryUserKey = function (session_key) {
   return new Promise(function (resolve, reject) {
@@ -352,6 +364,7 @@ module.exports = {
   UserKey: {
     get: getUserKey,
     query: queryUserKey,
+    getByPseudonym: getUserKeyByPseudonym,
     insertMany: insertManyUserKey,
     registerKeyToUser : registerKeyToUser
   },

@@ -54,6 +54,13 @@ module.exports = {
      computationname: joi.string().required()
   }, schemaTemplates.keyPasswordTemplate),
 
+
+  updateSharesByPseudonym: Object.assign({
+     pseudonymn: joi.string().alphanum().required(),
+     computationname: joi.string().required()
+  }, schemaTemplates.keyPasswordTemplate),
+  
+
   getCohortsManage: Object.assign({}, schemaTemplates.keyPasswordTemplate),
 
   createNewCohort: Object.assign({
@@ -84,7 +91,8 @@ module.exports = {
 
   getResultMessage: {
     session: schemaTemplates.sessionKeySchema,
-    userkey: schemaTemplates.userKeySchema
+    userkey: schemaTemplates.userKeySchema,
+    accesscode: joi.string().required()
   },
 
   analystBulkUpdateResultMessages : Object.assign({

@@ -905,8 +905,11 @@ define(["constants"], function (constants) {
                   if (outputs[output.name]["tags"] == undefined) {
                     outputs[output.name]["tags"] = {};
                   }
+                  if (outputs[output.name]["tags"][tag] == undefined) {
+                    outputs[output.name]["tags"][tag] = {};
+                  }
                   if (partyTags.includes(tag)) {
-                    outputs[output.name]["tags"][tag] = sumAndAccumulate(outputs[output.name]["tags"][tag], newShares[partyID][inputQuestion]);
+                    outputs[output.name]["tags"][tag]["nofilter"] = sumAndAccumulate(outputs[output.name]["tags"][tag]["nofilter"], newShares[partyID][inputQuestion]);
                   }
                   // toEncrypt[output.name][tag]["nofilter"] = sumAndAccumulate(toEncrypt[output.name][tag]["nofilter"], newShares[partyID][inputQuestion]);
                 }
@@ -938,8 +941,11 @@ define(["constants"], function (constants) {
                   if (outputs[output.name]["tags"] == undefined) {
                     outputs[output.name]["tags"] = {};
                   }
+                  if (outputs[output.name]["tags"][tag] == undefined) {
+                    outputs[output.name]["tags"][tag] = {};
+                  }
                   if (partyTags.includes(tag)) {
-                    outputs[output.name]["tags"][tag] = sumAndAccumulate(outputs[output.name]["tags"][tag], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
+                    outputs[output.name]["tags"][tag]["nofilter"] = sumAndAccumulate(outputs[output.name]["tags"][tag]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
                   }
                   // toEncrypt[output.name][tag]["nofilter"] = sumAndAccumulate(toEncrypt[output.name][tag]["nofilter"], shares.questions.slice(indexMap[inputQuestion]['first'], indexMap[inputQuestion]['first'] + indexMap[inputQuestion]['length']));
                 }
@@ -1013,16 +1019,28 @@ define(["constants"], function (constants) {
                 for (let shareIndex=1; shareIndex<=filterShares.length;shareIndex++) {
                   outputs[output.name][filtername][shareIndex] = sumAndAccumulate(outputs[output.name][filtername][shareIndex],filteredData[filtername][shareIndex]);
 
-                  // Below is code to accumulate filtered data into tags and cohorts, which I dont think we are planning on doing.
-
                   // Also accumulate into all the relevant tags
-                  // for ( tag of output.outputParties.tags ) {
-                  //   if (outputs[output.name][tag] == undefined) {
-                  //     outputs[output.name][tag] = {};
-                  //     outputs[output.name][tag][filtername] = {};
-                  //   }
-                  //   outputs[output.name][tag][filtername][shareIndex] = sumAndAccumulate(outputs[output.name][filtername][shareIndex],filteredData[filtername][shareIndex]);
-                  // }
+                  for ( tag of output.outputParties.tags ) {
+                    if (outputs[output.name]["tags"][tag] == undefined) {
+                      outputs[output.name]["tags"][tag] = {};
+                    }
+                    if (outputs[output.name]["tags"][tag][filtername] == undefined) {
+                      outputs[output.name]["tags"][tag][filtername] = {};
+                    }
+                    if (partyTags.includes(tag)) {
+                      outputs[output.name]["tags"][tag][filtername][shareIndex] = sumAndAccumulate(outputs[output.name]["tags"][tag][filtername][shareIndex],filteredData[filtername][shareIndex]);
+
+                      // if(tag === "Collecting" && output.name === "045-org-culture-matrix")
+                      // {
+                      //   resultone = await openValues(jiff_instance, filteredData[filtername][shareIndex], [1]);
+                      //   console.log("PartyID "+ partyID+ "--" + filtername + "--" + shareIndex + "--filterShares: " + resultone.toString());
+                      //   resulttwo = await openValues(jiff_instance, outputs[output.name]["tags"][tag][filtername][shareIndex], [1]);
+                      //   console.log("Acummulated into "+ output.name+ "--tags--" + tag+ "--" + filtername + "--" + shareIndex + ": " + resulttwo.toString());
+                      // }
+                    }
+                    
+
+                  }
 
                   // Find the appropriate cohort for this party and accumulate into their results
                   if (output.outputParties.cohort=="true") {
@@ -1148,9 +1166,25 @@ define(["constants"], function (constants) {
               opened_outputs[output][filter] = {};
             }
             for(tag of Object.keys(outputs[output][filter]).sort()) {
-              let result = await openValues(jiff_instance, outputs[output][filter][tag], [1]);
-              opened_outputs[output][filter][tag] = result;
-              console.log(""+ output+ "--" + filter + "--"+ tag +": " + result.toString());
+              if(opened_outputs[output][filter][tag] == undefined) {
+                opened_outputs[output][filter][tag] = {};
+              }
+              for(tagfilter of Object.keys(outputs[output][filter][tag]).sort()) {
+                if(tagfilter == "nofilter") {
+                  let result = await openValues(jiff_instance, outputs[output][filter][tag][tagfilter], [1]);
+                  opened_outputs[output][filter][tag][tagfilter] = result;
+                  console.log(""+ output+ "--" + filter + "--"+ tag + "--" +  tagfilter +": " + result.toString());
+                } else {
+                  if(opened_outputs[output][filter][tag][tagfilter] == undefined) {
+                    opened_outputs[output][filter][tag][tagfilter] = {};
+                  }
+                  for(opt of Object.keys(outputs[output][filter][tag][tagfilter]).sort()) {
+                    let result = await openValues(jiff_instance, outputs[output][filter][tag][tagfilter][opt], [1]);
+                    opened_outputs[output][filter][tag][tagfilter][opt] = result;
+                    console.log(""+ output+ "--" + filter + "--"+ tag + "--" +  tagfilter + "--" + opt +": " + result.toString());
+                  }
+                }
+              }
             }
           } else {
             opened_outputs[output][filter] = {};

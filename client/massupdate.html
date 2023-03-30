@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ organization }}</title>
+  <link rel="icon" type="image" href="{{ logo }}" alt="{{ organization }} logo">
+
+  <script type="text/javascript">
+    var require = {
+      paths: {
+        table_template: '{{ table_template }}'
+      }
+    }
+  </script>
+
+  <script type="text/javascript" src="app/config/common.js"></script>
+  <script type="text/javascript" src="app/config/jiff.js"></script>
+  <script data-main="app/massupdate" src="app/vendor/require.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.0/ladda-themeless.min.css"
+        integrity="sha256-d7VZTlP9P3ZTCZ3Bkl8aGZ/+Vs4i+bpcOGNfibU7+LU=" crossorigin="anonymous"/>
+  <link rel="stylesheet" type="text/css" href="styles/handsontable.full.min.css">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.10.0/css/alertify.min.css"
+        integrity="sha256-bNEFYRlNlnu0CH4DIKCXv0F6JVl/DdA2M9XVZn317q0=" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.10.0/css/themes/bootstrap.min.css"
+        integrity="sha256-vt37wNLVK8ICNWGrl+1MLb+pjq33sn6v37Q/7OPgkSU=" crossorigin="anonymous"/>
+
+
+  <link rel="stylesheet" href="/styles/style.css">
+
+  <style type="text/css">
+
+  </style>
+
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Trusted Party<br/>
+      <small>Aggregate Data Update</small>
+    </h1>
+    <div id="logos">
+      <img src="{{ logo }}" alt="{{ organization}} Logo"/>
+      <img src="images/bu.gif" alt="BU Logo"/>
+    </div>
+  </div>
+</header>
+<div id="shadow" class="ss-style-multitriangles"></div>
+
+<main id="content" class="container">
+
+  <div class="row">
+    <section id="session-update-area" class="card col-md-10 col-md-offset-1">
+      <h2 class="text-center">Update Organization Report For Party Outputs</h2>
+      <p class="text-center">Please make sure you have the correct {{ session_key }}, session password, and private key.</p>
+      <hr/>
+      <div class="row">
+        <div class="col-md-6">
+          <form>
+            <div class="form-group">
+              <label class="control-label" for="session">{{ session_key }}</label>
+              <input type="text" id="session" class="form-control" placeholder="{{ session_key }}"
+                     pattern="^[a-zA-Z0-9]{26}$" autocomplete="off" required/>
+              <span id="session-success" class="success-icon glyphicon glyphicon-ok form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="session-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="session-fail-help"
+                    class="fail-help help-block hidden">Please input the 26-character {{ session_key }}.</span>
+              <span id="session-fail-custom-help"
+                    class="fail-custom help-block hidden"></span>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="session-password">Session Password</label>
+              <input type="password" id="session-password" class="form-control" placeholder="Session Password"
+                     pattern="^[a-zA-Z0-9]{26}$"
+                     autocomplete="off" required>
+              <span id="session-password-success"
+                    class="success-icon glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
+              <span id="session-password-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="session-password-fail-help" class="fail-help help-block hidden">Please input the 26-character session password</span>
+              <span id="session-password-fail-custom-help" class="fail-custom help-block hidden"></span>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="computationname">Computation Name</label>
+              <input type="text" id="computationname" class="form-control" placeholder="Session Password"
+                     pattern="^[a-zA-Z0-9]{26}$"
+                     autocomplete="off" required>
+              <span id="computationname-success"
+                    class="success-icon glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
+              <span id="computationname-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="computationname-fail-help" class="fail-help help-block hidden">Please input the 26-character session password</span>
+              <span id="computationname-fail-custom-help" class="fail-custom help-block hidden"></span>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="savepassword">Computation Password</label>
+              <input type="password" id="savepassword" class="form-control" placeholder="Session Password"
+                     pattern="^[a-zA-Z0-9]{26}$"
+                     autocomplete="off" required>
+              <span id="savepassword-success"
+                    class="success-icon glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
+              <span id="savepassword-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+                    aria-hidden="true"></span>
+              <span id="savepassword-fail-help" class="fail-help help-block hidden">Please input the 26-character session password</span>
+              <span id="savepassword-fail-custom-help" class="fail-custom help-block hidden"></span>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div id="drop-area">
+            Drag and drop your private key here
+            <br/>
+            <p>&mdash;or&mdash;</p><br/>
+            <button id="choose-file-button" class="btn btn-primary">Choose file</button>
+          </div>
+          <input type="file" id="choose-file" accept=".pem">
+        </div>
+        <div class="col-md-6">
+          <div id="submit"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="progress">
+            <div id="unmask-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="70"
+                 aria-valuemin="0" aria-valuemax="100" style="width:0;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+</body>
+</html>

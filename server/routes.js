@@ -50,6 +50,7 @@ module.exports = [
   // Adding the ability to retrieve all of the user public keys
   { url: '/get_client_public_keys', route: clientURLsRoutes.getClientKeys, validation: validation.getClientKeys, authentication: auth.password },
   { url: '/update_shares', route: clientURLsRoutes.updateShares, validation: validation.updateShares, authentication: auth.password },
+  { url: '/update_shares_by_pseudonym', route: clientURLsRoutes.updateSharesByPseudonym, validation: validation.updateSharesByPseudonym, authentication: auth.password },
 
   { url: '/bulk_update_result_messages', route: clientURLsRoutes.analystBulkUpdateResultMessages, validation: validation.analystBulkUpdateResultMessages, authentication: auth.password },
     // Adding the ability for clients to pull all their encrypted shares

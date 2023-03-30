@@ -280,18 +280,81 @@ module.exports.updateShares = function (context, body, res) {
   });
 };
 
+// endpoint for returning previously created client keys
+module.exports.updateSharesByPseudonym = function (context, body, res) {
+  // TODO actually update the shares in the database here by getting our own shares
+
+  // Password verified already by authentication!
+  var promise = modelWrappers.UserKey.getByPseudonym(body.session, body.pseudonymn);  
+  promise.then(function (data) {
+    console.log(data);
+
+    // Go get the save state that we stored for this computation
+    modelWrappers.SaveState.get(body.session, "server", body.computationname).then(function (savestateobject) {
+
+      let serverMessages = JSON.parse(savestateobject.savestatestring);
+
+      var sharesForClient = {};
+      // Go get the struct that we need to send the client
+      for (output of table_template.computation.outputs) {
+
+        if(output.timing != "perRespondentProcessing") {
+          continue;
+        }
+
+        if (output.outputParties.cohort == "true") {
+          if (sharesForClient[output.name] == undefined) {
+            sharesForClient[output.name] = {};
+          }
+          sharesForClient[output.name][data.cohort] = serverMessages.shares[output.name][data.cohort];
+        }
+      }
+
+      modelWrappers.ResultMessage.server.update({_id:data.session+data.userkey,  session:data.session, userkey:data.userkey, pseudonymn:data.pseudonymn},JSON.stringify(sharesForClient)).then( function(resultwewillignore) {
+        console.log('Result messages updated: ', body.session, body.pseudonymn);
+        res.json({ key: data.pub_key,  pseudonymn: data.pseudonymn, cohort: data.cohort});
+      }).catch(function (err) {
+        console.log('Error in getting client keys', err);
+        res.status(500).send('Error getting client keys.')
+      });
+    }).catch(function (err) {
+      console.log('Error in getting client keys', err);
+      res.status(500).send('Error getting client keys.')
+    });
+  }).catch(function (err) {
+    console.log('Error in getting client keys', err);
+    res.status(500).send('Error getting client keys.')
+  });
+};
 
 // endpoint for returning previously created client result messages
 module.exports.getResultMessage = function (context, body, res) {
-  var promise = modelWrappers.ResultMessage.client.get({_id: body.session + body.userkey});
-  promise.then(function (data) {
-    // console.log(data.servermessages);
-    // console.log(data.analystmessages);
-    res.json({ servermessages: data.servermessages, analystmessages:data.analystmessages });
-  }).catch(function (err) {
-    console.log('Error in getting result message', err);
-    res.status(500).send('Error in getting result message.')
-  });
+
+  if(body.accesscode != "!MMFearlyACCESS2023!") {
+      // res.status(500).send('Bad Access Code.')
+      res.json({success: "false"});
+  } else {
+
+
+    var getuserpromise = modelWrappers.UserKey.get(body.session, body.userkey);
+
+    getuserpromise.then( function(userdata) {
+
+      var promise = modelWrappers.ResultMessage.client.get({_id: body.session + body.userkey});
+      promise.then(function (data) {
+        // console.log(data.servermessages);
+        // console.log(data.analystmessages);
+        res.json({ servermessages: data.servermessages, analystmessages:data.analystmessages, cohort: userdata.cohort, success: "true" });
+      }).catch(function (err) {
+        console.log('Error in getting result message', err);
+        res.status(500).send('Error in getting result message.')
+      });
+    }).catch(function (err) {
+        console.log('Error in getting result message', err);
+        res.status(500).send('Error in getting result message.')
+    });
+  }
+
 };
 
 

@@ -41,6 +41,11 @@ module.exports = function (app) {
     res.render('update.html', config.client);
   });
 
+  app.get('/massupdate', function (req, res) {
+    // /client/massupdate.html
+    res.render('massupdate.html', config.client);
+  });
+
   app.get('/subscribe', function (req, res) {
     // /client/cohortresults.html
     res.render('subscribe.html', config.client);

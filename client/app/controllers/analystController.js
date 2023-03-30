@@ -163,6 +163,21 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
       });
   }
 
+  function updateSinglePartySharesByPseudonym(session, password, pseudonym, computationname) {
+    return $.ajax({
+      type: 'POST',
+      url: '/update_shares_by_pseudonym',
+      contentType: 'application/json',
+      data: JSON.stringify({session: session, password: password, pseudonymn:pseudonym, computationname:computationname})
+    })
+      .then(function (resp) {
+        return resp;
+      })
+      .catch(function (err) {
+        throw new Error(err.responseText);
+      });
+  }
+
   function generateSession(title, description) {
     if (title == null || description == null || title === '' || description === '') {
       alertHandler.error('Session title and description are required');
@@ -288,6 +303,7 @@ define(['pki', 'alertHandler'], function (pki, alertHandler) {
     postSaveState: postSaveState,
     getSaveState: getSaveState,
     updateSinglePartyShares: updateSinglePartyShares,
+  updateSinglePartySharesByPseudonym: updateSinglePartySharesByPseudonym,
     START: 'START',
     PAUSE: 'PAUSE',
     STOP: 'STOP'
