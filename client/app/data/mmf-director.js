@@ -14,7 +14,7 @@ define([], function () {
       },
       outputs: [
         {
-          name: "director-salary-source",
+          name: "001-director-salary-source",
           inputQuestions: ["question1"],
           labels : ["Total Number", "The general budget of my museum","An endowment for a named position","Another form of endowment","A municipality","A university","Other"],
           timing: "perRespondentProcessing",
@@ -22,12 +22,12 @@ define([], function () {
           filters: [],
           outputParties: {
             analyst: "true",
-            cohort: "false",
-            tags: [],
+            cohort: "true",
+            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
           },
         },
         {
-          name: "employee-salary-percentage",
+          name: "002-employee-salary-percentage",
           inputQuestions: ["question2"],
           labels : ["Total Number","Percentage"],
           timing: "perRespondentProcessing",
@@ -36,12 +36,12 @@ define([], function () {
           filters: [],
           outputParties: {
             analyst: "true",
-            cohort: "false",
-            tags: [],
+            cohort: "true",
+            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
           },
         },
         {
-          name: "board-member-contribution-percentage",
+          name: "003-board-member-contribution-percentage",
           inputQuestions: ["question3"],
           labels : ["Total Number","Percentage"],
           timing: "perRespondentProcessing",
@@ -50,12 +50,12 @@ define([], function () {
           filters: [],
           outputParties: {
             analyst: "true",
-            cohort: "false",
-            tags: [],
+            cohort: "true",
+            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
           },
         },
         {
-          name: "know-gender-of-board",
+          name: "004-know-gender-of-board",
           inputQuestions: ["question4"],
           labels : ["Total Number","Yes","No"],
           timing: "perRespondentProcessing",
@@ -64,12 +64,12 @@ define([], function () {
           filters: [],
           outputParties: {
             analyst: "true",
-            cohort: "false",
-            tags: [],
+            cohort: "true",
+            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
           },
         },
         {
-          name: "gender-of-board",
+          name: "005-gender-of-board",
           inputQuestions: ["question5"],
           labels : ["Number of Answers","Woman","Number of Answers","Man","Number of Answers","Non-binary/genderqueer/third gender","Number of Answers","Another Gender"],
           timing: "perRespondentProcessing",
@@ -77,8 +77,8 @@ define([], function () {
           filters: [],
           outputParties: {
             analyst: "true",
-            cohort: "false",
-            tags: [],
+            cohort: "true",
+            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
           },
         },
         // {
@@ -91,12 +91,12 @@ define([], function () {
         //   filters: [],
         //   outputParties: {
         //     analyst: "true",
-        //     cohort: "false",
+        //     cohort: "true",
         //     tags: [],
         //   },
         // },
         {
-          name: "university-affiliated",
+          name: "006-university-affiliated",
           inputQuestions: ["question7"],
           labels : ["Total Number","Yes","No"],
           timing: "perRespondentProcessing",
@@ -104,12 +104,12 @@ define([], function () {
           filters: [],
           outputParties: {
             analyst: "true",
-            cohort: "false",
-            tags: [],
+            cohort: "true",
+            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
           },
         },
         {
-          name: "governance-structure",
+          name: "007-governance-structure",
           inputQuestions: ["question8"],
           labels : ["Total Number","Independent Governance Board","Same Board as the University"],
           timing: "perRespondentProcessing",
@@ -117,12 +117,182 @@ define([], function () {
           filters: [],
           outputParties: {
             analyst: "true",
-            cohort: "false",
-            tags: [],
+            cohort: "true",
+            tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
           },
         },
       ],
     },
+    visualization : [
+      {
+        section_title: "Results from Director Survey",
+        charts: [
+          {
+            questionType: "radiogroup",
+            graphType: "column",
+            normalize: "local",
+            questionName: "Through what group or fund is your salary as a museum director predominantly (or wholly) paid?",
+            labels : ["The general budget of my museum","An endowment for a named position","Another form of endowment","A municipality","A university","Other"],
+            data :
+              [
+                // 1 is total
+                {
+                  output: "001-director-salary-source",
+                  value: "2",
+                },
+                {
+                  output: "001-director-salary-source",
+                  value: "3",
+                },
+                {
+                  output: "001-director-salary-source",
+                  value: "4",
+                },
+                {
+                  output: "001-director-salary-source",
+                  value: "5",
+                },
+                {
+                  output: "001-director-salary-source",
+                  value: "6",
+                },
+                {
+                  output: "001-director-salary-source",
+                  value: "7",
+                },
+              ],
+            series : ["cohort","nofilter","tag"],
+            seriesLabel : ["My Organization", "All Museums", "Tag"],
+          },
+          {
+            questionType: "radiogroup",
+            graphType: "column",
+            normalize: "local",
+            questionName: "In your last complete fiscal year, approximately what proportion (%) of your annual budget was allocated to staff compensation and benefits? (Please exclude any non-numeric characters)",
+            labels : ["mean percentage"],
+            data :
+              [
+                // 1 is total
+                {
+                  output: "002-employee-salary-percentage",
+                  value: "2",
+                },
+              ],
+            series : ["cohort","nofilter","tag"],
+            seriesLabel : ["My Organization", "All Museums", "Tag"],
+          },
+          {
+            questionType: "radiogroup",
+            graphType: "column",
+            normalize: "local",
+            questionName: "For your last complete fiscal year, approximately what proportion (%) of your organization’s revenue was directly contributed by board members? (Please exclude any non-numeric characters)",
+            labels : ["mean"],
+            data :
+              [
+                // 1 is total
+                {
+                  output: "003-board-member-contribution-percentage",
+                  value: "2",
+                },
+              ],
+            series : ["cohort","nofilter","tag"],
+            seriesLabel : ["My Organization", "All Museums", "Tag"],
+          },
+          {
+            questionType: "radiogroup",
+            graphType: "column",
+            normalize: "local",
+            questionName: "Do you know the gender, race, and ethnicity of each of your board members?",
+            labels : ["Yes","No"],
+            data :
+              [
+                // 1 is total
+                {
+                  output: "004-know-gender-of-board",
+                  value: "2",
+                },
+                {
+                  output: "004-know-gender-of-board",
+                  value: "3",
+                },
+              ],
+            series : ["cohort","nofilter","tag"],
+            seriesLabel : ["My Organization", "All Museums", "Tag"],
+          },
+          {
+            questionType: "radiogroup",
+            graphType: "column",
+            normalize: "local",
+            questionName: "Keeping in mind just your board members who are on the Finance and/or Executive committees, how many members of each gender do you have? Please mark 0 where applicable in the categories below.",
+            labels : ["Number of Answers","Woman","Number of Answers","Man","Number of Answers","Non-binary/genderqueer/third gender","Number of Answers","Another Gender"],
+            data :
+              [
+                // 1 is total
+                {
+                  output: "005-gender-of-board",
+                  value: "2",
+                },
+                {
+                  output: "005-gender-of-board",
+                  value: "4",
+                },
+                {
+                  output: "005-gender-of-board",
+                  value: "6",
+                },
+                {
+                  output: "005-gender-of-board",
+                  value: "8",
+                },
+              ],
+            series : ["cohort","nofilter","tag"],
+            seriesLabel : ["My Organization", "All Museums", "Tag"],
+          },
+          {
+            questionType: "radiogroup",
+            graphType: "column",
+            normalize: "local",
+            questionName: "Is your museum part of a university or college?",
+            labels : ["Yes","No"],
+            data :
+              [
+                // 1 is total
+                {
+                  output: "006-university-affiliated",
+                  value: "2",
+                },
+                {
+                  output: "006-university-affiliated",
+                  value: "3",
+                },
+              ],
+            series : ["cohort","nofilter","tag"],
+            seriesLabel : ["My Organization", "All Museums", "Tag"],
+          },
+          {
+            questionType: "radiogroup",
+            graphType: "column",
+            normalize: "local",
+            questionName: "What’s the governance structure of your museum?",
+            labels : ["Independent Governance Board","Same Board as the University"],
+            data :
+              [
+                // 1 is total
+                {
+                  output: "007-governance-structure",
+                  value: "2",
+                },
+                {
+                  output: "007-governance-structure",
+                  value: "3",
+                },
+              ],
+            series : ["cohort","nofilter","tag"],
+            seriesLabel : ["My Organization", "All Museums", "Tag"],
+          },
+        ],
+      },
+    ],
     tables: [],
     survey: {
       pages: [
