@@ -598,7 +598,8 @@ define(["constants"], function (constants) {
       squaresSums,
       productSums,
       questions = null,
-      usability = {};
+      usability = {},
+      tableTags = {};
 
 
     // Temporary variables
@@ -1094,34 +1095,50 @@ define(["constants"], function (constants) {
 
 
     if (ordering.tables.length > 0 ) {
+
+      toEncrypt = {}
+
       for (i = 0; i < submitters["all"].length; i++) {
         var partyID = submitters["all"][i];
 
-        jiff_instance.start_barrier();
+        // jiff_instance.start_barrier();
 
         shares = await getShares(jiff_instance, partyID, ordering, server_mailbox_hook);
-
-        // let result = await openValues(jiff_instance, shares.shares.slice(0,25), [1]);
-        // let result = await openValuesWithLabel(jiff_instance, shares.shares, [1], "openSharesForParty" + partyID);
-        // console.log("Opening shares for party "+ partyID+ ": " + result.toString());
 
         sums['all'] = sumAndAccumulate(sums['all'], shares.shares);
         squaresSums['all'] = sumAndAccumulate(squaresSums['all'], shares.squares);
 
-        await jiff_instance.end_barrier(); // Add a manual sync to make sure we don't get too far ahead of ourselves in the first iteration
+
+        //Sum into the relevant tag
+        for (cohort of Object.keys(submitters.cohorts).sort()) {
+          if (submitters.cohorts[cohort].includes(partyID)) {
+
+            //Sum into the cohort data (to feed results back to the submitter)
+            toEncrypt[cohort] = sumAndAccumulate(toEncrypt[cohort], shares.shares);
+
+
+            // console.log("" + partyID + " is in cohort " + cohort + " (name: + " + table_template.cohorts[cohort-1].name +") ");
+            for(tag of table_template.cohorts[cohort-1].tags) {
+              tableTags[tag] = sumAndAccumulate(tableTags[tag], shares.shares);
+            }
+          }
+        }
+
+
+        // await jiff_instance.end_barrier(); // Add a manual sync to make sure we don't get too far ahead of ourselves in the first iteration
 
         updateProgress(progressBar, (.95*i)/submitters["all"].length);      
 
 
-        // let resulttwo = await openValues(jiff_instance,  sums['all'].slice(0,25), [1]);
-        // let resulttwo = await openValuesWithLabel(jiff_instance,  sums['all'], [1], "openSharesPostAccumulation" + partyID);
-        // console.log("Opening Aggregation after party "+ partyID+ ": " + resulttwo.toString());
+
       }
 
       sums['all'] = await openValues(jiff_instance, sums['all'], [1]);
       squaresSums['all'] = await openValues(jiff_instance, squaresSums['all'], [1]);
-      // console.log("Sums: " + sums['all'].toString());
-
+      for(tag of Object.keys(tableTags)) {
+        tableTags[tag] = await openValues(jiff_instance, tableTags[tag], [1]);
+        console.log("Tags--" + tag +  ": " + tableTags[tag].toString());
+      }
     }
 
 
@@ -1261,15 +1278,28 @@ define(["constants"], function (constants) {
 
     console.log("End Computation");
 
-    // Put results in object
-    return {
-      sums: sums,
-      squaresSums: squaresSums,
-      productSums: productSums,
-      questions: opened_outputs,
-      usability: usability,
-      shares:stringShares,
-    };
+    if (ordering.tables.length > 0 ) {
+
+      // Put results in object
+      return {
+        sums: sums,
+        squaresSums: squaresSums,
+        productSums: productSums,
+        questions: opened_outputs,
+        usability: usability,
+        shares:stringShares,
+        tableTags:tableTags
+      };
+    } else {
+      return {
+        sums: sums,
+        squaresSums: squaresSums,
+        productSums: productSums,
+        questions: opened_outputs,
+        usability: usability,
+        shares:stringShares,
+      };
+    }
   };
 
   // Return format:

@@ -84,7 +84,15 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
 
               analystController.getExistingCohorts(sessionKey, sessionPass).then(function (cohortMapping) {
                 tableController.saveTables(result['averages'], sessionKey, 'Averages', result['cohorts'], cohortMapping);
-                tableController.saveTables(result['deviations'], sessionKey, 'Standard_Deviations', result['cohorts'], cohortMapping);  
+                tableController.saveTables(result['deviations'], sessionKey, 'Standard_Deviations', result['cohorts'], cohortMapping);
+
+                if(rawresults.tableTags != undefined) {
+                  tableController.saveTagTables(rawresults.tableTags, sessionKey);
+                  // for(tagresults of Object.keys(rawresults.tableTags)) {
+                  //   console.log(rawresults.tableTags[tagresults].toString());
+                  //   tableController.saveTables(rawresults.tableTags[tagresults], sessionKey, tagresults , result['cohorts'], cohortMapping);
+                  // }
+                }  
               });
 
 

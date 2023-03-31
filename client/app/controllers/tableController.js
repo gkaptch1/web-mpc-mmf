@@ -978,6 +978,19 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
     filesaver.saveAs(new Blob([joined], {type: 'text/plain;charset=utf-8'}), 'Aggregate_' + title + '_' + session + '.csv');
   }
 
+
+  function saveTagTables(tagdata, session) {
+
+    let row_csv = [];
+
+    for(tag of Object.keys(tagdata)) {
+      row_csv.push(tag + "," + tagdata[tag].toString());
+    }
+
+
+    filesaver.saveAs(new Blob([row_csv.join('\n\n')], {type: 'text/plain;charset=utf-8'}), 'TagData_' + session + '.csv');
+  }
+
   function createTableElems(tables, tablesDiv) {
 
     var tablesArea = $(tablesDiv);
@@ -1171,6 +1184,7 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
     constructDataTables: constructDataTables,
     fillData: fillData,
     saveTables: saveTables,
+    saveTagTables: saveTagTables,
     saveQuestions: saveQuestions,
     saveUsability: saveUsability,
     saveLinearRegressions: saveLinearRegressions,

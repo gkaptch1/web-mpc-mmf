@@ -22,7 +22,7 @@ define([], function () {
         //the first is the name of the row, the second is the name of the column
         operations: {
           SUM: true,
-          STD: true,
+          STD: null,
           LIN: null,
         },
         cohortOperations: { SUM: true },
@@ -109,7 +109,7 @@ define([], function () {
       {
         name: "Table 2 - In the past calendar year, how many full-time staff in your organization received an annual salary/compensation of...",
         element: "ft-comp",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 150,
@@ -198,7 +198,7 @@ define([], function () {
       {
         name: "Table 3 - In the past calendar year, how many part-time staff, seasonal staff, temporary staff, and paid interns in your organization received an annual salary/compensation of...",
         element: "pt-comp",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 150,
@@ -287,7 +287,7 @@ define([], function () {
       {
         name: "Table 4 - In the past calendar year, how many staff received a promotion (with title change and pay increase beyond cost of living) that resulted in a salary within each of the following pay levels?",
         element: "promotion-comp",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 150,
@@ -384,7 +384,7 @@ define([], function () {
       {
         name: "Table 5 - Over the past calendar year, how many staff members were hired by your organization at pay level...",
         element: "hired-comp",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 150,
@@ -481,7 +481,7 @@ define([], function () {
       {
         name: "Table 6 - In the past TWO calendar years (2020 and 2021), how many full-time regular employees have been hired by your organization?",
         element: "hires",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -543,7 +543,7 @@ define([], function () {
       {
         name: "Table 7 - How many of your recent full-time regular hires from the last two years (from Table 6 above) still work for your organization?",
         element: "retentions",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -609,7 +609,7 @@ define([], function () {
       {
         name: "Table 8 - Are new employees required to sign binding arbitration or confidentiality agreements during their onboarding process (e.g., in an employment letter, employee handbook)?",
         element: "nda",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -679,7 +679,7 @@ define([], function () {
       {
         name: "Table 9 - Over the past calendar year, how many staff members departed your organization (voluntary or involuntary) at pay level:",
         element: "departed-comp",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 150,
@@ -776,7 +776,7 @@ define([], function () {
       {
         name: "Table 10 - How many of those staff who departed your organization (voluntary or involuntary) over the past calendar year signed NDAs (Non-Disclosure Agreements)?",
         element: "nda-departures",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -838,7 +838,7 @@ define([], function () {
       {
         name: "Table 11 - Is any portion of your employee workforce unionized?",
         element: "unionization",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -907,7 +907,7 @@ define([], function () {
       {
         name: "Table 12 - If your employee workforce is unionized, in what year was the union first established? ",
         element: "unionization-year",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -968,7 +968,7 @@ define([], function () {
       {
         name: "Table 13 - Has your organization measured the composition of any of the following groups with respect to gender, race, and ethnicity within the last 3 years? Select all that apply.",
         element: "measured",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -1050,7 +1050,7 @@ define([], function () {
       {
         name: "Table 14 - Which of the following benefits does your organization provide for the following types of employees? Select all that apply.",
         element: "benefits",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -1196,7 +1196,7 @@ define([], function () {
       {
         name: "Table 15 - Which of the following statements best reflect the salary sharing practices of your museum? Select all that apply.",
         element: "salarysharing",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -1277,7 +1277,7 @@ define([], function () {
       {
         name: "Table 16 - What kind of reporting mechanisms for workplace disputes, harassment, or discrimination are currently in place at your organization? Select all that apply.",
         element: "harassment",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -1371,7 +1371,7 @@ define([], function () {
       {
         name: "Table 17 - In the past calendar year, how many staff (please consider ALL staff members, including Full-Time and Part-Time) have formally and/or informally expressed concern or dissatisfaction related to the following topics.  If you don't track informal complaints, please make your best estimate.",
         element: "complaints",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 150,
@@ -1452,7 +1452,7 @@ define([], function () {
       {
         name: "Table 18 - In the past calendar year, how many staff (please consider ALL staff members, including Full-Time and Part-Time) have formally and/or informally expressed concern or dissatisfaction related to the following topics.  If you don't track informal complaints, please make your best estimate.",
         element: "complaints2",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 150,
@@ -1541,7 +1541,7 @@ define([], function () {
       {
         name: "Table 19 - How many claims were filed with the EEOC (Equal Employment Opportunity Commission) last calendar year?",
         element: "eeocclaims",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
@@ -1603,7 +1603,7 @@ define([], function () {
       {
         name: "Table 20 - How many claims were filed with your city or state municipality in the last calendar year?",
         element: "stateclaims",
-        operations: { SUM: true, STD: true, LIN: null },
+        operations: { SUM: true, STD: null, LIN: null },
         cohortOperations: { SUM: true },
         hot_parameters: {
           rowHeaderWidth: 200,
