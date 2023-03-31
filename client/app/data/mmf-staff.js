@@ -2514,7 +2514,6 @@ define([], function () {
           timing: "perRespondentProcessing",
           function: "matrixSum",
           filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
-          filters: [],
           outputParties: {
             analyst: "true",
             cohort: "true",
@@ -2529,7 +2528,6 @@ define([], function () {
           timing: "perRespondentProcessing",
           function: "checkboxSum",
           filters: ["filterGenderMan","filterRaceAndEthnicityWhite"],
-          filters: [],
           outputParties: {
             analyst: "true",
             cohort: "true",
@@ -3155,17 +3153,44 @@ define([], function () {
       ]
     },
     visualization : [
+    {
+    section_title: "PART 1: Staff demographics & work history ",
+    charts: [
       {
         questionType: "radiogroup",
         graphType: "column",
-        questionName: "Approximately how long have you been working in the art museum field (in years)?",
-        labels : ["mean", "<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
+        scale : 12,
+        normalize : "indirect",
+        normalize_location : 
+        {
+          output: "005-demographics-seniority",
+          value: "1",
+        },
+        questionName: "Approximately how long have you been working in...",
+        labels : ["the art museum field. Mean (in years).", "at your current museum. Mean (in years)"],
         data :
           [
             {
               output: "001-demographics-time-in-art-museums-(months)",
               value: "1",
             },
+            {
+              output: "003-demographics-time-in-current-art-museum-(months)",
+              value: "1",
+            },
+            
+          ],
+        series : ["cohort","nofilter","tag"],
+        seriesLabel : ["My Organization", "All Museums", "Tag"],
+      },
+      {
+        questionType: "radiogroup",
+        graphType: "column",
+        normalize: "direct",
+        questionName: "Approximately how long have you been working in the art museum field (in years)?",
+        labels : ["<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
+        data :
+          [
             {
               output: "002-demographics-time-in-art-museums-(months)-binned",
               value: "1",
@@ -3197,14 +3222,11 @@ define([], function () {
       {
         questionType: "radiogroup",
         graphType: "column",
+        normalize: "direct",
         "questionName": "And how long have you been working at your current museum (in years)?",
-        labels : ["mean", "<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
+        labels : ["<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
         data : 
           [
-            {
-              output: "003-demographics-time-in-current-art-museum-(months)",
-              value: "1",
-            },
             {
               output: "004-demographics-time-in-current-art-museum-(months)-binned",
               value: "1",
@@ -3237,14 +3259,10 @@ define([], function () {
         questionType: "radiogroup",
         graphType: "column",
         normalize: "direct",
-        questionName: "Which of the following best describes your current position level in the museum?",
-        labels : ["Voluntary (including unpaid internship)", "Entry-level", "Associate/Experienced ", "Manager", "Director", "Executive/Museum Leadership", "Prefer not to answer"],
+        questionName: "Which of the following categories does your current museum position fall into? Please select ALL that apply.",
+        labels : [ "Entry-level", "Associate/Experienced ", "Manager", "Director", "Executive/Museum Leadership"],
         data : 
           [
-            {
-              output: "005-demographics-seniority",
-              value: "1",
-            },
             {
               output: "005-demographics-seniority",
               value: "2",
@@ -3264,10 +3282,6 @@ define([], function () {
             {
               output: "005-demographics-seniority",
               value: "6",
-            },
-            {
-              output: "005-demographics-seniority",
-              value: "7",
             },
           ],
         series : ["cohort","nofilter","tag"],
@@ -3278,7 +3292,7 @@ define([], function () {
         graphType: "column",
         normalize: "direct",
         questionName: "What type of position do you have at the museum?",
-        labels : ["Full-time/ Permanent Employee", "Part-time Employee", "Temporary Employee", "Seasonal Employee", "Paid Intern", "Unpaid Intern", "Apprentice / Fellow", "Prefer not to answer"],
+        labels : ["Full-time/ Permanent Employee", "Part-time Employee", "Temporary Employee", "Seasonal Employee", "Paid Intern", "Apprentice / Fellow"],
         data : [
             {
               output: "007-demographics-position-in-museum",
@@ -3302,15 +3316,7 @@ define([], function () {
             },
             {
               output: "007-demographics-position-in-museum",
-              value: "6",
-            },
-            {
-              output: "007-demographics-position-in-museum",
               value: "7",
-            },
-            {
-              output: "007-demographics-position-in-museum",
-              value: "8",
             },
         ],
         series : ["cohort","nofilter","tag"],
@@ -3409,15 +3415,15 @@ define([], function () {
         labels: ["Heterosexual", "LGBTQ", "Prefer Not To Answer"],
         data : [
             {
-              output: "012-demographics-orientation",
+              output: "013-demographics-orientation-recode",
               value: "1",
             },
             {
-              output: "012-demographics-orientation",
+              output: "013-demographics-orientation-recode",
               value: "2",
             },
             {
-              output: "012-demographics-orientation",
+              output: "013-demographics-orientation-recode",
               value: "3",
             },
         ],
@@ -3428,7 +3434,13 @@ define([], function () {
         questionType: "checkbox",
         graphType: "column",
         questionName: "With which of the following racial and ethnic groups do you identify as? Please select all that apply.",
-        labels: ["Black or African American", "East Asian", "Hispanic, Latina, Latino, or Latinx", "Middle Eastern or North African", "Native American/Alaska Native/First Nations", "Native Hawaiian or other Pacific Islander", "South Asian", "Southeast Asian", "White", "Another race of ethnicity", "Prefer not to answer"],
+        normalize: "indirect",
+        normalize_location : 
+        {
+          output: "005-demographics-seniority",
+          value: "1",
+        },
+        labels: ["Black or African American", "East Asian", "Hispanic, Latina, Latino, or Latinx", "Middle Eastern or North African", "Native American/Alaska Native/First Nations", "Native Hawaiian or other Pacific Islander", "South Asian", "Southeast Asian", "White", "Another race of ethnicity"],
         data : [
             {
               output: "014-demographics-race",
@@ -3469,10 +3481,6 @@ define([], function () {
             {
               output: "014-demographics-race",
               value: "10",
-            },
-            {
-              output: "014-demographics-race",
-              value: "11",
             },
         ],
         series : ["cohort","nofilter","tag"],
@@ -3481,8 +3489,14 @@ define([], function () {
       {
         questionType: "checkbox",
         graphType: "column",
-        questionName: "With which of the following racial and ethnic groups do you identify as? Please select all that apply. (Census Categories)",
-        labels : ["Asian or Asian American", "Middle Eastern or North African", "Black or African American", "Hispanic or Latina/o/x", "Native American or Alaska Native", "Native Hawaiian or other Pacific Islander", "White or European American", "Multiracial", "Other Race", "Prefer Not To Answer"],
+        normalize : "indirect",
+        normalize_location : 
+        {
+          output: "005-demographics-seniority",
+          value: "1",
+        },
+        questionName: "With which of the following racial and ethnic groups do you identify as? Please select all that apply. (Recorded to match Census categories)",
+        labels : ["Asian or Asian American", "Middle Eastern or North African", "Black or African American", "Hispanic or Latina/o/x", "Native American or Alaska Native", "Native Hawaiian or other Pacific Islander", "White or European American", "Multiracial", "Other Race"],
         data : [
             {
               output: "015-demographics-race-census",
@@ -3519,10 +3533,6 @@ define([], function () {
             {
               output: "015-demographics-race-census",
               value: "9",
-            },
-            {
-              output: "015-demographics-race-census",
-              value: "10",
             },
         ],
         series : ["cohort","nofilter","tag"],
@@ -3533,7 +3543,7 @@ define([], function () {
         graphType: "column",
         normalize: "local",
         questionName: "What is the highest level of education that you’ve completed?",
-        labels : ["Some high school", "High school graduate", "Some college/Associates degree", "Bachelor’s degree", "Master’s degree", "Professional or doctorate degree", "Prefer Not To Answer"],
+        labels : ["Some high school", "High school graduate", "Some college/Associates degree", "Bachelor’s degree", "Master’s degree", "Professional or doctorate degree"],
         data : [
                   // 1 is total
             {
@@ -3560,10 +3570,6 @@ define([], function () {
               output: "016-demographics-education",
               value: "7",
             },
-            {
-              output: "016-demographics-education",
-              value: "8",
-            },
         ],
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
@@ -3573,7 +3579,7 @@ define([], function () {
         graphType: "column",
         normalize: "local",
         questionName: "Do you identify as a person with a disability and/or as neuroatypical/neurodivergent?",
-        labels: ["Yes", "No", "Prefer Not To Answer"],
+        labels: ["Yes", "No"],
         data : [
           // 1 is total
             {
@@ -3584,20 +3590,21 @@ define([], function () {
               output: "017-demographics-disability",
               value: "3",
             },
-            {
-              output: "017-demographics-disability",
-              value: "4",
-            },
         ],
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
       },
+      ]
+    },
+    {
+      section_title: "PART 2: Compensation details & promotion rates",
+      charts: [
       {
         questionType: "radiogroup",
         graphType: "column",
         normalize: "local",
         questionName: "How are you compensated in this position?",
-        labels : ["Annual salary", "Hourly wage", "Stipend", "Voluntary (Unpaid)"],
+        labels : ["Annual salary", "Hourly wage"],
         data : [
           // 1 is total
             {
@@ -3608,14 +3615,6 @@ define([], function () {
               output: "018-salary-and-promotion-compensation-type",
               value: "3",
             },
-            {
-              output: "018-salary-and-promotion-compensation-type",
-              value: "4",
-            },
-            {
-              output: "018-salary-and-promotion-compensation-type",
-              value: "5",
-            },
         ],
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
@@ -3624,7 +3623,7 @@ define([], function () {
         questionType: "radiogroup",
         graphType: "column",
         normalize: "local",
-        questionName: "Compared to people at similar position levels in my institution, I think my salary is:",
+        questionName: "Compared to people at similar position levels (e.g., entry level, associate, manager, executive) in my institution, I think my salary is:",
         labels : ["Above others", "About the same as others", "Below others", "N/A"],
         data : [
         // 1 is total
@@ -3652,7 +3651,7 @@ define([], function () {
         questionType: "radiogroup",
         graphType: "column",
         normalize: "local",
-        questionName: "Compared to people at other art museums with comparable position levels, I think my salary is:",
+        questionName: "Compared to people at other art museums with comparable position levels (e.g., entry level, associate, manager, director, executive), I think my salary is:",
         labels : ["Above others", "About the same as others", "Below others"],
         data : [
         // 1 is total
@@ -3702,11 +3701,91 @@ define([], function () {
         seriesLabel : ["My Organization", "All Museums", "Tag"],
       },
       {
+        questionType: "parity",
+        // normalize: "local",
+        graphType: "column",
+        questionName: "Parity score showing the proportional likelihood of having received a promotion with title change and pay increase beyond cost of living by gender, race & ethnicity",
+        "labels" : ["All", "Men", "Not Men","White","Not White"],
+        data : [
+            {
+              numerator: 
+              {
+                output: "023-salary-and-promotion-number-of-promotions-total",
+                // 1 is total
+                value: "2"
+              },
+              denominator:
+              {
+                output: "001-demographics-time-in-art-museums-(months)", // Already scaled because of ordering
+                value: "1"
+              }
+            },
+        ],
+        parityFilters : ["filterGenderMan", "filterRaceAndEthnicityWhite"],
+        series : ["cohort","nofilter","tag"],
+        seriesLabel : ["My Organization", "All Museums", "Tag"],
+      },
+      {
+        questionType: "parity",
+        // normalize: "local",
+        graphType: "column",
+        questionName: "Parity score showing the proportional likelihood of having received a promotion with title change but no pay increase beyond cost of living by gender, race & ethnicity",
+        "labels" : ["All", "Men", "Not Men","White","Not White"],
+        data : [
+            {
+              numerator: 
+              {
+                output: "025-salary-and-promotion-number-of-promotions-no-pay-total",
+                // 1 is total
+                value: "2"
+              },
+              denominator:
+              {
+                output: "001-demographics-time-in-art-museums-(months)", // Already scaled because of ordering
+                value: "1"
+              }
+            },
+        ],
+        parityFilters : ["filterGenderMan", "filterRaceAndEthnicityWhite"],
+        series : ["cohort","nofilter","tag"],
+        seriesLabel : ["My Organization", "All Museums", "Tag"],
+      },
+      {
+        questionType: "parity",
+        // normalize: "local",
+        graphType: "column",
+        questionName: "Parity score showing the proportional likelihood of having received a promotion with pay increase beyond cost of living but no title change by gender, race & ethnicity",
+        "labels" : ["All", "Men", "Not Men","White","Not White"],
+        data : [
+            {
+              numerator: 
+              {
+                output: "027-salary-and-promotion-number-of-promotions-no-title-total",
+                // 1 is total
+                value: "2"
+              },
+              denominator:
+              {
+                output: "001-demographics-time-in-art-museums-(months)", // Already scaled because of ordering
+                value: "1"
+              }
+            },
+        ],
+        parityFilters : ["filterGenderMan", "filterRaceAndEthnicityWhite"],
+        series : ["cohort","nofilter","tag"],
+        seriesLabel : ["My Organization", "All Museums", "Tag"],
+      },
+      ]
+    },
+    {
+      section_title: "PART 3: Staff experiences",
+      charts: [
+      {
         "questionType": "radiogroup",
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the level of pay.",
         normalize: "local",
-        "labels" : ["1", "2", "3","4", "5"],
+        "labels" : ["1 = Not at all satisfied", "2", "3","4", "5 = Extremely Satisfied"],
         data : [
         // 1 is the total number.
             {
@@ -3738,7 +3817,7 @@ define([], function () {
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the stability and predictability of pay.",
         normalize: "local",
-        "labels" : ["1", "2", "3","4", "5"],
+        "labels" : ["1 = Not at all satisfied", "2", "3","4", "5 = Extremely Satisfied"],
         data : [
         // 7 is the total number.
             {
@@ -3770,7 +3849,7 @@ define([], function () {
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the stability and predictability of hours.",
         normalize: "local",
-        "labels" : ["1", "2", "3","4", "5"],
+        "labels" : ["1 = Not at all satisfied", "2", "3","4", "5 = Extremely Satisfied"],
         data : [
         // 13 is the total number.
             {
@@ -3802,7 +3881,7 @@ define([], function () {
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with your control over hours and/or location (e.g., ability to work flexible hours, work remotely).",
         normalize: "local",
-        "labels" : ["1", "2", "3","4", "5"],
+        "labels" : ["1 = Not at all satisfied", "2", "3","4", "5 = Extremely Satisfied"],
         data : [
         // 19 is the total number.
             {
@@ -3834,7 +3913,7 @@ define([], function () {
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the job security.",
         normalize: "local",
-        "labels" : ["1", "2", "3","4", "5"],
+        "labels" : ["1 = Not at all satisfied", "2", "3","4", "5 = Extremely Satisfied"],
         data : [
         // 25 is the total number.
             {
@@ -3866,7 +3945,7 @@ define([], function () {
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the employee benefits (e.g., health care, retirement).",
         normalize: "local",
-        "labels" : ["1", "2", "3","4", "5"],
+        "labels" : ["1 = Not at all satisfied", "2", "3","4", "5 = Extremely Satisfied"],
         data : [
         // 31 is the total number.
             {
@@ -3898,7 +3977,7 @@ define([], function () {
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with the career advancement opportunities (e.g., promotion path, learning new skills).",
         normalize: "local",
-        "labels" : ["1", "2", "3","4", "5"],
+        "labels" : ["1 = Not at all satisfied", "2", "3","4", "5 = Extremely Satisfied"],
         data : [
         // 37 is the total number.
             {
@@ -3930,7 +4009,7 @@ define([], function () {
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with enjoying your day-to-day work (e.g., good coworkers/managers, pleasant work environment, manageable stress level).",
         normalize: "local",
-        "labels" : ["1", "2", "3","4", "5"],
+        "labels" : ["1 = Not at all satisfied", "2", "3","4", "5 = Extremely Satisfied"],
         data : [
         // 43 is the total number.
             {
@@ -3962,7 +4041,7 @@ define([], function () {
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with having a sense of purpose and dignity in your work.",
         normalize: "local",
-        "labels" : ["1", "2", "3","4", "5"],
+        "labels" : ["1 = Not at all satisfied", "2", "3","4", "5 = Extremely Satisfied"],
         data : [
         // 49 is the total number.
             {
@@ -3994,7 +4073,7 @@ define([], function () {
         graphType: "column",
         "questionName": "In your current employment situation, how satisfied are you with having the power to change things about your job that you’re not satisfied with.",
         normalize: "local",
-        "labels" : ["1", "2", "3","4", "5"],
+        "labels" : ["1 = Not at all satisfied", "2", "3","4", "5 = Extremely Satisfied"],
         data : [
         // 55 is the total number.
             {
@@ -4021,39 +4100,17 @@ define([], function () {
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
       },
-      // {
-      //   "id": 29,
-      //   "labels" : ["All", "Women", "Men", "Non-binary and Another Gender","Asian or Asian American","Middle Eastern or North African","Black or African American","Hispanic or Latina/o/x","Native American or Alaska Native","Native Hawaiian or Other Pacific Islander","White or European American","Multiracial","Other Race","Prefer Not To Answer"],
-      //   "dataSet": [
-      //     {
-      //       "name" : "All Museums",
-      //       "data" : [1,1.007,1.017,0.896,0.968,0.927,1.007,1.004,0.976,0.997,1.012,0.970,0.930,0.884]
-      //     },
-      //     // {
-      //       // "name" : "My Museum",
-      //       // "data" : [1,1.2,1.6,.7,.9,.1,.5,1.3,2,.1,.5,.6,.3,1]
-      //     // },
-      //     // {
-      //     //   "name" : "Others in My Region",
-      //     //   "data" : [1,1.2,1.6,.7,.9,.1,.5,1.3,2,.1,.5,.6,.3,1]
-      //     // },
-      //     // {
-      //     //   "name" : "Other of Same Scale",
-      //     //   "data" : [1,1.2,1.6,.7,.9,.1,.5,1.3,2,.1,.5,.6,.3,1]
-      //     // },
-      //     // {
-      //     //   "name" : "Others of the Same Type",
-      //     //   "data" : [1,1.2,1.6,.7,.9,.1,.5,1.3,2,.1,.5,.6,.3,1]
-      //     // },
-      //     // {
-      //     //   "name" : "Others matching Collecting/Non-Collecting",
-      //     //   "data" : [1,1.2,1.6,.7,.9,.1,.5,1.3,2,.1,.5,.6,.3,1]
-      //     // },
-      //   ],
-      //   "questionName": "Institutional Satisfaction Mean",
-      //   "graphType": "column",
-      //   "questionType": "radiogroup"
-      // },
+      {
+        "id": 29,
+        "labels" : ["All", "Men", "Not Men", "White","Not White"],
+        "dataSet": [
+        ],
+        "questionName": "Mean institutional satisfaction score (includes the previous ten satisfaction questions)",
+        "graphType": "column",
+        series : ["cohort","nofilter","tag"],
+        seriesLabel : ["My Organization", "All Museums", "Tag"],
+        "questionType": "staff-special-satisfactionscore"
+      },
       {
         "questionType": "radiogroup",
         graphType: "column",
@@ -4111,30 +4168,22 @@ define([], function () {
         seriesLabel : ["My Organization", "All Museums", "Tag"],
       },
       {
-        "questionType": "radiogroup",
+        "questionType": "staff-special-discrimination",
         graphType: "column",
         normalize: "local",
         "questionName": "Have you felt discriminated against or harassed on the basis your gender, sexual orientation, racial or ethnic background, social or economic status, religion, age, or disability while working in your current museum workplace?",
-        "labels" : ["All: Yes","All: No","All: Prefer Not To Answer","Men", "Women", "Non-binary and Another Gender","Asian or Asian American","Middle Eastern or North African","Black or African American","Hispanic or Latina/o/x","Native American or Alaska Native","Native Hawaiian or Other Pacific Islander","White or European American","Multiracial","Other Race","Prefer Not To Answer"],
+        "labels" : ["Yes","No","Prefer Not To Answer", "Men", "Not Men","White","Not White"],
         data : [
-        // 1 is the total
-            {
-              output: "030-discrimination-total",
-              value: "2",
-            },
-            {
-              output: "030-discrimination-total",
-              value: "3",
-            },
-            {
-              output: "030-discrimination-total",
-              value: "4",
-            },
-            // TODO add the parity scores here
+      
         ],
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
       },
+      ]
+    },
+    {
+      section_title: "The following five questions were only asked of staff who have experienced discrimination or harassment in their current workplace.",
+      charts: [
       {
         "questionType": "radiogroup",
         graphType: "column",
@@ -4535,6 +4584,11 @@ define([], function () {
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
       },
+      ]
+    },
+    {
+        section_title: "PART 4: Workplace climate & Organizational characteristics",
+        charts: [
       {
         "questionType": "radiogroup",
         graphType: "column",
@@ -5135,41 +5189,17 @@ define([], function () {
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
       },
-      // {
-      //   questionType: "radiogroup",
-      //   graphType: "column",
-        // "questionName": "Average Culture Score",
-        // "labels" : ["All", "Women", "Men", "Non-binary and Another Gender","Asian or Asian American","Middle Eastern or North African","Black or African American","Hispanic or Latina/o/x","Native American or Alaska Native","Native Hawaiian or Other Pacific Islander","White or European American","Multiracial","Other Race","Prefer Not To Answer"],
-      //   data : [
-      //   // 85 is the total
-      //       {
-      //         output: "045-org-culture-matrix",
-      //         value: "86",
-      //       },
-      //       {
-      //         output: "045-org-culture-matrix",
-      //         value: "87",
-      //       },
-      //       {
-      //         output: "045-org-culture-matrix",
-      //         value: "88",
-      //       },
-      //       {
-      //         output: "045-org-culture-matrix",
-      //         value: "89",
-      //       },
-      //       {
-      //         output: "045-org-culture-matrix",
-      //         value: "90",
-      //       },
-      //       {
-      //         output: "045-org-culture-matrix",
-      //         value: "91",
-      //       },
-      //   ],
-      //   series : ["cohort","tag","nofilter"],
-      //   seriesLabel : ["My Organization", "Tag", "All"],
-      // },
+      {
+        questionType: "staff-special-culturescore",
+        graphType: "column",
+        "questionName": "Mean culture score - normalized for higher scores to be better (includes the previous thirteen culture questions)",
+        "labels" : ["All", "Men", "Not Men","White","Not White"],
+        data : [
+        // Going to ignore this data anyhow
+        ],
+        series : ["cohort","tag","nofilter"],
+        seriesLabel : ["My Organization", "Tag", "All"],
+      },
       {
         questionType: "radiogroup",
         graphType: "column",
@@ -5301,6 +5331,8 @@ define([], function () {
         series : ["cohort","nofilter","tag"],
         seriesLabel : ["My Organization", "All Museums", "Tag"],
       },
+      ]
+    }
     ],
     tables: [
     ],

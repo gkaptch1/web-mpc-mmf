@@ -1099,7 +1099,7 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
     var csv = [];
 
     //Opening and populating the opened_outputs object
-    for (output of Object.keys(outputs)) {
+    for (let output of Object.keys(outputs)) {
       // Write the title row for this output
       let titlerow = [];
       titlerow.push("Question Name");
@@ -1113,12 +1113,31 @@ define(['jquery', 'Handsontable', 'table_template', 'filesaver', 'ResizeSensor']
         }
       }
       csv.push("\n" + titlerow.join(",") + "\n");
-      for(let f of Object.keys(outputs[output])) { // uhoh todo
+      console.log("iterating through outputs for the following:");
+      console.log(output);
+      for(let f of Object.keys(outputs[output])) {
         if(f == "nofilter") {
           csv.push(""+ output+ "--fullDataSet," + outputs[output][f].toString() + "\n");
         } else if (f == "tags") {
+          // Iterate through all the tags, some of which might have their own filters
           for(tag of Object.keys(outputs[output][f])) {
-            csv.push(""+ output+ "--" + f + "--"+ tag + "," + outputs[output][f][tag].toString() + "\n");
+
+            for(tagfilter of Object.keys(outputs[output][f][tag])) {
+              if(tagfilter == "nofilter") {
+                csv.push(""+ output+ "--" + f + "--"+ tag + "--fullDataSet," + outputs[output][f][tag][tagfilter].toString() + "\n");       
+              } else {
+                let tagfilterquestion = table_template["computation"]["filters"][tagfilter].question;
+                for(opt of Object.keys(outputs[output][f][tag][tagfilter])) {
+                  let opt_name = opt;
+                  for(choice of table_template["computation"]["newVariables"][tagfilterquestion].choices) {
+                    if (choice.value == opt) {
+                      opt_name = choice.text;
+                    }
+                  }
+                  csv.push(""+ output+ "--" + f + "--"+ tag + "--" + tagfilter+ "--" + opt_name + "," + outputs[output][f][tag][tagfilter][opt].toString() + "\n");
+                }
+              }
+            }
           }
         } else {
           let filterquestion = table_template["computation"]["filters"][f].question;
