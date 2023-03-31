@@ -169,7 +169,7 @@ define([], function () {
             graphType: "column",
             normalize: "local",
             questionName: "In your last complete fiscal year, approximately what proportion (%) of your annual budget was allocated to staff compensation and benefits? (Please exclude any non-numeric characters)",
-            labels : ["mean percentage"],
+            labels : ["Mean Percentage"],
             data :
               [
                 // 1 is total
@@ -186,7 +186,7 @@ define([], function () {
             graphType: "column",
             normalize: "local",
             questionName: "For your last complete fiscal year, approximately what proportion (%) of your organization’s revenue was directly contributed by board members? (Please exclude any non-numeric characters)",
-            labels : ["mean"],
+            labels : ["Mean Percentage"],
             data :
               [
                 // 1 is total
@@ -224,7 +224,7 @@ define([], function () {
             graphType: "column",
             normalize: "local",
             questionName: "Keeping in mind just your board members who are on the Finance and/or Executive committees, how many members of each gender do you have? Please mark 0 where applicable in the categories below.",
-            labels : ["Number of Answers","Woman","Number of Answers","Man","Number of Answers","Non-binary/genderqueer/third gender","Number of Answers","Another Gender"],
+            labels : ["Woman","Man","Non-binary/genderqueer/third gender","Another Gender"],
             data :
               [
                 // 1 is total
