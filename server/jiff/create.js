@@ -188,6 +188,10 @@ JIFFWrapper.prototype.computeSession = async function (session_key) {
                 sharesForClient[output.name][cohort] = rawresults.shares[output.name][cohort];
               }
             }
+
+            if (table_template.contains_tables == true) {
+              sharesForClient[cohort] = rawresults.shares[cohort];
+            }
             updates.push(modelWrappers.ResultMessage.server.update({_id: userKeyData._id, session:userKeyData.session, userkey:userKeyData.userkey, pseudonymn:userKeyData.pseudonymn},JSON.stringify(sharesForClient)));
           }
         }

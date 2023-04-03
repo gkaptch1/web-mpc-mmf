@@ -1105,6 +1105,7 @@ define(["constants"], function (constants) {
 
         shares = await getShares(jiff_instance, partyID, ordering, server_mailbox_hook);
 
+
         sums['all'] = sumAndAccumulate(sums['all'], shares.shares);
         squaresSums['all'] = sumAndAccumulate(squaresSums['all'], shares.squares);
 
@@ -1237,7 +1238,6 @@ define(["constants"], function (constants) {
     var stringShares = {};
 
     if (ordering.questions.length > 0 ) {
-
       for (outputs of Object.keys(toEncrypt).sort()) {
         stringShares[outputs] = {};
         for (cohort of Object.keys(toEncrypt[outputs]).sort()) {
@@ -1258,6 +1258,16 @@ define(["constants"], function (constants) {
               }
             }
           }
+        }
+      }
+    }
+
+    if (ordering.tables.length > 0 ) {
+      for (cohort of Object.keys(toEncrypt).sort()) {
+        stringShares[cohort] = [];
+
+        for (share of toEncrypt[cohort]) {
+          stringShares[cohort].push(share.toString());
         }
       }
     }

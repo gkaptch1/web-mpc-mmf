@@ -73,6 +73,12 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
                             sharesForClient[output.name][tag] = rawresults.shares[output.name][tag];
                           }
                         }
+
+                        // TODO This is a quick hack. Makes the assumption that we are just feeding inputs back to the client
+                        if ( table_template.contains_tables == true ) {
+                          sharesForClient[client.cohort] = rawresults.shares[client.cohort];
+                        } 
+
                         dataToSend.push({pseudonymn: client.pseudonymn, analystMessage: JSON.stringify(pki.encryptMessageWithSymmetricKey(decryptedSymmetricKeys[clientIndex], JSON.stringify(sharesForClient), "associateddata"))}); // TODO FiX the message and AD
                         clientIndex++;
                       }
@@ -88,10 +94,6 @@ define(['jquery', 'controllers/jiffController', 'controllers/tableController', '
 
                 if(rawresults.tableTags != undefined) {
                   tableController.saveTagTables(rawresults.tableTags, sessionKey);
-                  // for(tagresults of Object.keys(rawresults.tableTags)) {
-                  //   console.log(rawresults.tableTags[tagresults].toString());
-                  //   tableController.saveTables(rawresults.tableTags[tagresults], sessionKey, tagresults , result['cohorts'], cohortMapping);
-                  // }
                 }  
               });
 
