@@ -2994,7 +2994,7 @@ define([], function () {
         graphType: "column",
         normalize: "direct",
         questionName: "Which of the following categories does your current museum position fall into?",
-        labels: ["Administration", "Building Operations", "Collections", "Communications", "Public Engagement"],
+        labels: ["Administration", "Building Operations", "Collections & Exhibitions", "Communications", "Public Engagement"],
         data : [
             {
               output: "008-demographics-position-category-in-museum",
@@ -3056,7 +3056,7 @@ define([], function () {
         graphType: "column",
         questionName: "What is your gender?",
         normalize: "direct",
-        labels: ["Man", "Women", "Non-binary and Another Gender"],
+        labels: ["Woman", "Man", "Non-binary and Another Gender"],
         data : [
             {
               output: "011-demographics-gender-recode",
