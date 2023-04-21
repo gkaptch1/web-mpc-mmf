@@ -325,150 +325,150 @@ define([], function () {
         //     },
         //   ]
         // },
-        // "newVar_006_PositionCategories": {
-        //   function: "checkboxBin",
-        //   resultType: "checkbox",
-        //   choices: [
-        //     {
-        //       value: "1",
-        //       text: "Administration",
-        //       waysToGetThere: [
-        //         {
-        //           question: "question5",
-        //           values: "1",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "6",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "10",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "13",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "14",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "18",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "19",
-        //         },
-        //       ]
-        //     },
-        //     {
-        //       value: "2",
-        //       text: "Building Operations",
-        //       waysToGetThere: [
-        //         {
-        //           question: "question5",
-        //           values: "8",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "9",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "11",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "12",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "15",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "25",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "27",
-        //         },
-        //       ]
-        //     },
-        //     {
-        //       value: "3",
-        //       text: "Collections",
-        //       waysToGetThere: [
-        //         {
-        //           question: "question5",
-        //           values: "2",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "3",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "4",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "16",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "20",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "23",
-        //         },
-        //       ]
-        //     },
-        //     {
-        //       value: "4",
-        //       text: "Communications",
-        //       waysToGetThere: [
-        //         {
-        //           question: "question5",
-        //           values: "5",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "17",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "22",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "26",
-        //         },
-        //       ]
-        //     },
-        //     {
-        //       value: "5",
-        //       text: "Public Engagement",
-        //       waysToGetThere: [
-        //         {
-        //           question: "question5",
-        //           values: "7",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "21",
-        //         },
-        //         {
-        //           question: "question5",
-        //           values: "28",
-        //         },
-        //       ]
-        //     },
-        //   ]
-        // },
+        "newVar_006_PositionCategories": {
+          function: "checkboxBin",
+          resultType: "checkbox",
+          choices: [
+            {
+              value: "1",
+              text: "Administration",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "1",
+                },
+                {
+                  question: "question5",
+                  values: "6",
+                },
+                {
+                  question: "question5",
+                  values: "10",
+                },
+                {
+                  question: "question5",
+                  values: "13",
+                },
+                {
+                  question: "question5",
+                  values: "14",
+                },
+                {
+                  question: "question5",
+                  values: "18",
+                },
+                {
+                  question: "question5",
+                  values: "19",
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "Building Operations",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "8",
+                },
+                {
+                  question: "question5",
+                  values: "9",
+                },
+                {
+                  question: "question5",
+                  values: "11",
+                },
+                {
+                  question: "question5",
+                  values: "12",
+                },
+                {
+                  question: "question5",
+                  values: "15",
+                },
+                {
+                  question: "question5",
+                  values: "25",
+                },
+                {
+                  question: "question5",
+                  values: "27",
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "Collections",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "2",
+                },
+                {
+                  question: "question5",
+                  values: "3",
+                },
+                {
+                  question: "question5",
+                  values: "4",
+                },
+                {
+                  question: "question5",
+                  values: "16",
+                },
+                {
+                  question: "question5",
+                  values: "20",
+                },
+                {
+                  question: "question5",
+                  values: "23",
+                },
+              ]
+            },
+            {
+              value: "4",
+              text: "Communications",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "5",
+                },
+                {
+                  question: "question5",
+                  values: "17",
+                },
+                {
+                  question: "question5",
+                  values: "22",
+                },
+                {
+                  question: "question5",
+                  values: "26",
+                },
+              ]
+            },
+            {
+              value: "5",
+              text: "Public Engagement",
+              waysToGetThere: [
+                {
+                  question: "question5",
+                  values: "7",
+                },
+                {
+                  question: "question5",
+                  values: "21",
+                },
+                {
+                  question: "question5",
+                  values: "28",
+                },
+              ]
+            },
+          ]
+        },
       //   "newVarSalaryCategories": {
       //     function: "numericBin",
       //     resultType: "radiogroup",
