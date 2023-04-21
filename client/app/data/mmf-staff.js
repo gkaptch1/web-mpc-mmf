@@ -1620,63 +1620,53 @@ define([], function () {
         //   ]
         // },
         "newVar_017_GenerationNoSilentGeneration" : {
-          function: "numericBin",
+          function: "radiogroupBin",
           resultType: "radiogroup",
-          maxValue: 2047,
-          minValue: 0,
           choices: [
             {
               value: "1",
               text: "Baby Boomers",
-              waysToGetThere: 
+              waysToGetThere:
               [
                 {
-                  question: "question37",
-                  value: "1",
-                  minValue : 1946,
-                  maxValue : 1964,
-                },
+                  question: "newVar_014_Generation",
+                  values: "2",
+                }
               ]
             },
             {
               value: "2",
               text: "Generation X",
-              waysToGetThere: 
+              waysToGetThere:
               [
                 {
-                  question: "question37",
-                  value: "1",
-                  minValue : 1965,
-                  maxValue : 1980,
-                },
+                  question: "newVar_014_Generation",
+                  values: "3",
+                }
               ]
             },
             {
               value: "3",
               text: "Generation Y",
-              waysToGetThere: 
+              waysToGetThere:
               [
                 {
-                  question: "question37",
-                  value: "1",
-                  minValue : 1981,
-                  maxValue : 1996,
-                },
+                  question: "newVar_014_Generation",
+                  values: "4",
+                }
               ]
             },
             {
               value: "4",
               text: "Generation Z",
-              waysToGetThere: 
+              waysToGetThere:
               [
                 {
-                  question: "question37",
-                  value: "1",
-                  minValue : 1997,
-                  maxValue : 2012,
-                },
+                  question: "newVar_014_Generation",
+                  values: "5",
+                }
               ]
-            },
+            },            
           ]
         },
         "newVar_018_UnionStatusCollapsed": {
