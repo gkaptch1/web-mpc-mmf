@@ -1875,6 +1875,32 @@ define([], function () {
             },
           ],
         },
+        "newVar_022_Disability": {
+          function: "radiogroupBin",
+          resultType: "radiogroup",
+          choices: [
+            {
+              value: "1",
+              text: "Yes",
+              waysToGetThere: [
+                {
+                  question: "question42",
+                  values: "1",
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "No",
+              waysToGetThere: [
+                {
+                  question: "question42",
+                  values: "2",
+                },
+              ]
+            },
+          ]
+        },
 
       },
       filters: {
@@ -1924,7 +1950,7 @@ define([], function () {
           question: "question41",
         },
         "filterDisability":  {
-          question: "question42",
+          question: "newVar_022_Disability",
         },
         "filterPositionCategory" : {
           question: "newVar_006_PositionCategories",
