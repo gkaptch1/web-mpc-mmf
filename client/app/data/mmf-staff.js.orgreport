@@ -2285,20 +2285,20 @@ define([], function () {
             tags: [ ],
           }
         },
-        {
-          name: "048-very-satisfied",
-          inputQuestions: ["newVar_021_VerySatisfied"],
-          labels: ["Total Number"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "false",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
+        // {
+        //   name: "048-very-satisfied",
+        //   inputQuestions: ["newVar_021_VerySatisfied"],
+        //   labels: ["Total Number"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "false",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
       ]
     },
     visualization : [
