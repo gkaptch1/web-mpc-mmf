@@ -269,6 +269,62 @@ define([], function () {
         //     },
         //   ]
         // },
+        "newVar_005_Seniority": {
+          function: "radiogroupBin",
+          resultType: "radiogroup",
+          choices: [
+            {
+              value: "1",
+              text: "Entry",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "2",
+                },
+              ]
+            },
+            {
+              value: "2",
+              text: "Associate",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "3",
+                },
+              ]
+            },
+            {
+              value: "3",
+              text: "Manager",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "4",
+                },
+              ]
+            },
+            {
+              value: "4",
+              text: "Director",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "5",
+                },
+              ]
+            },
+            {
+              value: "5",
+              text: "Executive",
+              waysToGetThere: [
+                {
+                  question: "question3",
+                  values: "6",
+                },
+              ]
+            },
+          ]
+        },
         "newVar_006_PositionCategories": {
           function: "checkboxBin",
           resultType: "checkbox",
@@ -1463,106 +1519,106 @@ define([], function () {
             },
           ]
         },
-        "newVar_015_GenderMan" : {
-          function: "radiogroupBin",
-          resultType: "radiogroup",
-          choices: [
-            {
-              value: "1",
-              text: "Man",
-              waysToGetThere:
-              [
-                {
-                  question: "question38",
-                  values: "2",
-                }
-              ]
-            },
-            {
-              value: "2",
-              text: "Women and Non-binary and Another Gender",
-              waysToGetThere:
-              [
-                {
-                  question: "question38",
-                  values: "1",
-                },
-                {
-                  question: "question38",
-                  values: "3",
-                },
-                {
-                  question: "question38",
-                  values: "4",
-                },
-                {
-                  question: "question38",
-                  values: "5",
-                }
-              ]
-            }
-          ]
-        },
-        "newVar_016_RaceAndEthnicityWhite" : {
-          function : "checkboxBin",
-          resultType : "checkbox",
-          choices: [
-            {
-              value: "1",
-              text: "White or European American",
-              waysToGetThere:
-              [
-                {
-                  question: "question40",
-                  values: "9",
-                }
-              ]
-            },
-            {
-              value: "2",
-              text: "Not White",
-              waysToGetThere:
-              [
-                {
-                  question: "question40",
-                  values: "2",
-                },
-                {
-                  question: "question40",
-                  values: "7",
-                },
-                {
-                  question: "question40",
-                  values: "8",
-                },
-                {
-                  question: "question40",
-                  values: "4",
-                },
-                {
-                  question: "question40",
-                  values: "1",
-                },
-                {
-                  question: "question40",
-                  values: "3",
-                },
-                {
-                  question: "question40",
-                  values: "5",
-                },
-                {
-                  question: "question40",
-                  values: "6",
-                },
-                {
-                  question: "question40",
-                  values: "10",
-                }
-              ]
-            },
-          ]
-        },
+        // "newVar_015_GenderMan" : {
+        //   function: "radiogroupBin",
+        //   resultType: "radiogroup",
+        //   choices: [
+        //     {
+        //       value: "1",
+        //       text: "Man",
+        //       waysToGetThere:
+        //       [
+        //         {
+        //           question: "question38",
+        //           values: "2",
+        //         }
+        //       ]
+        //     },
+        //     {
+        //       value: "2",
+        //       text: "Women and Non-binary and Another Gender",
+        //       waysToGetThere:
+        //       [
+        //         {
+        //           question: "question38",
+        //           values: "1",
+        //         },
+        //         {
+        //           question: "question38",
+        //           values: "3",
+        //         },
+        //         {
+        //           question: "question38",
+        //           values: "4",
+        //         },
+        //         {
+        //           question: "question38",
+        //           values: "5",
+        //         }
+        //       ]
+        //     }
+        //   ]
+        // },
+        // "newVar_016_RaceAndEthnicityWhite" : {
+        //   function : "checkboxBin",
+        //   resultType : "checkbox",
+        //   choices: [
+        //     {
+        //       value: "1",
+        //       text: "White or European American",
+        //       waysToGetThere:
+        //       [
+        //         {
+        //           question: "question40",
+        //           values: "9",
+        //         }
+        //       ]
+        //     },
+        //     {
+        //       value: "2",
+        //       text: "Not White",
+        //       waysToGetThere:
+        //       [
+        //         {
+        //           question: "question40",
+        //           values: "2",
+        //         },
+        //         {
+        //           question: "question40",
+        //           values: "7",
+        //         },
+        //         {
+        //           question: "question40",
+        //           values: "8",
+        //         },
+        //         {
+        //           question: "question40",
+        //           values: "4",
+        //         },
+        //         {
+        //           question: "question40",
+        //           values: "1",
+        //         },
+        //         {
+        //           question: "question40",
+        //           values: "3",
+        //         },
+        //         {
+        //           question: "question40",
+        //           values: "5",
+        //         },
+        //         {
+        //           question: "question40",
+        //           values: "6",
+        //         },
+        //         {
+        //           question: "question40",
+        //           values: "10",
+        //         }
+        //       ]
+        //     },
+        //   ]
+        // },
         "newVar_017_GenerationNoSilentGeneration" : {
           function: "numericBin",
           resultType: "radiogroup",
