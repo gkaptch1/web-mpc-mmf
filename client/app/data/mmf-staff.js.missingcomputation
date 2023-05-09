@@ -1966,132 +1966,132 @@ define([], function () {
         }
       },
       outputs: [
-        {
-          name: "001-demographics-time-in-art-museums-(months)",
-          inputQuestions: ["newVar_001_MonthsWorkedInMusems"],
-          labels : ["total months"],
-          timing: "perRespondentProcessing",
-          function: "mean",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          },
-        },
-        {
-          name: "002-demographics-time-in-art-museums-(months)-binned",
-          inputQuestions: ["newVar_002_MonthsWorkedInMuseumsBinned"],
-          labels : ["<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          },
-        },
-        {
-          name: "003-demographics-time-in-current-art-museum-(months)",
-          inputQuestions: ["newVar_003_MonthsWorkedInCurrentMuseum"],
-          labels : ["total months"],
-          timing: "perRespondentProcessing",
-          function: "mean",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "004-demographics-time-in-current-art-museum-(months)-binned",
-          inputQuestions: ["newVar_004_MonthsWorkedInCurrentMuseumBinned"],
-          labels : ["<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          },
-        },
-        {
-          name: "005-demographics-seniority",
-          inputQuestions: ["question3"],
-          labels : ["Total Number","Voluntary (including unpaid internship)","Entry-level","Associate/Experienced (non-manager)","Manager (with one/more direct reports)","Director","Executive/Museum Leadership","Prefer not to answer"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
         // {
-        //   name: "006-demographics-seniority-recode",
-        //   inputQuestions: ["newVar_005_Seniority"],
-        //   _comment: "TODO Could remove and compute in excel",
-        //   labels : ["Entry","Mid","Senior","Prefer Not To Answer"],
+        //   name: "001-demographics-time-in-art-museums-(months)",
+        //   inputQuestions: ["newVar_001_MonthsWorkedInMusems"],
+        //   labels : ["total months"],
+        //   timing: "perRespondentProcessing",
+        //   function: "mean",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   },
+        // },
+        // {
+        //   name: "002-demographics-time-in-art-museums-(months)-binned",
+        //   inputQuestions: ["newVar_002_MonthsWorkedInMuseumsBinned"],
+        //   labels : ["<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
         //   timing: "perRespondentProcessing",
         //   function: "radiogroupSum",
         //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
         //   outputParties: {
         //     analyst: "true",
         //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   },
+        // },
+        // {
+        //   name: "003-demographics-time-in-current-art-museum-(months)",
+        //   inputQuestions: ["newVar_003_MonthsWorkedInCurrentMuseum"],
+        //   labels : ["total months"],
+        //   timing: "perRespondentProcessing",
+        //   function: "mean",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
         //   }
         // },
-        {
-          name: "007-demographics-position-in-museum",
-          inputQuestions: ["question4"],
-          labels : ["Total Number","Full-time/ Permanent Employee", "Part-time Employee", "Temporary Employee", "Seasonal Employee", "Paid Intern", "Unpaid Intern", "Apprentice / Fellow", "Prefer not to answer"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "008-demographics-position-category-in-museum",
-          inputQuestions: ["newVar_006_PositionCategories"],
-          labels: ["Administration", "Building Operations", "Collections & Exhibitions", "Communications", "Public Engagement"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "009-demographics-generation",
-          inputQuestions: ["newVar_014_Generation"],
-          labels : ["The Silent Generation (1928-1945)", "Baby Boomers (1946-1964)", "Generation X (1965-1980)", "Millennial (1981-1996)", "Generation Z (1997-2012)"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
+        // {
+        //   name: "004-demographics-time-in-current-art-museum-(months)-binned",
+        //   inputQuestions: ["newVar_004_MonthsWorkedInCurrentMuseumBinned"],
+        //   labels : ["<1", "1 to 3", "4 to 6", "7 to 10", "10 to 20", "20+"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   },
+        // },
+        // {
+        //   name: "005-demographics-seniority",
+        //   inputQuestions: ["question3"],
+        //   labels : ["Total Number","Voluntary (including unpaid internship)","Entry-level","Associate/Experienced (non-manager)","Manager (with one/more direct reports)","Director","Executive/Museum Leadership","Prefer not to answer"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // // {
+        // //   name: "006-demographics-seniority-recode",
+        // //   inputQuestions: ["newVar_005_Seniority"],
+        // //   _comment: "TODO Could remove and compute in excel",
+        // //   labels : ["Entry","Mid","Senior","Prefer Not To Answer"],
+        // //   timing: "perRespondentProcessing",
+        // //   function: "radiogroupSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // {
+        //   name: "007-demographics-position-in-museum",
+        //   inputQuestions: ["question4"],
+        //   labels : ["Total Number","Full-time/ Permanent Employee", "Part-time Employee", "Temporary Employee", "Seasonal Employee", "Paid Intern", "Unpaid Intern", "Apprentice / Fellow", "Prefer not to answer"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "008-demographics-position-category-in-museum",
+        //   inputQuestions: ["newVar_006_PositionCategories"],
+        //   labels: ["Administration", "Building Operations", "Collections & Exhibitions", "Communications", "Public Engagement"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "009-demographics-generation",
+        //   inputQuestions: ["newVar_014_Generation"],
+        //   labels : ["The Silent Generation (1928-1945)", "Baby Boomers (1946-1964)", "Generation X (1965-1980)", "Millennial (1981-1996)", "Generation Z (1997-2012)"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
         {
           name: "010-demographics-gender",
           inputQuestions: ["question38"],
@@ -2106,791 +2106,805 @@ define([], function () {
             tags: [ ],
           }
         },
-        {
-          name: "011-demographics-gender-recode",
-          inputQuestions: ["newVar_007_Gender"],
-          labels: ["Woman","Man","Non-binary and Another Gender"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
         // {
-        //   name: "012-demographics-orientation",
-        //   inputQuestions: ["question39"],
-        //   labels: ["Total Number","Heterosexual ","Lesbian ","Gay","Bisexual ","Pansexual ","Asexual","I don’t label myself as anything","Another sexual orientation","Prefer not to answer"],
+        //   name: "011-demographics-gender-recode",
+        //   inputQuestions: ["newVar_007_Gender"],
+        //   labels: ["Woman","Man","Non-binary and Another Gender"],
         //   timing: "perRespondentProcessing",
         //   function: "radiogroupSum",
         //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
         //   outputParties: {
         //     analyst: "true",
         //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
         //   }
-        // },
-        {
-          name: "013-demographics-orientation-recode",
-          inputQuestions: ["newVar_008_SexualOrientation"],
-          labels : ["Heterosexual","LGBTQ","Prefer Not To Answer"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
         },
-        {
-          name: "014-demographics-race",
-          inputQuestions: ["question40"],
-          labels: ["Total Number","Black or African American", "East Asian", "Hispanic Latina Latino or Latinx", "Middle Eastern or North African", "Native American/Alaska Native/First Nations", "Native Hawaiian or other Pacific Islander", "South Asian", "Southeast Asian", "White", "Another race of ethnicity", "Prefer not to answer"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "015-demographics-race-census",
-          inputQuestions: ["newVar_010_RaceAndEthnicityCensus"],
-          labels: ["Asian or Asian American","Middle Eastern or North African","Black or African American","Hispanic or Latina/o/x","Native American or Alaska Native","Native Hawaiian or Other Pacific Islander","White or European American","Multiracial","Other Race","Prefer Not To Answer"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "016-demographics-education",
-          inputQuestions: ["question41"],
-          labels : ["Total Number", "Some high school", "High school graduate", "Some college/Associates degree", "Bachelor’s degree", "Master’s degree", "Professional or doctorate degree", "Prefer Not To Answer"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "017-demographics-disability",
-          inputQuestions: ["question42"],
-          labels: ["Total Number","Yes", "No", "Prefer Not To Answer"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "018-salary-and-promotion-compensation-type",
-          inputQuestions: ["question9"],
-          labels : ["Total Number", "Annual salary", "Hourly wage", "Stipend", "Voluntary (Unpaid)"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
+        // // {
+        // //   name: "012-demographics-orientation",
+        // //   inputQuestions: ["question39"],
+        // //   labels: ["Total Number","Heterosexual ","Lesbian ","Gay","Bisexual ","Pansexual ","Asexual","I don’t label myself as anything","Another sexual orientation","Prefer not to answer"],
+        // //   timing: "perRespondentProcessing",
+        // //   function: "radiogroupSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
         // {
-        //   name: "salary-and-promotion-salary-recode",
-        //   inputQuestions: ["newVarSalaryCategories"],
-        //   _comment: "Broken",
+        //   name: "013-demographics-orientation-recode",
+        //   inputQuestions: ["newVar_008_SexualOrientation"],
+        //   labels : ["Heterosexual","LGBTQ","Prefer Not To Answer"],
         //   timing: "perRespondentProcessing",
         //   function: "radiogroupSum",
         //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
         //   outputParties: {
         //     analyst: "true",
         //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
         //   }
         // },
         // {
-        //   name: "salary-and-promotion-parity-salary-gender",
-        //   reference: ["question10"],
-        //   _comment: "Broken",
-        //   timing: "parity",
-        //   function: "parity",
-        //   filters: ["filterGender"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "salary-and-promotion-parity-salary-race-and-ethnicity",
-        //   inputQuestions: ["question10"],
-        //   _comment: "Broken",
-        //   timing: "parity",
-        //   function: "parity",
-        //   filters: ["filterRaceAndEthnicity"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        {
-          name: "019-salary-and-promotion-similar-position-institution",
-          inputQuestions: ["question11"],
-          labels : ["Total Number", "Above others", "About the same as others", "Below others", "N/A"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "020-salary-and-promotion-similar-position",
-          inputQuestions: ["question12"],
-          labels : ["Total Number", "Above others", "About the same as others", "Below others", "N/A"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        // {
-        //   name: "salary-and-promotion-similar-position-recode",
-        //   inputQuestions: ["newVarSalaryPerception"],
-        //   _comment : "TODO",
-        //   timing: "perRespondentProcessing",
-        //   function: "radiogroupSum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        {
-          name: "021-salary-and-promotion-promotions",
-          inputQuestions: ["question13"],
-          labels : ["Total Number","Title Change and Pay Increase", "Title Change But No Pay Increase", "Pay Increase But Title Change","None of the above"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        // {
-        //   name: "022-salary-and-promotion-number-of-promotions-binned",
-        //   inputQuestions: ["newVar_011_PromotionBinned"],
-        //   labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
-        //   timing: "perRespondentProcessing",
-        //   function: "radiogroupSum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        {
-          name: "023-salary-and-promotion-number-of-promotions-total",
-          inputQuestions: ["question14"],
-          labels: ["Total Number", "Number of Promotions"],
-          timing: "perRespondentProcessing",
-          function: "sum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "false",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        // {
-        //   name: "salary-and-promotion-number-of-promotions-rate",
-        //   inputQuestions: ["salary-and-promotion-number-of-promotions-total", "demographics-time-in-art-museums"],
-        //   timing: "postprocessing1",
-        //   _comment: "TODO",
-        //   function: "division",
-        //   filters: ["filterGender", "filterRaceAndEthnicity"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "salary-and-promotion-promotion-rate-parity-gender",
-        //   inputQuestions: ["salary-and-promotion-number-of-promotions-rate"],
-        //   timing: "postprocessing2",
-        //   _comment: "TODO",
-        //   function: "parity",
-        //   filters: ["filterGender"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "salary-and-promotion-promotion-rate-parity-race",
-        //   inputQuestions: ["salary-and-promotion-number-of-promotions-rate"],
-        //   timing: "postprocessing2",
-        //   _comment: "TODO",
-        //   function: "parity",
-        //   filters: ["filterRaceAndEthnicity"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "024-salary-and-promotion-number-of-promotions-no-pay-increase-binned",
-        //   inputQuestions: ["newVar_012_PromotionNoPayBinned"],
-        //   labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
-        //   timing: "perRespondentProcessing",
-        //   function: "radiogroupSum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        {
-          name: "025-salary-and-promotion-number-of-promotions-no-pay-total",
-          inputQuestions: ["question15"],
-          _comment: "GABE TODO POSTPROCESSING",
-          labels: ["Total Number", "Number of Promotions"],
-          timing: "perRespondentProcessing",
-          function: "sum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "false",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        // {
-        //   name: "salary-and-promotion-number-of-promotions-no-pay-rate",
-        //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-total", "demographics-time-in-art-museums"],
-        //   timing: "postprocessing1",
-        //   _comment: "TODO",
-        //   function: "division",
-        //   filters: ["filterGender", "filterRaceAndEthnicity"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "salary-and-promotion-promotion-no-pay-rate-parity-gender",
-        //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-rate"],
-        //   timing: "postprocessing2",
-        //   _comment: "TODO",
-        //   function: "parity",
-        //   filters: ["filterGender"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "salary-and-promotion-promotion-no-pay-rate-parity-race",
-        //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-rate"],
-        //   timing: "postprocessing2",
-        //   _comment: "TODO",
-        //   function: "parity",
-        //   filters: ["filterRaceAndEthnicity"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-
-
-        // {
-        //   name: "salary-and-promotion-promotion-no-pay-rate-gender",
-        //   inputQuestions: ["newVarPromotionNoPayParityGender"],
-        //   _comment: "GABE TODO RECODE THIS BOX",
-        //   timing: "perRespondentProcessing",
-        //   function: "sum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "salary-and-promotion-promotion-no-pay-rate-race",
-        //   inputQuestions: ["newVarPromotionNoPayParityRace"],
-        //   _comment: "GABE TODO RECODE THIS BOX",
-        //   timing: "perRespondentProcessing",
-        //   function: "sum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "026-salary-and-promotion-number-of-promotions-no-title-increase-binned",
-        //   inputQuestions: ["newVar_013_PromotionNoTitleBinned"],
-        //   labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
-        //   timing: "perRespondentProcessing",
-        //   function: "radiogroupSum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        {
-          name: "027-salary-and-promotion-number-of-promotions-no-title-total",
-          inputQuestions: ["question16"],
-          labels: ["Total Number", "Number of Promotions"],
-          // _comment: "GABE TODO POSTPROCESSING",
-          timing: "perRespondentProcessing",
-          function: "sum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        // {
-        //   name: "salary-and-promotion-promotion-no-title-rate-gender",
-        //   inputQuestions: ["newVarPromotionNoTitleParityGender"],
-        //   _comment: "GABE TODO RECODE THIS BOX",
-        //   timing: "perRespondentProcessing",
-        //   function: "sum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "salary-and-promotion-promotion-no-title-rate-race",
-        //   inputQuestions: ["newVarPromotionNoTitleParityRace"],
-        //   _comment: "GABE TODO RECODE THIS BOX",
-        //   timing: "perRespondentProcessing",
-        //   function: "sum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        {
-          name: "028-staff-satisfaction-satisfaction",
-          inputQuestions: ["question32"],
-          labels : ["Level of pay -- Total Number","Level of pay -- 1","Level of pay -- 2","Level of pay -- 3","Level of pay -- 4","Level of pay -- 5", "Stable and predictable pay-- Total Number","Stable and predictable pay-- 1","Stable and predictable pay-- 2","Stable and predictable pay-- 3","Stable and predictable pay-- 4","Stable and predictable pay-- 5", "Stable and predictable hours-- Total Number","Stable and predictable hours-- 1","Stable and predictable hours-- 2","Stable and predictable hours-- 3","Stable and predictable hours-- 4","Stable and predictable hours-- 5", "Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- Total Number","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 1","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 2","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 3","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 4","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 5", "Job security-- Total Number","Job security-- 1","Job security-- 2","Job security-- 3","Job security-- 4","Job security-- 5", "Employee benefits (e.g. health care retirement)-- Total Number","Employee benefits (e.g. health care retirement)-- 1","Employee benefits (e.g. health care retirement)-- 2","Employee benefits (e.g. health care retirement)-- 3","Employee benefits (e.g. health care retirement)-- 4","Employee benefits (e.g. health care retirement)-- 5", "Career advancement opportunities (e.g. promotion path learning new skills)-- Total Number","Career advancement opportunities (e.g. promotion path learning new skills)-- 1","Career advancement opportunities (e.g. promotion path learning new skills)-- 2","Career advancement opportunities (e.g. promotion path learning new skills)-- 3","Career advancement opportunities (e.g. promotion path learning new skills)-- 4","Career advancement opportunities (e.g. promotion path learning new skills)-- 5", "Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- Total Number","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 1","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 2","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 3","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 4","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 5", "Having a sense of purpose and dignity in your work-- Total Number","Having a sense of purpose and dignity in your work-- 1","Having a sense of purpose and dignity in your work-- 2","Having a sense of purpose and dignity in your work-- 3","Having a sense of purpose and dignity in your work-- 4","Having a sense of purpose and dignity in your work-- 5", "Having the power to change things about your job that you’re not satisfied with-- Total Number","Having the power to change things about your job that you’re not satisfied with-- 1","Having the power to change things about your job that you’re not satisfied with-- 2","Having the power to change things about your job that you’re not satisfied with-- 3","Having the power to change things about your job that you’re not satisfied with-- 4","Having the power to change things about your job that you’re not satisfied with-- 5"],
-          _comment : "TODO After the computation we need to combine the boxes",
-          _comment2 : "TODO After the computation compute means",
-          timing: "perRespondentProcessing",
-          function: "matrixSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        // {
-        //   name: "staff-satisfaction-satisfaction-parity-race",
-        //   inputQuestions: ["newVarInstitutionalSatisfactionParityRace"],
-        //   _comment : "TODO Implement",
-        //   timing: "perRespondentProcessing",
-        //   function: "matrixSum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "staff-satisfaction-satisfaction-parity-gender",
-        //   inputQuestions: ["newVarInstitutionalSatisfactionParityGender"],
-        //   _comment : "TODO Implement",
-        //   timing: "perRespondentProcessing",
-        //   function: "matrixSum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        {
-          name: "029-staff-satisfaction-emotions",
-          inputQuestions: ["question33"],
-          labels: ["Total Number", "Content","Worried","Excited","Sad","Connected to others","Bored","Angry","Hopeful","Disappointed","Inspired","None of the above"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "030-discrimination-total",
-          inputQuestions: ["question26"],
-          labels: ["Total Number", "Yes", "No", "Prefer not to answer"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        // {
-        //   name: "discrimination-parity-gender",
-        //   _comment: "TODO",
-        //   inputQuestions: ["newVarDiscriminationParityGender"],
-        //   timing: "perRespondentProcessing",
-        //   function: "sum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        // {
-        //   name: "discrimination-parity-race",
-        //   _comment: "TODO",
-        //   inputQuestions: ["newVarDiscriminationParityRace"],
-        //   timing: "perRespondentProcessing",
-        //   function: "sum",
-        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-        //   outputParties: {
-        //     analyst: "true",
-        //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-        //   }
-        // },
-        {
-          name: "031-discrimination-rate",
-          inputQuestions: ["question27"],
-          labels: ["Total Number", "Very frequently (e.g. daily or almost daily)","Often (e.g. a few times a month)","Sometimes (e.g. a few times a year) ","Rarely (e.g. one or two times total)"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "032-discrimination-forms",
-          inputQuestions: ["question28"],
-          labels: ["Total Number", "Discrimination and/or harassment based on gender (including pregnancy gender expression gender identity etc.)","Discrimination and/or harassment based on sexual orientation","Discrimination and/or harassment based on race and/or ethnicity","Discrimination and/or harassment based on social or economic status","Discrimination and/or harassment based on religion","Discrimination and/or harassment based on age","Discrimination and/or harassment based on disability","Another form of discrimination and/or harassment","I don’t know "],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "033-discrimination-actions",
-          inputQuestions: ["question29"],
-          labels: ["Total Number", "I filed an HR complaint form (i.e. in-person or online)","I talked to an HR staff member who is available to employees","I used an anonymous reporting mechanism","I used an employee complaint hotline","I talked to a neutral employee or manager who can communicate the issues to HR","I used a third-party reporting process (e.g. use of an ombudsman)","I used another reporting mechanism","I followed a union-provided grievance process for reporting","I did something else","I haven’t done anything in response"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "034-discrimination-satisfaction-with-response",
-          inputQuestions: ["question30"],
-          labels: ["Total Number", "Not at all satisfied","Somewhat satisfied","Very satisfied"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "035-discrimination-reasons-no-report",
-          inputQuestions: ["question31"],
-          labels: ["Total Number", "I worried about retaliation from people in leadership at the institution","I worried about retaliation from the person who discriminated against/harassed me","I didn’t think anything would be done about it","I didn’t think anything could be done about it because the person who discriminated against/harassed me is not an employee of the museum (e.g. visitor board member artist...)","I didn’t know about what actions I could take","My workplace doesn’t provide any mechanisms to report discrimination and/or harassment","I always reported my experiences of discrimination and harassment","I haven't experienced discrimination or harassment"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "036-leaving-leave-current-museum",
-          inputQuestions: ["question22"],
-          labels: ["Total Number", "Yes", "No"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "037-leaving-leave-current-museum-why",
-          inputQuestions: ["question23"],
-          labels : ["Total Number", "Pay is too low","Other institutions have more flexible work hours","No full-time work is available in this institution","Opportunities for growth at the other museum","Experiences of discrimination or harassment","Lack of opportunities for growth at my museum","Unsafe working conditions","Positive reputation of the other museum","Burnout","Desire to live in a different town or city","Interpersonal issues with other staff members","Poor management","I don’t believe my institution can change for the better","Personal reasons unrelated to my current museum workplace","None of the above"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "038-leaving-leave-current-field",
-          inputQuestions: ["question24"],
-          labels: ["Total Number", "Yes", "No"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          _comment: "This is also breaking the computation",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "039-leaving-leave-current-field-why",
-          inputQuestions: ["question25"],
-          labels: ["Total Number", "Pay is too low in art museums","Other fields have more flexible work hours","More interested in other fields","Full-time work is unavailable to me in most art museums","Experiences of discrimination or harassment in art museums","Lack of opportunities for growth in art museums","Unsafe working conditions in art museums","Burnout in the art museum field","Exciting opportunities in other fields","Interpersonal issues with other staff members are common in art museums","Poor management in art museums","I don’t believe art museums can change for the better","Personal reasons unrelated to art and/or museums","None of the above"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "040-dei-role",
-          inputQuestions: ["question34"],
-          labels: ["Total Number","I personally incorporate principles of diversity equity and inclusion in my overall work","I am currently a member of a diversity equity and inclusion committee at work","I was previously a member of a diversity equity and inclusion committee at work","My position specifically focuses on diversity equity and inclusion","None of the above – I am not involved in my museum’s diversity equity and inclusion efforts","None of the above – I am not clear about how to get involved in my museum’s diversity equity and inclusion efforts","Not applicable – my museum does not have any efforts towards diversity equity and inclusion"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "041-dei-measured",
-          inputQuestions: ["question35"],
-          labels: ["Total Number", "Artists in the collection", "Board and/or trustee members", "Staff members", "Volunteers", "None of the above", "I don’t know"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "042-union-measured",
-          inputQuestions: ["question8"],
-          labels: ["Total Number", "Yes I am a union member for my museum job","No I have the option to be a union member for my museum job but have not chosen to join","No a union is not available for my museum job"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "043-policies-measured",
-          inputQuestions: ["question18"],
-          labels: ["Total Number", "I am/will be working in-person only","I am/will be working in a hybrid setup where the museum chooses how many and which days to work from home and which days to work from the museum","I am/will be working in a hybrid setup where I get to choose how many and which days to work from home and which days to work in the museum","I am/will be working in a hybrid setup where the museum chooses how many days to work from home and how many days to work from the museum and I get to choose which days","I am/will be working from home only","I don’t know much about the museum’s return-to-work plans","Prefer not to answer"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "044-policies-salary-transparency",
-          inputQuestions: ["question20"],
-          labels: ["Total Number", "My workplace shares the specific salaries of all employees publicly","My union handbook lists salary levels for each job","My workplace shares salary ranges for all positions or levels with employees","My workplace posts salary ranges for each open position","My workplace actively discourages employees from discussing their salaries","None of the above ","I don’t know"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "045-org-culture-matrix",
-          inputQuestions: ["question19"],
-          labels: [ "I believe that I can learn and grow in this organization -- Total Number", "I believe that I can learn and grow in this organization -- Strongly Disagree", "I believe that I can learn and grow in this organization -- Somewhat Disagree", "I believe that I can learn and grow in this organization -- Neutral", "I believe that I can learn and grow in this organization -- Somewhat Agree", "I believe that I can learn and grow in this organization -- Strongly Agree", "I believe that I can learn and grow in this organization -- Prefer not to answer",  "I feel burned out in this organization -- Total Number", "I feel burned out in this organization -- Strongly Disagree", "I feel burned out in this organization -- Somewhat Disagree", "I feel burned out in this organization -- Neutral", "I feel burned out in this organization -- Somewhat Agree", "I feel burned out in this organization -- Strongly Agree", "I feel burned out in this organization -- Prefer not to answer",  "My manager supports me -- Total Number", "My manager supports me -- Strongly Disagree", "My manager supports me -- Somewhat Disagree", "My manager supports me -- Neutral", "My manager supports me -- Somewhat Agree", "My manager supports me -- Strongly Agree", "My manager supports me -- Prefer not to answer",  "I believe performance reviews contribute to growth and/or advancement in my institution -- Total Number", "I believe performance reviews contribute to growth and/or advancement in my institution -- Strongly Disagree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Somewhat Disagree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Neutral", "I believe performance reviews contribute to growth and/or advancement in my institution -- Somewhat Agree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Strongly Agree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Prefer not to answer",  "Diversity and difference are not celebrated in this organization -- Total Number", "Diversity and difference are not celebrated in this organization -- Strongly Disagree", "Diversity and difference are not celebrated in this organization -- Somewhat Disagree", "Diversity and difference are not celebrated in this organization -- Neutral", "Diversity and difference are not celebrated in this organization -- Somewhat Agree", "Diversity and difference are not celebrated in this organization -- Strongly Agree", "Diversity and difference are not celebrated in this organization -- Prefer not to answer",  "I believe that what I do here is meaningful -- Total Number", "I believe that what I do here is meaningful -- Strongly Disagree", "I believe that what I do here is meaningful -- Somewhat Disagree", "I believe that what I do here is meaningful -- Neutral", "I believe that what I do here is meaningful -- Somewhat Agree", "I believe that what I do here is meaningful -- Strongly Agree", "I believe that what I do here is meaningful -- Prefer not to answer",  "The culture of my workplace negatively affects my mental and/or physical health -- Total Number", "The culture of my workplace negatively affects my mental and/or physical health -- Strongly Disagree", "The culture of my workplace negatively affects my mental and/or physical health -- Somewhat Disagree", "The culture of my workplace negatively affects my mental and/or physical health -- Neutral", "The culture of my workplace negatively affects my mental and/or physical health -- Somewhat Agree", "The culture of my workplace negatively affects my mental and/or physical health -- Strongly Agree", "The culture of my workplace negatively affects my mental and/or physical health -- Prefer not to answer",  "Mistakes are held against you in this organization -- Total Number", "Mistakes are held against you in this organization -- Strongly Disagree", "Mistakes are held against you in this organization -- Somewhat Disagree", "Mistakes are held against you in this organization -- Neutral", "Mistakes are held against you in this organization -- Somewhat Agree", "Mistakes are held against you in this organization -- Strongly Agree", "Mistakes are held against you in this organization -- Prefer not to answer",  "I would recommend this workplace to friends and family -- Total Number", "I would recommend this workplace to friends and family -- Strongly Disagree", "I would recommend this workplace to friends and family -- Somewhat Disagree", "I would recommend this workplace to friends and family -- Neutral", "I would recommend this workplace to friends and family -- Somewhat Agree", "I would recommend this workplace to friends and family -- Strongly Agree", "I would recommend this workplace to friends and family -- Prefer not to answer",  "I don’t feel that I have a voice in decision making in this organization -- Total Number", "I don’t feel that I have a voice in decision making in this organization -- Strongly Disagree", "I don’t feel that I have a voice in decision making in this organization -- Somewhat Disagree", "I don’t feel that I have a voice in decision making in this organization -- Neutral", "I don’t feel that I have a voice in decision making in this organization -- Somewhat Agree", "I don’t feel that I have a voice in decision making in this organization -- Strongly Agree", "I don’t feel that I have a voice in decision making in this organization -- Prefer not to answer",  "My institution provides management and/or leadership training for all supervisors -- Total Number", "My institution provides management and/or leadership training for all supervisors -- Strongly Disagree", "My institution provides management and/or leadership training for all supervisors -- Somewhat Disagree", "My institution provides management and/or leadership training for all supervisors -- Neutral", "My institution provides management and/or leadership training for all supervisors -- Somewhat Agree", "My institution provides management and/or leadership training for all supervisors -- Strongly Agree", "My institution provides management and/or leadership training for all supervisors -- Prefer not to answer",  "People in my organization are held accountable for discrimination and harassment -- Total Number", "People in my organization are held accountable for discrimination and harassment -- Strongly Disagree", "People in my organization are held accountable for discrimination and harassment -- Somewhat Disagree", "People in my organization are held accountable for discrimination and harassment -- Neutral", "People in my organization are held accountable for discrimination and harassment -- Somewhat Agree", "People in my organization are held accountable for discrimination and harassment -- Strongly Agree", "People in my organization are held accountable for discrimination and harassment -- Prefer not to answer",  "I feel like I have to hide some of who I am working in this organization -- Total Number", "I feel like I have to hide some of who I am working in this organization -- Strongly Disagree", "I feel like I have to hide some of who I am working in this organization -- Somewhat Disagree", "I feel like I have to hide some of who I am working in this organization -- Neutral", "I feel like I have to hide some of who I am working in this organization -- Somewhat Agree", "I feel like I have to hide some of who I am working in this organization -- Strongly Agree", "I feel like I have to hide some of who I am working in this organization -- Prefer not to answer"],
-          timing: "perRespondentProcessing",
-          function: "matrixSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        {
-          name: "046-org-experiences",
-          inputQuestions: ["question21"],
-          labels: ["Total Number",  "My major accomplishments have been acknowledged or recognized ", "I wasn’t given appropriate resources materials or time to execute a job task or responsibility", "I was given opportunities to do work that will likely help me advance", "Someone took credit for my accomplishment", "I developed positive relationships with my coworkers", "Someone I work with was unfairly blamed or criticized for something", "I was unfairly blamed or criticized for something", "Another employee yelled raised their voice or spoke to me in an unprofessional manner", "None of these"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
-        // {
-        //   name: "org-parity-gender",
-        //   inputQuestions: ["newVarCultureParityGender"],
-        //   _comment: "TODO",
+        //   name: "014-demographics-race",
+        //   inputQuestions: ["question40"],
+        //   labels: ["Total Number","Black or African American", "East Asian", "Hispanic Latina Latino or Latinx", "Middle Eastern or North African", "Native American/Alaska Native/First Nations", "Native Hawaiian or other Pacific Islander", "South Asian", "Southeast Asian", "White", "Another race of ethnicity", "Prefer not to answer"],
         //   timing: "perRespondentProcessing",
         //   function: "checkboxSum",
         //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
         //   outputParties: {
         //     analyst: "true",
         //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
         //   }
         // },
         // {
-        //   name: "org-parity-gender",
-        //   inputQuestions: ["newVarCultureParityRace"],
-        //   _comment: "TODO",
+        //   name: "015-demographics-race-census",
+        //   inputQuestions: ["newVar_010_RaceAndEthnicityCensus"],
+        //   labels: ["Asian or Asian American","Middle Eastern or North African","Black or African American","Hispanic or Latina/o/x","Native American or Alaska Native","Native Hawaiian or Other Pacific Islander","White or European American","Multiracial","Other Race","Prefer Not To Answer"],
         //   timing: "perRespondentProcessing",
         //   function: "checkboxSum",
         //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
         //   outputParties: {
         //     analyst: "true",
         //     cohort: "true",
-        //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
         //   }
         // },
-        {
-          name: "047-leadership-impact",
-          inputQuestions: ["question36"],
-          labels: ["Total Number", "The museum’s mission vision and/or values", "The museum board’s priorities", "Input from museum staff members", "The interests of current museum visitors", "The interests of the communities around the museum", "None of the above/ I don't know"],
-          timing: "perRespondentProcessing",
-          function: "checkboxSum",
-          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          outputParties: {
-            analyst: "true",
-            cohort: "true",
-            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
-            tags: [ ],
-          }
-        },
+        // {
+        //   name: "016-demographics-education",
+        //   inputQuestions: ["question41"],
+        //   labels : ["Total Number", "Some high school", "High school graduate", "Some college/Associates degree", "Bachelor’s degree", "Master’s degree", "Professional or doctorate degree", "Prefer Not To Answer"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "017-demographics-disability",
+        //   inputQuestions: ["question42"],
+        //   labels: ["Total Number","Yes", "No", "Prefer Not To Answer"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "018-salary-and-promotion-compensation-type",
+        //   inputQuestions: ["question9"],
+        //   labels : ["Total Number", "Annual salary", "Hourly wage", "Stipend", "Voluntary (Unpaid)"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // // {
+        // //   name: "salary-and-promotion-salary-recode",
+        // //   inputQuestions: ["newVarSalaryCategories"],
+        // //   _comment: "Broken",
+        // //   timing: "perRespondentProcessing",
+        // //   function: "radiogroupSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "salary-and-promotion-parity-salary-gender",
+        // //   reference: ["question10"],
+        // //   _comment: "Broken",
+        // //   timing: "parity",
+        // //   function: "parity",
+        // //   filters: ["filterGender"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "salary-and-promotion-parity-salary-race-and-ethnicity",
+        // //   inputQuestions: ["question10"],
+        // //   _comment: "Broken",
+        // //   timing: "parity",
+        // //   function: "parity",
+        // //   filters: ["filterRaceAndEthnicity"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // {
+        //   name: "019-salary-and-promotion-similar-position-institution",
+        //   inputQuestions: ["question11"],
+        //   labels : ["Total Number", "Above others", "About the same as others", "Below others", "N/A"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "020-salary-and-promotion-similar-position",
+        //   inputQuestions: ["question12"],
+        //   labels : ["Total Number", "Above others", "About the same as others", "Below others", "N/A"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // // {
+        // //   name: "salary-and-promotion-similar-position-recode",
+        // //   inputQuestions: ["newVarSalaryPerception"],
+        // //   _comment : "TODO",
+        // //   timing: "perRespondentProcessing",
+        // //   function: "radiogroupSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // {
+        //   name: "021-salary-and-promotion-promotions",
+        //   inputQuestions: ["question13"],
+        //   labels : ["Total Number","Title Change and Pay Increase", "Title Change But No Pay Increase", "Pay Increase But Title Change","None of the above"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // // {
+        // //   name: "022-salary-and-promotion-number-of-promotions-binned",
+        // //   inputQuestions: ["newVar_011_PromotionBinned"],
+        // //   labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
+        // //   timing: "perRespondentProcessing",
+        // //   function: "radiogroupSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // {
+        //   name: "023-salary-and-promotion-number-of-promotions-total",
+        //   inputQuestions: ["question14"],
+        //   labels: ["Total Number", "Number of Promotions"],
+        //   timing: "perRespondentProcessing",
+        //   function: "sum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "false",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // // {
+        // //   name: "salary-and-promotion-number-of-promotions-rate",
+        // //   inputQuestions: ["salary-and-promotion-number-of-promotions-total", "demographics-time-in-art-museums"],
+        // //   timing: "postprocessing1",
+        // //   _comment: "TODO",
+        // //   function: "division",
+        // //   filters: ["filterGender", "filterRaceAndEthnicity"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "salary-and-promotion-promotion-rate-parity-gender",
+        // //   inputQuestions: ["salary-and-promotion-number-of-promotions-rate"],
+        // //   timing: "postprocessing2",
+        // //   _comment: "TODO",
+        // //   function: "parity",
+        // //   filters: ["filterGender"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "salary-and-promotion-promotion-rate-parity-race",
+        // //   inputQuestions: ["salary-and-promotion-number-of-promotions-rate"],
+        // //   timing: "postprocessing2",
+        // //   _comment: "TODO",
+        // //   function: "parity",
+        // //   filters: ["filterRaceAndEthnicity"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "024-salary-and-promotion-number-of-promotions-no-pay-increase-binned",
+        // //   inputQuestions: ["newVar_012_PromotionNoPayBinned"],
+        // //   labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
+        // //   timing: "perRespondentProcessing",
+        // //   function: "radiogroupSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // {
+        //   name: "025-salary-and-promotion-number-of-promotions-no-pay-total",
+        //   inputQuestions: ["question15"],
+        //   _comment: "GABE TODO POSTPROCESSING",
+        //   labels: ["Total Number", "Number of Promotions"],
+        //   timing: "perRespondentProcessing",
+        //   function: "sum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "false",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // // {
+        // //   name: "salary-and-promotion-number-of-promotions-no-pay-rate",
+        // //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-total", "demographics-time-in-art-museums"],
+        // //   timing: "postprocessing1",
+        // //   _comment: "TODO",
+        // //   function: "division",
+        // //   filters: ["filterGender", "filterRaceAndEthnicity"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "salary-and-promotion-promotion-no-pay-rate-parity-gender",
+        // //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-rate"],
+        // //   timing: "postprocessing2",
+        // //   _comment: "TODO",
+        // //   function: "parity",
+        // //   filters: ["filterGender"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "salary-and-promotion-promotion-no-pay-rate-parity-race",
+        // //   inputQuestions: ["salary-and-promotion-number-of-promotions-no-pay-rate"],
+        // //   timing: "postprocessing2",
+        // //   _comment: "TODO",
+        // //   function: "parity",
+        // //   filters: ["filterRaceAndEthnicity"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+
+
+        // // {
+        // //   name: "salary-and-promotion-promotion-no-pay-rate-gender",
+        // //   inputQuestions: ["newVarPromotionNoPayParityGender"],
+        // //   _comment: "GABE TODO RECODE THIS BOX",
+        // //   timing: "perRespondentProcessing",
+        // //   function: "sum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "salary-and-promotion-promotion-no-pay-rate-race",
+        // //   inputQuestions: ["newVarPromotionNoPayParityRace"],
+        // //   _comment: "GABE TODO RECODE THIS BOX",
+        // //   timing: "perRespondentProcessing",
+        // //   function: "sum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "026-salary-and-promotion-number-of-promotions-no-title-increase-binned",
+        // //   inputQuestions: ["newVar_013_PromotionNoTitleBinned"],
+        // //   labels : ["0","1","2","3","4","5","6","7","8","9","10+"],
+        // //   timing: "perRespondentProcessing",
+        // //   function: "radiogroupSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // {
+        //   name: "027-salary-and-promotion-number-of-promotions-no-title-total",
+        //   inputQuestions: ["question16"],
+        //   labels: ["Total Number", "Number of Promotions"],
+        //   // _comment: "GABE TODO POSTPROCESSING",
+        //   timing: "perRespondentProcessing",
+        //   function: "sum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // // {
+        // //   name: "salary-and-promotion-promotion-no-title-rate-gender",
+        // //   inputQuestions: ["newVarPromotionNoTitleParityGender"],
+        // //   _comment: "GABE TODO RECODE THIS BOX",
+        // //   timing: "perRespondentProcessing",
+        // //   function: "sum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "salary-and-promotion-promotion-no-title-rate-race",
+        // //   inputQuestions: ["newVarPromotionNoTitleParityRace"],
+        // //   _comment: "GABE TODO RECODE THIS BOX",
+        // //   timing: "perRespondentProcessing",
+        // //   function: "sum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // {
+        //   name: "028-staff-satisfaction-satisfaction",
+        //   inputQuestions: ["question32"],
+        //   labels : ["Level of pay -- Total Number","Level of pay -- 1","Level of pay -- 2","Level of pay -- 3","Level of pay -- 4","Level of pay -- 5", "Stable and predictable pay-- Total Number","Stable and predictable pay-- 1","Stable and predictable pay-- 2","Stable and predictable pay-- 3","Stable and predictable pay-- 4","Stable and predictable pay-- 5", "Stable and predictable hours-- Total Number","Stable and predictable hours-- 1","Stable and predictable hours-- 2","Stable and predictable hours-- 3","Stable and predictable hours-- 4","Stable and predictable hours-- 5", "Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- Total Number","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 1","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 2","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 3","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 4","Control over hours and/or location (e.g. ability to work flexible hours work remotely)-- 5", "Job security-- Total Number","Job security-- 1","Job security-- 2","Job security-- 3","Job security-- 4","Job security-- 5", "Employee benefits (e.g. health care retirement)-- Total Number","Employee benefits (e.g. health care retirement)-- 1","Employee benefits (e.g. health care retirement)-- 2","Employee benefits (e.g. health care retirement)-- 3","Employee benefits (e.g. health care retirement)-- 4","Employee benefits (e.g. health care retirement)-- 5", "Career advancement opportunities (e.g. promotion path learning new skills)-- Total Number","Career advancement opportunities (e.g. promotion path learning new skills)-- 1","Career advancement opportunities (e.g. promotion path learning new skills)-- 2","Career advancement opportunities (e.g. promotion path learning new skills)-- 3","Career advancement opportunities (e.g. promotion path learning new skills)-- 4","Career advancement opportunities (e.g. promotion path learning new skills)-- 5", "Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- Total Number","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 1","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 2","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 3","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 4","Enjoying your day-to-day work (e.g. good coworkers/managers pleasant work environment, manageable stress level)-- 5", "Having a sense of purpose and dignity in your work-- Total Number","Having a sense of purpose and dignity in your work-- 1","Having a sense of purpose and dignity in your work-- 2","Having a sense of purpose and dignity in your work-- 3","Having a sense of purpose and dignity in your work-- 4","Having a sense of purpose and dignity in your work-- 5", "Having the power to change things about your job that you’re not satisfied with-- Total Number","Having the power to change things about your job that you’re not satisfied with-- 1","Having the power to change things about your job that you’re not satisfied with-- 2","Having the power to change things about your job that you’re not satisfied with-- 3","Having the power to change things about your job that you’re not satisfied with-- 4","Having the power to change things about your job that you’re not satisfied with-- 5"],
+        //   _comment : "TODO After the computation we need to combine the boxes",
+        //   _comment2 : "TODO After the computation compute means",
+        //   timing: "perRespondentProcessing",
+        //   function: "matrixSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // // {
+        // //   name: "staff-satisfaction-satisfaction-parity-race",
+        // //   inputQuestions: ["newVarInstitutionalSatisfactionParityRace"],
+        // //   _comment : "TODO Implement",
+        // //   timing: "perRespondentProcessing",
+        // //   function: "matrixSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "staff-satisfaction-satisfaction-parity-gender",
+        // //   inputQuestions: ["newVarInstitutionalSatisfactionParityGender"],
+        // //   _comment : "TODO Implement",
+        // //   timing: "perRespondentProcessing",
+        // //   function: "matrixSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // {
+        //   name: "029-staff-satisfaction-emotions",
+        //   inputQuestions: ["question33"],
+        //   labels: ["Total Number", "Content","Worried","Excited","Sad","Connected to others","Bored","Angry","Hopeful","Disappointed","Inspired","None of the above"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "030-discrimination-total",
+        //   inputQuestions: ["question26"],
+        //   labels: ["Total Number", "Yes", "No", "Prefer not to answer"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // // {
+        // //   name: "discrimination-parity-gender",
+        // //   _comment: "TODO",
+        // //   inputQuestions: ["newVarDiscriminationParityGender"],
+        // //   timing: "perRespondentProcessing",
+        // //   function: "sum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "discrimination-parity-race",
+        // //   _comment: "TODO",
+        // //   inputQuestions: ["newVarDiscriminationParityRace"],
+        // //   timing: "perRespondentProcessing",
+        // //   function: "sum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // {
+        //   name: "031-discrimination-rate",
+        //   inputQuestions: ["question27"],
+        //   labels: ["Total Number", "Very frequently (e.g. daily or almost daily)","Often (e.g. a few times a month)","Sometimes (e.g. a few times a year) ","Rarely (e.g. one or two times total)"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "032-discrimination-forms",
+        //   inputQuestions: ["question28"],
+        //   labels: ["Total Number", "Discrimination and/or harassment based on gender (including pregnancy gender expression gender identity etc.)","Discrimination and/or harassment based on sexual orientation","Discrimination and/or harassment based on race and/or ethnicity","Discrimination and/or harassment based on social or economic status","Discrimination and/or harassment based on religion","Discrimination and/or harassment based on age","Discrimination and/or harassment based on disability","Another form of discrimination and/or harassment","I don’t know "],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "033-discrimination-actions",
+        //   inputQuestions: ["question29"],
+        //   labels: ["Total Number", "I filed an HR complaint form (i.e. in-person or online)","I talked to an HR staff member who is available to employees","I used an anonymous reporting mechanism","I used an employee complaint hotline","I talked to a neutral employee or manager who can communicate the issues to HR","I used a third-party reporting process (e.g. use of an ombudsman)","I used another reporting mechanism","I followed a union-provided grievance process for reporting","I did something else","I haven’t done anything in response"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "034-discrimination-satisfaction-with-response",
+        //   inputQuestions: ["question30"],
+        //   labels: ["Total Number", "Not at all satisfied","Somewhat satisfied","Very satisfied"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "035-discrimination-reasons-no-report",
+        //   inputQuestions: ["question31"],
+        //   labels: ["Total Number", "I worried about retaliation from people in leadership at the institution","I worried about retaliation from the person who discriminated against/harassed me","I didn’t think anything would be done about it","I didn’t think anything could be done about it because the person who discriminated against/harassed me is not an employee of the museum (e.g. visitor board member artist...)","I didn’t know about what actions I could take","My workplace doesn’t provide any mechanisms to report discrimination and/or harassment","I always reported my experiences of discrimination and harassment","I haven't experienced discrimination or harassment"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "036-leaving-leave-current-museum",
+        //   inputQuestions: ["question22"],
+        //   labels: ["Total Number", "Yes", "No"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "037-leaving-leave-current-museum-why",
+        //   inputQuestions: ["question23"],
+        //   labels : ["Total Number", "Pay is too low","Other institutions have more flexible work hours","No full-time work is available in this institution","Opportunities for growth at the other museum","Experiences of discrimination or harassment","Lack of opportunities for growth at my museum","Unsafe working conditions","Positive reputation of the other museum","Burnout","Desire to live in a different town or city","Interpersonal issues with other staff members","Poor management","I don’t believe my institution can change for the better","Personal reasons unrelated to my current museum workplace","None of the above"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "038-leaving-leave-current-field",
+        //   inputQuestions: ["question24"],
+        //   labels: ["Total Number", "Yes", "No"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   _comment: "This is also breaking the computation",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "039-leaving-leave-current-field-why",
+        //   inputQuestions: ["question25"],
+        //   labels: ["Total Number", "Pay is too low in art museums","Other fields have more flexible work hours","More interested in other fields","Full-time work is unavailable to me in most art museums","Experiences of discrimination or harassment in art museums","Lack of opportunities for growth in art museums","Unsafe working conditions in art museums","Burnout in the art museum field","Exciting opportunities in other fields","Interpersonal issues with other staff members are common in art museums","Poor management in art museums","I don’t believe art museums can change for the better","Personal reasons unrelated to art and/or museums","None of the above"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "040-dei-role",
+        //   inputQuestions: ["question34"],
+        //   labels: ["Total Number","I personally incorporate principles of diversity equity and inclusion in my overall work","I am currently a member of a diversity equity and inclusion committee at work","I was previously a member of a diversity equity and inclusion committee at work","My position specifically focuses on diversity equity and inclusion","None of the above – I am not involved in my museum’s diversity equity and inclusion efforts","None of the above – I am not clear about how to get involved in my museum’s diversity equity and inclusion efforts","Not applicable – my museum does not have any efforts towards diversity equity and inclusion"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "041-dei-measured",
+        //   inputQuestions: ["question35"],
+        //   labels: ["Total Number", "Artists in the collection", "Board and/or trustee members", "Staff members", "Volunteers", "None of the above", "I don’t know"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "042-union-measured",
+        //   inputQuestions: ["question8"],
+        //   labels: ["Total Number", "Yes I am a union member for my museum job","No I have the option to be a union member for my museum job but have not chosen to join","No a union is not available for my museum job"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "043-policies-measured",
+        //   inputQuestions: ["question18"],
+        //   labels: ["Total Number", "I am/will be working in-person only","I am/will be working in a hybrid setup where the museum chooses how many and which days to work from home and which days to work from the museum","I am/will be working in a hybrid setup where I get to choose how many and which days to work from home and which days to work in the museum","I am/will be working in a hybrid setup where the museum chooses how many days to work from home and how many days to work from the museum and I get to choose which days","I am/will be working from home only","I don’t know much about the museum’s return-to-work plans","Prefer not to answer"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "044-policies-salary-transparency",
+        //   inputQuestions: ["question20"],
+        //   labels: ["Total Number", "My workplace shares the specific salaries of all employees publicly","My union handbook lists salary levels for each job","My workplace shares salary ranges for all positions or levels with employees","My workplace posts salary ranges for each open position","My workplace actively discourages employees from discussing their salaries","None of the above ","I don’t know"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "045-org-culture-matrix",
+        //   inputQuestions: ["question19"],
+        //   labels: [ "I believe that I can learn and grow in this organization -- Total Number", "I believe that I can learn and grow in this organization -- Strongly Disagree", "I believe that I can learn and grow in this organization -- Somewhat Disagree", "I believe that I can learn and grow in this organization -- Neutral", "I believe that I can learn and grow in this organization -- Somewhat Agree", "I believe that I can learn and grow in this organization -- Strongly Agree", "I believe that I can learn and grow in this organization -- Prefer not to answer",  "I feel burned out in this organization -- Total Number", "I feel burned out in this organization -- Strongly Disagree", "I feel burned out in this organization -- Somewhat Disagree", "I feel burned out in this organization -- Neutral", "I feel burned out in this organization -- Somewhat Agree", "I feel burned out in this organization -- Strongly Agree", "I feel burned out in this organization -- Prefer not to answer",  "My manager supports me -- Total Number", "My manager supports me -- Strongly Disagree", "My manager supports me -- Somewhat Disagree", "My manager supports me -- Neutral", "My manager supports me -- Somewhat Agree", "My manager supports me -- Strongly Agree", "My manager supports me -- Prefer not to answer",  "I believe performance reviews contribute to growth and/or advancement in my institution -- Total Number", "I believe performance reviews contribute to growth and/or advancement in my institution -- Strongly Disagree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Somewhat Disagree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Neutral", "I believe performance reviews contribute to growth and/or advancement in my institution -- Somewhat Agree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Strongly Agree", "I believe performance reviews contribute to growth and/or advancement in my institution -- Prefer not to answer",  "Diversity and difference are not celebrated in this organization -- Total Number", "Diversity and difference are not celebrated in this organization -- Strongly Disagree", "Diversity and difference are not celebrated in this organization -- Somewhat Disagree", "Diversity and difference are not celebrated in this organization -- Neutral", "Diversity and difference are not celebrated in this organization -- Somewhat Agree", "Diversity and difference are not celebrated in this organization -- Strongly Agree", "Diversity and difference are not celebrated in this organization -- Prefer not to answer",  "I believe that what I do here is meaningful -- Total Number", "I believe that what I do here is meaningful -- Strongly Disagree", "I believe that what I do here is meaningful -- Somewhat Disagree", "I believe that what I do here is meaningful -- Neutral", "I believe that what I do here is meaningful -- Somewhat Agree", "I believe that what I do here is meaningful -- Strongly Agree", "I believe that what I do here is meaningful -- Prefer not to answer",  "The culture of my workplace negatively affects my mental and/or physical health -- Total Number", "The culture of my workplace negatively affects my mental and/or physical health -- Strongly Disagree", "The culture of my workplace negatively affects my mental and/or physical health -- Somewhat Disagree", "The culture of my workplace negatively affects my mental and/or physical health -- Neutral", "The culture of my workplace negatively affects my mental and/or physical health -- Somewhat Agree", "The culture of my workplace negatively affects my mental and/or physical health -- Strongly Agree", "The culture of my workplace negatively affects my mental and/or physical health -- Prefer not to answer",  "Mistakes are held against you in this organization -- Total Number", "Mistakes are held against you in this organization -- Strongly Disagree", "Mistakes are held against you in this organization -- Somewhat Disagree", "Mistakes are held against you in this organization -- Neutral", "Mistakes are held against you in this organization -- Somewhat Agree", "Mistakes are held against you in this organization -- Strongly Agree", "Mistakes are held against you in this organization -- Prefer not to answer",  "I would recommend this workplace to friends and family -- Total Number", "I would recommend this workplace to friends and family -- Strongly Disagree", "I would recommend this workplace to friends and family -- Somewhat Disagree", "I would recommend this workplace to friends and family -- Neutral", "I would recommend this workplace to friends and family -- Somewhat Agree", "I would recommend this workplace to friends and family -- Strongly Agree", "I would recommend this workplace to friends and family -- Prefer not to answer",  "I don’t feel that I have a voice in decision making in this organization -- Total Number", "I don’t feel that I have a voice in decision making in this organization -- Strongly Disagree", "I don’t feel that I have a voice in decision making in this organization -- Somewhat Disagree", "I don’t feel that I have a voice in decision making in this organization -- Neutral", "I don’t feel that I have a voice in decision making in this organization -- Somewhat Agree", "I don’t feel that I have a voice in decision making in this organization -- Strongly Agree", "I don’t feel that I have a voice in decision making in this organization -- Prefer not to answer",  "My institution provides management and/or leadership training for all supervisors -- Total Number", "My institution provides management and/or leadership training for all supervisors -- Strongly Disagree", "My institution provides management and/or leadership training for all supervisors -- Somewhat Disagree", "My institution provides management and/or leadership training for all supervisors -- Neutral", "My institution provides management and/or leadership training for all supervisors -- Somewhat Agree", "My institution provides management and/or leadership training for all supervisors -- Strongly Agree", "My institution provides management and/or leadership training for all supervisors -- Prefer not to answer",  "People in my organization are held accountable for discrimination and harassment -- Total Number", "People in my organization are held accountable for discrimination and harassment -- Strongly Disagree", "People in my organization are held accountable for discrimination and harassment -- Somewhat Disagree", "People in my organization are held accountable for discrimination and harassment -- Neutral", "People in my organization are held accountable for discrimination and harassment -- Somewhat Agree", "People in my organization are held accountable for discrimination and harassment -- Strongly Agree", "People in my organization are held accountable for discrimination and harassment -- Prefer not to answer",  "I feel like I have to hide some of who I am working in this organization -- Total Number", "I feel like I have to hide some of who I am working in this organization -- Strongly Disagree", "I feel like I have to hide some of who I am working in this organization -- Somewhat Disagree", "I feel like I have to hide some of who I am working in this organization -- Neutral", "I feel like I have to hide some of who I am working in this organization -- Somewhat Agree", "I feel like I have to hide some of who I am working in this organization -- Strongly Agree", "I feel like I have to hide some of who I am working in this organization -- Prefer not to answer"],
+        //   timing: "perRespondentProcessing",
+        //   function: "matrixSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // {
+        //   name: "046-org-experiences",
+        //   inputQuestions: ["question21"],
+        //   labels: ["Total Number",  "My major accomplishments have been acknowledged or recognized ", "I wasn’t given appropriate resources materials or time to execute a job task or responsibility", "I was given opportunities to do work that will likely help me advance", "Someone took credit for my accomplishment", "I developed positive relationships with my coworkers", "Someone I work with was unfairly blamed or criticized for something", "I was unfairly blamed or criticized for something", "Another employee yelled raised their voice or spoke to me in an unprofessional manner", "None of these"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
+        // // {
+        // //   name: "org-parity-gender",
+        // //   inputQuestions: ["newVarCultureParityGender"],
+        // //   _comment: "TODO",
+        // //   timing: "perRespondentProcessing",
+        // //   function: "checkboxSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // // {
+        // //   name: "org-parity-gender",
+        // //   inputQuestions: ["newVarCultureParityRace"],
+        // //   _comment: "TODO",
+        // //   timing: "perRespondentProcessing",
+        // //   function: "checkboxSum",
+        // //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        // //   outputParties: {
+        // //     analyst: "true",
+        // //     cohort: "true",
+        // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        // //   }
+        // // },
+        // {
+        //   name: "047-leadership-impact",
+        //   inputQuestions: ["question36"],
+        //   labels: ["Total Number", "The museum’s mission vision and/or values", "The museum board’s priorities", "Input from museum staff members", "The interests of current museum visitors", "The interests of the communities around the museum", "None of the above/ I don't know"],
+        //   timing: "perRespondentProcessing",
+        //   function: "checkboxSum",
+        //   filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "true",
+        //     // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+        //     tags: [ ],
+        //   }
+        // },
         {
           name: "048-very-satisfied",
           inputQuestions: ["newVar_021_VerySatisfied"],
           labels: ["Total Number"],
+          timing: "perRespondentProcessing",
+          function: "checkboxSum",
+          filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
+          }
+        },
+        {
+          name: "049-cover-expenses",
+          inputQuestions: ["question17"],
+          labels: ["Always enough to cover living expenses", "Usually enough to cover expenses", "Sometimes enough to cover expenses","Rarely or never enough to cover expenses"],
           timing: "perRespondentProcessing",
           function: "checkboxSum",
           filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
