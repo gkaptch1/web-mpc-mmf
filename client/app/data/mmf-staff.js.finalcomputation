@@ -2338,7 +2338,7 @@ define([], function () {
             {
               value: "1",
               text: "Yes",
-              inputs : 
+              waysToGetThere : 
               [
                 // Control over hours and/or location (e.g., ability to work flexible hours, work remotely)
                 {
@@ -3436,6 +3436,21 @@ define([], function () {
           timing: "perRespondentProcessing",
           function: "checkboxSum",
           filters: ["filterRemoteWorker"],
+          // filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation", "filterGender", "filterRaceAndEthnicity"],
+          outputParties: {
+            analyst: "true",
+            cohort: "false",
+            // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
+            tags: [ ],
+          }
+        },
+        {
+          name: "052-remote-workers-counts",
+          inputQuestions: ["newVar_024_RemoteWorker"],
+          labels: ["Count"],
+          timing: "perRespondentProcessing",
+          function: "checkboxSum",
+          filters: [],
           // filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation", "filterGender", "filterRaceAndEthnicity"],
           outputParties: {
             analyst: "true",
