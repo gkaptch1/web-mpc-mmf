@@ -866,849 +866,849 @@ define([], function () {
       //   "newVarPerceptionAccuracy" : {
       //     "_comment" : "GABE TODO",
       //   },
-        "newVar_011_PromotionBinned": {
-          function: "numericBin",
-          resultType: "radiogroup",
-          maxValue: 100,
-          minValue: 0,
-          choices: [
-            {
-              value: "0",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "0",
-                  minValue : 0,
-                  maxValue : 0,
-                },
-              ]
-            },
-            {
-              value: "1",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "1",
-                  minValue : 1,
-                  maxValue : 1,
-                },
-              ]
-            },
-            {
-              value: "2",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "2",
-                  minValue : 2,
-                  maxValue : 2,
-                },
-              ]
-            },
-            {
-              value: "3",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "3",
-                  minValue : 3,
-                  maxValue : 3,
-                },
-              ]
-            },
-            {
-              value: "4",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "4",
-                  minValue : 4,
-                  maxValue : 4,
-                },
-              ]
-            },
-            {
-              value: "5",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "5",
-                  minValue : 5,
-                  maxValue : 5,
-                },
-              ]
-            },
-            {
-              value: "6",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "6",
-                  minValue : 6,
-                  maxValue : 6,
-                },
-              ]
-            },
-            {
-              value: "7",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "7",
-                  minValue : 7,
-                  maxValue : 7,
-                },
-              ]
-            },
-            {
-              value: "8",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "8",
-                  minValue : 8,
-                  maxValue : 8,
-                },
-              ]
-            },
-            {
-              value: "9",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "9",
-                  minValue : 9,
-                  maxValue : 9,
-                },
-              ]
-            },
-            {
-              value: "10",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "10",
-                  minValue : 10,
-                  maxValue : 10,
-                },
-              ]
-            },
-            {
-              value: "11",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "11",
-                  minValue : 11,
-                  maxValue : 11,
-                },
-              ]
-            },
-            {
-              value: "12",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "12",
-                  minValue : 12,
-                  maxValue : 12,
-                },
-              ]
-            },
-            {
-              value: "13",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "13",
-                  minValue : 13,
-                  maxValue : 13,
-                },
-              ]
-            },
-            {
-              value: "14",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "14",
-                  minValue : 14,
-                  maxValue : 14,
-                },
-              ]
-            },
-            {
-              value: "15",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "15",
-                  minValue : 15,
-                  maxValue : 15,
-                },
-              ]
-            },
-            {
-              value: "16",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "16",
-                  minValue : 16,
-                  maxValue : 16,
-                },
-              ]
-            },
-            {
-              value: "17",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "17",
-                  minValue : 17,
-                  maxValue : 17,
-                },
-              ]
-            },
-            {
-              value: "18",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "18",
-                  minValue : 18,
-                  maxValue : 18,
-                },
-              ]
-            },
-            {
-              value: "19",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "19",
-                  minValue : 19,
-                  maxValue : 19,
-                },
-              ]
-            },
-            {
-              value: "20",
-              waysToGetThere: 
-              [
-                {
-                  question: "question14",
-                  value: "1",
-                  name: "20+",
-                  minValue : 20,
-                  maxValue : 100,
-                },
-              ]
-            },
-          ]
-        },
-        "newVar_012_PromotionNoPayBinned": {
-          function: "numericBin",
-          resultType: "radiogroup",
-          maxValue: 100,
-          minValue: 0,
-          choices: [
-            {
-              value: "0",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "0",
-                  minValue : 0,
-                  maxValue : 0,
-                },
-              ]
-            },
-            {
-              value: "1",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "1",
-                  minValue : 1,
-                  maxValue : 1,
-                },
-              ]
-            },
-            {
-              value: "2",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "2",
-                  minValue : 2,
-                  maxValue : 2,
-                },
-              ]
-            },
-            {
-              value: "3",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "3",
-                  minValue : 3,
-                  maxValue : 3,
-                },
-              ]
-            },
-            {
-              value: "4",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "4",
-                  minValue : 4,
-                  maxValue : 4,
-                },
-              ]
-            },
-            {
-              value: "5",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "5",
-                  minValue : 5,
-                  maxValue : 5,
-                },
-              ]
-            },
-            {
-              value: "6",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "6",
-                  minValue : 6,
-                  maxValue : 6,
-                },
-              ]
-            },
-            {
-              value: "7",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "7",
-                  minValue : 7,
-                  maxValue : 7,
-                },
-              ]
-            },
-            {
-              value: "8",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "8",
-                  minValue : 8,
-                  maxValue : 8,
-                },
-              ]
-            },
-            {
-              value: "9",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "9",
-                  minValue : 9,
-                  maxValue : 9,
-                },
-              ]
-            },
-            {
-              value: "10",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "10",
-                  minValue : 10,
-                  maxValue : 10,
-                },
-              ]
-            },
-            {
-              value: "11",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "11",
-                  minValue : 11,
-                  maxValue : 11,
-                },
-              ]
-            },
-            {
-              value: "12",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "12",
-                  minValue : 12,
-                  maxValue : 12,
-                },
-              ]
-            },
-            {
-              value: "13",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "13",
-                  minValue : 13,
-                  maxValue : 13,
-                },
-              ]
-            },
-            {
-              value: "14",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "14",
-                  minValue : 14,
-                  maxValue : 14,
-                },
-              ]
-            },
-            {
-              value: "15",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "15",
-                  minValue : 15,
-                  maxValue : 15,
-                },
-              ]
-            },
-            {
-              value: "16",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "16",
-                  minValue : 16,
-                  maxValue : 16,
-                },
-              ]
-            },
-            {
-              value: "17",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "17",
-                  minValue : 17,
-                  maxValue : 17,
-                },
-              ]
-            },
-            {
-              value: "18",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "18",
-                  minValue : 18,
-                  maxValue : 18,
-                },
-              ]
-            },
-            {
-              value: "19",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "19",
-                  minValue : 19,
-                  maxValue : 19,
-                },
-              ]
-            },
-            {
-              value: "20",
-              waysToGetThere: 
-              [
-                {
-                  question: "question15",
-                  value: "1",
-                  name: "20+",
-                  minValue : 20,
-                  maxValue : 100,
-                },
-              ]
-            },
-          ]
-        },
-        "newVar_013_PromotionNoTitleBinned": {
-          function: "numericBin",
-          resultType: "radiogroup",
-          maxValue: 100,
-          minValue: 0,
-          choices: [
-            {
-              value: "0",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "0",
-                  minValue : 0,
-                  maxValue : 0,
-                },
-              ]
-            },
-            {
-              value: "1",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "1",
-                  minValue : 1,
-                  maxValue : 1,
-                },
-              ]
-            },
-            {
-              value: "2",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "2",
-                  minValue : 2,
-                  maxValue : 2,
-                },
-              ]
-            },
-            {
-              value: "3",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "3",
-                  minValue : 3,
-                  maxValue : 3,
-                },
-              ]
-            },
-            {
-              value: "4",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "4",
-                  minValue : 4,
-                  maxValue : 4,
-                },
-              ]
-            },
-            {
-              value: "5",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "5",
-                  minValue : 5,
-                  maxValue : 5,
-                },
-              ]
-            },
-            {
-              value: "6",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "6",
-                  minValue : 6,
-                  maxValue : 6,
-                },
-              ]
-            },
-            {
-              value: "7",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "7",
-                  minValue : 7,
-                  maxValue : 7,
-                },
-              ]
-            },
-            {
-              value: "8",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "8",
-                  minValue : 8,
-                  maxValue : 8,
-                },
-              ]
-            },
-            {
-              value: "9",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "9",
-                  minValue : 9,
-                  maxValue : 9,
-                },
-              ]
-            },
-            {
-              value: "10",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "10",
-                  minValue : 10,
-                  maxValue : 10,
-                },
-              ]
-            },
-            {
-              value: "11",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "11",
-                  minValue : 11,
-                  maxValue : 11,
-                },
-              ]
-            },
-            {
-              value: "12",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "12",
-                  minValue : 12,
-                  maxValue : 12,
-                },
-              ]
-            },
-            {
-              value: "13",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "13",
-                  minValue : 13,
-                  maxValue : 13,
-                },
-              ]
-            },
-            {
-              value: "14",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "14",
-                  minValue : 14,
-                  maxValue : 14,
-                },
-              ]
-            },
-            {
-              value: "15",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "15",
-                  minValue : 15,
-                  maxValue : 15,
-                },
-              ]
-            },
-            {
-              value: "16",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "16",
-                  minValue : 16,
-                  maxValue : 16,
-                },
-              ]
-            },
-            {
-              value: "17",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "17",
-                  minValue : 17,
-                  maxValue : 17,
-                },
-              ]
-            },
-            {
-              value: "18",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "18",
-                  minValue : 18,
-                  maxValue : 18,
-                },
-              ]
-            },
-            {
-              value: "19",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "19",
-                  minValue : 19,
-                  maxValue : 19,
-                },
-              ]
-            },
-            {
-              value: "20",
-              waysToGetThere: 
-              [
-                {
-                  question: "question16",
-                  value: "1",
-                  name: "20+",
-                  minValue : 20,
-                  maxValue : 100,
-                },
-              ]
-            },
-          ]
-        },
+        // "newVar_011_PromotionBinned": {
+        //   function: "numericBin",
+        //   resultType: "radiogroup",
+        //   maxValue: 100,
+        //   minValue: 0,
+        //   choices: [
+        //     {
+        //       value: "0",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "0",
+        //           minValue : 0,
+        //           maxValue : 0,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "1",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "1",
+        //           minValue : 1,
+        //           maxValue : 1,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "2",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "2",
+        //           minValue : 2,
+        //           maxValue : 2,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "3",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "3",
+        //           minValue : 3,
+        //           maxValue : 3,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "4",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "4",
+        //           minValue : 4,
+        //           maxValue : 4,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "5",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "5",
+        //           minValue : 5,
+        //           maxValue : 5,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "6",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "6",
+        //           minValue : 6,
+        //           maxValue : 6,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "7",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "7",
+        //           minValue : 7,
+        //           maxValue : 7,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "8",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "8",
+        //           minValue : 8,
+        //           maxValue : 8,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "9",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "9",
+        //           minValue : 9,
+        //           maxValue : 9,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "10",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "10",
+        //           minValue : 10,
+        //           maxValue : 10,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "11",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "11",
+        //           minValue : 11,
+        //           maxValue : 11,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "12",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "12",
+        //           minValue : 12,
+        //           maxValue : 12,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "13",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "13",
+        //           minValue : 13,
+        //           maxValue : 13,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "14",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "14",
+        //           minValue : 14,
+        //           maxValue : 14,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "15",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "15",
+        //           minValue : 15,
+        //           maxValue : 15,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "16",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "16",
+        //           minValue : 16,
+        //           maxValue : 16,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "17",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "17",
+        //           minValue : 17,
+        //           maxValue : 17,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "18",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "18",
+        //           minValue : 18,
+        //           maxValue : 18,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "19",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "19",
+        //           minValue : 19,
+        //           maxValue : 19,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "20",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question14",
+        //           value: "1",
+        //           name: "20+",
+        //           minValue : 20,
+        //           maxValue : 100,
+        //         },
+        //       ]
+        //     },
+        //   ]
+        // },
+        // "newVar_012_PromotionNoPayBinned": {
+        //   function: "numericBin",
+        //   resultType: "radiogroup",
+        //   maxValue: 100,
+        //   minValue: 0,
+        //   choices: [
+        //     {
+        //       value: "0",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "0",
+        //           minValue : 0,
+        //           maxValue : 0,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "1",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "1",
+        //           minValue : 1,
+        //           maxValue : 1,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "2",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "2",
+        //           minValue : 2,
+        //           maxValue : 2,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "3",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "3",
+        //           minValue : 3,
+        //           maxValue : 3,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "4",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "4",
+        //           minValue : 4,
+        //           maxValue : 4,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "5",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "5",
+        //           minValue : 5,
+        //           maxValue : 5,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "6",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "6",
+        //           minValue : 6,
+        //           maxValue : 6,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "7",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "7",
+        //           minValue : 7,
+        //           maxValue : 7,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "8",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "8",
+        //           minValue : 8,
+        //           maxValue : 8,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "9",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "9",
+        //           minValue : 9,
+        //           maxValue : 9,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "10",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "10",
+        //           minValue : 10,
+        //           maxValue : 10,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "11",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "11",
+        //           minValue : 11,
+        //           maxValue : 11,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "12",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "12",
+        //           minValue : 12,
+        //           maxValue : 12,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "13",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "13",
+        //           minValue : 13,
+        //           maxValue : 13,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "14",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "14",
+        //           minValue : 14,
+        //           maxValue : 14,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "15",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "15",
+        //           minValue : 15,
+        //           maxValue : 15,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "16",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "16",
+        //           minValue : 16,
+        //           maxValue : 16,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "17",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "17",
+        //           minValue : 17,
+        //           maxValue : 17,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "18",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "18",
+        //           minValue : 18,
+        //           maxValue : 18,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "19",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "19",
+        //           minValue : 19,
+        //           maxValue : 19,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "20",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question15",
+        //           value: "1",
+        //           name: "20+",
+        //           minValue : 20,
+        //           maxValue : 100,
+        //         },
+        //       ]
+        //     },
+        //   ]
+        // },
+        // "newVar_013_PromotionNoTitleBinned": {
+        //   function: "numericBin",
+        //   resultType: "radiogroup",
+        //   maxValue: 100,
+        //   minValue: 0,
+        //   choices: [
+        //     {
+        //       value: "0",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "0",
+        //           minValue : 0,
+        //           maxValue : 0,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "1",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "1",
+        //           minValue : 1,
+        //           maxValue : 1,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "2",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "2",
+        //           minValue : 2,
+        //           maxValue : 2,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "3",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "3",
+        //           minValue : 3,
+        //           maxValue : 3,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "4",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "4",
+        //           minValue : 4,
+        //           maxValue : 4,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "5",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "5",
+        //           minValue : 5,
+        //           maxValue : 5,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "6",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "6",
+        //           minValue : 6,
+        //           maxValue : 6,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "7",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "7",
+        //           minValue : 7,
+        //           maxValue : 7,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "8",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "8",
+        //           minValue : 8,
+        //           maxValue : 8,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "9",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "9",
+        //           minValue : 9,
+        //           maxValue : 9,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "10",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "10",
+        //           minValue : 10,
+        //           maxValue : 10,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "11",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "11",
+        //           minValue : 11,
+        //           maxValue : 11,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "12",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "12",
+        //           minValue : 12,
+        //           maxValue : 12,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "13",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "13",
+        //           minValue : 13,
+        //           maxValue : 13,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "14",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "14",
+        //           minValue : 14,
+        //           maxValue : 14,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "15",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "15",
+        //           minValue : 15,
+        //           maxValue : 15,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "16",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "16",
+        //           minValue : 16,
+        //           maxValue : 16,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "17",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "17",
+        //           minValue : 17,
+        //           maxValue : 17,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "18",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "18",
+        //           minValue : 18,
+        //           maxValue : 18,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "19",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "19",
+        //           minValue : 19,
+        //           maxValue : 19,
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       value: "20",
+        //       waysToGetThere: 
+        //       [
+        //         {
+        //           question: "question16",
+        //           value: "1",
+        //           name: "20+",
+        //           minValue : 20,
+        //           maxValue : 100,
+        //         },
+        //       ]
+        //     },
+        //   ]
+        // },
       //   "newVarTransparencyScore" : {
       //     function: "linearcombination",
       //     timing: "perRespondentProcessing",
@@ -2783,20 +2783,20 @@ define([], function () {
         //     tags: [ ],
         //   }
         // },
-        {
-          name: "022-salary-and-promotion-number-of-promotions-binned",
-          inputQuestions: ["newVar_011_PromotionBinned"],
-          labels : ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20+"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          // filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "false",
-            tags : [],
-          }
-        },
+        // {
+        //   name: "022-salary-and-promotion-number-of-promotions-binned",
+        //   inputQuestions: ["newVar_011_PromotionBinned"],
+        //   labels : ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20+"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   // filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "false",
+        //     tags : [],
+        //   }
+        // },
         // {
         //   name: "023-salary-and-promotion-number-of-promotions-total",
         //   inputQuestions: ["question14"],
@@ -2851,20 +2851,20 @@ define([], function () {
         // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
         // //   }
         // // },
-        {
-          name: "024-salary-and-promotion-number-of-promotions-no-pay-increase-binned",
-          inputQuestions: ["newVar_012_PromotionNoPayBinned"],
-          labels : ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20+"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          // filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "false",
-            tags : [],
-          }
-        },
+        // {
+        //   name: "024-salary-and-promotion-number-of-promotions-no-pay-increase-binned",
+        //   inputQuestions: ["newVar_012_PromotionNoPayBinned"],
+        //   labels : ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20+"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   // filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "false",
+        //     tags : [],
+        //   }
+        // },
         // {
         //   name: "025-salary-and-promotion-number-of-promotions-no-pay-total",
         //   inputQuestions: ["question15"],
@@ -2948,20 +2948,20 @@ define([], function () {
         // //     tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
         // //   }
         // // },
-        {
-          name: "026-salary-and-promotion-number-of-promotions-no-title-increase-binned",
-          inputQuestions: ["newVar_013_PromotionNoTitleBinned"],
-          labels : ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20+"],
-          timing: "perRespondentProcessing",
-          function: "radiogroupSum",
-          // filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
-          filters: [],
-          outputParties: {
-            analyst: "true",
-            cohort: "false",
-            tags : [],
-          }
-        },
+        // {
+        //   name: "026-salary-and-promotion-number-of-promotions-no-title-increase-binned",
+        //   inputQuestions: ["newVar_013_PromotionNoTitleBinned"],
+        //   labels : ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20+"],
+        //   timing: "perRespondentProcessing",
+        //   function: "radiogroupSum",
+        //   // filters: ["filterGenerationWithoutSilent", "filterSeniority", "filterDisability", "filterUnionMembership", "filterPositionCategory", "filterFullTime", "filterHarassment", "filterSexualOrientation"],
+        //   filters: [],
+        //   outputParties: {
+        //     analyst: "true",
+        //     cohort: "false",
+        //     tags : [],
+        //   }
+        // },
         // {
         //   name: "027-salary-and-promotion-number-of-promotions-no-title-total",
         //   inputQuestions: ["question16"],
