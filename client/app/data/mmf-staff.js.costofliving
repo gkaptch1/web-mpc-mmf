@@ -2307,52 +2307,52 @@ define([], function () {
             },
           ]
         },
-        "newVar_024_RemoteWorker": {
-          function: "checkboxBin",
-          resultType: "checkbox",
-          choices: [
-            {
-              value: "1",
-              text: "Yes",
-              waysToGetThere: [
-                {
-                  question: "question18",
-                  values: "2",
-                },
-                {
-                  question: "question18",
-                  values: "3",
-                },
-                {
-                  question: "question18",
-                  values: "4",
-                },
-              ]
-            },
-          ]
-        },
-        "newVar_025_VerySatisfiedWithControlOverHours" : {
-          function : "checkboxBin",
-          resultType : "checkbox",
-          choices: [
-            {
-              value: "1",
-              text: "Yes",
-              waysToGetThere : 
-              [
-                // Control over hours and/or location (e.g., ability to work flexible hours, work remotely)
-                {
-                  question: "question32",
-                  values: "19",
-                },
-                {
-                  question: "question32",
-                  values: "20",
-                },
-              ]
-            },
-          ],
-        },
+        // "newVar_024_RemoteWorker": {
+        //   function: "checkboxBin",
+        //   resultType: "checkbox",
+        //   choices: [
+        //     {
+        //       value: "1",
+        //       text: "Yes",
+        //       waysToGetThere: [
+        //         {
+        //           question: "question18",
+        //           values: "2",
+        //         },
+        //         {
+        //           question: "question18",
+        //           values: "3",
+        //         },
+        //         {
+        //           question: "question18",
+        //           values: "4",
+        //         },
+        //       ]
+        //     },
+        //   ]
+        // },
+        // "newVar_025_VerySatisfiedWithControlOverHours" : {
+        //   function : "checkboxBin",
+        //   resultType : "checkbox",
+        //   choices: [
+        //     {
+        //       value: "1",
+        //       text: "Yes",
+        //       waysToGetThere : 
+        //       [
+        //         // Control over hours and/or location (e.g., ability to work flexible hours, work remotely)
+        //         {
+        //           question: "question32",
+        //           values: "19",
+        //         },
+        //         {
+        //           question: "question32",
+        //           values: "20",
+        //         },
+        //       ]
+        //     },
+        //   ],
+        // },
       },
       filters: {
         "filterSeniority": {
