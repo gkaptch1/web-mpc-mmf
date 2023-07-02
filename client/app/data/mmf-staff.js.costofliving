@@ -2494,7 +2494,7 @@ define([], function () {
             // tags : ["City, state, or county-affiliated", "Collecting", "College or university-affiliated", "Contemporary and/or modern-specific", "Culturally-specific", "Encyclopedic", "Mid-Atlantic", "Midwest", "Mountain Plains", "New England", "Non-Collecting", "Southeast", "Western", "size1", "size2", "size3", "size4", "size5", "size6", "size7"],
             tags: ["coli1", "coli2","coli3"],
           }
-        // },
+        },
         // // {
         // //   name: "006-demographics-seniority-recode",
         // //   inputQuestions: ["newVar_005_Seniority"],
@@ -7379,7 +7379,7 @@ define([], function () {
       {"name":"Contemporary Austin", "tags" : ["Contemporary and/or modern-specific", "Non-Collecting", "Mountain Plains", "size3","coli2"]},
       {"name":"Crocker", "tags" : ["City, state, or county-affiliated", "Collecting", "Western", "size4","coli3"]},
       {"name":"Dallas", "tags" : ["City, state, or county-affiliated", "Encyclopedic", "Collecting", "Mountain Plains", "size7","coli1"]},
-      {"name":"Des Moines", "tags" : ["Encyclopedic", "Collecting", "Southeast", "size4"]},
+      {"name":"Des Moines", "tags" : ["Encyclopedic", "Collecting", "Southeast", "size4","coli1"]},
       {"name":"Dia", "tags" : ["Contemporary and/or modern-specific", "Collecting", "Mid-Atlantic", "size6","coli2"]},
       {"name":"FAMSF", "tags" : ["City, state, or county-affiliated", "Culturally-specific", "Encyclopedic", "Collecting", "Western", "size7",,"coli3"]},
       {"name":"Frye", "tags" : ["Contemporary and/or modern-specific", "Collecting", "Western", "size3",,"coli3"]},
