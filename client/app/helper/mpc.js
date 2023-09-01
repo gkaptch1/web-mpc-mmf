@@ -480,6 +480,22 @@ define(["constants"], function (constants) {
     return share.cgteq(constant);  // GABE TODO we could put an upper bound on this for efficiency?
   }
 
+  var shareFilter = function(share, filter) {
+    if (share == null || filter == null) {
+      return share; //GABE TODO create new share of zero
+    }
+
+    return filter.if_else(share, 0);
+  }
+
+  var shareInvFilter = function(share, filter) {
+    if (share == null || filter == null) {
+      return share; //GABE TODO create new share of zero
+    }
+
+    return filter.if_else(0, share);
+  }
+
   // Sum the given two arrays of secret shares, placing the result in the first array
   // This is for cohorts: the accumulator is only grouped by gender and level, while the input
   // array has all groupings.
@@ -717,8 +733,8 @@ define(["constants"], function (constants) {
         // await jiff_instance.end_barrier(); // Add a manual sync to make sure we don't get too far ahead of ourselves in the first iteration
 
         // jiff_instance.start_barrier();
-        // let result = await openValues(jiff_instance, shares.questions, [1]);
-        // console.log("Opening shares for party "+ partyID+ ": " + result.toString());
+        // let result = await openValues(jiff_instance, shares.questions.slice(indexMap["question40"]["first"],indexMap["question40"]["first"]+indexMap["question40"]["length"]), [1]);
+        // console.log("Opening shares for party "+ partyID+ " (from " + indexMap["question40"]["first"] + " to " + (indexMap["question40"]["first"]+indexMap["question40"]["length"]) + ": " + result.toString());
 
 
         // For each newVariable, we need to compute shares of the new variable, and append it to the shares that we have
@@ -868,6 +884,86 @@ define(["constants"], function (constants) {
               }
             }
             newShares[partyID][newVar].push(newShare);
+          }
+          else if (table_template.computation.newVariables[newVar].function == "filter") {
+
+            // let result = await openValues(jiff_instance, shares.questions.slice(indexMap["question40"]["first"],indexMap["question40"]["first"]+indexMap["question40"]["length"]), [1]);
+            // console.log("Re-opening shares for party "+ partyID+ " before filter : " + result.toString());
+
+            // Get the filter share
+            filtershare = null;
+            filter = table_template.computation.newVariables[newVar].filter;
+
+            // console.log(filter);
+            if (indexMap[filter.question]==undefined) {
+              filtershare = newShares[partyID][filter.question][filter.values-1]; // the -1 is because we are 1 index-ing values, but 0 index-ing arrays
+              // console.log("Filter for " + newVar + " comes from newShares");
+            } else {
+              filtershare = shares.questions[indexMap[filter.question][filter.values]];
+              // console.log("Filter for " + newVar + " comes from " + indexMap[filter.question][filter.values]);
+            }
+
+            // var filterVal = await openValues(jiff_instance, [filtershare], [1]);
+            // console.log("Filtering for "+ partyID+ "--filter ("+ newVar +") : " + filterVal.toString());
+
+            for (choice of table_template.computation.newVariables[newVar].choices) {
+              newShare = null;
+
+              for (input of choice.waysToGetThere) {
+                if (indexMap[input.question]==undefined) {
+                  newShare = sumAndAccumulateSingleShares(newShare, newShares[partyID][input.question][input.values-1]); // the -1 is because we are 1 index-ing values, but 0 index-ing arrays
+                } else {
+                  newShare = sumAndAccumulateSingleShares(newShare, shares.questions[indexMap[input.question][input.values]]);
+                }
+              }
+              newShare = shareFilter(newShare,filtershare);
+
+              newShares[partyID][newVar].push(newShare);
+            }
+
+            // var filteredVals = await openValues(jiff_instance, newShares[partyID][newVar], [1]);
+            // console.log("Filtering for "+ partyID+ "--output ("+ newVar +") : " + filteredVals.toString());
+          }
+          else if (table_template.computation.newVariables[newVar].function == "inversefilter") {
+
+            // let result = await openValues(jiff_instance, shares.questions.slice(indexMap["question40"]["first"],indexMap["question40"]["first"]+indexMap["question40"]["length"]), [1]);
+            // console.log("Re-opening shares for party "+ partyID+ " before filter : " + result.toString());
+
+            // Get the filter share
+            filtershare = null;
+            filter = table_template.computation.newVariables[newVar].filter;
+
+            // console.log(filter);
+            if (indexMap[filter.question]==undefined) {
+              filtershare = newShares[partyID][filter.question][filter.values-1]; // the -1 is because we are 1 index-ing values, but 0 index-ing arrays
+              // console.log("Filter for " + newVar + " comes from newShares");
+            } else {
+              filtershare = shares.questions[indexMap[filter.question][filter.values]];
+              // console.log("Filter for " + newVar + " comes from " + indexMap[filter.question][filter.values]);
+            }
+
+            // var filterVal = await openValues(jiff_instance, [filtershare], [1]);
+            // console.log("InvFiltering for "+ partyID+ "--filter ("+ newVar +") : " + filterVal.toString());
+
+
+            for (choice of table_template.computation.newVariables[newVar].choices) {
+              newShare = null;
+
+              for (input of choice.waysToGetThere) {
+                if (indexMap[input.question]==undefined) {
+                  newShare = sumAndAccumulateSingleShares(newShare, newShares[partyID][input.question][input.values-1]); // the -1 is because we are 1 index-ing values, but 0 index-ing arrays
+                } else {
+                  newShare = sumAndAccumulateSingleShares(newShare, shares.questions[indexMap[input.question][input.values]]);
+                }
+              }
+              newShare = shareInvFilter(newShare,filtershare);
+
+              newShares[partyID][newVar].push(newShare);
+            }
+
+
+            // var filteredVals = await openValues(jiff_instance, newShares[partyID][newVar], [1]);
+            // console.log("InvFiltering for "+ partyID+ "--output ("+ newVar +") : " + filteredVals.toString());
           }
           await jiff_instance.end_barrier();
         }
